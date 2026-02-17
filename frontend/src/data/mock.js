@@ -130,7 +130,7 @@ export const references = [
     description: "Innenrenovierung von gewerblich genutzten Flächen.",
     services: ["Malerarbeiten"],
     duration: "ca. 6 Wochen",
-    image: "https://images.unsplash.com/photo-1630325459372-36f3f86281cf?w=800",
+    image: "https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/js0ozn7j_feuervogel.jpg.png",
     category: "Gewerbe",
     featured: false
   },
