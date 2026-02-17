@@ -214,23 +214,34 @@ const leistungenData = {
     title: 'Schimmelsanierung',
     metaTitle: 'Schimmelsanierung | Ocean Color Hamburg',
     metaDescription: 'Professionelle Schimmelsanierung in Hamburg. Fachgerechte Entfernung und dauerhafte Beseitigung von Schimmel.',
-    heroText: 'Fachgerechte Schimmelbekämpfung',
-    description: 'Schimmel ist nicht nur unansehnlich, sondern auch gesundheitsschädlich. Wir entfernen Schimmelbefall fachgerecht, beseitigen die Ursachen und sorgen für ein gesundes Raumklima.',
+    heroText: 'Fachgerechte Schimmelbekämpfung für ein gesundes Raumklima',
+    description: 'Schimmel stellt ein ernsthaftes Gesundheitsrisiko dar und sollte fachgerecht entfernt werden. Mögliche Folgen sind Atemwegsprobleme, Allergien und beeinträchtigte Raumluftqualität. Wir erkennen Ursachen frühzeitig und beseitigen Schimmel nachhaltig.',
     benefits: [
       'Fachgerechte Ursachenanalyse',
-      'Professionelle Schimmelentfernung',
+      'Professionelle Schimmelentfernung nach Richtlinien',
       'Dauerhafte Sanierungslösungen',
-      'Präventive Maßnahmen',
+      'Renovierung nach Wasserschäden',
       'Gesundheitsschutz während der Arbeiten'
     ],
     process: [
-      'Befundaufnahme und Ursachenanalyse',
-      'Absicherung und Schutzmaßnahmen',
-      'Fachgerechte Entfernung des Befalls',
-      'Behandlung mit Antischimmel-Produkten',
-      'Renovierung und Präventionsberatung'
+      'Analyse des Schadens',
+      'Fachgerechte Reinigung',
+      'Neuverputzung',
+      'Versiegelung',
+      'Neugestaltung der Oberfläche'
     ],
-    applications: ['Badezimmer', 'Keller', 'Schlafzimmer', 'Fensterlaibungen', 'Außenecken']
+    applications: ['Badezimmer', 'Keller', 'Schlafzimmer', 'Fensterlaibungen', 'Wasserschäden'],
+    additionalSections: [
+      {
+        title: 'Schimmelpilzentfernung',
+        content: 'Bestimmte Schimmelarten sind gesundheitsgefährdend und müssen nach klaren Richtlinien beseitigt werden. Wir erkennen Ursachen frühzeitig und beseitigen Schimmel nachhaltig.'
+      },
+      {
+        title: 'Renovierung nach Wasserschäden',
+        content: 'Je nach Schadensgrad führen wir Trocknung der Wände, Erneuerung von Putz und Neuanstrich durch. Wir sorgen für eine vollständige Wiederherstellung der betroffenen Bereiche.',
+        result: 'Ein dauerhaft saniertes und optisch erneuertes Umfeld.'
+      }
+    ]
   },
   'epoxidharzboden': {
     title: 'Epoxidharzbodenbeschichtungen',
