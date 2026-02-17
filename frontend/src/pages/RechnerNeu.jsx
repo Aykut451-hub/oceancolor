@@ -133,10 +133,12 @@ const RechnerNeu = () => {
           anzahl_raeume: formData.anzahlRaeume ? parseInt(formData.anzahlRaeume) : null,
           wandflaeche_qm: formData.wandflaeche ? parseFloat(formData.wandflaeche) : null,
           epoxid_flaeche_qm: formData.epoxidFlaeche ? parseFloat(formData.epoxidFlaeche) : null,
-          raumhoehe: formData.raumhoehe,
+          boden_flaeche_qm: formData.bodenFlaeche ? parseFloat(formData.bodenFlaeche) : null,
+          raumhoehe: hasOnlyBodenarbeiten ? 'nicht-relevant' : formData.raumhoehe,
           zustand: formData.zustand,
+          aktueller_boden: formData.aktuellerBoden,
           farbe: formData.farbe,
-          spachtelstufe: formData.spachtelstufe,
+          spachtelstufe: hasOnlyBodenarbeiten ? 'keine' : formData.spachtelstufe,
           zusatzoptionen: formData.zusatzoptionen
         })
       });
