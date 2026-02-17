@@ -113,23 +113,32 @@ const Leistungen = () => {
       {/* CTA Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <Card className="bg-gradient-to-br from-ocean-blue to-cyan-600 border-0 text-white">
-            <CardContent className="p-12 text-center">
-              <h2 className="text-3xl font-bold mb-4">
+          <Card className="bg-gray-900 border-0 overflow-hidden relative">
+            {/* Subtle gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-ocean-blue/20 to-cyan-600/20" />
+            <CardContent className="p-12 text-center relative z-10">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
                 Interessiert an unseren Leistungen?
               </h2>
-              <p className="text-xl mb-8 text-blue-100">
+              <p className="text-lg md:text-xl mb-8 text-gray-300 max-w-2xl mx-auto">
                 Nutzen Sie unseren Angebotsrechner oder fordern Sie einen Rückruf an.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/rechner">
-                  <Button size="lg" className="bg-white text-ocean-blue hover:bg-gray-100 w-full sm:w-auto">
+                  <Button 
+                    size="lg" 
+                    className="bg-ocean-blue text-white hover:bg-ocean-blue-dark border-2 border-ocean-blue hover:border-ocean-blue-dark font-semibold w-full sm:w-auto transition-all duration-200 shadow-lg hover:shadow-xl"
+                  >
                     Zum Angebotsrechner
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
                 <Link to="/kontakt">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 w-full sm:w-auto">
+                  <Button 
+                    size="lg" 
+                    variant="outline" 
+                    className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold w-full sm:w-auto transition-all duration-200"
+                  >
                     Rückruf anfordern
                   </Button>
                 </Link>
