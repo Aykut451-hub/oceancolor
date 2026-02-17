@@ -152,7 +152,7 @@ export const references = [
     description: "Renovierungsarbeiten im laufenden Betrieb.",
     services: ["Malerarbeiten"],
     duration: "ca. 1 Woche",
-    image: "https://images.unsplash.com/photo-1611433162346-aec991ef7484?w=800",
+    image: "https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/g83aqdmd_star.jpg.jpg",
     category: "Gewerbe",
     featured: false
   },
