@@ -63,9 +63,9 @@ const Home = () => {
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1688372199140-cade7ae820fe"
-                  alt="Professioneller Maler bei der Arbeit"
-                  className="w-full h-[500px] object-cover"
+                  src="https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/ud2ks07n_IMG_4934.JPG"
+                  alt="Ocean Color Malermeister bei der Arbeit"
+                  className="w-full h-[500px] object-cover object-center"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent"></div>
               </div>
