@@ -52,6 +52,7 @@ Moderne Website für Malerfirma "Ocean Color" in Hamburg mit Fokus auf:
 
 ### ✅ Phase 1: Frontend mit Mock-Daten (ABGESCHLOSSEN)
 ### ✅ Phase 2: Interaktiver Step-by-Step Angebotsrechner (ABGESCHLOSSEN)
+### ✅ Phase 3: Backend-Integration & Admin Dashboard (ABGESCHLOSSEN)
 
 #### Komponenten erstellt:
 - `Header.jsx` - Responsive Navigation mit Logo, fixiert, scroll-effekt
@@ -94,7 +95,81 @@ Moderne Website für Malerfirma "Ocean Color" in Hamburg mit Fokus auf:
 - `/impressum` - Impressum
 - `/datenschutz` - Datenschutz
 
-### Phase 2: Interaktiver Angebotsrechner Features
+### Phase 3: Backend-Integration & Admin Dashboard
+
+#### Backend APIs:
+- **POST /api/leads** - Lead-Erstellung mit File Upload (multipart/form-data)
+- **POST /api/admin/login** - Admin-Authentifizierung mit Token
+- **GET /api/admin/leads** - Alle Leads abrufen (mit Filter/Suche)
+- **GET /api/admin/leads/:id** - Einzelner Lead
+- **PUT /api/admin/leads/:id** - Lead-Status & Notizen aktualisieren
+- **GET /api/admin/stats** - Dashboard-Statistiken
+- **GET /api/admin/export** - CSV Export aller Leads
+
+#### MongoDB Schema:
+- **Lead Collection** mit vollständigen Calculator-Daten:
+  - Calculator: PLZ, Objektart, Leistungen, Größe, Raumhöhe, Zustand, Farbe, Spachtelstufe, Zusatzoptionen
+  - Kontakt: Name, Telefon, E-Mail, Rückruf-Zeit, Bemerkung
+  - Preis: Min/Max Preisspanne
+  - Files: Foto-URLs Array
+  - Admin: Status (neu/kontaktiert/angebot/gewonnen/verloren), admin_notizen
+  - Meta: created_at, lead_type, id
+
+#### File Upload System:
+- File Upload Handler für bis zu 5 Bilder
+- Speicherung in `/app/backend/uploads`
+- Static File Serving unter `/uploads`
+- File-URLs werden in Lead gespeichert
+
+#### E-Mail-Benachrichtigung:
+- Automatischer E-Mail-Versand bei neuen Leads
+- Strukturierte Übersicht aller Lead-Daten
+- Betreff: "Neue Anfrage – Angebotsrechner – {PLZ} – {Objektart}"
+- Inkl. Preisspanne, alle Projektdetails, Kontaktdaten, Foto-Links
+- SMTP konfigurierbar über .env (optional - ohne SMTP werden Emails geloggt)
+
+#### Admin Dashboard (`/admin`):
+**AdminLogin Seite:**
+- Password-geschützter Login
+- Token-basierte Authentifizierung
+- Standard-Password: `ocean2024` (konfigurierbar via ADMIN_PASSWORD)
+
+**AdminLeads Seite (`/admin/leads`):**
+- Dashboard mit Statistik-Cards (Gesamt, Neu, Kontaktiert, Gewonnen)
+- Leads-Tabelle mit Spalten: Datum, Kontakt, PLZ/Objektart, Leistungen, Preisspanne, Rückruf, Status, Aktionen
+- Such-Funktion (Name, PLZ, Telefon, E-Mail)
+- Status-Filter (Alle, Neu, Kontaktiert, Angebot, Gewonnen, Verloren)
+- CSV Export Button
+- Logout Button
+- Klick auf Lead öffnet Detailseite
+
+**AdminLeadDetail Seite (`/admin/leads/:id`):**
+- Vollständige Lead-Ansicht in strukturierten Abschnitten:
+  - Kontakt & Rückruf mit Quick-Actions (Anrufen, E-Mail)
+  - Projekt Details (alle 9 Calculator-Schritte übersichtlich)
+  - Kalkulierte Preisspanne (prominent dargestellt)
+  - Foto-Galerie mit Click-to-Enlarge
+- Bearbeitungs-Features:
+  - Status ändern (Dropdown)
+  - Admin-Notizen hinzufügen/bearbeiten (Textarea)
+  - Speichern-Button
+- Responsive Design für alle Geräte
+
+**Protected Routes:**
+- Automatische Weiterleitung zu `/admin/login` wenn nicht authentifiziert
+- Token-Validierung bei jedem API-Call
+- Logout bei abgelaufenem/ungültigem Token
+
+#### Environment Variables:
+```
+ADMIN_PASSWORD=ocean2024
+ADMIN_EMAIL=info@oceancolor.de
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=
+SMTP_PASSWORD=
+FROM_EMAIL=noreply@oceancolor.de
+```
 
 #### Multi-Step Calculator (`RechnerNeu.jsx`):
 **9-Schritte Prozess:**
@@ -146,16 +221,13 @@ Moderne Website für Malerfirma "Ocean Color" in Hamburg mit Fokus auf:
 
 ## Prioritized Backlog
 
-### P0 (Next Phase - Backend Development)
-- [ ] Backend API für Rückruf-Anfragen
-- [ ] Backend API für Kontaktformular
-- [ ] **Backend API für Angebotsrechner-Leads** (komplett mit allen 9 Schritten + Lead-Daten)
-- [ ] **File Upload Handler** für Foto-Upload im Angebotsrechner
-- [ ] MongoDB Integration für Anfragen
-- [ ] **MongoDB Schema für Calculator-Leads** (alle Rechner-Daten + Lead-Info speichern)
-- [ ] E-Mail-Benachrichtigungen bei Anfragen
-- [ ] **Strukturierte E-Mail für Angebotsrechner-Leads** (übersichtliche Darstellung aller Eingaben)
-- [ ] Admin-Dashboard für Anfragenverwaltung
+### P0 (Produktions-Optimierungen)
+- [ ] SMTP-Credentials konfigurieren für echten E-Mail-Versand
+- [ ] Passwort-Hashing für Admin-Login (aktuell plain-text)
+- [ ] Redis für Token-Storage (aktuell in-memory)
+- [ ] Image-Optimierung & Thumbnails für hochgeladene Fotos
+- [ ] Rate Limiting für API-Endpoints
+- [ ] Error Monitoring & Logging
 
 ### P1 (Enhancement Features)
 - [ ] Erweiteter Angebotsrechner mit mehr Optionen
