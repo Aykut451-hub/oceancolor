@@ -234,7 +234,7 @@ SMTP_USE_TLS=true
 
 ## Prioritized Backlog
 
-### ✅ ABGESCHLOSSEN (Februar 2026)
+### ✅ ABGESCHLOSSEN (Dezember 2025)
 - [x] SMTP E-Mail-Versand über IONOS aktiviert und getestet
 - [x] Admin Notizen-Feld im Lead-Detail verfügbar
 - [x] Cookie-Consent-Banner implementiert
@@ -242,6 +242,7 @@ SMTP_USE_TLS=true
 - [x] Referenzen-Seite mit 11 echten Kundenprojekten
 - [x] **SEO-Optimierung:** Meta-Tags, Open Graph, Schema.org/LocalBusiness
 - [x] **Produktions-Ready:** robots.txt, sitemap.xml, 404-Seite
+- [x] **Google-Bewertungen Integration:** 6 echte Kundenbewertungen auf der Startseite integriert mit Google-Logo und 5,0 Sterne Durchschnitt
 
 ### P0 (Kritisch - Vor Produktion)
 - [ ] Echte Firmendaten in Impressum & Datenschutz eintragen (wartet auf Kundeneingabe)
