@@ -163,24 +163,35 @@ const leistungenData = {
   'bodenbelaege': {
     title: 'Bodenbeläge',
     metaTitle: 'Bodenbeläge verlegen | Ocean Color Hamburg',
-    metaDescription: 'Professionelle Bodenverlegung in Hamburg. PVC, Laminat, Vinyl und mehr - fachgerecht verlegt vom Malermeister.',
-    heroText: 'Perfekte Böden für Ihr Zuhause',
-    description: 'Ein neuer Bodenbelag verändert das gesamte Raumgefühl. Wir verlegen verschiedene Bodenbeläge fachgerecht und sorgen für ein dauerhaft schönes Ergebnis.',
+    metaDescription: 'Professionelle Bodenverlegung in Hamburg. Laminat, Vinyl, PVC, Teppich und Bodenbeschichtungen vom Malermeister.',
+    heroText: 'Perfekte Böden für Ihr Zuhause und Gewerbe',
+    description: 'Ein Boden prägt maßgeblich die Wirkung eines Raumes. Material, Struktur und Oberfläche entscheiden über Atmosphäre, Funktionalität und Langlebigkeit. Wir beraten Sie umfassend bei der Auswahl des passenden Bodenbelags und bieten eine Vielzahl an Lösungen für private und gewerbliche Räume.',
     benefits: [
-      'Verlegung verschiedener Belagsarten',
+      'Umfassende Beratung bei der Materialauswahl',
+      'Fachgerechte Verlegung aller Bodenarten',
       'Professionelle Untergrundvorbereitung',
-      'Saubere Übergänge und Randabschlüsse',
-      'Beratung bei der Materialauswahl',
-      'Schnelle und staubfreie Verlegung'
+      'Langlebige und hochwertige Ergebnisse',
+      'Für private und gewerbliche Räume'
     ],
     process: [
-      'Aufmaß und Beratung',
+      'Aufmaß und Beratung vor Ort',
       'Untergrundprüfung und Vorbereitung',
-      'Verlegen des Bodenbelags',
-      'Randleisten und Übergänge',
+      'Fachgerechte Verlegung des Bodenbelags',
+      'Saubere Übergänge und Randabschlüsse',
       'Endreinigung und Übergabe'
     ],
-    applications: ['PVC-Beläge', 'Designvinyl', 'Laminat', 'Linoleum', 'Teppichboden']
+    applications: ['Laminat', 'Teppich', 'PVC', 'Vinyl', 'Bodenbeschichtungen'],
+    additionalSections: [
+      {
+        title: 'Bodenverlegung',
+        content: 'Bei Renovierungen von Wänden und Decken ist häufig auch eine Anpassung des Bodenbelags sinnvoll, um ein harmonisches Gesamtbild zu schaffen. Zusätzlich übernehmen wir vorbereitende Untergrundarbeiten, damit der neue Boden langfristig stabil und hochwertig bleibt.'
+      },
+      {
+        title: 'Bodenbeschichtungen',
+        content: 'Bodenbeschichtungen kommen in Garagen, Kellern, Balkonen oder auf Betonflächen zum Einsatz und müssen hohen mechanischen und chemischen Anforderungen standhalten. Neben einer ansprechenden Optik sorgen sie für Widerstandsfähigkeit, Schutz vor Abnutzung, Rutschhemmung und Langlebigkeit.',
+        list: ['Imprägnierungen (transparenter Schutz)', 'Versiegelungen (Porenverschluss)', 'Beschichtungen (eigene Schutzschicht)']
+      }
+    ]
   },
   'schimmelsanierung': {
     title: 'Schimmelsanierung',
