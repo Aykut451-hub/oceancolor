@@ -38,6 +38,7 @@ const RechnerNeu = () => {
     groesseOption: 'raeume', // 'raeume' oder 'flaeche'
     anzahlRaeume: '',
     wandflaeche: '',
+    epoxidFlaeche: '', // Für Epoxidharzbodenbeschichtung
     // Schritt 5
     raumhoehe: '',
     // Schritt 6
