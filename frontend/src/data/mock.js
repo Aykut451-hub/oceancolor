@@ -108,7 +108,7 @@ export const references = [
     description: "Durchführung von Renovierungsmaßnahmen in betreuten Immobilien.",
     services: ["Malerarbeiten", "Renovierung"],
     duration: "ca. 4 Wochen",
-    image: "https://images.unsplash.com/photo-1688372199140-cade7ae820fe?w=800",
+    image: "https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/zh14r3cl_talyo.jpg.png",
     category: "Immobilienverwaltung",
     featured: false
   },
