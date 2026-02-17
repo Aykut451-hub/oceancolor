@@ -316,9 +316,9 @@ const RechnerNeu = () => {
                 <p className="text-lg text-gray-600 mb-8">
                   Wir melden uns telefonisch zur weiteren Abstimmung.
                 </p>
-                <div className="bg-gray-50 rounded-lg p-6 mb-8">
-                  <p className="text-sm text-gray-600 mb-2">Ihre geschätzte Preisspanne:</p>
-                  <p className="text-3xl font-bold text-ocean-blue">
+                <div className="bg-gray-100 rounded-xl p-8 mb-8 border-2 border-gray-200">
+                  <p className="text-sm text-gray-700 mb-3 font-medium">Ihre geschätzte Preisspanne:</p>
+                  <p className="text-4xl md:text-5xl font-extrabold text-gray-900">
                     {calculatedPrice.min.toLocaleString('de-DE')} € - {calculatedPrice.max.toLocaleString('de-DE')} €
                   </p>
                 </div>
