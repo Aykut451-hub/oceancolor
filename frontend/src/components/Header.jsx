@@ -98,9 +98,9 @@ const Header = () => {
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsOpen(false)}
-                  className={`block px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 ${
+                  className={`block px-4 py-3 text-base font-medium rounded-lg transition-all duration-200 ${
                     location.pathname === link.path
-                      ? 'text-ocean-blue bg-ocean-blue/10'
+                      ? 'text-ocean-blue bg-ocean-blue/10 border-l-4 border-ocean-blue'
                       : 'text-gray-700 hover:text-ocean-blue hover:bg-gray-50'
                   }`}
                 >
