@@ -7,6 +7,7 @@ import CookieConsent from "@/components/CookieConsent";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import Home from "@/pages/Home";
 import Leistungen from "@/pages/Leistungen";
+import LeistungDetail from "@/pages/LeistungDetail";
 import KleinauftragService from "@/pages/KleinauftragService";
 import RechnerNeu from "@/pages/RechnerNeu";
 import Referenzen from "@/pages/Referenzen";
