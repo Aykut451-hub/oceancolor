@@ -105,21 +105,32 @@ class PricingCalculator:
         if "spachteln" in request.leistungen:
             # Wird separat über Spachtelstufe berechnet
             pass
-        if "boden" in request.leistungen:
-            kosten += flaeche_qm * 15.0  # Pauschal
         if "schimmel" in request.leistungen:
             kosten += 250.0  # Pauschale für Schimmelsanierung
+        
+        # Bodenbelag - 30€ pro m² (verwendet boden_flaeche_qm)
+        if "boden" in request.leistungen:
+            boden_flaeche = request.boden_flaeche_qm or 0
+            kosten += boden_flaeche * 30.0
+            
+            # Aufschlag für farbigen Boden
+            if request.farbe == "farbig":
+                kosten += boden_flaeche * 5.0
         
         # Epoxidharzbodenbeschichtung - 200€ pro m²
         if "epoxid" in request.leistungen:
             epoxid_flaeche = request.epoxid_flaeche_qm or 0
             kosten += epoxid_flaeche * 200.0
+            
+            # Aufschlag für farbiges Epoxid
+            if request.farbe == "farbig":
+                kosten += epoxid_flaeche * 25.0
         
         return kosten
     
     def _calculate_spachtelkosten(self, request: PriceCalculationRequest, flaeche_qm: float) -> float:
         """Berechnet Spachtelkosten basierend auf Stufe"""
-        if request.spachtelstufe == "keine":
+        if request.spachtelstufe == "keine" or request.spachtelstufe == "nicht-relevant":
             return 0.0
         elif request.spachtelstufe == "q2":
             return flaeche_qm * self.config.spachtel_q2
