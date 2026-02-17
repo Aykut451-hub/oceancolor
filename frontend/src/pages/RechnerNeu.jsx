@@ -74,67 +74,46 @@ const RechnerNeu = () => {
     { id: 'tueren', label: 'Türen / Heizkörper lackieren', preis: 300 }
   ];
 
-  const calculatePrice = () => {
-    let basePrice = 0;
-    let minMultiplier = 0.8;
-    let maxMultiplier = 1.2;
+  const calculatePrice = async () => {
+    // Rufe Backend-API für Preisberechnung auf
+    try {
+      const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+      const response = await fetch(`${BACKEND_URL}/api/calculate-price`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          plz: formData.plz,
+          objektart: formData.objektart,
+          leistungen: formData.leistungen,
+          groesse_typ: formData.groesseOption,
+          anzahl_raeume: formData.anzahlRaeume ? parseInt(formData.anzahlRaeume) : null,
+          wandflaeche_qm: formData.wandflaeche ? parseFloat(formData.wandflaeche) : null,
+          raumhoehe: formData.raumhoehe,
+          zustand: formData.zustand,
+          farbe: formData.farbe,
+          spachtelstufe: formData.spachtelstufe,
+          zusatzoptionen: formData.zusatzoptionen
+        })
+      });
 
-    // Berechne Grundfläche
-    let flaeche = 0;
-    if (formData.groesseOption === 'raeume') {
-      // Durchschnittlich 30m² pro Raum
-      flaeche = parseInt(formData.anzahlRaeume) * 30;
-    } else {
-      flaeche = parseFloat(formData.wandflaeche);
+      const data = await response.json();
+      
+      if (response.ok && data.success) {
+        return { 
+          min: data.preis_min, 
+          max: data.preis_max,
+          details: data.berechnungsdetails
+        };
+      } else {
+        throw new Error('Preisberechnung fehlgeschlagen');
+      }
+    } catch (error) {
+      console.error('Price calculation error:', error);
+      // Fallback auf lokale Mock-Berechnung
+      return { min: 500, max: 1000 };
     }
-
-    // Berechne Preis pro m² basierend auf Leistungen
-    let preisProQm = 0;
-    formData.leistungen.forEach(leistungId => {
-      const leistung = leistungenOptions.find(l => l.id === leistungId);
-      if (leistung) preisProQm += leistung.preis;
-    });
-
-    basePrice = flaeche * preisProQm;
-
-    // Raumhöhe Zuschlag
-    if (formData.raumhoehe === 'hoch') {
-      basePrice *= 1.15;
-    } else if (formData.raumhoehe === 'sehr-hoch') {
-      basePrice *= 1.3;
-    }
-
-    // Zustand Zuschlag
-    if (formData.zustand === 'altbau') {
-      basePrice *= 1.1;
-    } else if (formData.zustand === 'renovierung') {
-      basePrice *= 1.25;
-    }
-
-    // Farbe Zuschlag
-    if (formData.farbe === 'bunt') {
-      basePrice *= 1.15;
-    }
-
-    // Spachtelstufe Zuschlag
-    if (formData.spachtelstufe === 'q2') {
-      basePrice += flaeche * 5;
-    } else if (formData.spachtelstufe === 'q3') {
-      basePrice += flaeche * 8;
-    } else if (formData.spachtelstufe === 'q4') {
-      basePrice += flaeche * 12;
-    }
-
-    // Zusatzoptionen
-    formData.zusatzoptionen.forEach(optionId => {
-      const option = zusatzoptionenOptions.find(o => o.id === optionId);
-      if (option) basePrice += option.preis;
-    });
-
-    const minPrice = Math.round(basePrice * minMultiplier);
-    const maxPrice = Math.round(basePrice * maxMultiplier);
-
-    return { min: minPrice, max: maxPrice };
   };
 
   const handleLeistungToggle = (leistungId) => {
@@ -229,12 +208,14 @@ const RechnerNeu = () => {
     }
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (validateStep(currentStep)) {
       if (currentStep === totalSteps) {
         // Berechne Preis und zeige Lead-Formular
-        const price = calculatePrice();
+        setLoading(true);
+        const price = await calculatePrice();
         setCalculatedPrice(price);
+        setLoading(false);
       } else {
         setCurrentStep(prev => prev + 1);
       }
