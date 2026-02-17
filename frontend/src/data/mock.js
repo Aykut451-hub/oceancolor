@@ -143,7 +143,7 @@ export const submitContactForm = async (data) => {
   });
 };
 
-// Funktion für Mock-Angebotsrechner
+// Funktion für Mock-Angebotsrechner (Legacy - wird von RechnerNeu.jsx nicht mehr verwendet)
 export const calculateQuote = async (data) => {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -157,6 +157,29 @@ export const calculateQuote = async (data) => {
         success: true, 
         estimatedPrice: total,
         message: "Dies ist eine unverbindliche Schätzung. Kontaktieren Sie uns für ein genaues Angebot." 
+      });
+    }, 1500);
+  });
+};
+
+// Funktion für neuen interaktiven Angebotsrechner mit Lead-Daten
+export const submitQuoteWithLead = async (quoteData, leadData) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("Komplett Angebots-Anfrage:", {
+        quote: quoteData,
+        lead: leadData,
+        timestamp: new Date().toISOString()
+      });
+      
+      // In Produktiv: 
+      // 1. Daten in MongoDB speichern
+      // 2. E-Mail an Firmenemail senden
+      // 3. Bestätigungs-E-Mail an Kunden senden
+      
+      resolve({ 
+        success: true, 
+        message: "Ihre Anfrage wurde erfolgreich übermittelt. Wir melden uns innerhalb von 24 Stunden bei Ihnen." 
       });
     }, 1500);
   });

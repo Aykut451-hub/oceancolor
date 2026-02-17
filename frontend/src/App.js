@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
 import Home from "@/pages/Home";
 import Leistungen from "@/pages/Leistungen";
-import Rechner from "@/pages/Rechner";
+import RechnerNeu from "@/pages/RechnerNeu";
 import Referenzen from "@/pages/Referenzen";
 import UeberUns from "@/pages/UeberUns";
 import Kontakt from "@/pages/Kontakt";
@@ -22,7 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/leistungen" element={<Leistungen />} />
-            <Route path="/rechner" element={<Rechner />} />
+            <Route path="/rechner" element={<RechnerNeu />} />
             <Route path="/referenzen" element={<Referenzen />} />
             <Route path="/ueber-uns" element={<UeberUns />} />
             <Route path="/kontakt" element={<Kontakt />} />
