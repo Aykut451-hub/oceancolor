@@ -43,18 +43,23 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            {navLinks.map((link) => (
+          <nav className="hidden lg:flex items-center">
+            {navLinks.map((link, index) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-medium transition-colors hover:text-ocean-blue ${
-                  location.pathname === link.path
-                    ? 'text-ocean-blue'
-                    : 'text-gray-700'
-                }`}
+                className={`relative px-4 py-2 text-sm font-medium transition-all duration-200 rounded-lg
+                  ${location.pathname === link.path
+                    ? 'text-ocean-blue bg-ocean-blue/5'
+                    : 'text-gray-700 hover:text-ocean-blue hover:bg-gray-50'
+                  }
+                  ${index !== navLinks.length - 1 ? 'mr-1' : ''}
+                `}
               >
                 {link.name}
+                {location.pathname === link.path && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-ocean-blue rounded-full" />
+                )}
               </Link>
             ))}
           </nav>
