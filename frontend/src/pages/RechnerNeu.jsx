@@ -350,11 +350,11 @@ const RechnerNeu = () => {
                       <CheckCircle className="h-8 w-8 text-green-600" />
                     </div>
                     <CardTitle className="text-2xl mb-4">Ihre geschätzte Preisspanne</CardTitle>
-                    <div className="bg-gradient-to-br from-ocean-blue to-cyan-600 text-white rounded-xl p-6">
-                      <p className="text-4xl font-bold">
+                    <div className="bg-gray-900 text-white rounded-xl p-8 shadow-lg">
+                      <p className="text-4xl md:text-5xl font-extrabold tracking-tight">
                         {calculatedPrice.min.toLocaleString('de-DE')} € - {calculatedPrice.max.toLocaleString('de-DE')} €
                       </p>
-                      <p className="text-sm text-blue-100 mt-2">
+                      <p className="text-sm text-gray-300 mt-3">
                         * Unverbindliche Schätzung. Genauer Preis nach Besichtigung.
                       </p>
                     </div>
