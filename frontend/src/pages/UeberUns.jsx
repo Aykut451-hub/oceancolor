@@ -32,7 +32,7 @@ const UeberUns = () => {
               </h2>
               <div className="space-y-4 text-gray-600">
                 <p>
-                  Ocean Color ist Ihr Malermeisterbetrieb in Hamburg mit über 3 Jahren Erfahrung. 
+                  Ocean Color ist Ihr Malermeisterbetrieb in Hamburg mit über 17 Jahren Erfahrung. 
                   Wir sind ein im Herzen Hamburgs ansässiger Meisterbetrieb und bieten 
                   professionelle Malerarbeiten, Renovierungen und Sanierungen an.
                 </p>

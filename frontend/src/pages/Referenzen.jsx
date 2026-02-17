@@ -59,7 +59,7 @@ const Referenzen = () => {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-ocean-blue/10 rounded-full mb-3">
                 <Briefcase className="h-6 w-6 text-ocean-blue" />
               </div>
-              <p className="text-3xl font-bold text-gray-900">3+</p>
+              <p className="text-3xl font-bold text-gray-900">17</p>
               <p className="text-sm text-gray-600">Jahre Erfahrung</p>
             </div>
             <div className="text-center">
