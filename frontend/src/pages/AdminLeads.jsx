@@ -12,7 +12,8 @@ import {
   ArrowUpDown,
   Eye,
   Calendar,
-  TrendingUp
+  TrendingUp,
+  DollarSign
 } from 'lucide-react';
 import { toast } from 'sonner';
 import {
@@ -192,6 +193,15 @@ const AdminLeads = () => {
               <p className="text-sm text-gray-600">Ocean Color Admin Dashboard</p>
             </div>
             <div className="flex items-center space-x-3">
+              <Link to="/admin/pricing">
+                <Button
+                  variant="outline"
+                  size="sm"
+                >
+                  <DollarSign className="h-4 w-4 mr-2" />
+                  Preisregeln
+                </Button>
+              </Link>
               <Button
                 onClick={handleExport}
                 variant="outline"

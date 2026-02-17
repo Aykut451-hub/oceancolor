@@ -16,6 +16,7 @@ import Datenschutz from "@/pages/Datenschutz";
 import AdminLogin from "@/pages/AdminLogin";
 import AdminLeads from "@/pages/AdminLeads";
 import AdminLeadDetail from "@/pages/AdminLeadDetail";
+import AdminPricing from "@/pages/AdminPricing";
 
 function App() {
   return (
@@ -99,6 +100,11 @@ function App() {
           <Route path="/admin/leads/:id" element={
             <ProtectedRoute>
               <AdminLeadDetail />
+            </ProtectedRoute>
+          } />
+          <Route path="/admin/pricing" element={
+            <ProtectedRoute>
+              <AdminPricing />
             </ProtectedRoute>
           } />
         </Routes>
