@@ -164,13 +164,25 @@ Moderne Website für Malerfirma "Ocean Color" in Hamburg mit Fokus auf:
 #### Environment Variables:
 ```
 ADMIN_PASSWORD=ocean2024
-ADMIN_EMAIL=info@oceancolor.de
-SMTP_HOST=smtp.gmail.com
+ADMIN_EMAIL=info@ocean-maler.de
+
+# IONOS SMTP Configuration (NEU)
+SMTP_HOST=smtp.ionos.de
 SMTP_PORT=587
-SMTP_USER=
-SMTP_PASSWORD=
-FROM_EMAIL=noreply@oceancolor.de
+SMTP_USER=info@ocean-maler.de
+SMTP_PASSWORD= (muss manuell eingetragen werden)
+SMTP_FROM=info@ocean-maler.de
+SMTP_USE_TLS=true
 ```
+
+**E-Mail Versand:**
+- Automatischer Versand bei jedem neuen Lead über IONOS SMTP
+- STARTTLS Verschlüsselung (Port 587)
+- Strukturierte Lead-Benachrichtigung
+- Betreff: "Neue Anfrage – Angebotsrechner – {PLZ} – {Objektart}"
+- Fallback: Bei SMTP-Fehler werden E-Mails geloggt
+- Setup-Anleitung: `/app/SMTP_PASSWORD_SETUP.txt`
+- Detaillierte Dokumentation: `/app/EMAIL_SETUP.md`
 
 #### Multi-Step Calculator (`RechnerNeu.jsx`):
 **9-Schritte Prozess:**
