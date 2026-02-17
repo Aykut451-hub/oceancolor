@@ -84,7 +84,7 @@ const Home = () => {
                     <CheckCircle className="h-6 w-6 text-green-600" />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">3+ Jahre</p>
+                    <p className="font-semibold text-gray-900">17 Jahre</p>
                     <p className="text-sm text-gray-600">Erfahrung</p>
                   </div>
                 </div>
