@@ -16,9 +16,18 @@ const Impressum = () => {
                     Angaben gemäß § 5 TMG
                   </h2>
                   <p className="text-gray-700">
-                    Ocean Color<br />
-                    Malermeisterbetrieb<br />
-                    Hamburg
+                    Ocean Color GmbH<br />
+                    Schützenstraße 106<br />
+                    22761 Hamburg
+                  </p>
+                </div>
+
+                <div>
+                  <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                    Vertreten durch
+                  </h2>
+                  <p className="text-gray-700">
+                    Geschäftsführer: Cenk Deniz
                   </p>
                 </div>
 
@@ -26,7 +35,27 @@ const Impressum = () => {
                   <h2 className="text-xl font-semibold text-gray-900 mb-3">Kontakt</h2>
                   <p className="text-gray-700">
                     Telefon: 040 1800 8888<br />
-                    E-Mail: info@oceancolor.de
+                    E-Mail: info@ocean-maler.de
+                  </p>
+                </div>
+
+                <div>
+                  <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                    Registereintrag
+                  </h2>
+                  <p className="text-gray-700">
+                    Registergericht: Hamburg<br />
+                    Handelsregister: HRB 183244
+                  </p>
+                </div>
+
+                <div>
+                  <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                    Umsatzsteuer-ID
+                  </h2>
+                  <p className="text-gray-700">
+                    Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:<br />
+                    DE363946837
                   </p>
                 </div>
 
@@ -35,8 +64,9 @@ const Impressum = () => {
                     Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
                   </h2>
                   <p className="text-gray-700">
-                    Ocean Color<br />
-                    Hamburg
+                    Cenk Deniz<br />
+                    Schützenstraße 106<br />
+                    22761 Hamburg
                   </p>
                 </div>
 
