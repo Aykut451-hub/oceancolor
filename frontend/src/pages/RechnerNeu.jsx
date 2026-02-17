@@ -601,6 +601,27 @@ const RechnerNeu = () => {
                         </label>
                       ))}
                     </div>
+                    
+                    {/* Epoxid-Flächen-Eingabe */}
+                    {formData.leistungen.includes('epoxid') && (
+                      <div className="mt-6 p-4 bg-ocean-blue/5 rounded-lg border-2 border-ocean-blue">
+                        <Label htmlFor="epoxidFlaeche" className="text-ocean-blue font-semibold">
+                          Bodenfläche für Epoxidbeschichtung in m² *
+                        </Label>
+                        <Input
+                          id="epoxidFlaeche"
+                          type="number"
+                          min="1"
+                          value={formData.epoxidFlaeche}
+                          onChange={(e) => setFormData(prev => ({ ...prev, epoxidFlaeche: e.target.value }))}
+                          placeholder="z.B. 50"
+                          className="mt-2 text-lg"
+                        />
+                        <p className="text-sm text-gray-600 mt-2">
+                          Geben Sie die Gesamtfläche an, die mit Epoxidharz beschichtet werden soll.
+                        </p>
+                      </div>
+                    )}
                   </div>
                 )}
 
