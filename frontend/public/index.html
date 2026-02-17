@@ -1,47 +1,87 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="description" content="A product of emergent.sh" />
+        <meta name="theme-color" content="#0891b2" />
+        
+        <!-- SEO Meta Tags -->
+        <title>Ocean Color GmbH | Malerbetrieb Hamburg | Malerarbeiten & Renovierung</title>
+        <meta name="description" content="Ocean Color GmbH - Ihr Malerbetrieb in Hamburg. Professionelle Malerarbeiten, Trockenbau, Schimmelsanierung & Bodenbeläge. Kostenlose Angebote unter 040 1800 8888." />
+        <meta name="keywords" content="Maler Hamburg, Malerbetrieb Hamburg, Malerarbeiten, Renovierung, Trockenbau, Schimmelsanierung, Bodenbeläge, Ocean Color" />
+        <meta name="author" content="Ocean Color GmbH" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://oceancolor.de" />
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://oceancolor.de" />
+        <meta property="og:title" content="Ocean Color GmbH | Malerbetrieb Hamburg" />
+        <meta property="og:description" content="Professionelle Malerarbeiten, Trockenbau & Renovierung in Hamburg. Kostenloser Angebotsrechner und Rückruf-Service." />
+        <meta property="og:image" content="https://oceancolor.de/og-image.jpg" />
+        <meta property="og:locale" content="de_DE" />
+        
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Ocean Color GmbH | Malerbetrieb Hamburg" />
+        <meta name="twitter:description" content="Professionelle Malerarbeiten, Trockenbau & Renovierung in Hamburg." />
+        
+        <!-- Geo Tags -->
+        <meta name="geo.region" content="DE-HH" />
+        <meta name="geo.placename" content="Hamburg" />
+        
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="https://oceancolor.de/wp-content/uploads/2024/04/Ocean_Color_Logo_m.Wischer.png" />
+        <link rel="apple-touch-icon" href="https://oceancolor.de/wp-content/uploads/2024/04/Ocean_Color_Logo_m.Wischer.png" />
+        
+        <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet" />
-        <!--
-        manifest.json provides metadata used when your web app is installed on a
-        user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-        -->
-        <!--
-        Notice the use of %PUBLIC_URL% in the tags above.
-        It will be replaced with the URL of the `public` folder during the build.
-        Only files inside the `public` folder can be referenced from the HTML.
-
-        Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-        work correctly both with client-side routing and a non-root public URL.
-        Learn how to configure a non-root public URL by running `npm run build`.
-        -->
-        <title>Emergent | Fullstack App</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        
+        <!-- Structured Data / Schema.org -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Ocean Color GmbH",
+            "description": "Professioneller Malerbetrieb in Hamburg - Malerarbeiten, Trockenbau, Schimmelsanierung und mehr.",
+            "url": "https://oceancolor.de",
+            "telephone": "+49-40-1800-8888",
+            "email": "info@ocean-maler.de",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Schützenstraße 106",
+                "addressLocality": "Hamburg",
+                "postalCode": "22761",
+                "addressCountry": "DE"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 53.5511,
+                "longitude": 9.9937
+            },
+            "openingHours": "Mo-Fr 08:00-18:00",
+            "priceRange": "€€",
+            "image": "https://oceancolor.de/wp-content/uploads/2024/04/Ocean_Color_Logo_m.Wischer.png",
+            "areaServed": {
+                "@type": "City",
+                "name": "Hamburg"
+            },
+            "sameAs": []
+        }
+        </script>
+        
         <script>window.addEventListener("error",function(e){if(e.error instanceof DOMException&&e.error.name==="DataCloneError"&&e.message&&e.message.includes("PerformanceServerTiming")){e.stopImmediatePropagation();e.preventDefault()}},true);</script>
         <script src="https://assets.emergent.sh/scripts/emergent-main.js"></script>
-        <!--
-        These two scripts have been added for the Visual Edits, please do not edit or remove them
-        -->
         <script>
             // Only load visual edit scripts when inside an iframe
             if (window.self !== window.top) {
-                // Load debug monitor script
                 var debugMonitorScript = document.createElement('script');
                 debugMonitorScript.src = 'https://assets.emergent.sh/scripts/debug-monitor.js';
                 document.head.appendChild(debugMonitorScript);
-
-                // Configure Tailwind
                 window.tailwind = window.tailwind || {};
-                tailwind.config = {
-                    corePlugins: { preflight: false },
-                };
-
-                // Load Tailwind CDN
+                tailwind.config = { corePlugins: { preflight: false } };
                 var tailwindScript = document.createElement('script');
                 tailwindScript.src = 'https://cdn.tailwindcss.com';
                 document.head.appendChild(tailwindScript);
