@@ -67,7 +67,7 @@ const Leistungen = () => {
               Unser Ablauf
             </h2>
             
-            <div className="space-y-8">
+            <div className="space-y-6">
               {[
                 {
                   step: "1",
@@ -95,13 +95,13 @@ const Leistungen = () => {
                   description: "Gemeinsame Endabnahme und Übergabe. Ihre Zufriedenheit ist unser Ziel."
                 }
               ].map((item, index) => (
-                <div key={index} className="flex items-start space-x-6">
-                  <div className="bg-ocean-blue text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">
+                <div key={index} className="flex items-center gap-6 bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
+                  <div className="bg-ocean-blue text-white w-14 h-14 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0 shadow-md">
                     {item.step}
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
-                    <p className="text-gray-600">{item.description}</p>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-xl font-semibold text-gray-900">{item.title}</h3>
+                    <p className="text-gray-600 mt-1">{item.description}</p>
                   </div>
                 </div>
               ))}
