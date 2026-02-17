@@ -92,29 +92,31 @@ const Header = () => {
         {/* Mobile Navigation */}
         {isOpen && (
           <nav className="lg:hidden mt-4 pb-4 border-t pt-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setIsOpen(false)}
-                className={`block py-3 text-sm font-medium transition-colors ${
-                  location.pathname === link.path
-                    ? 'text-ocean-blue'
-                    : 'text-gray-700'
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <div className="mt-4 space-y-3">
+            <div className="space-y-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 ${
+                    location.pathname === link.path
+                      ? 'text-ocean-blue bg-ocean-blue/10'
+                      : 'text-gray-700 hover:text-ocean-blue hover:bg-gray-50'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+            <div className="mt-6 pt-4 border-t space-y-3">
               <a 
                 href="tel:04018008888" 
-                className="flex items-center text-sm text-gray-600"
+                className="flex items-center px-4 py-2 text-sm text-gray-600 hover:text-ocean-blue transition-colors"
               >
                 <Phone className="h-4 w-4 mr-2" />
                 040 1800 8888
               </a>
-              <Link to="/kontakt" onClick={() => setIsOpen(false)}>
+              <Link to="/kontakt" onClick={() => setIsOpen(false)} className="block px-4">
                 <Button className="w-full bg-ocean-blue hover:bg-ocean-blue-dark text-white">
                   Rückruf anfordern
                 </Button>
