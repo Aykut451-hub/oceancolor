@@ -63,7 +63,7 @@ const Home = () => {
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/ud2ks07n_IMG_4934.JPG"
+                  src="https://static.prod-images.emergentagent.com/jobs/a9b8075f-4653-4fae-a7fc-cfa2bb720c07/images/cf2a35080a032fe31dfa712f596f69eb98018becf4262851f80345924aa5f098.png"
                   alt="Ocean Color Malermeister bei der Arbeit"
                   className="w-full h-[500px] object-cover object-center"
                 />
