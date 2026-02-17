@@ -86,7 +86,7 @@ export const references = [
     description: "Errichtung neuer Raumstrukturen durch Trockenbau sowie anschließende Oberflächenarbeiten.",
     services: ["Trockenbau", "Malerarbeiten"],
     duration: "ca. 3 Wochen",
-    image: "https://images.unsplash.com/photo-1765371512336-99c2b1c6975f?w=800",
+    image: "https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/jdcc2d9u_talktools.jpg.png",
     category: "Gewerbe",
     featured: false
   },
