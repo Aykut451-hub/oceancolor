@@ -263,11 +263,10 @@ SMTP_USE_TLS=true
 - [ ] Google Maps Integration
 
 ## Next Action Items
-1. **Backend Development:** API-Endpoints für Formulare und Angebotsrechner
-2. **Database Models:** MongoDB Schemas für Anfragen, Kontakte
-3. **E-Mail Service:** Integration für Benachrichtigungen
-4. **Testing:** E2E Tests für alle Formulare
-5. **Deployment:** Production Deployment vorbereiten
+1. **Echte Firmendaten:** Impressum & Datenschutz mit echten Daten befüllen (wartet auf Kundeneingabe)
+2. **Testing:** E2E Tests für alle Formulare
+3. **Cloud Storage:** Uploads auf persistenten Cloud-Speicher migrieren
+4. **Production Deployment:** Finale Konfiguration für Produktion
 
 ## Design Assets
 - **Logo URL:** https://oceancolor.de/wp-content/uploads/2024/04/Ocean_Color_Logo_m.Wischer.png
