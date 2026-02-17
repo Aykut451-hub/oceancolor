@@ -152,17 +152,20 @@ const UeberUns = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-16 bg-gradient-to-br from-ocean-blue to-cyan-600 text-white">
-        <div className="container mx-auto px-4">
+      <section className="py-16 bg-ocean-blue-dark relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/20 to-transparent"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
               Wir suchen Verstärkung!
             </h2>
-            <p className="text-xl text-blue-100 mb-8">
+            <p className="text-lg md:text-xl text-white mb-6 leading-relaxed">
               Du möchtest Teil unseres internationalen Teams werden? 
               Bewirb dich jetzt als Auszubildende(r) zum Maler und Lackierer.
             </p>
-            <p className="text-lg text-blue-100 mb-8">
+            <p className="text-base md:text-lg text-white/90 mb-10 leading-relaxed">
               Bei uns lernst du nicht nur das Handwerk der Malerei, 
               sondern erhältst auch Einblicke im digitalen Marketing Bereich!
             </p>
@@ -171,7 +174,15 @@ const UeberUns = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button size="lg" className="bg-white text-ocean-blue hover:bg-gray-100">
+              <Button 
+                size="lg" 
+                className="bg-white text-ocean-blue-dark font-semibold px-8 py-6 text-lg 
+                           hover:bg-amber-400 hover:text-gray-900 
+                           shadow-lg hover:shadow-xl 
+                           transform hover:scale-105 
+                           transition-all duration-300 
+                           border-2 border-white hover:border-amber-400"
+              >
                 Jetzt bewerben
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
