@@ -214,6 +214,10 @@ const RechnerNeu = () => {
           toast.error('Bitte geben Sie die Bodenfläche für die Epoxidbeschichtung ein');
           return false;
         }
+        if (formData.leistungen.includes('boden') && !formData.bodenFlaeche) {
+          toast.error('Bitte geben Sie die Bodenfläche ein');
+          return false;
+        }
         return true;
       case 4:
         if (formData.groesseOption === 'raeume' && !formData.anzahlRaeume) {
@@ -226,13 +230,22 @@ const RechnerNeu = () => {
         }
         return true;
       case 5:
+        // Bei reinen Bodenarbeiten Raumhöhe überspringen
+        if (hasOnlyBodenarbeiten) {
+          return true;
+        }
         if (!formData.raumhoehe) {
           toast.error('Bitte wählen Sie die Raumhöhe');
           return false;
         }
         return true;
       case 6:
-        if (!formData.zustand) {
+        // Bei Bodenarbeiten: aktueller Boden erforderlich
+        if (hasBodenarbeiten && !formData.aktuellerBoden) {
+          toast.error('Bitte wählen Sie den aktuellen Bodenbelag');
+          return false;
+        }
+        if (!hasOnlyBodenarbeiten && !formData.zustand) {
           toast.error('Bitte wählen Sie den Zustand');
           return false;
         }
@@ -244,6 +257,10 @@ const RechnerNeu = () => {
         }
         return true;
       case 8:
+        // Bei reinen Bodenarbeiten Spachtelstufe überspringen
+        if (hasOnlyBodenarbeiten) {
+          return true;
+        }
         if (!formData.spachtelstufe) {
           toast.error('Bitte wählen Sie eine Spachtelstufe');
           return false;
@@ -266,7 +283,20 @@ const RechnerNeu = () => {
         setCalculatedPrice(price);
         setLoading(false);
       } else {
-        setCurrentStep(prev => prev + 1);
+        // Bei reinen Bodenarbeiten bestimmte Schritte überspringen
+        let nextStep = currentStep + 1;
+        
+        // Schritt 5 (Raumhöhe) überspringen bei reinen Bodenarbeiten
+        if (nextStep === 5 && hasOnlyBodenarbeiten) {
+          nextStep = 6;
+        }
+        
+        // Schritt 8 (Spachtelstufe) überspringen bei reinen Bodenarbeiten
+        if (nextStep === 8 && hasOnlyBodenarbeiten) {
+          nextStep = 9;
+        }
+        
+        setCurrentStep(nextStep);
       }
     }
   };
@@ -275,7 +305,17 @@ const RechnerNeu = () => {
     if (calculatedPrice && !showSuccess) {
       setCalculatedPrice(null);
     } else {
-      setCurrentStep(prev => prev - 1);
+      let prevStep = currentStep - 1;
+      
+      // Bei reinen Bodenarbeiten bestimmte Schritte überspringen
+      if (prevStep === 8 && hasOnlyBodenarbeiten) {
+        prevStep = 7;
+      }
+      if (prevStep === 5 && hasOnlyBodenarbeiten) {
+        prevStep = 4;
+      }
+      
+      setCurrentStep(prevStep);
     }
   };
 
