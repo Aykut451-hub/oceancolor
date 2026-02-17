@@ -168,6 +168,10 @@ const RechnerNeu = () => {
           toast.error('Bitte wählen Sie mindestens eine Leistung');
           return false;
         }
+        if (formData.leistungen.includes('epoxid') && !formData.epoxidFlaeche) {
+          toast.error('Bitte geben Sie die Bodenfläche für die Epoxidbeschichtung ein');
+          return false;
+        }
         return true;
       case 4:
         if (formData.groesseOption === 'raeume' && !formData.anzahlRaeume) {
