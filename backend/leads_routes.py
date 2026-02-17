@@ -247,7 +247,7 @@ async def get_lead_by_id(
         from server import db
         leads_collection = get_leads_collection(db)
         
-        lead = await leads_collection.find_one({"id": lead_id})
+        lead = await leads_collection.find_one({"id": lead_id}, {"_id": 0})
         
         if not lead:
             raise HTTPException(status_code=404, detail="Lead not found")
