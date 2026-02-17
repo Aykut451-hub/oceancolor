@@ -42,6 +42,14 @@ function App() {
               <CookieConsent />
             </>
           } />
+          <Route path="/kleinauftrag-service" element={
+            <>
+              <Header />
+              <main><KleinauftragService /></main>
+              <Footer />
+              <CookieConsent />
+            </>
+          } />
           <Route path="/rechner" element={
             <>
               <Header />
