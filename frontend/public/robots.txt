@@ -1,0 +1,12 @@
+# robots.txt for Ocean Color GmbH
+# https://oceancolor.de
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://oceancolor.de/sitemap.xml
+
+# Admin-Bereich ausschließen
+Disallow: /admin/
+Disallow: /api/
