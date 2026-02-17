@@ -163,7 +163,7 @@ export const references = [
     description: "Innenrenovierung im Hotelbereich.",
     services: ["Malerarbeiten"],
     duration: "ca. 8 Wochen",
-    image: "https://images.unsplash.com/photo-1762779943673-fcb177e7fe56?w=800",
+    image: "https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/x44gbhtv_moin-moin.png",
     category: "Hotellerie",
     featured: true
   }
