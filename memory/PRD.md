@@ -267,9 +267,9 @@ SMTP_USE_TLS=true
 - [ ] Google Maps Integration
 
 ## Next Action Items
-1. **Echte Firmendaten:** Impressum & Datenschutz mit echten Daten befüllen (wartet auf Kundeneingabe)
-2. **Testing:** E2E Tests für alle Formulare
-3. **Cloud Storage:** Uploads auf persistenten Cloud-Speicher migrieren
+1. **Cloud Storage:** Uploads auf persistenten Cloud-Speicher migrieren (für Produktionsbetrieb)
+2. **Admin für Referenzen:** Interface zum Verwalten der Referenzen-Projekte bauen
+3. **Testing:** E2E Tests für alle Formulare
 4. **Production Deployment:** Finale Konfiguration für Produktion
 
 ## Design Assets
