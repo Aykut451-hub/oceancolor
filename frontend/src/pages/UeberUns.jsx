@@ -167,7 +167,7 @@ const UeberUns = () => {
               sondern erhältst auch Einblicke im digitalen Marketing Bereich!
             </p>
             <a 
-              href="mailto:info@oceancolor.de?subject=Bewerbung als Maler und Lackierer"
+              href="mailto:info@ocean-maler.de?subject=Bewerbung als Maler und Lackierer"
               target="_blank"
               rel="noopener noreferrer"
             >
