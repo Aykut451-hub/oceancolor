@@ -234,21 +234,25 @@ SMTP_USE_TLS=true
 
 ## Prioritized Backlog
 
-### P0 (Produktions-Optimierungen)
-- [ ] SMTP-Credentials konfigurieren für echten E-Mail-Versand
+### ✅ ABGESCHLOSSEN (Februar 2026)
+- [x] SMTP E-Mail-Versand über IONOS aktiviert und getestet
+- [x] Admin Notizen-Feld im Lead-Detail verfügbar
+- [x] Cookie-Consent-Banner implementiert
+- [x] Impressum & Datenschutz mit Platzhalter-Texten
+
+### P0 (Kritisch - Vor Produktion)
+- [ ] Echte Firmendaten in Impressum & Datenschutz eintragen (wartet auf Kundeneingabe)
 - [ ] Passwort-Hashing für Admin-Login (aktuell plain-text)
 - [ ] Redis für Token-Storage (aktuell in-memory)
-- [ ] Image-Optimierung & Thumbnails für hochgeladene Fotos
 - [ ] Rate Limiting für API-Endpoints
 - [ ] Error Monitoring & Logging
 
 ### P1 (Enhancement Features)
-- [ ] Erweiteter Angebotsrechner mit mehr Optionen
-- [ ] Bild-Upload für Projekt-Anfragen
-- [ ] Referenzen-Galerie mit Lightbox
+- [ ] Cloud-Speicher für Uploads (S3-kompatibel) statt lokaler Speicherung
+- [ ] Referenzen/Portfolio-Verwaltung im Admin
+- [ ] Image-Optimierung & Thumbnails für hochgeladene Fotos
 - [ ] SEO-Optimierung (Meta-Tags, Schema.org)
 - [ ] Google Analytics Integration
-- [ ] Performance-Optimierung (Image Lazy Loading)
 
 ### P2 (Nice-to-have)
 - [ ] Blog/Ratgeber Sektion
