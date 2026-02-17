@@ -51,6 +51,7 @@ Moderne Website für Malerfirma "Ocean Color" in Hamburg mit Fokus auf:
 ## Was wurde implementiert (Dezember 2024)
 
 ### ✅ Phase 1: Frontend mit Mock-Daten (ABGESCHLOSSEN)
+### ✅ Phase 2: Interaktiver Step-by-Step Angebotsrechner (ABGESCHLOSSEN)
 
 #### Komponenten erstellt:
 - `Header.jsx` - Responsive Navigation mit Logo, fixiert, scroll-effekt
@@ -86,21 +87,74 @@ Moderne Website für Malerfirma "Ocean Color" in Hamburg mit Fokus auf:
 #### Routing:
 - `/` - Startseite
 - `/leistungen` - Leistungen
-- `/rechner` - Angebotsrechner
+- `/rechner` - Interaktiver Angebotsrechner (NEU)
 - `/referenzen` - Referenzen
 - `/ueber-uns` - Über uns
 - `/kontakt` - Kontakt
 - `/impressum` - Impressum
 - `/datenschutz` - Datenschutz
 
+### Phase 2: Interaktiver Angebotsrechner Features
+
+#### Multi-Step Calculator (`RechnerNeu.jsx`):
+**9-Schritte Prozess:**
+1. **PLZ Eingabe** - Postleitzahl zur Standortbestimmung
+2. **Objektart** - Wohnung / Haus / Gewerbe (Icon-Cards)
+3. **Leistungen** - Mehrfachauswahl:
+   - Wände & Decken streichen
+   - Lackierarbeiten
+   - Tapezierarbeiten
+   - Spachtelarbeiten
+   - Bodenbeläge
+   - Schimmelsanierung
+4. **Größe** - Flexible Eingabe:
+   - Option A: Anzahl Räume
+   - Option B: Wandfläche in m²
+5. **Raumhöhe** - unter 2,6m / 2,6m-3m / über 3m
+6. **Zustand** - Normal / Altbau / Renovierungsbedürftig
+7. **Farbe** - Weiß / Bunt
+8. **Spachtelstufe** - Keine / Q2 / Q3 / Q4
+9. **Zusatzoptionen** - Mehrfachauswahl (optional):
+   - Abkleben / Schutz
+   - Möbel bewegen
+   - Türen / Heizkörper lackieren
+
+#### Features:
+- **Progress Bar** - Visueller Fortschritt (Schritt X von 9, %)
+- **Step Validation** - Prüfung vor jedem Weiter-Klick
+- **Back Navigation** - Zurück zu vorherigen Schritten
+- **Smart Calculation** - Dynamische Preisberechnung basierend auf:
+  - Grundfläche (Räume x 30m² oder direkte m² Eingabe)
+  - Ausgewählte Leistungen (unterschiedliche €/m²)
+  - Raumhöhe Zuschlag (bis zu +30%)
+  - Zustand Zuschlag (bis zu +25%)
+  - Farbe Zuschlag (+15% für bunt)
+  - Spachtelstufe Zuschlag (5-12€/m²)
+  - Zusatzoptionen (Festpreise)
+- **Preisspanne** - Min/Max Berechnung mit 20% Varianz
+- **Lead-Formular** nach Berechnung:
+  - Name, Telefon, E-Mail (Pflichtfelder)
+  - Gewünschtes Rückruf-Zeitfenster
+  - Foto-Upload (optional, max 5MB)
+  - Icons für bessere UX
+- **Success Screen** - "Vielen Dank" Seite mit:
+  - Grünes Success-Icon
+  - Anzeige der berechneten Preisspanne
+  - "Zur Startseite" Button
+- **Mobile Responsive** - Funktioniert auf allen Geräten
+- **Toast Notifications** - Feedback für User-Aktionen
+
 ## Prioritized Backlog
 
 ### P0 (Next Phase - Backend Development)
 - [ ] Backend API für Rückruf-Anfragen
 - [ ] Backend API für Kontaktformular
-- [ ] Backend API für Angebotsrechner-Daten speichern
+- [ ] **Backend API für Angebotsrechner-Leads** (komplett mit allen 9 Schritten + Lead-Daten)
+- [ ] **File Upload Handler** für Foto-Upload im Angebotsrechner
 - [ ] MongoDB Integration für Anfragen
+- [ ] **MongoDB Schema für Calculator-Leads** (alle Rechner-Daten + Lead-Info speichern)
 - [ ] E-Mail-Benachrichtigungen bei Anfragen
+- [ ] **Strukturierte E-Mail für Angebotsrechner-Leads** (übersichtliche Darstellung aller Eingaben)
 - [ ] Admin-Dashboard für Anfragenverwaltung
 
 ### P1 (Enhancement Features)
@@ -171,31 +225,56 @@ Response:
 }
 ```
 
-### POST /api/quote-calculator
+### POST /api/quote-calculator (AKTUALISIERT)
 ```json
 Request:
 {
-  "serviceType": "string",
-  "area": "number",
-  "rooms": "number"
+  "calculatorData": {
+    "plz": "string",
+    "objektart": "wohnung|haus|gewerbe",
+    "leistungen": ["waende-decken", "lackierung", ...],
+    "groesseOption": "raeume|flaeche",
+    "anzahlRaeume": "number (optional)",
+    "wandflaeche": "number (optional)",
+    "raumhoehe": "niedrig|normal|hoch",
+    "zustand": "normal|altbau|renovierung",
+    "farbe": "weiss|bunt",
+    "spachtelstufe": "keine|q2|q3|q4",
+    "zusatzoptionen": ["abkleben", "moebel", "tueren"]
+  },
+  "leadData": {
+    "name": "string",
+    "telefon": "string",
+    "email": "string",
+    "rueckrufZeit": "string (optional)",
+    "foto": "file (optional)"
+  },
+  "calculatedPrice": {
+    "min": "number",
+    "max": "number"
+  }
 }
 
 Response:
 {
   "success": true,
-  "estimatedPrice": "number",
-  "message": "string"
+  "leadId": "string",
+  "message": "Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen."
 }
 ```
 
 ## Notes
 - Alle Formulare arbeiten aktuell mit Mock-Daten (Browser-only, keine Backend-Speicherung)
+- **Neuer Angebotsrechner** ist vollständig funktional mit Client-Side Berechnung
+- **Preis-Kalkulation** verwendet realistische Faktoren (Mock, kann später durch Backend-Logik ersetzt werden)
+- **Foto-Upload** im Lead-Formular ist bereit für Backend-Integration
 - Cookie-Consent speichert Präferenz in localStorage
 - Telefonnummer bewusst klein dargestellt (nicht als Haupt-CTA)
 - Rückruf-Formular hat visuell höhere Priorität als normales Kontaktformular
 - Mobile Navigation mit Hamburger Menu
 - Alle Links und Buttons funktional
 - SEO-freundliche Struktur vorbereitet
+- **Step-by-Step UX** optimiert für Conversion (kleine Schritte, klare Fragen)
 
 ## Success Metrics (für spätere Messung)
 - Anzahl Rückruf-Anfragen pro Woche
