@@ -187,8 +187,6 @@ export const googleReviews = {
 };
 
 // Alte Platzhalter-Bewertungen entfernt - werden durch echte Google-Bewertungen ersetzt
-  }
-];
 
 export const aboutPoints = [
   {
