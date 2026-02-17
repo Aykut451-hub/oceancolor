@@ -65,7 +65,8 @@ const RechnerNeu = () => {
     { id: 'tapezieren', label: 'Tapezierarbeiten', preis: 15 },
     { id: 'spachteln', label: 'Spachtelarbeiten', preis: 18 },
     { id: 'boden', label: 'Bodenbeläge', preis: 30 },
-    { id: 'schimmel', label: 'Schimmelsanierung', preis: 40 }
+    { id: 'schimmel', label: 'Schimmelsanierung', preis: 40 },
+    { id: 'epoxid', label: 'Epoxidharzbodenbeschichtung', preis: 200 }
   ];
 
   const zusatzoptionenOptions = [
