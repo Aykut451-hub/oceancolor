@@ -262,25 +262,34 @@ const Referenzen = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-ocean-blue to-cyan-600 text-white">
-        <div className="container mx-auto px-4">
+      <section className="py-16 bg-gray-900 relative overflow-hidden">
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-ocean-blue/20 to-cyan-600/20" />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
               Ihr Projekt könnte hier stehen
             </h2>
-            <p className="text-lg text-blue-100 mb-8">
+            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
               Lassen Sie uns gemeinsam Ihr nächstes Projekt realisieren. 
               Fordern Sie jetzt einen kostenlosen Rückruf an.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/rechner">
-                <Button size="lg" className="bg-white text-ocean-blue hover:bg-gray-100 w-full sm:w-auto">
+                <Button 
+                  size="lg" 
+                  className="bg-ocean-blue text-white hover:bg-ocean-blue-dark border-2 border-ocean-blue hover:border-ocean-blue-dark font-semibold w-full sm:w-auto transition-all duration-200 shadow-lg hover:shadow-xl"
+                >
                   Kostenlos kalkulieren
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link to="/kontakt">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 w-full sm:w-auto">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold w-full sm:w-auto transition-all duration-200"
+                >
                   Rückruf anfordern
                 </Button>
               </Link>
