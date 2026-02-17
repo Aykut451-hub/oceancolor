@@ -39,10 +39,13 @@ const RechnerNeu = () => {
     anzahlRaeume: '',
     wandflaeche: '',
     epoxidFlaeche: '', // Für Epoxidharzbodenbeschichtung
+    bodenFlaeche: '', // Für Bodenbeläge
     // Schritt 5
     raumhoehe: '',
     // Schritt 6
     zustand: '',
+    // Schritt 6b - Boden-spezifisch
+    aktuellerBoden: '',
     // Schritt 7
     farbe: '',
     // Schritt 8
@@ -57,6 +60,16 @@ const RechnerNeu = () => {
     foto: null
   });
 
+  // Prüfen ob nur Bodenarbeiten ausgewählt sind
+  const bodenLeistungen = ['boden', 'epoxid'];
+  const wandLeistungen = ['waende-decken', 'lackierung', 'tapezieren', 'spachteln', 'schimmel'];
+  
+  const hasOnlyBodenarbeiten = formData.leistungen.length > 0 && 
+    formData.leistungen.every(l => bodenLeistungen.includes(l));
+  
+  const hasBodenarbeiten = formData.leistungen.some(l => bodenLeistungen.includes(l));
+  const hasWandarbeiten = formData.leistungen.some(l => wandLeistungen.includes(l));
+
   const totalSteps = 9;
   const progress = (currentStep / totalSteps) * 100;
 
@@ -70,10 +83,37 @@ const RechnerNeu = () => {
     { id: 'epoxid', label: 'Epoxidharzbodenbeschichtung', preis: 200 }
   ];
 
-  const zusatzoptionenOptions = [
+  // Zusatzoptionen für Wandarbeiten
+  const zusatzoptionenWand = [
     { id: 'abkleben', label: 'Abkleben / Schutz', preis: 200 },
     { id: 'moebel', label: 'Möbel bewegen', preis: 150 },
     { id: 'tueren', label: 'Türen / Heizkörper lackieren', preis: 300 }
+  ];
+
+  // Zusatzoptionen für Bodenarbeiten
+  const zusatzoptionenBoden = [
+    { id: 'altbelag-entfernen', label: 'Altbelag entfernen', preis: 250 },
+    { id: 'schleifen', label: 'Untergrund schleifen', preis: 200 },
+    { id: 'ausgleichen', label: 'Untergrund ausgleichen / nivellieren', preis: 350 },
+    { id: 'grundierung', label: 'Grundierung erforderlich', preis: 150 }
+  ];
+
+  // Dynamische Zusatzoptionen basierend auf Leistungen
+  const zusatzoptionenOptions = hasOnlyBodenarbeiten 
+    ? zusatzoptionenBoden 
+    : hasBodenarbeiten && hasWandarbeiten 
+      ? [...zusatzoptionenWand, ...zusatzoptionenBoden]
+      : zusatzoptionenWand;
+
+  // Aktuelle Boden-Optionen
+  const aktuellerBodenOptionen = [
+    { id: 'fliesen', label: 'Fliesen' },
+    { id: 'teppich', label: 'Teppich' },
+    { id: 'laminat', label: 'Laminat' },
+    { id: 'vinyl', label: 'Vinyl' },
+    { id: 'estrich', label: 'Estrich' },
+    { id: 'rohbeton', label: 'Rohbeton' },
+    { id: 'sonstiges', label: 'Sonstiges' }
   ];
 
   const calculatePrice = async () => {
