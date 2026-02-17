@@ -97,7 +97,7 @@ export const references = [
     description: "Ausführung von Ausbau- und Oberflächenarbeiten im gewerblichen Umfeld.",
     services: ["Malerarbeiten", "Trockenbau"],
     duration: "ca. 3–4 Monate",
-    image: "https://images.unsplash.com/photo-1616697412153-7ad8ac8aa5d9?w=800",
+    image: "https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/8df47gl4_goldbeck.jpg.png",
     category: "Gewerbe",
     featured: true
   },
