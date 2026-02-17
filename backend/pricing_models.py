@@ -72,8 +72,10 @@ class PriceCalculationRequest(BaseModel):
     anzahl_raeume: Optional[int] = None
     wandflaeche_qm: Optional[float] = None
     epoxid_flaeche_qm: Optional[float] = None
+    boden_flaeche_qm: Optional[float] = None
     raumhoehe: str
-    zustand: str
+    zustand: Optional[str] = None
+    aktueller_boden: Optional[str] = None
     farbe: str
     spachtelstufe: str
     zusatzoptionen: list[str] = []
