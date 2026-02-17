@@ -1,0 +1,397 @@
+import React, { useEffect } from 'react';
+import { useParams, Link, Navigate } from 'react-router-dom';
+import { Button } from '../components/ui/button';
+import { Card, CardContent } from '../components/ui/card';
+import { ArrowRight, ArrowLeft, CheckCircle, Phone } from 'lucide-react';
+
+// Detaillierte Leistungsdaten
+const leistungenData = {
+  'waende-decken': {
+    title: 'Wände & Decken',
+    metaTitle: 'Wände & Decken streichen | Ocean Color Hamburg',
+    metaDescription: 'Professionelle Wandgestaltung und Deckenanstriche in Hamburg. Hochwertige Farben, präzise Ausführung. Jetzt Angebot anfordern!',
+    heroText: 'Professionelle Gestaltung von Innenwänden und Decken',
+    description: 'Wände und Decken prägen maßgeblich die Atmosphäre eines Raumes. Mit unserer langjährigen Erfahrung sorgen wir für ein perfektes Finish, das Ihre Räume in neuem Glanz erstrahlen lässt.',
+    benefits: [
+      'Hochwertige, langlebige Farben führender Hersteller',
+      'Saubere Kanten und präzise Übergänge',
+      'Gründliche Vorbereitung der Untergründe',
+      'Schutz Ihrer Möbel und Böden während der Arbeiten',
+      'Umweltfreundliche und geruchsarme Farben verfügbar'
+    ],
+    process: [
+      'Besichtigung und Beratung vor Ort',
+      'Farbberatung und Mustererstellung',
+      'Professionelle Untergrundvorbereitung',
+      'Sorgfältiger Anstrich in mehreren Schichten',
+      'Qualitätskontrolle und saubere Übergabe'
+    ],
+    applications: ['Wohnräume', 'Büros', 'Treppenhäuser', 'Flure', 'Keller']
+  },
+  'lackierarbeiten': {
+    title: 'Lackierarbeiten',
+    metaTitle: 'Lackierarbeiten | Ocean Color Hamburg',
+    metaDescription: 'Professionelle Lackierung von Türen, Fenstern und Heizkörpern in Hamburg. Langlebiger Schutz und perfekte Oberflächen.',
+    heroText: 'Fachgerechte Lackierung für langlebigen Schutz',
+    description: 'Lackierarbeiten erfordern höchste Präzision und Fachkenntnis. Wir lackieren Türen, Fenster, Heizkörper und andere Oberflächen mit hochwertigen Lacken für ein perfektes und dauerhaftes Ergebnis.',
+    benefits: [
+      'Verwendung hochwertiger Markenlacke',
+      'Spritz- und Streichlackierung möglich',
+      'Perfekte Oberflächen ohne Nasen und Läufer',
+      'Beständig gegen Abrieb und Vergilbung',
+      'Verschiedene Glanzgrade verfügbar'
+    ],
+    process: [
+      'Begutachtung und Zustandsanalyse',
+      'Abschleifen und Grundieren der Oberflächen',
+      'Mehrschichtiger Lackaufbau',
+      'Zwischenschliff für optimale Haftung',
+      'Endlackierung und Qualitätsprüfung'
+    ],
+    applications: ['Türen & Zargen', 'Fenster & Rahmen', 'Heizkörper', 'Treppen & Geländer', 'Möbel']
+  },
+  'tapezierarbeiten': {
+    title: 'Tapezierarbeiten',
+    metaTitle: 'Tapezierarbeiten | Ocean Color Hamburg',
+    metaDescription: 'Professionelle Tapezierarbeiten in Hamburg. Von klassisch bis modern - wir verlegen alle Tapetenarten fachgerecht.',
+    heroText: 'Von klassisch bis modern – perfekt tapeziert',
+    description: 'Tapeten verleihen Räumen Charakter und Individualität. Ob elegante Vliestapete, klassische Raufaser oder exklusive Designtapete – wir tapezieren präzise und mit Liebe zum Detail.',
+    benefits: [
+      'Verarbeitung aller Tapetenarten',
+      'Exakte Musteranpassung',
+      'Saubere Übergänge und Ecken',
+      'Professionelle Untergrundvorbereitung',
+      'Beratung bei der Tapetenauswahl'
+    ],
+    process: [
+      'Beratung und Tapetenauswahl',
+      'Untergrundprüfung und Vorbereitung',
+      'Alte Tapeten fachgerecht entfernen',
+      'Präzises Zuschneiden und Tapezieren',
+      'Saubere Nacharbeiten und Kontrolle'
+    ],
+    applications: ['Wohnzimmer', 'Schlafzimmer', 'Flure', 'Büroräume', 'Akzentwände']
+  },
+  'spachtelarbeiten': {
+    title: 'Spachtelarbeiten',
+    metaTitle: 'Spachtelarbeiten | Ocean Color Hamburg',
+    metaDescription: 'Professionelle Spachtelarbeiten für glatte Wände in Hamburg. Perfekte Grundlage für Ihr Malerarbeiten.',
+    heroText: 'Die perfekte Grundlage für makellose Wände',
+    description: 'Eine glatte, ebene Oberfläche ist die Basis für ein perfektes Malergebnis. Mit unseren professionellen Spachtelarbeiten beseitigen wir Unebenheiten, Risse und Beschädigungen.',
+    benefits: [
+      'Verschiedene Spachtelstufen (Q1-Q4)',
+      'Beseitigung von Rissen und Löchern',
+      'Glättung unebener Untergründe',
+      'Verwendung hochwertiger Spachtelmassen',
+      'Perfekte Vorbereitung für Anstriche'
+    ],
+    process: [
+      'Begutachtung des Untergrundes',
+      'Auswahl der passenden Spachtelmasse',
+      'Grobspachtelung bei starken Unebenheiten',
+      'Feinspachtelung für glatte Oberflächen',
+      'Schleifen und Entstauben'
+    ],
+    applications: ['Neubau-Feinspachtelung', 'Altbausanierung', 'Risssanierung', 'Deckenspachtelung', 'Wandbegradigung']
+  },
+  'trockenbau': {
+    title: 'Trockenbau',
+    metaTitle: 'Trockenbau | Ocean Color Hamburg',
+    metaDescription: 'Professioneller Trockenbau in Hamburg. Raumteilung, abgehängte Decken und Schallschutz vom Fachmann.',
+    heroText: 'Flexible Raumgestaltung mit Trockenbau',
+    description: 'Trockenbau bietet vielfältige Möglichkeiten zur Raumgestaltung. Von Trennwänden über abgehängte Decken bis hin zu Schallschutzlösungen – wir setzen Ihre Ideen professionell um.',
+    benefits: [
+      'Schnelle und saubere Umsetzung',
+      'Flexible Raumaufteilung',
+      'Verbesserter Schall- und Wärmeschutz',
+      'Integration von Beleuchtung und Technik',
+      'Kostengünstiger als Massivbau'
+    ],
+    process: [
+      'Planung und Beratung',
+      'Aufbau der Unterkonstruktion',
+      'Montage der Gipskartonplatten',
+      'Verspachtelung der Fugen',
+      'Oberflächenfinish'
+    ],
+    applications: ['Trennwände', 'Abgehängte Decken', 'Dachausbau', 'Installationswände', 'Akustikdecken']
+  },
+  'fassadensanierung': {
+    title: 'Fassadensanierung',
+    metaTitle: 'Fassadensanierung | Ocean Color Hamburg',
+    metaDescription: 'Professionelle Fassadensanierung in Hamburg. Außenanstriche und Fassadenrenovierung für langlebigen Schutz.',
+    heroText: 'Neuer Glanz für Ihre Fassade',
+    description: 'Die Fassade ist die Visitenkarte Ihres Gebäudes. Wir sanieren und streichen Fassaden mit hochwertigen, wetterbeständigen Farben für langanhaltenden Schutz und eine ansprechende Optik.',
+    benefits: [
+      'Wetterbeständige Fassadenfarben',
+      'Schutz vor Witterungseinflüssen',
+      'Wertsteigerung der Immobilie',
+      'Energetische Verbesserung möglich',
+      'Verschiedene Gestaltungsmöglichkeiten'
+    ],
+    process: [
+      'Fassadenanalyse und Schadensbewertung',
+      'Reinigung und Vorbehandlung',
+      'Risssanierung und Ausbesserungen',
+      'Grundierung der Flächen',
+      'Mehrschichtiger Fassadenanstrich'
+    ],
+    applications: ['Einfamilienhäuser', 'Mehrfamilienhäuser', 'Gewerbeobjekte', 'Balkone', 'Sockelanstriche']
+  },
+  'dekorative-wandgestaltung': {
+    title: 'Dekorative Wandgestaltung',
+    metaTitle: 'Dekorative Wandgestaltung | Ocean Color Hamburg',
+    metaDescription: 'Kreative Wandgestaltung in Hamburg. Wischtechnik, Spachteltechnik und individuelle Designs vom Profi.',
+    heroText: 'Kreative Techniken für einzigartige Wände',
+    description: 'Mit dekorativen Maltechniken verwandeln wir Ihre Wände in einzigartige Kunstwerke. Von edler Wischtechnik über moderne Spachteltechnik bis hin zu individuellen Gestaltungen – wir realisieren Ihre Wünsche.',
+    benefits: [
+      'Individuelle und einzigartige Gestaltung',
+      'Verschiedene Techniken kombinierbar',
+      'Hochwertige Materialien',
+      'Persönliche Beratung und Mustervorlagen',
+      'Langjährige Erfahrung in Kreativtechniken'
+    ],
+    process: [
+      'Beratungsgespräch und Ideenfindung',
+      'Erstellung von Mustern',
+      'Untergrundvorbereitung',
+      'Ausführung der Kreativtechnik',
+      'Versiegelung bei Bedarf'
+    ],
+    applications: ['Wischtechnik', 'Spachteltechnik', 'Stucco Lustro', 'Marmorierung', 'Akzentwände']
+  },
+  'bodenbelaege': {
+    title: 'Bodenbeläge',
+    metaTitle: 'Bodenbeläge verlegen | Ocean Color Hamburg',
+    metaDescription: 'Professionelle Bodenverlegung in Hamburg. PVC, Laminat, Vinyl und mehr - fachgerecht verlegt vom Malermeister.',
+    heroText: 'Perfekte Böden für Ihr Zuhause',
+    description: 'Ein neuer Bodenbelag verändert das gesamte Raumgefühl. Wir verlegen verschiedene Bodenbeläge fachgerecht und sorgen für ein dauerhaft schönes Ergebnis.',
+    benefits: [
+      'Verlegung verschiedener Belagsarten',
+      'Professionelle Untergrundvorbereitung',
+      'Saubere Übergänge und Randabschlüsse',
+      'Beratung bei der Materialauswahl',
+      'Schnelle und staubfreie Verlegung'
+    ],
+    process: [
+      'Aufmaß und Beratung',
+      'Untergrundprüfung und Vorbereitung',
+      'Verlegen des Bodenbelags',
+      'Randleisten und Übergänge',
+      'Endreinigung und Übergabe'
+    ],
+    applications: ['PVC-Beläge', 'Designvinyl', 'Laminat', 'Linoleum', 'Teppichboden']
+  },
+  'schimmelsanierung': {
+    title: 'Schimmelsanierung',
+    metaTitle: 'Schimmelsanierung | Ocean Color Hamburg',
+    metaDescription: 'Professionelle Schimmelsanierung in Hamburg. Fachgerechte Entfernung und dauerhafte Beseitigung von Schimmel.',
+    heroText: 'Fachgerechte Schimmelbekämpfung',
+    description: 'Schimmel ist nicht nur unansehnlich, sondern auch gesundheitsschädlich. Wir entfernen Schimmelbefall fachgerecht, beseitigen die Ursachen und sorgen für ein gesundes Raumklima.',
+    benefits: [
+      'Fachgerechte Ursachenanalyse',
+      'Professionelle Schimmelentfernung',
+      'Dauerhafte Sanierungslösungen',
+      'Präventive Maßnahmen',
+      'Gesundheitsschutz während der Arbeiten'
+    ],
+    process: [
+      'Befundaufnahme und Ursachenanalyse',
+      'Absicherung und Schutzmaßnahmen',
+      'Fachgerechte Entfernung des Befalls',
+      'Behandlung mit Antischimmel-Produkten',
+      'Renovierung und Präventionsberatung'
+    ],
+    applications: ['Badezimmer', 'Keller', 'Schlafzimmer', 'Fensterlaibungen', 'Außenecken']
+  },
+  'epoxidharzboden': {
+    title: 'Epoxidharzbodenbeschichtungen',
+    metaTitle: 'Epoxidharzboden | Ocean Color Hamburg',
+    metaDescription: 'Professionelle Epoxidharzbeschichtungen in Hamburg. Fugenlose, strapazierfähige Böden für Gewerbe und Privat.',
+    heroText: 'Fugenlose Böden für höchste Ansprüche',
+    description: 'Epoxidharzböden sind extrem belastbar, pflegeleicht und optisch ansprechend. Ob Garagenboden, Werkstatt oder modernes Wohndesign – wir beschichten Ihre Böden professionell.',
+    benefits: [
+      'Fugenlose, hygienische Oberfläche',
+      'Extrem belastbar und langlebig',
+      'Chemikalien- und ölbeständig',
+      'Leicht zu reinigen',
+      'Verschiedene Farben und Optiken'
+    ],
+    process: [
+      'Untergrundprüfung und Vorbereitung',
+      'Schleifen und Grundieren',
+      'Auftragen der Epoxidharzschicht',
+      'Einstreuen von Chips (optional)',
+      'Versiegelung und Aushärtung'
+    ],
+    applications: ['Garagen', 'Werkstätten', 'Industriehallen', 'Wohnräume', 'Kellerboden']
+  }
+};
+
+const LeistungDetail = () => {
+  const { slug } = useParams();
+  const leistung = leistungenData[slug];
+
+  useEffect(() => {
+    if (leistung) {
+      document.title = leistung.metaTitle;
+      let metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', leistung.metaDescription);
+      }
+    }
+    window.scrollTo(0, 0);
+  }, [leistung]);
+
+  if (!leistung) {
+    return <Navigate to="/leistungen" replace />;
+  }
+
+  return (
+    <div className="min-h-screen pt-24 pb-20">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-blue-50 via-white to-cyan-50 py-16 lg:py-24">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <Link 
+              to="/leistungen" 
+              className="inline-flex items-center text-ocean-blue hover:text-ocean-blue-dark mb-6 transition-colors"
+            >
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Zurück zu allen Leistungen
+            </Link>
+            
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              {leistung.title}
+            </h1>
+            
+            <p className="text-xl lg:text-2xl text-gray-600 mb-8 leading-relaxed">
+              {leistung.heroText}
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link to="/kontakt">
+                <Button 
+                  size="lg" 
+                  className="bg-ocean-blue hover:bg-ocean-blue-dark text-white font-semibold w-full sm:w-auto"
+                >
+                  Kostenlos beraten lassen
+                  <Phone className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link to="/rechner">
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  className="border-ocean-blue text-ocean-blue hover:bg-ocean-blue/5 w-full sm:w-auto"
+                >
+                  Angebot berechnen
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Description Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <p className="text-lg text-gray-700 leading-relaxed mb-12">
+              {leistung.description}
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Vorteile */}
+              <Card className="border-2 border-gray-100">
+                <CardContent className="p-6">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Ihre Vorteile</h2>
+                  <ul className="space-y-4">
+                    {leistung.benefits.map((benefit, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-700">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+
+              {/* Ablauf */}
+              <Card className="border-2 border-gray-100">
+                <CardContent className="p-6">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Unser Ablauf</h2>
+                  <ol className="space-y-4">
+                    {leistung.process.map((step, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <span className="bg-ocean-blue text-white w-7 h-7 rounded-full flex items-center justify-center font-semibold text-sm flex-shrink-0">
+                          {index + 1}
+                        </span>
+                        <span className="text-gray-700">{step}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Anwendungsbereiche */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Anwendungsbereiche</h2>
+            <div className="flex flex-wrap justify-center gap-3">
+              {leistung.applications.map((app, index) => (
+                <span 
+                  key={index}
+                  className="bg-white px-5 py-2 rounded-full text-gray-700 border border-gray-200 shadow-sm"
+                >
+                  {app}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-ocean-blue-dark">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
+              Interesse an {leistung.title}?
+            </h2>
+            <p className="text-lg md:text-xl mb-8 text-white/90">
+              Kontaktieren Sie uns für ein unverbindliches Angebot.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/kontakt">
+                <Button 
+                  size="lg" 
+                  className="bg-amber-400 text-gray-900 font-semibold hover:bg-amber-300 w-full sm:w-auto"
+                >
+                  Rückruf anfordern
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link to="/rechner">
+                <Button 
+                  size="lg" 
+                  className="bg-transparent text-white font-semibold border-2 border-white hover:bg-white hover:text-ocean-blue-dark w-full sm:w-auto"
+                >
+                  Angebot berechnen
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default LeistungDetail;
