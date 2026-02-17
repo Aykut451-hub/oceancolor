@@ -43,6 +43,14 @@ function App() {
               <CookieConsent />
             </>
           } />
+          <Route path="/leistungen/:slug" element={
+            <>
+              <Header />
+              <main><LeistungDetail /></main>
+              <Footer />
+              <CookieConsent />
+            </>
+          } />
           <Route path="/kleinauftrag-service" element={
             <>
               <Header />
