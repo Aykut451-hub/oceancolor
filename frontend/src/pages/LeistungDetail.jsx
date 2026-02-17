@@ -119,15 +119,15 @@ const leistungenData = {
   'fassadensanierung': {
     title: 'Fassadensanierung',
     metaTitle: 'Fassadensanierung | Ocean Color Hamburg',
-    metaDescription: 'Professionelle Fassadensanierung in Hamburg. Außenanstriche und Fassadenrenovierung für langlebigen Schutz.',
-    heroText: 'Neuer Glanz für Ihre Fassade',
-    description: 'Die Fassade ist die Visitenkarte Ihres Gebäudes. Wir sanieren und streichen Fassaden mit hochwertigen, wetterbeständigen Farben für langanhaltenden Schutz und eine ansprechende Optik.',
+    metaDescription: 'Professionelle Fassadensanierung in Hamburg. Außenanstriche, Fassadenrenovierung und Betonschutz vom Fachmann.',
+    heroText: 'Langfristiger Schutz und moderne Optik für Ihre Fassade',
+    description: 'Eine professionell ausgeführte Fassade schützt das Gebäude langfristig vor Witterungseinflüssen und trägt entscheidend zur Optik bei. Wir bieten umfassende Lösungen für Außenputz, Fassadenanstriche und individuelle Farbgestaltung.',
     benefits: [
-      'Wetterbeständige Fassadenfarben',
-      'Schutz vor Witterungseinflüssen',
+      'Langfristiger Schutz vor Witterungseinflüssen',
       'Wertsteigerung der Immobilie',
-      'Energetische Verbesserung möglich',
-      'Verschiedene Gestaltungsmöglichkeiten'
+      'Individuelle Farbgestaltung',
+      'Professionelle Fassadenaufbereitung',
+      'Betonschutz und -sanierung'
     ],
     process: [
       'Fassadenanalyse und Schadensbewertung',
@@ -136,7 +136,18 @@ const leistungenData = {
       'Grundierung der Flächen',
       'Mehrschichtiger Fassadenanstrich'
     ],
-    applications: ['Einfamilienhäuser', 'Mehrfamilienhäuser', 'Gewerbeobjekte', 'Balkone', 'Sockelanstriche']
+    applications: ['Fassadenanstriche', 'Außenputzarbeiten', 'Betonschutz', 'Schutzanstriche', 'Farbgestaltung'],
+    additionalSections: [
+      {
+        title: 'Fassadenaufbereitung',
+        content: 'Exponierte Fassaden benötigen regelmäßige Pflege und Schutz. Wir kümmern uns um Reinigung, Schutzanstriche und die langfristige Erhaltung der Bausubstanz.'
+      },
+      {
+        title: 'Betonschutz & -sanierung',
+        content: 'Betonflächen sollten regelmäßig geschützt werden, um Schäden zu vermeiden.',
+        list: ['Imprägnierungen', 'Rissverfüllung', 'Schutzbeschichtungen']
+      }
+    ]
   },
   'dekorative-wandgestaltung': {
     title: 'Dekorative Wandgestaltung',
