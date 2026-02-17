@@ -256,20 +256,64 @@ const RechnerNeu = () => {
       return;
     }
 
-    // Mock API call - später durch echten Backend-Call ersetzen
-    try {
-      // Simuliere API Call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      console.log('Lead-Daten:', {
-        ...formData,
-        preisspanne: calculatedPrice
-      });
+    setLoading(true);
 
-      setShowSuccess(true);
-      toast.success('Ihre Anfrage wurde erfolgreich übermittelt!');
+    try {
+      // Prepare FormData for multipart upload
+      const submitData = new FormData();
+      
+      // Calculator data
+      submitData.append('calculator_data', JSON.stringify({
+        plz: formData.plz,
+        objektart: formData.objektart,
+        leistungen: formData.leistungen,
+        groesseOption: formData.groesseOption,
+        anzahlRaeume: formData.anzahlRaeume,
+        wandflaeche: formData.wandflaeche,
+        raumhoehe: formData.raumhoehe,
+        zustand: formData.zustand,
+        farbe: formData.farbe,
+        spachtelstufe: formData.spachtelstufe,
+        zusatzoptionen: formData.zusatzoptionen
+      }));
+      
+      // Contact data
+      submitData.append('contact_data', JSON.stringify({
+        name: formData.name,
+        telefon: formData.telefon,
+        email: formData.email,
+        rueckrufZeit: formData.rueckrufZeit
+      }));
+      
+      // Price data
+      submitData.append('price_data', JSON.stringify(calculatedPrice));
+      
+      // File upload
+      if (formData.foto) {
+        submitData.append('files', formData.foto);
+      }
+      
+      // Send to backend
+      const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+      const response = await fetch(`${BACKEND_URL}/api/leads`, {
+        method: 'POST',
+        body: submitData
+      });
+      
+      const result = await response.json();
+      
+      if (response.ok && result.success) {
+        setShowSuccess(true);
+        toast.success(result.message);
+      } else {
+        throw new Error(result.detail || 'Fehler beim Senden');
+      }
+      
     } catch (error) {
-      toast.error('Fehler beim Senden der Anfrage');
+      console.error('Error submitting lead:', error);
+      toast.error('Fehler beim Senden der Anfrage. Bitte versuchen Sie es später erneut.');
+    } finally {
+      setLoading(false);
     }
   };
 
