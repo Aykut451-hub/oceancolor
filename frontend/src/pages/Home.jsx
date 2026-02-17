@@ -167,9 +167,9 @@ const Home = () => {
 
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1616697412153-7ad8ac8aa5d9"
-                alt="Professionelle Malerarbeiten"
-                className="rounded-2xl shadow-2xl w-full h-[500px] object-cover"
+                src="https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/v0zxjrin_Ocean%20Color%20Firmenfahrzeug.png"
+                alt="Ocean Color Firmenfahrzeug in Hamburg"
+                className="rounded-2xl shadow-2xl w-full h-[500px] object-cover object-center"
               />
             </div>
           </div>
