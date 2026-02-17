@@ -65,9 +65,12 @@ const Datenschutz = () => {
                     Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
                   </p>
                   <p className="text-sm text-gray-700 mt-2">
-                    Ocean Color<br />
+                    Ocean Color GmbH<br />
+                    Schützenstraße 106<br />
+                    22761 Hamburg<br /><br />
+                    Geschäftsführer: Cenk Deniz<br />
                     Telefon: 040 1800 8888<br />
-                    E-Mail: info@oceancolor.de
+                    E-Mail: info@ocean-maler.de
                   </p>
                 </div>
 
