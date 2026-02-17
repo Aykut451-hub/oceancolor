@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent } from '../components/ui/card';
-import { PaintBucket, Brush, Wallpaper, Wrench, Layers, Shield, ArrowRight } from 'lucide-react';
+import { PaintBucket, Brush, Wallpaper, Wrench, Layers, Shield, Droplets, ArrowRight } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router-dom';
 import { services } from '../data/mock';
@@ -11,7 +11,8 @@ const iconMap = {
   Wallpaper: Wallpaper,
   Wrench: Wrench,
   Layers: Layers,
-  Shield: Shield
+  Shield: Shield,
+  Droplets: Droplets
 };
 
 const Leistungen = () => {
