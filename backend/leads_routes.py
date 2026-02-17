@@ -221,8 +221,8 @@ async def get_all_leads(
                 {'email': {'$regex': search, '$options': 'i'}}
             ]
         
-        # Get leads sorted by created_at desc
-        leads = await leads_collection.find(query).sort('created_at', -1).to_list(1000)
+        # Get leads sorted by created_at desc, exclude MongoDB _id
+        leads = await leads_collection.find(query, {"_id": 0}).sort('created_at', -1).to_list(1000)
         
         return {
             "success": True,
