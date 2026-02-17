@@ -25,6 +25,7 @@ const RechnerNeu = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [showSuccess, setShowSuccess] = useState(false);
   const [calculatedPrice, setCalculatedPrice] = useState(null);
+  const [loading, setLoading] = useState(false);
   
   const [formData, setFormData] = useState({
     // Schritt 1
