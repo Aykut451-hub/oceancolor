@@ -64,7 +64,7 @@ export const references = [
     description: "Für die Einrichtung werden regelmäßig Renovierungs- und Modernisierungsarbeiten durchgeführt – von Malerarbeiten bis hin zu Bodenbelägen und Kücheneinbauten.",
     services: ["Malerarbeiten", "Bodenbeläge", "Küchenmontage"],
     duration: "Laufende Zusammenarbeit",
-    image: "https://images.unsplash.com/photo-1750189953388-5ef155c12369?w=800",
+    image: "https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/dsml5e51_kjh.jpg.png",
     category: "Soziale Einrichtung",
     featured: true
   },
