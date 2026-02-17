@@ -816,40 +816,74 @@ const RechnerNeu = () => {
                   </div>
                 )}
 
-                {/* Schritt 6: Zustand */}
+                {/* Schritt 6: Zustand / Aktueller Boden */}
                 {currentStep === 6 && (
                   <div className="space-y-6">
-                    <div>
-                      <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                        In welchem Zustand sind die Räume?
-                      </h2>
-                      <p className="text-gray-600">Beschreiben Sie den aktuellen Zustand</p>
-                    </div>
-                    <RadioGroup value={formData.zustand} onValueChange={(value) => setFormData(prev => ({ ...prev, zustand: value }))}>
-                      <div className="space-y-3">
-                        <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.zustand === 'normal' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
-                          <RadioGroupItem value="normal" id="zustand-normal" />
-                          <div className="ml-3">
-                            <p className="font-medium">Normal</p>
-                            <p className="text-sm text-gray-600">Guter Zustand, keine besonderen Vorarbeiten nötig</p>
+                    {/* Aktueller Boden - bei Bodenarbeiten */}
+                    {hasBodenarbeiten && (
+                      <div className="space-y-4">
+                        <div>
+                          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                            Was befindet sich aktuell auf dem Boden?
+                          </h2>
+                          <p className="text-gray-600">Wählen Sie den vorhandenen Bodenbelag</p>
+                        </div>
+                        <RadioGroup value={formData.aktuellerBoden} onValueChange={(value) => setFormData(prev => ({ ...prev, aktuellerBoden: value }))}>
+                          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            {aktuellerBodenOptionen.map((option) => (
+                              <label 
+                                key={option.id}
+                                className={`flex items-center justify-center border-2 rounded-lg p-4 cursor-pointer transition-all ${
+                                  formData.aktuellerBoden === option.id 
+                                    ? 'border-ocean-blue bg-ocean-blue/5' 
+                                    : 'border-gray-200 hover:border-ocean-blue/50'
+                                }`}
+                              >
+                                <RadioGroupItem value={option.id} id={`boden-${option.id}`} className="sr-only" />
+                                <span className="font-medium text-center">{option.label}</span>
+                              </label>
+                            ))}
                           </div>
-                        </label>
-                        <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.zustand === 'altbau' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
-                          <RadioGroupItem value="altbau" id="altbau" />
-                          <div className="ml-3">
-                            <p className="font-medium">Altbau</p>
-                            <p className="text-sm text-gray-600">Höhere Decken, eventuell unebene Wände</p>
-                          </div>
-                        </label>
-                        <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.zustand === 'renovierung' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
-                          <RadioGroupItem value="renovierung" id="renovierung" />
-                          <div className="ml-3">
-                            <p className="font-medium">Renovierungsbedürftig</p>
-                            <p className="text-sm text-gray-600">Umfangreiche Vorarbeiten erforderlich</p>
-                          </div>
-                        </label>
+                        </RadioGroup>
                       </div>
-                    </RadioGroup>
+                    )}
+
+                    {/* Raumzustand - bei Wandarbeiten */}
+                    {!hasOnlyBodenarbeiten && (
+                      <div className="space-y-4">
+                        <div>
+                          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                            {hasBodenarbeiten ? 'Zustand der Wände' : 'In welchem Zustand sind die Räume?'}
+                          </h2>
+                          <p className="text-gray-600">Beschreiben Sie den aktuellen Zustand</p>
+                        </div>
+                        <RadioGroup value={formData.zustand} onValueChange={(value) => setFormData(prev => ({ ...prev, zustand: value }))}>
+                          <div className="space-y-3">
+                            <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.zustand === 'normal' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
+                              <RadioGroupItem value="normal" id="zustand-normal" />
+                              <div className="ml-3">
+                                <p className="font-medium">Normal</p>
+                                <p className="text-sm text-gray-600">Guter Zustand, keine besonderen Vorarbeiten nötig</p>
+                              </div>
+                            </label>
+                            <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.zustand === 'altbau' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
+                              <RadioGroupItem value="altbau" id="altbau" />
+                              <div className="ml-3">
+                                <p className="font-medium">Altbau</p>
+                                <p className="text-sm text-gray-600">Höhere Decken, eventuell unebene Wände</p>
+                              </div>
+                            </label>
+                            <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.zustand === 'renovierung' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
+                              <RadioGroupItem value="renovierung" id="renovierung" />
+                              <div className="ml-3">
+                                <p className="font-medium">Renovierungsbedürftig</p>
+                                <p className="text-sm text-gray-600">Umfangreiche Vorarbeiten erforderlich</p>
+                              </div>
+                            </label>
+                          </div>
+                        </RadioGroup>
+                      </div>
+                    )}
                   </div>
                 )}
 
@@ -858,26 +892,47 @@ const RechnerNeu = () => {
                   <div className="space-y-6">
                     <div>
                       <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                        Welche Farbgebung wünschen Sie?
+                        {hasOnlyBodenarbeiten ? 'Welche Optik wünschen Sie?' : 'Welche Farbgebung wünschen Sie?'}
                       </h2>
                       <p className="text-gray-600">Wählen Sie Ihre bevorzugte Option</p>
                     </div>
                     <RadioGroup value={formData.farbe} onValueChange={(value) => setFormData(prev => ({ ...prev, farbe: value }))}>
                       <div className="space-y-3">
-                        <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.farbe === 'weiss' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
-                          <RadioGroupItem value="weiss" id="weiss" />
-                          <div className="ml-3">
-                            <p className="font-medium">Weiß</p>
-                            <p className="text-sm text-gray-600">Standard Weiß</p>
-                          </div>
-                        </label>
-                        <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.farbe === 'bunt' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
-                          <RadioGroupItem value="bunt" id="bunt" />
-                          <div className="ml-3">
-                            <p className="font-medium">Bunt / Farbig</p>
-                            <p className="text-sm text-gray-600">Farbige Gestaltung</p>
-                          </div>
-                        </label>
+                        {hasOnlyBodenarbeiten ? (
+                          <>
+                            <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.farbe === 'schlicht' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
+                              <RadioGroupItem value="schlicht" id="schlicht" />
+                              <div className="ml-3">
+                                <p className="font-medium">Schlicht</p>
+                                <p className="text-sm text-gray-600">Neutrale, dezente Optik (Grau, Beige, etc.)</p>
+                              </div>
+                            </label>
+                            <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.farbe === 'farbig' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
+                              <RadioGroupItem value="farbig" id="farbig" />
+                              <div className="ml-3">
+                                <p className="font-medium">Farbig</p>
+                                <p className="text-sm text-gray-600">Individuelle Farbgestaltung</p>
+                              </div>
+                            </label>
+                          </>
+                        ) : (
+                          <>
+                            <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.farbe === 'weiss' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
+                              <RadioGroupItem value="weiss" id="weiss" />
+                              <div className="ml-3">
+                                <p className="font-medium">Weiß</p>
+                                <p className="text-sm text-gray-600">Standard Weiß</p>
+                              </div>
+                            </label>
+                            <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.farbe === 'bunt' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
+                              <RadioGroupItem value="bunt" id="bunt" />
+                              <div className="ml-3">
+                                <p className="font-medium">Bunt / Farbig</p>
+                                <p className="text-sm text-gray-600">Farbige Gestaltung</p>
+                              </div>
+                            </label>
+                          </>
+                        )}
                       </div>
                     </RadioGroup>
                   </div>
