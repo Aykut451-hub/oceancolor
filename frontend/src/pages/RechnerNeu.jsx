@@ -688,6 +688,27 @@ const RechnerNeu = () => {
                       ))}
                     </div>
                     
+                    {/* Bodenbelag-Flächen-Eingabe */}
+                    {formData.leistungen.includes('boden') && (
+                      <div className="mt-6 p-4 bg-amber-50 rounded-lg border-2 border-amber-400">
+                        <Label htmlFor="bodenFlaeche" className="text-amber-700 font-semibold">
+                          Bodenfläche für Bodenbelag in m² *
+                        </Label>
+                        <Input
+                          id="bodenFlaeche"
+                          type="number"
+                          min="1"
+                          value={formData.bodenFlaeche}
+                          onChange={(e) => setFormData(prev => ({ ...prev, bodenFlaeche: e.target.value }))}
+                          placeholder="z.B. 30"
+                          className="mt-2 text-lg"
+                        />
+                        <p className="text-sm text-gray-600 mt-2">
+                          Geben Sie die Gesamtfläche an, die mit neuem Bodenbelag versehen werden soll.
+                        </p>
+                      </div>
+                    )}
+
                     {/* Epoxid-Flächen-Eingabe */}
                     {formData.leistungen.includes('epoxid') && (
                       <div className="mt-6 p-4 bg-ocean-blue/5 rounded-lg border-2 border-ocean-blue">
