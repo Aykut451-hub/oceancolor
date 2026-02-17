@@ -238,8 +238,10 @@ SMTP_USE_TLS=true
 - [x] SMTP E-Mail-Versand über IONOS aktiviert und getestet
 - [x] Admin Notizen-Feld im Lead-Detail verfügbar
 - [x] Cookie-Consent-Banner implementiert
-- [x] Impressum & Datenschutz mit Platzhalter-Texten
-- [x] Referenzen-Seite mit 11 echten Kundenprojekten aktualisiert
+- [x] Impressum & Datenschutz mit echten Firmendaten
+- [x] Referenzen-Seite mit 11 echten Kundenprojekten
+- [x] **SEO-Optimierung:** Meta-Tags, Open Graph, Schema.org/LocalBusiness
+- [x] **Produktions-Ready:** robots.txt, sitemap.xml, 404-Seite
 
 ### P0 (Kritisch - Vor Produktion)
 - [ ] Echte Firmendaten in Impressum & Datenschutz eintragen (wartet auf Kundeneingabe)
