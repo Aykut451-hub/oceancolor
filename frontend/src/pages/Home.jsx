@@ -102,19 +102,25 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service) => (
-              <Card key={service.id} className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-ocean-blue">
-                <CardContent className="p-6">
-                  <div className="bg-ocean-blue/10 w-14 h-14 rounded-lg flex items-center justify-center mb-4 group-hover:bg-ocean-blue group-hover:scale-110 transition-all duration-300">
-                    <div className="w-6 h-6 bg-ocean-blue rounded group-hover:bg-white"></div>
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    {service.description}
-                  </p>
-                </CardContent>
-              </Card>
+              <Link key={service.id} to={`/leistungen/${service.slug}`}>
+                <Card className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-ocean-blue cursor-pointer h-full">
+                  <CardContent className="p-6">
+                    <div className="bg-ocean-blue/10 w-14 h-14 rounded-lg flex items-center justify-center mb-4 group-hover:bg-ocean-blue group-hover:scale-110 transition-all duration-300">
+                      <div className="w-6 h-6 bg-ocean-blue rounded group-hover:bg-white"></div>
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-ocean-blue transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      {service.description}
+                    </p>
+                    <span className="inline-flex items-center text-ocean-blue font-medium text-sm group-hover:translate-x-2 transition-transform">
+                      Mehr erfahren
+                      <ArrowRight className="ml-1 h-4 w-4" />
+                    </span>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
 
