@@ -36,6 +36,12 @@ export const services = [
     title: "Schimmelsanierung",
     description: "Fachgerechte Entfernung und Sanierung von Schimmelbefall für ein gesundes Raumklima.",
     icon: "Shield"
+  },
+  {
+    id: 7,
+    title: "Epoxidharzbodenbeschichtungen",
+    description: "Fugenlose, strapazierfähige und moderne Bodenbeschichtung für Gewerbe- und Privatbereiche.",
+    icon: "Droplets"
   }
 ];
 
