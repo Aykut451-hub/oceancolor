@@ -119,7 +119,7 @@ export const references = [
     description: "Renovierung von Mietflächen im Rahmen der Objektverwaltung.",
     services: ["Malerarbeiten"],
     duration: "ca. 2 Wochen",
-    image: "https://images.unsplash.com/photo-1574359411659-15573a27fd0c?w=800",
+    image: "https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/qgk9o09f_nordpunkt.jpg.png",
     category: "Immobilienverwaltung",
     featured: false
   },
