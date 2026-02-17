@@ -83,8 +83,13 @@ Telefon:          {lead_data['telefon']}
 E-Mail:           {lead_data['email']}
 Rückruf gewünscht: {lead_data.get('rueckruf_zeit', 'Nicht angegeben')}
 
-{f"Bemerkung:\n{lead_data['bemerkung']}\n" if lead_data.get('bemerkung') else ''}
-═══════════════════════════════════════════════
+"""
+            
+            # Add bemerkung if present
+            if lead_data.get('bemerkung'):
+                body += f"Bemerkung:\n{lead_data['bemerkung']}\n\n"
+            
+            body += f"""═══════════════════════════════════════════════
 FOTOS
 ═══════════════════════════════════════════════
 {foto_text}
