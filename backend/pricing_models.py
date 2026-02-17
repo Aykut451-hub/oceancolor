@@ -71,6 +71,7 @@ class PriceCalculationRequest(BaseModel):
     groesse_typ: str
     anzahl_raeume: Optional[int] = None
     wandflaeche_qm: Optional[float] = None
+    epoxid_flaeche_qm: Optional[float] = None
     raumhoehe: str
     zustand: str
     farbe: str
