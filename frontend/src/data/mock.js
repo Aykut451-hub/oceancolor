@@ -53,7 +53,7 @@ export const references = [
     description: "Im Rahmen einer umfassenden Sanierung wurden neue Trockenbau- und Brandschutzwände erstellt sowie Akustikdecken und OWA-Decken montiert. Zusätzlich erfolgte die Herstellung und Anpassung von Fensterbänken, der Einbau von Revisionsklappen sowie die Verlegung von Teppichböden. Abschließend wurden sämtliche Malerarbeiten ausgeführt.",
     services: ["Trockenbau", "Brandschutz", "Akustikdecken", "Malerarbeiten", "Bodenbeläge"],
     duration: "ca. 6 Monate",
-    image: "https://images.unsplash.com/photo-1765371513276-a74f1ecbcf7d?w=800",
+    image: "https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/dvv84v33_scheidt.jpg.JPG",
     category: "Gewerbe",
     featured: true
   },
