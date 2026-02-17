@@ -318,7 +318,7 @@ async def export_leads_csv(
         from server import db
         leads_collection = get_leads_collection(db)
         
-        leads = await leads_collection.find().sort('created_at', -1).to_list(1000)
+        leads = await leads_collection.find({}, {"_id": 0}).sort('created_at', -1).to_list(1000)
         
         # Create CSV in memory
         output = io.StringIO()
