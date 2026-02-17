@@ -42,31 +42,124 @@ export const services = [
 export const references = [
   {
     id: 1,
-    title: "Wohnungsmodernisierung Eppendorf",
-    description: "Komplette Renovierung einer 120m² Altbauwohnung mit Wand- und Deckengestaltung",
-    image: "https://images.unsplash.com/photo-1688372199140-cade7ae820fe",
-    category: "Wohnraum"
+    company: "Scheidt & Bachmann System Technik GmbH",
+    title: "Umfassende Sanierung & Ausbau",
+    description: "Im Rahmen einer umfassenden Sanierung wurden neue Trockenbau- und Brandschutzwände erstellt sowie Akustikdecken und OWA-Decken montiert. Zusätzlich erfolgte die Herstellung und Anpassung von Fensterbänken, der Einbau von Revisionsklappen sowie die Verlegung von Teppichböden. Abschließend wurden sämtliche Malerarbeiten ausgeführt.",
+    services: ["Trockenbau", "Brandschutz", "Akustikdecken", "Malerarbeiten", "Bodenbeläge"],
+    duration: "ca. 6 Monate",
+    image: "https://images.unsplash.com/photo-1765371513276-a74f1ecbcf7d?w=800",
+    category: "Gewerbe",
+    featured: true
   },
   {
     id: 2,
-    title: "Bürogestaltung Hamburg Mitte",
-    description: "Moderne Farbgestaltung für 300m² Bürofläche mit Akzentwänden",
-    image: "https://images.unsplash.com/photo-1616697412153-7ad8ac8aa5d9",
-    category: "Gewerbe"
+    company: "Hamburger Kinder- und Jugendhilfe e.V.",
+    title: "Renovierungsarbeiten",
+    description: "Für die Einrichtung werden regelmäßig Renovierungs- und Modernisierungsarbeiten durchgeführt – von Malerarbeiten bis hin zu Bodenbelägen und Kücheneinbauten.",
+    services: ["Malerarbeiten", "Bodenbeläge", "Küchenmontage"],
+    duration: "Laufende Zusammenarbeit",
+    image: "https://images.unsplash.com/photo-1750189953388-5ef155c12369?w=800",
+    category: "Soziale Einrichtung",
+    featured: true
   },
   {
     id: 3,
-    title: "Fassadensanierung Altona",
-    description: "Komplette Außenfassade eines Mehrfamilienhauses",
-    image: "https://images.unsplash.com/photo-1574359411659-15573a27fd0c",
-    category: "Fassade"
+    company: "Witt & Hirschfeld",
+    title: "Wohnungsrenovierungen & Schimmelsanierung",
+    description: "Renovierung von Mietwohnungen sowie fachgerechte Schimmelsanierungen im Bestand.",
+    services: ["Wohnungsrenovierung", "Schimmelsanierung"],
+    duration: "Laufende Zusammenarbeit",
+    image: "https://images.unsplash.com/photo-1735053142513-264440093036?w=800",
+    category: "Immobilienverwaltung",
+    featured: true
   },
   {
     id: 4,
-    title: "Schimmelsanierung Winterhude",
-    description: "Professionelle Schimmelentfernung und Prävention in Badezimmer und Küche",
-    image: "https://images.unsplash.com/photo-1630325459372-36f3f86281cf",
-    category: "Sanierung"
+    company: "TalkTools GmbH",
+    title: "Trockenbau-Trennwände & Malerarbeiten",
+    description: "Errichtung neuer Raumstrukturen durch Trockenbau sowie anschließende Oberflächenarbeiten.",
+    services: ["Trockenbau", "Malerarbeiten"],
+    duration: "ca. 3 Wochen",
+    image: "https://images.unsplash.com/photo-1765371512336-99c2b1c6975f?w=800",
+    category: "Gewerbe",
+    featured: false
+  },
+  {
+    id: 5,
+    company: "Goldbeck",
+    title: "Malerarbeiten & Trockenbau",
+    description: "Ausführung von Ausbau- und Oberflächenarbeiten im gewerblichen Umfeld.",
+    services: ["Malerarbeiten", "Trockenbau"],
+    duration: "ca. 3–4 Monate",
+    image: "https://images.unsplash.com/photo-1616697412153-7ad8ac8aa5d9?w=800",
+    category: "Gewerbe",
+    featured: true
+  },
+  {
+    id: 6,
+    company: "Talyo Property Services GmbH",
+    title: "Malerarbeiten für Verwaltungsobjekte",
+    description: "Durchführung von Renovierungsmaßnahmen in betreuten Immobilien.",
+    services: ["Malerarbeiten", "Renovierung"],
+    duration: "ca. 4 Wochen",
+    image: "https://images.unsplash.com/photo-1688372199140-cade7ae820fe?w=800",
+    category: "Immobilienverwaltung",
+    featured: false
+  },
+  {
+    id: 7,
+    company: "NORDPUNKT Immobilien Management",
+    title: "Malerarbeiten in Bestandsimmobilien",
+    description: "Renovierung von Mietflächen im Rahmen der Objektverwaltung.",
+    services: ["Malerarbeiten"],
+    duration: "ca. 2 Wochen",
+    image: "https://images.unsplash.com/photo-1574359411659-15573a27fd0c?w=800",
+    category: "Immobilienverwaltung",
+    featured: false
+  },
+  {
+    id: 8,
+    company: "Feuervogel Wandsbek",
+    title: "Innenrenovierung",
+    description: "Innenrenovierung von gewerblich genutzten Flächen.",
+    services: ["Malerarbeiten"],
+    duration: "ca. 6 Wochen",
+    image: "https://images.unsplash.com/photo-1630325459372-36f3f86281cf?w=800",
+    category: "Gewerbe",
+    featured: false
+  },
+  {
+    id: 9,
+    company: "Ströh E-Commerce GmbH",
+    title: "Montage von Regalsystemen",
+    description: "Fachgerechte Installation von Lager- und Regalsystemen.",
+    services: ["Regalmontage"],
+    duration: "ca. 2 Wochen",
+    image: "https://images.unsplash.com/photo-1770910195585-825a1181a704?w=800",
+    category: "Logistik",
+    featured: false
+  },
+  {
+    id: 10,
+    company: "STAR Tankstelle",
+    title: "Malerarbeiten",
+    description: "Renovierungsarbeiten im laufenden Betrieb.",
+    services: ["Malerarbeiten"],
+    duration: "ca. 1 Woche",
+    image: "https://images.unsplash.com/photo-1611433162346-aec991ef7484?w=800",
+    category: "Gewerbe",
+    featured: false
+  },
+  {
+    id: 11,
+    company: "Ahoi Hotel",
+    title: "Innenrenovierung Hotel",
+    description: "Innenrenovierung im Hotelbereich.",
+    services: ["Malerarbeiten"],
+    duration: "ca. 8 Wochen",
+    image: "https://images.unsplash.com/photo-1762779943673-fcb177e7fe56?w=800",
+    category: "Hotellerie",
+    featured: true
   }
 ];
 
