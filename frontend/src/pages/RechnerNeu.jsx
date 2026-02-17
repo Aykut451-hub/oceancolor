@@ -92,6 +92,7 @@ const RechnerNeu = () => {
           groesse_typ: formData.groesseOption,
           anzahl_raeume: formData.anzahlRaeume ? parseInt(formData.anzahlRaeume) : null,
           wandflaeche_qm: formData.wandflaeche ? parseFloat(formData.wandflaeche) : null,
+          epoxid_flaeche_qm: formData.epoxidFlaeche ? parseFloat(formData.epoxidFlaeche) : null,
           raumhoehe: formData.raumhoehe,
           zustand: formData.zustand,
           farbe: formData.farbe,
