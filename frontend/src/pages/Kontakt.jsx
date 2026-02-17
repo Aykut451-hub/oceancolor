@@ -252,10 +252,10 @@ const Kontakt = () => {
                   </div>
                   <h3 className="font-semibold text-gray-900 mb-2">E-Mail</h3>
                   <a 
-                    href="mailto:info@oceancolor.de" 
+                    href="mailto:info@ocean-maler.de" 
                     className="text-sm text-gray-600 hover:text-ocean-blue transition-colors break-all"
                   >
-                    info@oceancolor.de
+                    info@ocean-maler.de
                   </a>
                 </CardContent>
               </Card>
