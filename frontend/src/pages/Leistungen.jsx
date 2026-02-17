@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent } from '../components/ui/card';
-import { PaintBucket, Brush, Wallpaper, Wrench, Layers, Shield, Droplets, ArrowRight } from 'lucide-react';
+import { PaintBucket, Brush, Wallpaper, Wrench, Layers, Shield, Droplets, ArrowRight, Square, Building, Palette } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router-dom';
 import { services } from '../data/mock';
@@ -12,7 +12,10 @@ const iconMap = {
   Wrench: Wrench,
   Layers: Layers,
   Shield: Shield,
-  Droplets: Droplets
+  Droplets: Droplets,
+  Square: Square,
+  Building: Building,
+  Palette: Palette
 };
 
 const Leistungen = () => {
@@ -38,21 +41,27 @@ const Leistungen = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {services.map((service, index) => {
-              const Icon = iconMap[service.icon];
+              const Icon = iconMap[service.icon] || PaintBucket;
               return (
-                <Card key={service.id} className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-ocean-blue">
-                  <CardContent className="p-8">
-                    <div className="bg-ocean-blue/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:bg-ocean-blue group-hover:scale-110 transition-all duration-300">
-                      <Icon className="h-8 w-8 text-ocean-blue group-hover:text-white transition-colors duration-300" />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {service.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                <Link key={service.id} to={`/leistungen/${service.slug}`}>
+                  <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-ocean-blue cursor-pointer h-full">
+                    <CardContent className="p-8">
+                      <div className="bg-ocean-blue/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:bg-ocean-blue group-hover:scale-110 transition-all duration-300">
+                        <Icon className="h-8 w-8 text-ocean-blue group-hover:text-white transition-colors duration-300" />
+                      </div>
+                      <h3 className="text-2xl font-semibold text-gray-900 mb-4 group-hover:text-ocean-blue transition-colors">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed mb-4">
+                        {service.description}
+                      </p>
+                      <span className="inline-flex items-center text-ocean-blue font-medium group-hover:translate-x-2 transition-transform">
+                        Mehr erfahren
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </span>
+                    </CardContent>
+                  </Card>
+                </Link>
               );
             })}
           </div>
