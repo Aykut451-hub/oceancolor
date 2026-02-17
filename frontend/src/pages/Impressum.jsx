@@ -61,7 +61,7 @@ const Impressum = () => {
 
                 <div>
                   <h2 className="text-xl font-semibold text-gray-900 mb-3">
-                    Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
+                    Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
                   </h2>
                   <p className="text-gray-700">
                     Cenk Deniz<br />
