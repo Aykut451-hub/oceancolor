@@ -169,30 +169,24 @@ export const references = [
   }
 ];
 
-export const testimonials = [
-  {
-    id: 1,
-    name: "Helmut K.",
-    text: "Professionell und effizient! Wir hatten ein Problem mit Schimmel in unserem Badezimmer, und Ocean Color hat es schnell und gründlich behoben. Ihre Schimmelsanierungsdienste sind wirklich erstklassig.",
-    rating: 5
-  },
-  {
-    id: 2,
-    name: "Tanja S.",
-    text: "Ich bin absolut begeistert von der Arbeit! Sie haben nicht nur unsere Wände fantastisch gestaltet, sondern auch eine erstaunliche Wanddekoration geschaffen, die unserem Raum eine ganz neue Dimension verleiht.",
-    rating: 5
-  },
-  {
-    id: 3,
-    name: "Michaela K.",
-    text: "Fantastische Arbeit! Der Malerbetrieb hat unsere Wohnräume in echte Kunstwerke verwandelt. Ihre Fähigkeit, Wände zu gestalten und zu tapezieren, ist wirklich beeindruckend.",
-    rating: 5
-  },
-  {
-    id: 4,
-    name: "Milan M.",
-    text: "Ein fantastisches Team! Der Malerbetrieb hat unsere Erwartungen übertroffen. Ihre Trockenbauarbeiten waren makellos, und ihre Fassadensanierung hat unserem Haus neuen Glanz verliehen.",
-    rating: 5
+// Google-Bewertungen - werden vom Kunden bereitgestellt
+export const googleReviews = {
+  averageRating: 5.0,
+  totalReviews: 0,
+  reviews: []
+  // Beispiel-Struktur für echte Bewertungen:
+  // reviews: [
+  //   {
+  //     id: 1,
+  //     author: "Name des Kunden",
+  //     text: "Bewertungstext...",
+  //     rating: 5,
+  //     date: "vor 2 Wochen"
+  //   }
+  // ]
+};
+
+// Alte Platzhalter-Bewertungen entfernt - werden durch echte Google-Bewertungen ersetzt
   }
 ];
 
