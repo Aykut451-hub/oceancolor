@@ -19,6 +19,7 @@ const Header = () => {
   const navLinks = [
     { name: 'Startseite', path: '/' },
     { name: 'Leistungen', path: '/leistungen' },
+    { name: 'Kleinauftrag-Service', path: '/kleinauftrag-service' },
     { name: 'Angebotsrechner', path: '/rechner' },
     { name: 'Referenzen', path: '/referenzen' },
     { name: 'Über uns', path: '/ueber-uns' },
