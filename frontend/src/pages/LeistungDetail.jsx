@@ -141,13 +141,13 @@ const leistungenData = {
   'dekorative-wandgestaltung': {
     title: 'Dekorative Wandgestaltung',
     metaTitle: 'Dekorative Wandgestaltung | Ocean Color Hamburg',
-    metaDescription: 'Kreative Wandgestaltung in Hamburg. Wischtechnik, Spachteltechnik und individuelle Designs vom Profi.',
-    heroText: 'Kreative Techniken für einzigartige Wände',
-    description: 'Mit dekorativen Maltechniken verwandeln wir Ihre Wände in einzigartige Kunstwerke. Von edler Wischtechnik über moderne Spachteltechnik bis hin zu individuellen Gestaltungen – wir realisieren Ihre Wünsche.',
+    metaDescription: 'Kreative Wandgestaltung in Hamburg. Kalkspachtel, Wickeltechnik, Wandlasuren und mehr vom Profi.',
+    heroText: 'Individuelle Akzente für Ihre Räume',
+    description: 'Mit modernen Techniken lassen sich individuelle Akzente setzen – ob im Eingangsbereich, Kinderzimmer oder Wohnbereich. Wir bieten eine Vielzahl dekorativer Oberflächentechniken zur individuellen Raumgestaltung.',
     benefits: [
       'Individuelle und einzigartige Gestaltung',
-      'Verschiedene Techniken kombinierbar',
-      'Hochwertige Materialien',
+      'Hochwertige Systeme der Firma Revidil (Italien)',
+      'Oberflächen mit Struktur, Tiefe und Charakter',
       'Persönliche Beratung und Mustervorlagen',
       'Langjährige Erfahrung in Kreativtechniken'
     ],
@@ -158,7 +158,13 @@ const leistungenData = {
       'Ausführung der Kreativtechnik',
       'Versiegelung bei Bedarf'
     ],
-    applications: ['Wischtechnik', 'Spachteltechnik', 'Stucco Lustro', 'Marmorierung', 'Akzentwände']
+    applications: ['Kalkspachtel', 'Wickeltechnik', 'Wandlasuren', 'Effekttechniken', 'Akzentwände'],
+    additionalSections: [
+      {
+        title: 'Schmuck- & Effekttechniken',
+        content: 'Durch Techniken wie Kalkspachtel, Wickeltechnik und Wandlasuren entstehen einzigartige Oberflächen mit Struktur, Tiefe und Charakter. Wir arbeiten mit den hochwertigen Systemen der italienischen Firma Revidil und bieten deren komplette Gestaltungstechniken an.'
+      }
+    ]
   },
   'bodenbelaege': {
     title: 'Bodenbeläge',
