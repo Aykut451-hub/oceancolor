@@ -13,6 +13,7 @@ import UeberUns from "@/pages/UeberUns";
 import Kontakt from "@/pages/Kontakt";
 import Impressum from "@/pages/Impressum";
 import Datenschutz from "@/pages/Datenschutz";
+import NotFound from "@/pages/NotFound";
 import AdminLogin from "@/pages/AdminLogin";
 import AdminLeads from "@/pages/AdminLeads";
 import AdminLeadDetail from "@/pages/AdminLeadDetail";
@@ -106,6 +107,15 @@ function App() {
             <ProtectedRoute>
               <AdminPricing />
             </ProtectedRoute>
+          } />
+
+          {/* 404 Catch-all Route */}
+          <Route path="*" element={
+            <>
+              <Header />
+              <main><NotFound /></main>
+              <Footer />
+            </>
           } />
         </Routes>
         <Toaster position="top-right" richColors />
