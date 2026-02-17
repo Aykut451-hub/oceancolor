@@ -18,6 +18,17 @@ from models import (
     AdminLoginRequest,
     AdminLoginResponse
 )
+from pricing_models import (
+    PricingConfig,
+    PricingConfigUpdate,
+    PriceCalculationRequest,
+    PriceCalculationResponse
+)
+from pricing_calculator import (
+    PricingCalculator,
+    get_pricing_config,
+    update_pricing_config
+)
 from email_service import email_service
 from auth_service import auth_service
 
@@ -388,4 +399,88 @@ async def get_admin_stats(
         
     except Exception as e:
         logger.error(f"Error fetching stats: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# ============= PRICING ENDPOINTS =============
+
+@router.post("/calculate-price", response_model=PriceCalculationResponse)
+async def calculate_price(request: PriceCalculationRequest):
+    """
+    Berechnet Preisspanne basierend auf konfigurierbaren Regeln
+    """
+    try:
+        from server import db
+        
+        # Hole aktuelle Preiskonfiguration
+        config = await get_pricing_config(db)
+        
+        # Berechne Preis
+        calculator = PricingCalculator(config)
+        result = calculator.calculate_price(request)
+        
+        return PriceCalculationResponse(
+            success=True,
+            preis_min=result["preis_min"],
+            preis_max=result["preis_max"],
+            berechnungsdetails=result["berechnungsdetails"]
+        )
+        
+    except Exception as e:
+        logger.error(f"Price calculation error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/admin/pricing")
+async def get_pricing_config_endpoint(
+    authorization: str = Header(None)
+):
+    """Get current pricing configuration"""
+    verify_admin_token(authorization)
+    
+    try:
+        from server import db
+        config = await get_pricing_config(db)
+        
+        return {
+            "success": True,
+            "config": config.dict()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error fetching pricing config: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.put("/admin/pricing")
+async def update_pricing_config_endpoint(
+    updates: PricingConfigUpdate,
+    authorization: str = Header(None)
+):
+    """Update pricing configuration"""
+    verify_admin_token(authorization)
+    
+    try:
+        from server import db
+        
+        # Nur nicht-None Werte updaten
+        update_dict = {k: v for k, v in updates.dict().items() if v is not None}
+        
+        if not update_dict:
+            raise HTTPException(status_code=400, detail="No updates provided")
+        
+        success = await update_pricing_config(db, update_dict)
+        
+        if success:
+            return {
+                "success": True,
+                "message": "Preiskonfiguration aktualisiert"
+            }
+        else:
+            raise HTTPException(status_code=500, detail="Update failed")
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error updating pricing config: {e}")
         raise HTTPException(status_code=500, detail=str(e))
