@@ -239,6 +239,7 @@ SMTP_USE_TLS=true
 - [x] Admin Notizen-Feld im Lead-Detail verfügbar
 - [x] Cookie-Consent-Banner implementiert
 - [x] Impressum & Datenschutz mit Platzhalter-Texten
+- [x] Referenzen-Seite mit 11 echten Kundenprojekten aktualisiert
 
 ### P0 (Kritisch - Vor Produktion)
 - [ ] Echte Firmendaten in Impressum & Datenschutz eintragen (wartet auf Kundeneingabe)
