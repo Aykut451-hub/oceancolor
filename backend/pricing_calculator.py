@@ -110,6 +110,11 @@ class PricingCalculator:
         if "schimmel" in request.leistungen:
             kosten += 250.0  # Pauschale für Schimmelsanierung
         
+        # Epoxidharzbodenbeschichtung - 200€ pro m²
+        if "epoxid" in request.leistungen:
+            epoxid_flaeche = request.epoxid_flaeche_qm or 0
+            kosten += epoxid_flaeche * 200.0
+        
         return kosten
     
     def _calculate_spachtelkosten(self, request: PriceCalculationRequest, flaeche_qm: float) -> float:
