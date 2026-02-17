@@ -34,11 +34,11 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center">
             <img 
-              src="https://oceancolor.de/wp-content/uploads/2024/04/Ocean_Color_Logo_m.Wischer.png"
-              alt="Ocean Color Logo"
-              className="h-12 w-auto"
+              src="https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/5mxy73rt_Ocean_Color_Logo_m.Wischer.png"
+              alt="Ocean Color Malermeister Logo"
+              className="h-16 md:h-20 w-auto object-contain"
             />
           </Link>
 
