@@ -4,42 +4,70 @@ export const services = [
   {
     id: 1,
     title: "Wände & Decken",
+    slug: "waende-decken",
     description: "Professionelle Gestaltung von Innenwänden und Decken mit hochwertigen Farben und präziser Ausführung.",
     icon: "PaintBucket"
   },
   {
     id: 2,
     title: "Lackierarbeiten",
+    slug: "lackierarbeiten",
     description: "Fachgerechte Lackierung von Türen, Fenstern, Heizkörpern und anderen Oberflächen für langlebigen Schutz.",
     icon: "Brush"
   },
   {
     id: 3,
     title: "Tapezierarbeiten",
+    slug: "tapezierarbeiten",
     description: "Von klassischen bis modernen Tapeten – wir verlegen alle Arten fachgerecht und präzise.",
     icon: "Wallpaper"
   },
   {
     id: 4,
     title: "Spachtelarbeiten",
+    slug: "spachtelarbeiten",
     description: "Professionelle Vorbehandlung für perfekt glatte Oberflächen als Basis für jede Wandgestaltung.",
     icon: "Wrench"
   },
   {
     id: 5,
+    title: "Trockenbau",
+    slug: "trockenbau",
+    description: "Professioneller Innenausbau mit Gipskarton für flexible Raumgestaltung und Schallschutz.",
+    icon: "Square"
+  },
+  {
+    id: 6,
+    title: "Fassadensanierung",
+    slug: "fassadensanierung",
+    description: "Professionelle Außenanstriche und Fassadenrenovierung für langlebigen Schutz und moderne Optik.",
+    icon: "Building"
+  },
+  {
+    id: 7,
+    title: "Dekorative Wandgestaltung",
+    slug: "dekorative-wandgestaltung",
+    description: "Kreative Techniken wie Wischtechnik, Spachteltechnik und individuelle Gestaltungen.",
+    icon: "Palette"
+  },
+  {
+    id: 8,
     title: "Bodenbeläge",
+    slug: "bodenbelaege",
     description: "Verlegung von PVC, Laminat und anderen Bodenbelägen mit präziser Ausführung.",
     icon: "Layers"
   },
   {
-    id: 6,
+    id: 9,
     title: "Schimmelsanierung",
+    slug: "schimmelsanierung",
     description: "Fachgerechte Entfernung und Sanierung von Schimmelbefall für ein gesundes Raumklima.",
     icon: "Shield"
   },
   {
-    id: 7,
+    id: 10,
     title: "Epoxidharzbodenbeschichtungen",
+    slug: "epoxidharzboden",
     description: "Fugenlose, strapazierfähige und moderne Bodenbeschichtung für Gewerbe- und Privatbereiche.",
     icon: "Droplets"
   }
