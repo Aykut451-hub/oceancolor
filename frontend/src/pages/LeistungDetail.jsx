@@ -397,6 +397,35 @@ const LeistungDetail = () => {
         </div>
       </section>
 
+      {/* Zusätzliche Sektionen */}
+      {leistung.additionalSections && leistung.additionalSections.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto space-y-12">
+              {leistung.additionalSections.map((section, index) => (
+                <div key={index} className="bg-gray-50 rounded-2xl p-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{section.title}</h3>
+                  <p className="text-gray-700 leading-relaxed mb-4">{section.content}</p>
+                  {section.list && (
+                    <ul className="space-y-2 mt-4">
+                      {section.list.map((item, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <CheckCircle className="h-5 w-5 text-ocean-blue flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-700">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {section.result && (
+                    <p className="mt-4 font-semibold text-ocean-blue">{section.result}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* CTA Section */}
       <section className="py-16 bg-ocean-blue-dark">
         <div className="container mx-auto px-4">
