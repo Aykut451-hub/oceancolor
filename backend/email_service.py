@@ -10,16 +10,27 @@ logger = logging.getLogger(__name__)
 
 class EmailService:
     def __init__(self):
-        self.smtp_host = os.environ.get('SMTP_HOST', 'smtp.gmail.com')
+        # IONOS SMTP Configuration
+        self.smtp_host = os.environ.get('SMTP_HOST', 'smtp.ionos.de')
         self.smtp_port = int(os.environ.get('SMTP_PORT', '587'))
         self.smtp_user = os.environ.get('SMTP_USER', '')
         self.smtp_password = os.environ.get('SMTP_PASSWORD', '')
-        self.admin_email = os.environ.get('ADMIN_EMAIL', 'info@oceancolor.de')
-        self.from_email = os.environ.get('FROM_EMAIL', self.smtp_user)
+        self.from_email = os.environ.get('SMTP_FROM', 'info@ocean-maler.de')
+        self.admin_email = os.environ.get('ADMIN_EMAIL', 'info@ocean-maler.de')
+        self.use_tls = os.environ.get('SMTP_USE_TLS', 'true').lower() == 'true'
+        
+        # Check if SMTP is properly configured
+        self.smtp_configured = bool(self.smtp_user and self.smtp_password)
+        
+        if not self.smtp_configured:
+            logger.warning("SMTP not fully configured. Emails will be logged only.")
+            logger.info(f"Set SMTP_USER and SMTP_PASSWORD in .env to enable email sending.")
+        else:
+            logger.info(f"SMTP configured: {self.smtp_host}:{self.smtp_port} (TLS: {self.use_tls})")
         
     def send_lead_notification(self, lead_data: dict) -> bool:
         """
-        Sendet E-Mail-Benachrichtigung für neuen Lead
+        Sendet E-Mail-Benachrichtigung für neuen Lead über IONOS SMTP
         """
         try:
             subject = f"Neue Anfrage – Angebotsrechner – {lead_data['plz']} – {lead_data['objektart'].title()}"
@@ -102,7 +113,19 @@ Erstellt: {lead_data['created_at'].strftime('%d.%m.%Y %H:%M')} Uhr
 Diese Anfrage wurde über den Angebotsrechner auf oceancolor.de erstellt.
 """
             
-            # E-Mail erstellen
+            # Wenn SMTP nicht konfiguriert ist, nur loggen
+            if not self.smtp_configured:
+                logger.info("="*50)
+                logger.info("EMAIL WOULD BE SENT (SMTP not configured)")
+                logger.info(f"To: {self.admin_email}")
+                logger.info(f"From: {self.from_email}")
+                logger.info(f"Subject: {subject}")
+                logger.info("="*50)
+                logger.info(body)
+                logger.info("="*50)
+                return True  # Return True für Development ohne SMTP
+            
+            # E-Mail erstellen und senden
             msg = MIMEMultipart()
             msg['From'] = self.from_email
             msg['To'] = self.admin_email
@@ -110,25 +133,51 @@ Diese Anfrage wurde über den Angebotsrechner auf oceancolor.de erstellt.
             
             msg.attach(MIMEText(body, 'plain', 'utf-8'))
             
-            # E-Mail senden
-            if not self.smtp_user or not self.smtp_password:
-                logger.warning("SMTP credentials not configured. Email not sent.")
-                logger.info(f"Email would have been sent to: {self.admin_email}")
-                logger.info(f"Subject: {subject}")
-                logger.info(f"Body:\n{body}")
-                return True  # Return True für Development ohne SMTP
-            
-            with smtplib.SMTP(self.smtp_host, self.smtp_port) as server:
-                server.starttls()
-                server.login(self.smtp_user, self.smtp_password)
-                server.send_message(msg)
-            
-            logger.info(f"Lead notification email sent to {self.admin_email}")
-            return True
-            
+            # IONOS SMTP mit STARTTLS
+            try:
+                with smtplib.SMTP(self.smtp_host, self.smtp_port, timeout=10) as server:
+                    server.set_debuglevel(0)  # Set to 1 for debugging
+                    
+                    if self.use_tls:
+                        # STARTTLS für IONOS
+                        server.starttls()
+                        logger.info("STARTTLS initiated")
+                    
+                    # Login
+                    server.login(self.smtp_user, self.smtp_password)
+                    logger.info(f"SMTP login successful as {self.smtp_user}")
+                    
+                    # Send
+                    server.send_message(msg)
+                    logger.info(f"✓ Lead notification email sent to {self.admin_email}")
+                
+                return True
+                
+            except smtplib.SMTPAuthenticationError as e:
+                logger.error(f"SMTP Authentication failed: {e}")
+                logger.error("Please check SMTP_USER and SMTP_PASSWORD in .env")
+                self._log_fallback(subject, body)
+                return False
+                
+            except smtplib.SMTPException as e:
+                logger.error(f"SMTP error: {e}")
+                self._log_fallback(subject, body)
+                return False
+                
         except Exception as e:
             logger.error(f"Failed to send email: {str(e)}")
+            self._log_fallback(subject if 'subject' in locals() else 'Unknown', 
+                             body if 'body' in locals() else 'Error creating email body')
             return False
+    
+    def _log_fallback(self, subject: str, body: str):
+        """Fallback: Log email wenn Versand fehlschlägt"""
+        logger.info("="*50)
+        logger.info("EMAIL FALLBACK (SMTP failed)")
+        logger.info(f"Subject: {subject}")
+        logger.info("="*50)
+        logger.info(body)
+        logger.info("="*50)
     
     def _format_leistung(self, leistung: str) -> str:
         mapping = {
