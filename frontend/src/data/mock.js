@@ -169,21 +169,54 @@ export const references = [
   }
 ];
 
-// Google-Bewertungen - werden vom Kunden bereitgestellt
+// Google-Bewertungen - Echte Kundenbewertungen
 export const googleReviews = {
   averageRating: 5.0,
-  totalReviews: 0,
-  reviews: []
-  // Beispiel-Struktur für echte Bewertungen:
-  // reviews: [
-  //   {
-  //     id: 1,
-  //     author: "Name des Kunden",
-  //     text: "Bewertungstext...",
-  //     rating: 5,
-  //     date: "vor 2 Wochen"
-  //   }
-  // ]
+  totalReviews: 6,
+  reviews: [
+    {
+      id: 1,
+      author: "Tobias Kannen",
+      text: "Ocean Color hat sehr gute Arbeit geleistet. Der Kontakt war super unkompliziert.",
+      rating: 5,
+      date: "Google Bewertung"
+    },
+    {
+      id: 2,
+      author: "K. Achmatowo",
+      text: "Ich möchte meine vollste Zufriedenheit mit dem Malermeister Deniz zum Ausdruck bringen. Die Arbeit war von höchster Qualität und Professionalität. Meine Vorstellungen wurden perfekt umgesetzt und durch wertvolle Vorschläge ergänzt. Die Ausführung war schnell, sauber und präzise – alles wurde pünktlich abgeschlossen.",
+      rating: 5,
+      date: "Google Bewertung"
+    },
+    {
+      id: 3,
+      author: "Chris",
+      text: "Sehr freundlicher Kontakt. Das seriöse Auftreten des Geschäftsführers hat sich in der geleisteten Arbeit zu 100% widerspiegelt. Der Außenanstrich meines Hauses wurde in Top-Qualität ausgeführt. Klare Empfehlung!",
+      rating: 5,
+      date: "Google Bewertung"
+    },
+    {
+      id: 4,
+      author: "Susmit J. Banerjee",
+      text: "Ich kenne den Malermeister persönlich und weiß, dass er seine Aufträge sachkundig, präzise und zuverlässig umsetzt.",
+      rating: 5,
+      date: "Google Bewertung"
+    },
+    {
+      id: 5,
+      author: "Ferhat Yeltan",
+      text: "Sehr guter Maler – unsere Wohnung sieht jetzt top aus. Ich bin positiv überrascht.",
+      rating: 5,
+      date: "Google Bewertung"
+    },
+    {
+      id: 6,
+      author: "Pit Vogelhubert",
+      text: "Sehr sorgfältige Arbeit, schnell und sauber ausgeführt. Ich bin begeistert.",
+      rating: 5,
+      date: "Google Bewertung"
+    }
+  ]
 };
 
 // Alte Platzhalter-Bewertungen entfernt - werden durch echte Google-Bewertungen ersetzt
