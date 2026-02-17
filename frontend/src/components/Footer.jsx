@@ -11,9 +11,9 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <img 
-              src="https://oceancolor.de/wp-content/uploads/2024/04/Ocean_Color_Logo_m.Wischer.png"
-              alt="Ocean Color Logo"
-              className="h-12 w-auto mb-4 brightness-0 invert"
+              src="https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/5mxy73rt_Ocean_Color_Logo_m.Wischer.png"
+              alt="Ocean Color Malermeister Logo"
+              className="h-16 w-auto mb-4"
             />
             <p className="text-sm mb-4">
               Ihr Malermeisterbetrieb in Hamburg für professionelle Malerarbeiten, 
