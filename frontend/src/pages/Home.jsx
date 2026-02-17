@@ -47,21 +47,14 @@ const Home = () => {
               </div>
 
               {/* Trust Indicators */}
-              <div className="flex items-center space-x-6 pt-4">
-                <div className="flex items-center">
-                  <div className="flex -space-x-2">
-                    {[1, 2, 3, 4].map((i) => (
-                      <div key={i} className="w-10 h-10 rounded-full bg-gray-200 border-2 border-white"></div>
+              <div className="flex items-center pt-4">
+                <div className="flex items-center bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm border border-gray-100">
+                  <div className="flex items-center text-amber-400">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <Star key={i} className="h-5 w-5 fill-current" />
                     ))}
                   </div>
-                  <div className="ml-3">
-                    <div className="flex items-center text-yellow-500">
-                      {[1, 2, 3, 4, 5].map((i) => (
-                        <Star key={i} className="h-4 w-4 fill-current" />
-                      ))}
-                    </div>
-                    <p className="text-sm text-gray-600">50+ zufriedene Kunden</p>
-                  </div>
+                  <p className="ml-3 text-sm font-medium text-gray-700">200+ zufriedene Kunden</p>
                 </div>
               </div>
             </div>
