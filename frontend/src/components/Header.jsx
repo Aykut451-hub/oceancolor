@@ -36,11 +36,18 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center" data-testid="header-logo">
-            <div className="flex flex-col leading-none">
-              <span className="text-[22px] md:text-[28px] font-extrabold tracking-tight text-ocean-blue">
+            <div className="flex flex-col items-start">
+              <span
+                className="text-[22px] md:text-[27px] font-black tracking-[0.04em] leading-none"
+                style={{ color: 'hsl(197, 71%, 32%)' }}
+              >
                 OCEAN COLOR
               </span>
-              <span className="text-[9px] md:text-[11px] font-medium tracking-[0.44em] md:tracking-[0.48em] text-ocean-blue/50">
+              <div className="w-full h-[2px] my-[3px] rounded-full bg-gradient-to-r from-[hsl(197,71%,39%)] via-[hsl(197,71%,55%)] to-transparent" />
+              <span
+                className="text-[8.5px] md:text-[10.5px] font-semibold tracking-[0.42em] md:tracking-[0.46em] leading-none"
+                style={{ color: 'hsl(197, 71%, 52%)' }}
+              >
                 MALERMEISTER
               </span>
             </div>
