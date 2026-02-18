@@ -70,6 +70,8 @@ const RechnerNeu = () => {
   
   const hasBodenarbeiten = formData.leistungen.some(l => bodenLeistungen.includes(l));
   const hasWandarbeiten = formData.leistungen.some(l => wandLeistungen.includes(l));
+  const hasTapezieren = formData.leistungen.includes('tapezieren');
+  const needsColorQuestion = formData.leistungen.some(l => ['waende-decken', 'lackierung'].includes(l));
 
   const totalSteps = 9;
   const progress = (currentStep / totalSteps) * 100;
