@@ -12,6 +12,7 @@ Modern website for painting company "Ocean Color" based in Hamburg, Germany. Pri
 - **File Uploads:** Users can attach photos to their requests
 - **Design:** Modern, mobile-first, dark blue/white color scheme
 - **Global Navigation:** Scroll-to-top on every page change
+- **WhatsApp Integration:** Floating button + page buttons for quick inquiries
 
 ## Tech Stack
 - **Frontend:** React, React Router, Tailwind CSS, Shadcn UI, Axios
@@ -30,6 +31,12 @@ Modern website for painting company "Ocean Color" based in Hamburg, Germany. Pri
 - Custom logo and images throughout
 - Cookie consent banner
 - ScrollToTop component for global scroll reset on navigation (verified 2026-02-18)
+- "Uber uns" text optimized with emotional, high-quality copy (2026-02-18)
+- WhatsApp quick inquiry feature (2026-02-18):
+  - Floating WhatsApp button (bottom right, all pages)
+  - WhatsApp button in Home page CTA section
+  - WhatsApp card in Contact page info section
+  - Pre-filled message with business number +4915120050008
 
 ## Backlog
 - **P2:** Cloud Storage for Uploads - migrate from local `/app/uploads` to persistent cloud storage
@@ -38,3 +45,4 @@ Modern website for painting company "Ocean Color" based in Hamburg, Germany. Pri
 ## Key Credentials
 - Admin password: `ocean2024`
 - SMTP: IONOS (configured in backend/.env)
+- WhatsApp Business: +4915120050008
