@@ -141,6 +141,7 @@ const RechnerNeu = () => {
           zustand: formData.zustand,
           aktueller_boden: formData.aktuellerBoden,
           farbe: formData.farbe,
+          tapeten_art: formData.tapetenArt,
           spachtelstufe: hasOnlyBodenarbeiten ? 'keine' : formData.spachtelstufe,
           zusatzoptionen: formData.zusatzoptionen
         })
