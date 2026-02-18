@@ -356,6 +356,7 @@ const RechnerNeu = () => {
         raumhoehe: formData.raumhoehe,
         zustand: formData.zustand,
         farbe: formData.farbe,
+        tapetenArt: formData.tapetenArt,
         spachtelstufe: formData.spachtelstufe,
         zusatzoptionen: formData.zusatzoptionen
       }));
