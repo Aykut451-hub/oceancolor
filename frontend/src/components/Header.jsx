@@ -37,11 +37,11 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center" data-testid="header-logo">
             <div className="flex flex-col leading-none">
-              <span className="text-2xl md:text-3xl font-extrabold tracking-tight text-ocean-blue">
+              <span className="text-[22px] md:text-[28px] font-extrabold tracking-tight text-ocean-blue">
                 OCEAN COLOR
               </span>
-              <span className="text-[10px] md:text-xs font-semibold tracking-[0.25em] text-gray-500 uppercase">
-                Malermeister
+              <span className="text-[9px] md:text-[11px] font-medium tracking-[0.44em] md:tracking-[0.48em] text-ocean-blue/50">
+                MALERMEISTER
               </span>
             </div>
           </Link>
