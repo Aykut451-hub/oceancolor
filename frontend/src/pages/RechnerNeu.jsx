@@ -890,36 +890,57 @@ const RechnerNeu = () => {
                   </div>
                 )}
 
-                {/* Schritt 7: Farbe */}
+                {/* Schritt 7: Tapete / Farbe */}
                 {currentStep === 7 && (
-                  <div className="space-y-6">
-                    <div>
-                      <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                        {hasOnlyBodenarbeiten ? 'Welche Optik wünschen Sie?' : 'Welche Farbgebung wünschen Sie?'}
-                      </h2>
-                      <p className="text-gray-600">Wählen Sie Ihre bevorzugte Option</p>
-                    </div>
-                    <RadioGroup value={formData.farbe} onValueChange={(value) => setFormData(prev => ({ ...prev, farbe: value }))}>
-                      <div className="space-y-3">
-                        {hasOnlyBodenarbeiten ? (
-                          <>
-                            <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.farbe === 'schlicht' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
-                              <RadioGroupItem value="schlicht" id="schlicht" />
+                  <div className="space-y-8">
+                    {/* Tapetenauswahl bei Tapezierarbeiten */}
+                    {hasTapezieren && (
+                      <div className="space-y-4">
+                        <div>
+                          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                            Welche Tapete wünschen Sie?
+                          </h2>
+                          <p className="text-gray-600">Wählen Sie die gewünschte Tapetenart</p>
+                        </div>
+                        <RadioGroup value={formData.tapetenArt} onValueChange={(value) => setFormData(prev => ({ ...prev, tapetenArt: value }))}>
+                          <div className="space-y-3">
+                            <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.tapetenArt === 'mustertapete' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
+                              <RadioGroupItem value="mustertapete" id="mustertapete" />
                               <div className="ml-3">
-                                <p className="font-medium">Schlicht</p>
-                                <p className="text-sm text-gray-600">Neutrale, dezente Optik (Grau, Beige, etc.)</p>
+                                <p className="font-medium">Mustertapete</p>
+                                <p className="text-sm text-gray-600">Tapete mit dekorativem Muster oder Design</p>
                               </div>
                             </label>
-                            <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.farbe === 'farbig' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
-                              <RadioGroupItem value="farbig" id="farbig" />
+                            <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.tapetenArt === 'raufaser' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
+                              <RadioGroupItem value="raufaser" id="raufaser" />
                               <div className="ml-3">
-                                <p className="font-medium">Farbig</p>
-                                <p className="text-sm text-gray-600">Individuelle Farbgestaltung</p>
+                                <p className="font-medium">Raufaser</p>
+                                <p className="text-sm text-gray-600">Klassische Raufasertapete zum Überstreichen</p>
                               </div>
                             </label>
-                          </>
-                        ) : (
-                          <>
+                            <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.tapetenArt === 'glattvlies' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
+                              <RadioGroupItem value="glattvlies" id="glattvlies" />
+                              <div className="ml-3">
+                                <p className="font-medium">Glattvlies</p>
+                                <p className="text-sm text-gray-600">Glatte Vliestapete für eine gleichmäßige Oberfläche</p>
+                              </div>
+                            </label>
+                          </div>
+                        </RadioGroup>
+                      </div>
+                    )}
+
+                    {/* Farbauswahl nur bei Streich-/Lackierarbeiten */}
+                    {needsColorQuestion && (
+                      <div className="space-y-4">
+                        <div>
+                          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                            {hasTapezieren ? 'Welche Farbgebung für die Streicharbeiten?' : 'Welche Farbgebung wünschen Sie?'}
+                          </h2>
+                          <p className="text-gray-600">Wählen Sie Ihre bevorzugte Option</p>
+                        </div>
+                        <RadioGroup value={formData.farbe} onValueChange={(value) => setFormData(prev => ({ ...prev, farbe: value }))}>
+                          <div className="space-y-3">
                             <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.farbe === 'weiss' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
                               <RadioGroupItem value="weiss" id="weiss" />
                               <div className="ml-3">
@@ -934,10 +955,40 @@ const RechnerNeu = () => {
                                 <p className="text-sm text-gray-600">Farbige Gestaltung</p>
                               </div>
                             </label>
-                          </>
-                        )}
+                          </div>
+                        </RadioGroup>
                       </div>
-                    </RadioGroup>
+                    )}
+
+                    {/* Bodenoptik bei reinen Bodenarbeiten */}
+                    {hasOnlyBodenarbeiten && (
+                      <div className="space-y-4">
+                        <div>
+                          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                            Welche Optik wünschen Sie?
+                          </h2>
+                          <p className="text-gray-600">Wählen Sie Ihre bevorzugte Option</p>
+                        </div>
+                        <RadioGroup value={formData.farbe} onValueChange={(value) => setFormData(prev => ({ ...prev, farbe: value }))}>
+                          <div className="space-y-3">
+                            <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.farbe === 'schlicht' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
+                              <RadioGroupItem value="schlicht" id="schlicht" />
+                              <div className="ml-3">
+                                <p className="font-medium">Schlicht</p>
+                                <p className="text-sm text-gray-600">Neutrale, dezente Optik (Grau, Beige, etc.)</p>
+                              </div>
+                            </label>
+                            <label className={`flex items-center border-2 rounded-lg p-4 cursor-pointer transition-all ${formData.farbe === 'farbig' ? 'border-ocean-blue bg-ocean-blue/5' : 'border-gray-200 hover:border-ocean-blue/50'}`}>
+                              <RadioGroupItem value="farbig" id="farbig" />
+                              <div className="ml-3">
+                                <p className="font-medium">Farbig</p>
+                                <p className="text-sm text-gray-600">Individuelle Farbgestaltung</p>
+                              </div>
+                            </label>
+                          </div>
+                        </RadioGroup>
+                      </div>
+                    )}
                   </div>
                 )}
 
