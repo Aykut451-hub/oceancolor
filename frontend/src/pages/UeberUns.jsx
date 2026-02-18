@@ -16,7 +16,7 @@ const UeberUns = () => {
               Über Ocean Color
             </h1>
             <p className="text-lg text-gray-600">
-              Ihr zuverlässiger Partner für professionelle Malerarbeiten in Hamburg und Umgebung
+              Malermeisterbetrieb in Hamburg – seit über 17 Jahren für hochwertige Ergebnisse
             </p>
           </div>
         </div>
@@ -32,18 +32,19 @@ const UeberUns = () => {
               </h2>
               <div className="space-y-4 text-gray-600">
                 <p>
-                  Ocean Color ist Ihr Malermeisterbetrieb in Hamburg mit über 17 Jahren Erfahrung. 
-                  Wir sind ein im Herzen Hamburgs ansässiger Meisterbetrieb und bieten 
-                  professionelle Malerarbeiten, Renovierungen und Sanierungen an.
+                  Ocean Color ist Ihr Malermeisterbetrieb in Hamburg mit über 17 Jahren 
+                  Erfahrung in hochwertigen Maler- und Renovierungsarbeiten.
                 </p>
                 <p>
-                  Bei uns erhalten Sie eine freundliche und hochqualifizierte Beratung bei der 
-                  Gestaltung Ihrer Räume mit individuellen Anstrichen, modernen Farben und Tapeten.
+                  Als Meisterbetrieb mit Sitz im Herzen Hamburgs stehen wir für saubere 
+                  Ausführung, strukturierte Abläufe und langlebige Ergebnisse.
                 </p>
                 <p>
-                  Unser Fokus liegt auf Sauberkeit, Zuverlässigkeit und strukturierter Planung. 
-                  Wir arbeiten mit festen Qualitätsstandards und planen jedes Projekt sorgfältig – 
-                  so erhalten Sie ein sauberes und langlebiges Ergebnis.
+                  Wir begleiten Sie von der ersten Idee bis zur finalen Umsetzung – mit 
+                  persönlicher Beratung, modernen Materialien und handwerklicher Präzision.
+                </p>
+                <p className="font-semibold text-gray-800 italic">
+                  Unser Anspruch: Nicht nur streichen, sondern Räume sichtbar aufwerten.
                 </p>
               </div>
             </div>
@@ -77,8 +78,7 @@ const UeberUns = () => {
                     Sauberkeit
                   </h3>
                   <p className="text-gray-600">
-                    Wir legen größten Wert auf sauberes Arbeiten und hinterlassen 
-                    Ihre Räume in einwandfreiem Zustand.
+                    Wir arbeiten präzise und hinterlassen Ihre Räume in einwandfreiem Zustand.
                   </p>
                 </CardContent>
               </Card>
@@ -92,8 +92,7 @@ const UeberUns = () => {
                     Zuverlässigkeit
                   </h3>
                   <p className="text-gray-600">
-                    Termingerechte Ausführung und verlässliche Kommunikation 
-                    während des gesamten Projekts.
+                    Klare Kommunikation und termingerechte Umsetzung.
                   </p>
                 </CardContent>
               </Card>
@@ -107,8 +106,7 @@ const UeberUns = () => {
                     Strukturierte Planung
                   </h3>
                   <p className="text-gray-600">
-                    Jedes Projekt wird sorgfältig geplant und mit festen 
-                    Qualitätsstandards umgesetzt.
+                    Jedes Projekt wird sorgfältig vorbereitet und professionell umgesetzt.
                   </p>
                 </CardContent>
               </Card>
@@ -126,25 +124,13 @@ const UeberUns = () => {
             </h2>
             
             <Card className="border-2">
-              <CardContent className="p-8">
-                <div className="text-center mb-6">
-                  <p className="text-lg text-gray-700">
-                    Wir sind in ganz Hamburg und im Umkreis von ca. 15 km tätig
-                  </p>
-                </div>
-                
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-gray-600">
-                  {[
-                    'Altona', 'Bahrenfeld', 'Bergedorf', 'Eppendorf',
-                    'Eimsbüttel', 'Harburg', 'Lokstedt', 'Ottensen',
-                    'Stellingen', 'Wandsbek', 'Winterhude', 'und viele mehr...'
-                  ].map((area, index) => (
-                    <div key={index} className="flex items-center">
-                      <span className="text-ocean-blue mr-2">•</span>
-                      {area}
-                    </div>
-                  ))}
-                </div>
+              <CardContent className="p-8 text-center">
+                <p className="text-lg text-gray-700 mb-4">
+                  Wir sind in ganz Hamburg und im Umkreis von ca. 15 km für Sie tätig – unter anderem in:
+                </p>
+                <p className="text-gray-600 leading-relaxed">
+                  Altona, Eimsbüttel, Winterhude, Bergedorf, Hafen City, Wandsbek, Bahrenfeld, Ottensen, Harburg, Bergedorf und Umgebung.
+                </p>
               </CardContent>
             </Card>
           </div>
