@@ -7,6 +7,7 @@ import { Textarea } from '../components/ui/textarea';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { submitCallbackRequest, submitContactForm } from '../data/mock';
 import { toast } from 'sonner';
+import { WHATSAPP_URL } from '../components/FloatingWhatsApp';
 
 const Kontakt = () => {
   const [callbackForm, setCallbackForm] = useState({

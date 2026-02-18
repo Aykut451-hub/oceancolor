@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import ScrollToTop from "@/components/ScrollToTop";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Home from "@/pages/Home";
 import Leistungen from "@/pages/Leistungen";
 import LeistungDetail from "@/pages/LeistungDetail";
@@ -139,6 +140,7 @@ function App() {
           } />
         </Routes>
         <Toaster position="top-right" richColors />
+        <FloatingWhatsApp />
       </BrowserRouter>
     </div>
   );
