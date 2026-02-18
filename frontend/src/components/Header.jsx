@@ -37,8 +37,8 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center" data-testid="header-logo">
             <img 
-              src="https://customer-assets.emergentagent.com/job_5dd1c99e-669f-42e7-b2a2-05f663a6ec89/artifacts/imixmwk9_OCEAN%20COLOR%20LOGO.png"
-              alt="Ocean Color Malermeister Logo"
+              src="https://customer-assets.emergentagent.com/job_5dd1c99e-669f-42e7-b2a2-05f663a6ec89/artifacts/aoo2i1ek_LOGO.png"
+              alt="Ocean Color Logo"
               className="h-12 md:h-14 w-auto object-contain"
             />
           </Link>
