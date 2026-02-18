@@ -48,6 +48,7 @@ const RechnerNeu = () => {
     aktuellerBoden: '',
     // Schritt 7
     farbe: '',
+    tapetenArt: '',
     // Schritt 8
     spachtelstufe: '',
     // Schritt 9
