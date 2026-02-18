@@ -39,7 +39,7 @@ const Header = () => {
             <img 
               src="https://customer-assets.emergentagent.com/job_5dd1c99e-669f-42e7-b2a2-05f663a6ec89/artifacts/aoo2i1ek_LOGO.png"
               alt="Ocean Color Logo"
-              className="h-12 md:h-14 w-auto object-contain"
+              className="h-24 md:h-28 w-auto object-contain"
             />
           </Link>
 
