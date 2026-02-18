@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import ScrollToTop from "@/components/ScrollToTop";
 import Home from "@/pages/Home";
 import Leistungen from "@/pages/Leistungen";
 import LeistungDetail from "@/pages/LeistungDetail";
