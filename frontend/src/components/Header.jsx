@@ -35,12 +35,15 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <img 
-              src="https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/5mxy73rt_Ocean_Color_Logo_m.Wischer.png"
-              alt="Ocean Color Malermeister Logo"
-              className="h-16 md:h-20 w-auto object-contain"
-            />
+          <Link to="/" className="flex items-center" data-testid="header-logo">
+            <div className="flex flex-col leading-none">
+              <span className="text-2xl md:text-3xl font-extrabold tracking-tight text-ocean-blue">
+                OCEAN COLOR
+              </span>
+              <span className="text-[10px] md:text-xs font-semibold tracking-[0.25em] text-gray-500 uppercase">
+                Malermeister
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
