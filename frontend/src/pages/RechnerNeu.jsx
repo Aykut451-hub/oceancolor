@@ -254,8 +254,16 @@ const RechnerNeu = () => {
         }
         return true;
       case 7:
-        if (!formData.farbe) {
+        if (hasTapezieren && !formData.tapetenArt) {
+          toast.error('Bitte wählen Sie eine Tapetenart');
+          return false;
+        }
+        if (needsColorQuestion && !formData.farbe) {
           toast.error('Bitte wählen Sie eine Farboption');
+          return false;
+        }
+        if (hasOnlyBodenarbeiten && !formData.farbe) {
+          toast.error('Bitte wählen Sie eine Option');
           return false;
         }
         return true;
