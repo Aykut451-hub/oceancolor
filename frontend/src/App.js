@@ -22,6 +22,7 @@ import AdminLogin from "@/pages/AdminLogin";
 import AdminLeads from "@/pages/AdminLeads";
 import AdminLeadDetail from "@/pages/AdminLeadDetail";
 import AdminPricing from "@/pages/AdminPricing";
+import MalerStadtteil from "@/pages/MalerStadtteil";
 
 function App() {
   return (
