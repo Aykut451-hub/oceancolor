@@ -290,7 +290,7 @@ const Home = () => {
             {stadtteile.map((s) => (
               <Link
                 key={s.slug}
-                to={`/maler-hamburg/${s.slug}`}
+                to={`/maler-hamburg-${s.slug}`}
                 className="group bg-white border-2 border-gray-100 hover:border-ocean-blue rounded-xl px-4 py-3 text-center transition-all duration-200 hover:shadow-md"
                 data-testid={`stadtteil-link-${s.slug}`}
               >
