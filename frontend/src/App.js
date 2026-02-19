@@ -23,6 +23,7 @@ import AdminLeads from "@/pages/AdminLeads";
 import AdminLeadDetail from "@/pages/AdminLeadDetail";
 import AdminPricing from "@/pages/AdminPricing";
 import MalerStadtteil from "@/pages/MalerStadtteil";
+import StadtteilRouter from "@/pages/StadtteilRouter";
 
 function App() {
   return (
@@ -112,15 +113,8 @@ function App() {
             </>
           } />
 
-          {/* SEO Stadtteil-Landingpages */}
-          <Route path="/maler-hamburg/:stadtteil" element={
-            <>
-              <Header />
-              <main><MalerStadtteil /></main>
-              <Footer />
-              <CookieConsent />
-            </>
-          } />
+          {/* SEO Stadtteil-Landingpages /maler-hamburg-[stadtteil] */}
+          <Route path="/:page" element={<StadtteilRouter />} />
 
           {/* Admin Routes */}
           <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
