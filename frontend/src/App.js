@@ -113,7 +113,7 @@ function App() {
           } />
 
           {/* SEO Stadtteil-Landingpages */}
-          <Route path="/maler-hamburg-:stadtteil" element={
+          <Route path="/maler-hamburg/:stadtteil" element={
             <>
               <Header />
               <main><MalerStadtteil /></main>
