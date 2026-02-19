@@ -23,7 +23,8 @@ const FloatingContactBar = () => {
         href="https://www.instagram.com/ocean_maler/"
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-[hsl(197,71%,32%)] hover:bg-[hsl(197,71%,25%)] text-white rounded-full p-3.5 shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300"
+        className="rounded-full p-3.5 shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 text-white"
+        style={{ background: 'radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)' }}
         aria-label="Instagram"
         data-testid="floating-instagram-button"
       >

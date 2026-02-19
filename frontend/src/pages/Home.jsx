@@ -236,7 +236,7 @@ const Home = () => {
 
                   {/* Link to Google */}
                   <a 
-                    href="https://share.google/MJLxvBf22GwfrBX9w" 
+                    href="https://share.google/X0zrij5LgWpXqdalN" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-flex items-center text-ocean-blue hover:text-ocean-blue-dark font-medium transition-colors"
