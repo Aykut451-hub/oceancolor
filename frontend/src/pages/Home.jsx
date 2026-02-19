@@ -4,6 +4,7 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { ArrowRight, CheckCircle, Star, ExternalLink } from 'lucide-react';
 import { services, googleReviews } from '../data/mock';
+import { stadtteile } from '../data/stadtteile';
 import { WHATSAPP_URL } from '../components/FloatingWhatsApp';
 
 const Home = () => {
@@ -270,6 +271,35 @@ const Home = () => {
               ))}
             </div>
           )}
+        </div>
+      </section>
+
+      {/* SEO Stadtteile */}
+      <section id="stadtteile" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Maler in Hamburg & Umgebung
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Professionelle Malerarbeiten in Ihrem Stadtteil – wir sind in ganz Hamburg und Umgebung für Sie da.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-3 max-w-6xl mx-auto">
+            {stadtteile.map((s) => (
+              <Link
+                key={s.slug}
+                to={`/maler-hamburg-${s.slug}`}
+                className="group bg-white border-2 border-gray-100 hover:border-ocean-blue rounded-xl px-4 py-3 text-center transition-all duration-200 hover:shadow-md"
+                data-testid={`stadtteil-link-${s.slug}`}
+              >
+                <span className="text-sm font-medium text-gray-700 group-hover:text-ocean-blue transition-colors">
+                  {s.name}
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
