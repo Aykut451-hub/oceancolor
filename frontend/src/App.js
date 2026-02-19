@@ -112,6 +112,16 @@ function App() {
             </>
           } />
 
+          {/* SEO Stadtteil-Landingpages */}
+          <Route path="/maler-hamburg-:stadtteil" element={
+            <>
+              <Header />
+              <main><MalerStadtteil /></main>
+              <Footer />
+              <CookieConsent />
+            </>
+          } />
+
           {/* Admin Routes */}
           <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
           <Route path="/admin/login" element={<AdminLogin />} />
