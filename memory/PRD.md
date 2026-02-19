@@ -6,12 +6,11 @@ Modern website for painting company "Ocean Color" based in Hamburg, Germany. Pri
 ## Core Requirements
 - **Pages:** Home, Services, Price Calculator, References, About Us, Contact, Legal, Kleinauftrag-Service
 - **10 Service Detail Pages:** Dynamic subpages for each core service
-- **21 SEO Stadtteil-Landingpages:** `/maler-hamburg/:stadtteil` for local SEO
+- **21 SEO Stadtteil-Landingpages:** `/maler-hamburg-[stadtteil]` with FAQ, Schema.org, meta tags
 - **Price Calculator:** Multi-step form with wallpaper type selection for Tapezierarbeiten
 - **Admin Dashboard:** Password-protected (`/admin`, password: `ocean2024`)
 - **Email Integration:** IONOS SMTP
-- **WhatsApp Integration:** Floating contact bar (Phone, Instagram, WhatsApp)
-- **Design:** Modern, mobile-first, dark blue/white
+- **Floating Contact Bar:** Phone, Instagram (original gradient), WhatsApp
 
 ## Tech Stack
 - Frontend: React, React Router, Tailwind CSS, Shadcn UI, Axios
@@ -21,14 +20,18 @@ Modern website for painting company "Ocean Color" based in Hamburg, Germany. Pri
 
 ## What's Been Implemented
 - All public pages + 10 service detail pages + Kleinauftrag-Service
-- 21 SEO Stadtteil-Landingpages with Schema.org LocalBusiness markup
+- 21 SEO Stadtteil-Landingpages with:
+  - SEO URL format: /maler-hamburg-altona, /maler-hamburg-wandsbek etc.
+  - Dynamic title & meta description per page
+  - 6 core services listed (Maler, Tapezier, Spachtel, Schimmel, Boden, Lackier)
+  - FAQ section with 4 local questions (accordion)
+  - Schema.org LocalBusiness (areaServed: all 21 districts) + FAQPage markup
+  - Availability note, CTA to calculator, internal links to other districts
 - SEO section on homepage with clickable district grid
 - Price calculator with Tapezierarbeiten-specific wallpaper type selection
-- Floating contact bar (Phone, Instagram original gradient, WhatsApp)
-- Admin dashboard, IONOS SMTP emails, file uploads
-- Real Google Reviews (link: maps.app.goo.gl/tMLzNyo8MMk57YLk7)
-- ScrollToTop, Cookie consent, custom logo
-- "Über uns" text optimized
+- Floating contact bar (Phone, Instagram, WhatsApp)
+- Google Reviews link: maps.app.goo.gl/tMLzNyo8MMk57YLk7
+- Admin dashboard, IONOS SMTP, file uploads, ScrollToTop, Cookie consent
 
 ## Backlog
 - **P2:** Cloud Storage for Uploads
@@ -36,6 +39,5 @@ Modern website for painting company "Ocean Color" based in Hamburg, Germany. Pri
 
 ## Key Credentials
 - Admin password: `ocean2024`
-- SMTP: IONOS (backend/.env)
 - WhatsApp Business: +4915120050008
 - Instagram: instagram.com/ocean_maler/
