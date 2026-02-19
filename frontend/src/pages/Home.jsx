@@ -236,7 +236,7 @@ const Home = () => {
 
                   {/* Link to Google */}
                   <a 
-                    href="https://www.google.com/maps/place/Ocean+Color+GmbH" 
+                    href="https://share.google/MJLxvBf22GwfrBX9w" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-flex items-center text-ocean-blue hover:text-ocean-blue-dark font-medium transition-colors"
