@@ -236,7 +236,7 @@ const Home = () => {
 
                   {/* Link to Google */}
                   <a 
-                    href="https://share.google/X0zrij5LgWpXqdalN" 
+                    href="https://maps.app.goo.gl/tMLzNyo8MMk57YLk7" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-flex items-center text-ocean-blue hover:text-ocean-blue-dark font-medium transition-colors"
