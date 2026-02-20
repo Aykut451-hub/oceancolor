@@ -303,6 +303,37 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Tätigkeitsgebiet GEO-Text */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Tätigkeitsgebiet</h2>
+            <div className="bg-gray-50 rounded-2xl p-8 space-y-4 text-gray-600 leading-relaxed">
+              <p>
+                Ocean Color ist als Malermeisterbetrieb in ganz Hamburg tätig, insbesondere in: 
+                Altona, Wandsbek, Eppendorf, Lokstedt, Stellingen, Bahrenfeld, Osdorf, Lurup, 
+                Bergedorf sowie im Umland wie Wedel und Rellingen.
+              </p>
+              <p>
+                Neben klassischen Malerarbeiten bieten wir auch Trockenbau, Schimmelsanierung, 
+                Fassadenarbeiten und Bodenverlegung an. Unser Team arbeitet für Privatkunden, 
+                Vermieter, Hausverwaltungen und bei umfangreichen Sanierungsprojekten.
+              </p>
+              <p>
+                Mit über 17 Jahren Erfahrung und einem klaren Fokus auf Qualität, Sauberkeit 
+                und Zuverlässigkeit ist Ocean Color Ihr Ansprechpartner für alle Renovierungs- 
+                und Innenausbauarbeiten in der Metropolregion Hamburg.
+              </p>
+              <div className="pt-2">
+                <Link to="/maler-hamburg" className="text-ocean-blue hover:text-ocean-blue-dark font-medium transition-colors text-sm">
+                  Mehr zu unseren Einsatzgebieten
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-ocean-blue-dark relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900/20 to-transparent"></div>
