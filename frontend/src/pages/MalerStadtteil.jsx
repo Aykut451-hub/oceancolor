@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useParams, useLocation, Link, Navigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
-import { ArrowRight, MapPin, CheckCircle, Phone, Clock, ChevronDown } from 'lucide-react';
-import { stadtteile } from '../data/stadtteile';
+import { ArrowRight, MapPin, CheckCircle, Phone, Clock, ChevronDown, AlertTriangle, Users } from 'lucide-react';
+import { stadtteile, kompetenzen } from '../data/stadtteile';
 
 const kernLeistungen = [
   { titel: 'Malerarbeiten', text: 'Wände, Decken und Fassaden – professionell gestrichen mit hochwertigen Farben.' },
