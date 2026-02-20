@@ -155,6 +155,61 @@ const MalerStadtteil = () => {
         </div>
       </section>
 
+      {/* Lokaler Kontext & Problembezug */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+            <div className="bg-gray-50 rounded-2xl p-8">
+              <div className="flex items-center gap-3 mb-4">
+                <AlertTriangle className="h-5 w-5 text-ocean-blue" />
+                <h3 className="text-lg font-bold text-gray-900">Typische Herausforderungen in {data.name}</h3>
+              </div>
+              <p className="text-sm text-gray-600 mb-4">{data.kontext}</p>
+              <ul className="space-y-2">
+                {data.probleme.map((p, i) => (
+                  <li key={i} className="flex items-center gap-2 text-sm text-gray-700">
+                    <CheckCircle className="h-4 w-4 text-ocean-blue flex-shrink-0" />{p}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-gray-50 rounded-2xl p-8">
+              <div className="flex items-center gap-3 mb-4">
+                <Users className="h-5 w-5 text-ocean-blue" />
+                <h3 className="text-lg font-bold text-gray-900">Wir arbeiten in {data.name} für</h3>
+              </div>
+              <ul className="space-y-3">
+                {data.kunden.map((k, i) => (
+                  <li key={i} className="flex items-center gap-2 text-sm text-gray-700">
+                    <CheckCircle className="h-4 w-4 text-ocean-blue flex-shrink-0" />{k}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leistung ↔ Ort Kreuzlinks */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h3 className="text-lg font-bold text-gray-900 mb-4 text-center">Unsere Leistungen in {data.name}</h3>
+            <div className="flex flex-wrap justify-center gap-2">
+              {kompetenzen.slice(0, 6).map(k => (
+                <Link
+                  key={k.slug}
+                  to={`/leistungen/${k.serviceSlug}`}
+                  className="text-xs bg-white border border-gray-200 hover:border-ocean-blue text-gray-600 hover:text-ocean-blue px-3 py-1.5 rounded-full transition-colors"
+                >
+                  {k.titel} in {data.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="py-16 bg-gray-50" data-testid="stadtteil-faq">
         <div className="container mx-auto px-4">
