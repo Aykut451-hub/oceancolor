@@ -111,3 +111,250 @@ code {
         @apply bg-[hsl(var(--ocean-blue-dark))];
     }
 }
+
+/* ============================================
+   PREMIUM ANIMATIONS & EFFECTS - Ocean Color
+   ============================================ */
+
+/* Scroll Reveal - Initial Hidden State */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered delays for children */
+.scroll-reveal-delay-1 { transition-delay: 100ms; }
+.scroll-reveal-delay-2 { transition-delay: 200ms; }
+.scroll-reveal-delay-3 { transition-delay: 300ms; }
+.scroll-reveal-delay-4 { transition-delay: 400ms; }
+
+/* Premium Card Hover Effects */
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 20px 40px -12px rgba(30, 50, 139, 0.15);
+    border-color: #1e328b;
+}
+
+.card-hover::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, transparent, rgba(30, 50, 139, 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.card-hover:hover::before {
+    opacity: 1;
+}
+
+/* Button Shine Effect */
+.btn-shine {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-shine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transform: skewX(-25deg);
+    transition: none;
+}
+
+.btn-shine:hover::after {
+    animation: shine 0.6s ease-out;
+}
+
+/* Button Tap/Bounce Effect */
+.btn-tap:active {
+    animation: tap 0.15s ease-out;
+}
+
+/* Selection Card - Interactive Chips */
+.selection-card {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: 2px solid #e5e7eb;
+    background: white;
+    overflow: hidden;
+}
+
+.selection-card:hover {
+    border-color: rgba(30, 50, 139, 0.4);
+    background: rgba(30, 50, 139, 0.02);
+}
+
+.selection-card.active {
+    border-color: #1e328b;
+    background: #1e328b;
+    color: white;
+    animation: pulse-glow 0.6s ease-out;
+}
+
+.selection-card.active .selection-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.selection-icon {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.25s ease;
+}
+
+/* Ripple Effect for Chips */
+.ripple-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(30, 50, 139, 0.3);
+    animation: ripple 0.6s ease-out;
+    pointer-events: none;
+}
+
+/* Count-Up Animation Glow */
+.count-up-glow {
+    animation: count-up-glow 0.8s ease-out;
+}
+
+/* Price Highlight Effect */
+.price-highlight {
+    position: relative;
+}
+
+.price-highlight::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(30, 50, 139, 0.1), rgba(30, 50, 139, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.price-highlight.glow::after {
+    opacity: 1;
+    animation: pulse-glow 0.8s ease-out;
+}
+
+/* Animated Progress Bar */
+.progress-animated {
+    position: relative;
+    background: #e5e7eb;
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+.progress-animated .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #1e328b, #2a45b0);
+    border-radius: 9999px;
+    transition: width 0.5s ease-out;
+}
+
+/* Live Summary Sticky */
+.sticky-summary {
+    position: sticky;
+    top: 120px;
+}
+
+/* Altbau Mode Badge */
+.altbau-badge {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border: 1px solid #f59e0b;
+    color: #92400e;
+}
+
+/* Chip Color Options */
+.chip-option {
+    position: relative;
+    padding: 12px 20px;
+    border-radius: 9999px;
+    border: 2px solid #e5e7eb;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-weight: 500;
+}
+
+.chip-option:hover {
+    border-color: rgba(30, 50, 139, 0.4);
+    transform: translateY(-2px);
+}
+
+.chip-option.active {
+    border-color: #1e328b;
+    background: #1e328b;
+    color: white;
+    box-shadow: 0 4px 12px rgba(30, 50, 139, 0.3);
+}
+
+/* Animated Counter */
+@keyframes counter-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.counter-animate {
+    display: inline-block;
+    animation: counter-pulse 0.3s ease-out;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .card-hover:hover {
+        transform: translateY(-2px) scale(1.005);
+    }
+    
+    .scroll-reveal {
+        transform: translateY(20px);
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .scroll-reveal,
+    .card-hover,
+    .btn-shine,
+    .selection-card,
+    .chip-option {
+        transition: none;
+        animation: none;
+    }
+    
+    .scroll-reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
