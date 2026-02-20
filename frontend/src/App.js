@@ -114,6 +114,16 @@ function App() {
             </>
           } />
 
+          {/* Zentrale Maler-Hamburg Seite */}
+          <Route path="/maler-hamburg" element={
+            <>
+              <Header />
+              <main><MalerHamburg /></main>
+              <Footer />
+              <CookieConsent />
+            </>
+          } />
+
           {/* SEO Stadtteil-Landingpages /maler-hamburg-[stadtteil] */}
           <Route path="/:page" element={<StadtteilRouter />} />
 
