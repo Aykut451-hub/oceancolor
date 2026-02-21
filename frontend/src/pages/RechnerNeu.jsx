@@ -318,6 +318,8 @@ const RechnerNeu = () => {
     wandflaeche: '',
     epoxidFlaeche: '',
     bodenFlaeche: '',
+    schimmelFlaeche: '',
+    anzahlTueren: '',
     raumhoehe: '',
     zustand: '',
     aktuellerBoden: '',
