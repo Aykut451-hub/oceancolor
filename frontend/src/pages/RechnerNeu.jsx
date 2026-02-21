@@ -770,8 +770,16 @@ const RechnerNeu = () => {
       return;
     } else {
       let prevStep = currentStep - 1;
-      if (prevStep === 8 && hasOnlyBodenarbeiten) prevStep = 7;
-      if (prevStep === 5 && hasOnlyBodenarbeiten) prevStep = 4;
+      // Skip Spachtel (Step 8) rückwärts
+      if (prevStep === 8 && !needsSpachtelQuestion) prevStep = 7;
+      // Skip Farbe (Step 7) rückwärts
+      if (prevStep === 7 && hasOnlySpecialLeistungen) prevStep = 6;
+      // Skip Zustand (Step 6) rückwärts bei nur Lackierung
+      if (prevStep === 6 && hasOnlySpecialLeistungen) prevStep = 5;
+      // Skip Raumhöhe (Step 5) rückwärts
+      if (prevStep === 5 && !needsRaumhoeheQuestion) prevStep = 4;
+      // Skip Größe (Step 4) rückwärts
+      if (prevStep === 4 && !needsGroessenFrage) prevStep = 3;
       setCurrentStep(prevStep);
     }
   };
