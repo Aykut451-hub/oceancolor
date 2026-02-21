@@ -227,6 +227,14 @@ const leistungenData = {
     heroText: 'Fachgerechte Schimmelbekämpfung für ein gesundes Raumklima',
     description: 'Schimmel stellt ein ernsthaftes Gesundheitsrisiko dar und sollte fachgerecht entfernt werden. Mögliche Folgen sind Atemwegsprobleme, Allergien und beeinträchtigte Raumluftqualität. Wir erkennen Ursachen frühzeitig und beseitigen Schimmel nachhaltig.',
     images: ['schimmel'],
+    beforeAfterSlider: {
+      title: 'Schimmelsanierung in der Praxis',
+      beforeImage: 'https://customer-assets.emergentagent.com/job_a8c20c05-0b9b-4f36-adbc-76387ff65258/artifacts/as08q6hv_befor.jpg',
+      afterImage: 'https://customer-assets.emergentagent.com/job_a8c20c05-0b9b-4f36-adbc-76387ff65258/artifacts/bg9ufax9_after.jpg',
+      beforeAlt: 'Schimmelbefall an Innenwand vor Sanierung in Hamburg',
+      afterAlt: 'Neu gestrichene Wand nach professioneller Schimmelsanierung in Hamburg',
+      description: 'Diese Wand war ursprünglich von Schimmel betroffen. Nach fachgerechter Sanierung wurde die Oberfläche neu aufgebaut und abschließend sauber gestrichen.\n\nDas Ergebnis ist eine dauerhaft geschützte und optisch einwandfreie Wand.'
+    },
     benefits: [
       'Fachgerechte Ursachenanalyse',
       'Professionelle Schimmelentfernung nach Richtlinien',
