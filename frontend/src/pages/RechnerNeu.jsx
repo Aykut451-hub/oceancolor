@@ -151,7 +151,7 @@ const Chip = ({ selected, onClick, children, icon: Icon }) => {
         ${isClicked ? 'scale-95' : ''}
       `}
       style={selected ? { 
-        boxShadow: '0 4px 12px rgba(30, 50, 139, 0.3)',
+        boxShadow: '0 4px 12px rgba(233, 30, 99, 0.3)',
         animation: 'selection-pulse 0.3s ease-out'
       } : {}}
     >
