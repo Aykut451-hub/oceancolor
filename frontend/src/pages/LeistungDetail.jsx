@@ -60,6 +60,7 @@ const leistungenData = {
     metaDescription: 'Professionelle Tapezierarbeiten in Hamburg. Von klassisch bis modern - wir verlegen alle Tapetenarten fachgerecht.',
     heroText: 'Von klassisch bis modern – perfekt tapeziert',
     description: 'Tapeten verleihen Räumen Charakter und Individualität. Ob elegante Vliestapete, klassische Raufaser oder exklusive Designtapete – wir tapezieren präzise und mit Liebe zum Detail.',
+    images: ['vlies'],
     benefits: [
       'Verarbeitung aller Tapetenarten',
       'Exakte Musteranpassung',
