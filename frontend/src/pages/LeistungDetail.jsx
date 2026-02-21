@@ -3,6 +3,9 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { ArrowRight, ArrowLeft, CheckCircle, Phone } from 'lucide-react';
+import { ServiceImage, GeoImageSection, ServiceGallery } from '../components/ServiceImage';
+import { leistungsbilder, getServiceBilder } from '../data/leistungsbilder';
+import { ScrollReveal } from '../hooks/useScrollReveal';
 
 // Detaillierte Leistungsdaten
 const leistungenData = {
