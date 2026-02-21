@@ -748,8 +748,12 @@ const RechnerNeu = () => {
         setLoading(false);
       } else {
         let nextStep = currentStep + 1;
+        // Skip Größe (Step 4) bei speziellen Leistungen (inkl. Lackierung)
+        if (nextStep === 4 && !needsGroessenFrage) nextStep = 5;
         // Skip Raumhöhe bei speziellen Leistungen
         if (nextStep === 5 && !needsRaumhoeheQuestion) nextStep = 6;
+        // Skip Zustand (Step 6) bei nur Lackierung
+        if (nextStep === 6 && hasOnlySpecialLeistungen) nextStep = 7;
         // Skip Farbe bei speziellen Leistungen
         if (nextStep === 7 && hasOnlySpecialLeistungen) nextStep = 8;
         // Skip Spachtel bei speziellen Leistungen
