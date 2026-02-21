@@ -62,41 +62,63 @@ const AnimatedPrice = ({ value, isGlowing }) => {
   );
 };
 
-// Selection Card Component
+// Selection Card Component with Click Animation
 const SelectionCard = ({ selected, onClick, icon: Icon, title, subtitle, large = false }) => {
+  const [isClicked, setIsClicked] = React.useState(false);
+  const [showCheck, setShowCheck] = React.useState(selected);
+
+  // Ripple effect on click
+  const handleClick = (e) => {
+    setIsClicked(true);
+    onClick(e);
+    
+    // Reset animation after completion
+    setTimeout(() => setIsClicked(false), 600);
+  };
+
+  // Animate checkmark when selected
+  React.useEffect(() => {
+    if (selected && !showCheck) {
+      setShowCheck(true);
+    } else if (!selected) {
+      setShowCheck(false);
+    }
+  }, [selected, showCheck]);
+
   return (
     <button
       type="button"
-      onClick={onClick}
+      onClick={handleClick}
       data-testid={`selection-${title.toLowerCase().replace(/\s+/g, '-')}`}
       className={`
-        relative w-full text-left rounded-xl transition-all duration-300
+        relative w-full text-left rounded-xl transition-all duration-300 click-ripple overflow-hidden
         ${large ? 'p-6' : 'p-4'}
         ${selected 
-          ? 'bg-[#1e328b] text-white border-2 border-[#1e328b] shadow-lg' 
-          : 'bg-white border-2 border-gray-200 hover:border-[#1e328b]/40 hover:bg-[#1e328b]/5'
+          ? 'bg-[#1e328b] text-white border-2 border-[#1e328b] shadow-lg selection-pulse' 
+          : 'bg-white border-2 border-gray-200 hover:border-[#1e328b]/40 hover:bg-[#1e328b]/5 hover:shadow-md'
         }
+        ${isClicked ? 'clicked' : ''}
       `}
-      style={selected ? { animation: 'pulse-glow 0.6s ease-out' } : {}}
+      style={selected ? { animation: 'selection-pulse 0.4s ease-out' } : {}}
     >
-      <div className={`flex ${large ? 'flex-col items-center text-center' : 'items-center'} gap-3`}>
+      <div className={`flex ${large ? 'flex-col items-center text-center' : 'items-center'} gap-3 relative z-10`}>
         {Icon && (
           <div className={`
             ${large ? 'w-16 h-16' : 'w-10 h-10'} 
-            rounded-lg flex items-center justify-center
-            ${selected ? 'bg-white/20' : 'bg-[#1e328b]/10'}
+            rounded-lg flex items-center justify-center transition-all duration-300
+            ${selected ? 'bg-white/20 scale-110' : 'bg-[#1e328b]/10'}
           `}>
-            <Icon className={`${large ? 'h-8 w-8' : 'h-5 w-5'} ${selected ? 'text-white' : 'text-[#1e328b]'}`} />
+            <Icon className={`${large ? 'h-8 w-8' : 'h-5 w-5'} ${selected ? 'text-white' : 'text-[#1e328b]'} transition-colors duration-300`} />
           </div>
         )}
         <div className="flex-1">
           <p className={`font-semibold ${large ? 'text-lg mt-2' : ''}`}>{title}</p>
           {subtitle && <p className={`text-sm mt-1 ${selected ? 'text-white/80' : 'text-gray-500'}`}>{subtitle}</p>}
         </div>
-        {selected && (
+        {showCheck && (
           <div className={`
             ${large ? 'absolute top-3 right-3' : ''} 
-            w-6 h-6 rounded-full bg-white flex items-center justify-center
+            w-6 h-6 rounded-full bg-white flex items-center justify-center check-pop
           `}>
             <Check className="h-4 w-4 text-[#1e328b]" />
           </div>
