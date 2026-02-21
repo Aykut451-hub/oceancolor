@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Building2, Clock, CheckCircle2, Users, Briefcase, Star } from 'lucide-react';
 import { references } from '../data/mock';
 import { ScrollReveal, useAnimatedCounter } from '../hooks/useScrollReveal';
+import { leistungsbilder } from '../data/leistungsbilder';
+import { ServiceImage } from '../components/ServiceImage';
 
 // Animated Stat Component
 const AnimatedStat = ({ end, suffix = '', label, icon: Icon }) => {
