@@ -1440,38 +1440,52 @@ const RechnerNeu = () => {
                     {/* Step 8: Spachtelstufe */}
                     {currentStep === 8 && (
                       <div className="space-y-6" data-testid="step-8">
-                        <div>
-                          <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                            Welche Spachtelstufe benötigen Sie?
-                          </h2>
-                          <p className="text-gray-600">Je höher die Stufe, desto glatter die Oberfläche</p>
-                        </div>
-                        <div className="space-y-3">
-                          <SelectionCard
-                            selected={formData.spachtelstufe === 'keine'}
-                            onClick={() => setFormData(prev => ({ ...prev, spachtelstufe: 'keine' }))}
-                            title="Keine"
-                            subtitle="Kein Spachteln erforderlich"
-                          />
-                          <SelectionCard
-                            selected={formData.spachtelstufe === 'q2'}
-                            onClick={() => setFormData(prev => ({ ...prev, spachtelstufe: 'q2' }))}
-                            title="Q2"
-                            subtitle="Standard für normale Räume"
-                          />
-                          <SelectionCard
-                            selected={formData.spachtelstufe === 'q3'}
-                            onClick={() => setFormData(prev => ({ ...prev, spachtelstufe: 'q3' }))}
-                            title="Q3"
-                            subtitle="Höhere Qualität, feinere Oberfläche"
-                          />
-                          <SelectionCard
-                            selected={formData.spachtelstufe === 'q4'}
-                            onClick={() => setFormData(prev => ({ ...prev, spachtelstufe: 'q4' }))}
-                            title="Q4"
-                            subtitle="Höchste Qualität, perfekt glatte Oberfläche"
-                          />
-                        </div>
+                        {needsSpachtelQuestion ? (
+                          <>
+                            <div>
+                              <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                                Welche Spachtelstufe benötigen Sie?
+                              </h2>
+                              <p className="text-gray-600">Je höher die Stufe, desto glatter die Oberfläche</p>
+                            </div>
+                            <div className="space-y-3">
+                              <SelectionCard
+                                selected={formData.spachtelstufe === 'keine'}
+                                onClick={() => setFormData(prev => ({ ...prev, spachtelstufe: 'keine' }))}
+                                title="Keine"
+                                subtitle="Kein Spachteln erforderlich"
+                              />
+                              <SelectionCard
+                                selected={formData.spachtelstufe === 'q2'}
+                                onClick={() => setFormData(prev => ({ ...prev, spachtelstufe: 'q2' }))}
+                                title="Q2 – Standard"
+                                subtitle="+6 €/m² netto"
+                              />
+                              <SelectionCard
+                                selected={formData.spachtelstufe === 'q3'}
+                                onClick={() => setFormData(prev => ({ ...prev, spachtelstufe: 'q3' }))}
+                                title="Q3 – Hochwertig"
+                                subtitle="+10 €/m² netto"
+                              />
+                              <SelectionCard
+                                selected={formData.spachtelstufe === 'q4'}
+                                onClick={() => setFormData(prev => ({ ...prev, spachtelstufe: 'q4' }))}
+                                title="Q4 – Premium (Glanz)"
+                                subtitle="+15 €/m² netto"
+                              />
+                            </div>
+                          </>
+                        ) : (
+                          <div className="p-6 bg-green-50 border-2 border-green-300 rounded-xl text-center">
+                            <CheckCircle className="h-12 w-12 text-green-600 mx-auto mb-4" />
+                            <h2 className="text-xl font-bold text-gray-900 mb-2">
+                              Keine Spachtelarbeiten erforderlich
+                            </h2>
+                            <p className="text-gray-600">
+                              Für die gewählten Leistungen sind keine Spachtelarbeiten nötig.
+                            </p>
+                          </div>
+                        )}
                       </div>
                     )}
 
@@ -1484,26 +1498,39 @@ const RechnerNeu = () => {
                           </h2>
                           <p className="text-gray-600">Optional – Mehrfachauswahl möglich</p>
                         </div>
-                        <div className="space-y-3">
-                          {zusatzoptionenOptions.map((option) => (
-                            <label
-                              key={option.id}
-                              className={`
-                                flex items-center space-x-3 border-2 rounded-xl p-4 cursor-pointer transition-all
-                                ${formData.zusatzoptionen.includes(option.id)
-                                  ? 'border-[#1e328b] bg-[#1e328b]/5'
-                                  : 'border-gray-200 hover:border-[#1e328b]/40'
-                                }
-                              `}
-                            >
-                              <Checkbox
-                                checked={formData.zusatzoptionen.includes(option.id)}
-                                onCheckedChange={() => handleZusatzoptionToggle(option.id)}
-                              />
-                              <span className="flex-1 font-medium">{option.label}</span>
-                            </label>
-                          ))}
-                        </div>
+                        {zusatzoptionenOptions.length > 0 ? (
+                          <div className="space-y-3">
+                            {zusatzoptionenOptions.map((option) => (
+                              <label
+                                key={option.id}
+                                className={`
+                                  flex items-center justify-between border-2 rounded-xl p-4 cursor-pointer transition-all
+                                  ${formData.zusatzoptionen.includes(option.id)
+                                    ? 'border-[#1e328b] bg-[#1e328b]/5'
+                                    : 'border-gray-200 hover:border-[#1e328b]/40'
+                                  }
+                                `}
+                              >
+                                <div className="flex items-center space-x-3">
+                                  <Checkbox
+                                    checked={formData.zusatzoptionen.includes(option.id)}
+                                    onCheckedChange={() => handleZusatzoptionToggle(option.id)}
+                                  />
+                                  <span className="font-medium">{option.label}</span>
+                                </div>
+                                {option.price && (
+                                  <span className="text-sm text-[#1e328b] font-semibold">
+                                    +{option.price} € netto
+                                  </span>
+                                )}
+                              </label>
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="p-4 bg-gray-50 rounded-xl text-center text-gray-600">
+                            Keine Zusatzleistungen für die gewählten Arbeiten verfügbar.
+                          </div>
+                        )}
                         <p className="text-sm text-gray-500 italic">
                           * Sie können auch ohne Zusatzoption fortfahren
                         </p>
