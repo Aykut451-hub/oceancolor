@@ -279,7 +279,7 @@ const LiveSummary = ({ formData, calculatedPrice, leistungenOptions, isAltbau })
 
         {/* Price Display */}
         <div className="mt-6 p-4 bg-gray-900 rounded-xl text-white text-center">
-          <p className="text-xs text-gray-400 mb-2">Geschätzte Preisspanne</p>
+          <p className="text-xs text-gray-400 mb-2">Geschätzte Preisspanne (netto)</p>
           <div className="text-2xl font-bold">
             {calculatedPrice ? (
               <>
@@ -291,11 +291,14 @@ const LiveSummary = ({ formData, calculatedPrice, leistungenOptions, isAltbau })
               <span className="text-gray-400">wird berechnet...</span>
             )}
           </div>
+          <p className="text-xs text-amber-400 mt-2 font-medium">
+            zzgl. 19% MwSt.
+          </p>
         </div>
 
         {/* CTA */}
         <p className="text-xs text-center text-gray-500 mt-4">
-          Unverbindliche Schätzung. Genauer Preis nach Besichtigung.
+          Alle Preise verstehen sich netto zzgl. gesetzlicher MwSt.
         </p>
       </div>
     </div>
