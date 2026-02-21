@@ -110,6 +110,25 @@ Modern website for painting company "Ocean Color" based in Hamburg, Germany. Pri
 - `check-pop` - Checkmark appearance animation
 - `skeleton-shimmer` - Loading placeholder
 
+### Vorher-Nachher Slider (February 2025)
+**Interactive before/after image comparison slider:**
+
+- **Location:** Homepage, nach "Warum Ocean Color?" Section
+- **Functionality:**
+  - Drag-to-reveal slider with vertical divider
+  - Touch support for mobile devices
+  - Auto-animation on first view (20% → 80% → 50%)
+  - Smooth cubic-bezier transitions
+  - Glow effect on slider handle hover/drag
+- **Design:**
+  - Rounded corners (2xl), shadow
+  - "Vorher" label (black) / "Nachher" label (blue)
+  - Slight brightness reduction on "before" side
+  - SEO-optimized GEO text below slider
+- **Files Created:**
+  - `/frontend/src/components/BeforeAfterSlider.jsx`
+  - `/frontend/src/components/BeforeAfterSection.jsx`
+
 ### Other Features
 - Floating contact bar (Phone, Instagram, WhatsApp)
 - IONOS SMTP email notifications
