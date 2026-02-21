@@ -144,8 +144,8 @@ code {
 .card-hover:hover {
     transform: translateY(-8px) scale(1.02) rotateX(2deg);
     box-shadow: 
-        0 25px 50px -15px rgba(233, 30, 99, 0.2),
-        0 10px 20px -10px rgba(233, 30, 99, 0.15);
+        0 25px 50px -15px rgba(30, 50, 139, 0.2),
+        0 10px 20px -10px rgba(30, 50, 139, 0.15);
     border-color: transparent;
 }
 
@@ -158,11 +158,11 @@ code {
     padding: 2px;
     background: linear-gradient(
         135deg, 
-        #E91E63 0%, 
-        #F06292 25%, 
-        #E91E63 50%, 
-        #F06292 75%, 
-        #E91E63 100%
+        #1e328b 0%, 
+        #4f6ef7 25%, 
+        #1e328b 50%, 
+        #4f6ef7 75%, 
+        #1e328b 100%
     );
     background-size: 300% 300%;
     opacity: 0;
@@ -192,7 +192,7 @@ code {
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: radial-gradient(circle at 50% 0%, rgba(233, 30, 99, 0.1), transparent 60%);
+    background: radial-gradient(circle at 50% 0%, rgba(30, 50, 139, 0.1), transparent 60%);
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
