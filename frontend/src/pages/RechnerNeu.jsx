@@ -23,6 +23,7 @@ import {
   Grid3X3
 } from 'lucide-react';
 import { toast } from 'sonner';
+import { leistungsbilder } from '../data/leistungsbilder';
 
 // Animated Price Component
 const AnimatedPrice = ({ value, isGlowing }) => {
