@@ -262,6 +262,9 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Vorher & Nachher Projekte */}
+      <BeforeAfterSection />
+
       {/* Google Bewertungen */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
