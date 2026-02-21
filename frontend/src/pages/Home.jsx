@@ -44,12 +44,12 @@ const Home = () => {
                 </div>
                 
                 <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                  Qualität, die man <span className="text-[#1e328b]">sieht</span> und <span className="text-[#1e328b]">spürt</span>
+                  Saubere Arbeit, <span className="text-[#1e328b]">die lange hält</span>
                 </h1>
                 
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Wir arbeiten mit festen Qualitätsstandards und planen jedes Projekt sorgfältig – 
-                  so erhalten Sie ein sauberes und langlebiges Ergebnis.
+                  Jedes Projekt wird sorgfältig geplant und mit festen Qualitätsstandards umgesetzt. 
+                  So entstehen Ergebnisse, die nicht nur gut aussehen, sondern auch dauerhaft überzeugen.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4">
