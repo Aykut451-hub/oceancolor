@@ -46,11 +46,10 @@ code {
         --chart-5: 27 87% 67%;
         --radius: 0.5rem;
         
-        /* Ocean Color Theme - Rosa */
-        --ocean-primary: #E91E63;
-        --ocean-primary-dark: #C2185B;
-        --ocean-primary-light: #F06292;
-        --ocean-accent: #F8BBD0;
+        /* Ocean Color Theme */
+        --ocean-blue: 197 71% 39%;
+        --ocean-blue-dark: 197 71% 29%;
+        --ocean-blue-light: 197 71% 89%;
     }
     .dark {
         --background: 0 0% 3.9%;
