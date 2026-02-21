@@ -15,7 +15,7 @@ const leistungenData = {
     metaDescription: 'Professionelle Wandgestaltung und Deckenanstriche in Hamburg. Hochwertige Farben, präzise Ausführung. Jetzt Angebot anfordern!',
     heroText: 'Professionelle Gestaltung von Innenwänden und Decken',
     description: 'Wände und Decken prägen maßgeblich die Atmosphäre eines Raumes. Mit unserer langjährigen Erfahrung sorgen wir für ein perfektes Finish, das Ihre Räume in neuem Glanz erstrahlen lässt.',
-    images: ['streichen'],
+    images: ['streichen', 'streichen2'],
     benefits: [
       'Hochwertige, langlebige Farben führender Hersteller',
       'Saubere Kanten und präzise Übergänge',
