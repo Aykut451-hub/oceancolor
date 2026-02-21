@@ -277,6 +277,20 @@ const LiveSummary = ({ formData, calculatedPrice, leistungenOptions, isAltbau })
           </div>
         )}
 
+        {/* Lackierung */}
+        {formData.lackierBauteile && formData.anzahlLackierElemente && (
+          <div className="flex justify-between items-center py-2 border-b border-gray-100">
+            <span className="text-gray-600 text-sm">Lackierung</span>
+            <span className="font-medium">
+              {formData.anzahlLackierElemente}x {
+                formData.lackierBauteile === 'tueren' ? 'Türen' :
+                formData.lackierBauteile === 'heizkoerper' ? 'Heizkörper' :
+                formData.lackierBauteile === 'fensterrahmen' ? 'Fensterrahmen' : 'Sonstiges'
+              }
+            </span>
+          </div>
+        )}
+
         {/* Price Display */}
         <div className="mt-6 p-4 bg-gray-900 rounded-xl text-white text-center">
           <p className="text-xs text-gray-400 mb-2">Geschätzte Preisspanne (netto)</p>
