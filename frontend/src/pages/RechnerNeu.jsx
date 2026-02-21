@@ -387,12 +387,12 @@ const RechnerNeu = () => {
     { id: 'epoxid', label: 'Epoxidharzbodenbeschichtung', icon: Layers }
   ];
 
-  // Lackier-Bauteile Optionen
+  // Lackier-Bauteile Optionen mit korrekten Preisen
   const lackierBauteileOptionen = [
     { id: 'tueren', label: 'Türen inkl. Zarge', price: 120 },
-    { id: 'heizkoerper', label: 'Heizkörper', price: 80 },
-    { id: 'fensterrahmen', label: 'Fensterrahmen', price: 60 },
-    { id: 'sonstiges', label: 'Sonstiges', price: 100 }
+    { id: 'heizkoerper', label: 'Heizkörper', price: 150 },
+    { id: 'fensterrahmen', label: 'Fensterrahmen', price: 15 },
+    { id: 'sonstiges', label: 'Sonstiges', price: null } // Auf Anfrage
   ];
 
   // Zusatzoptionen für Wandarbeiten
@@ -511,16 +511,18 @@ const RechnerNeu = () => {
     if (hasLackierung) {
       const anzahl = formData.anzahlLackierElemente ? parseInt(formData.anzahlLackierElemente) : 0;
       if (anzahl > 0) {
-        // Preis basierend auf Bauteil
+        // Preis basierend auf Bauteil - korrigierte Preise
         let einzelPreis = 120; // Standard: Türen inkl. Zarge
         switch (formData.lackierBauteile) {
           case 'tueren': einzelPreis = 120; break;
-          case 'heizkoerper': einzelPreis = 80; break;
-          case 'fensterrahmen': einzelPreis = 60; break;
-          case 'sonstiges': einzelPreis = 100; break;
+          case 'heizkoerper': einzelPreis = 150; break;
+          case 'fensterrahmen': einzelPreis = 15; break;
+          case 'sonstiges': einzelPreis = 0; break; // "Auf Anfrage" - kein Preis
           default: einzelPreis = 120;
         }
-        totalPrice += anzahl * einzelPreis;
+        if (einzelPreis > 0) {
+          totalPrice += anzahl * einzelPreis;
+        }
       }
     }
     
