@@ -5,7 +5,7 @@ export const leistungsbilder = {
   // Malerarbeiten / Wände & Decken
   streichen: {
     id: 'streichen',
-    url: 'https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/ud2ks07n_IMG_4934.JPG',
+    url: 'https://customer-assets.emergentagent.com/job_9b370f5a-896c-4094-95c9-7699c570f24e/artifacts/z8dl4gg8_Streichen.png',
     alt: 'Malerarbeiten in Hamburg – Ocean Color beim Streichen von Innenräumen',
     title: 'Professionelle Malerarbeiten',
     geoText: 'Unsere Malerarbeiten in Hamburg umfassen das fachgerechte Streichen von Wänden und Decken mit hochwertigen Farben für langlebige Ergebnisse.',
