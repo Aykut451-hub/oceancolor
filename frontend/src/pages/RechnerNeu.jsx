@@ -688,20 +688,6 @@ const RechnerNeu = () => {
         return true;
     }
   };
-        return true;
-      case 8:
-        if (hasOnlyBodenarbeiten) return true;
-        if (!formData.spachtelstufe) {
-          toast.error('Bitte wählen Sie eine Spachtelstufe');
-          return false;
-        }
-        return true;
-      case 9:
-        return true;
-      default:
-        return true;
-    }
-  };
 
   const handleNext = async () => {
     if (validateStep(currentStep)) {
@@ -713,8 +699,12 @@ const RechnerNeu = () => {
         setLoading(false);
       } else {
         let nextStep = currentStep + 1;
-        if (nextStep === 5 && hasOnlyBodenarbeiten) nextStep = 6;
-        if (nextStep === 8 && hasOnlyBodenarbeiten) nextStep = 9;
+        // Skip Raumhöhe bei speziellen Leistungen
+        if (nextStep === 5 && !needsRaumhoeheQuestion) nextStep = 6;
+        // Skip Farbe bei speziellen Leistungen
+        if (nextStep === 7 && hasOnlySpecialLeistungen) nextStep = 8;
+        // Skip Spachtel bei speziellen Leistungen
+        if (nextStep === 8 && !needsSpachtelQuestion) nextStep = 9;
         setCurrentStep(nextStep);
       }
     }
