@@ -179,7 +179,7 @@ const ProgressBar = ({ currentStep, totalSteps }) => {
           className="h-full rounded-full transition-all duration-500 ease-out"
           style={{ 
             width: `${progress}%`,
-            background: 'linear-gradient(90deg, #E91E63, #2a45b0)'
+            background: 'linear-gradient(90deg, #E91E63, #F06292)'
           }}
         />
       </div>
@@ -203,7 +203,7 @@ const LiveSummary = ({ formData, calculatedPrice, leistungenOptions, isAltbau })
   return (
     <div className="sticky-summary bg-white rounded-2xl border-2 border-gray-100 shadow-xl overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#E91E63] to-[#2a45b0] p-6 text-white">
+      <div className="bg-gradient-to-r from-[#E91E63] to-[#F06292] p-6 text-white">
         <h3 className="text-lg font-bold mb-1">Live-Zusammenfassung</h3>
         <p className="text-white/80 text-sm">Ihre aktuelle Auswahl</p>
       </div>
@@ -712,7 +712,7 @@ const RechnerNeu = () => {
                 {/* Form Column */}
                 <div className="lg:col-span-3">
                   <Card className="border-2 shadow-xl overflow-hidden">
-                    <div className="bg-gradient-to-r from-[#E91E63] to-[#2a45b0] p-6 text-white">
+                    <div className="bg-gradient-to-r from-[#E91E63] to-[#F06292] p-6 text-white">
                       <h2 className="text-2xl font-bold">Rückruf anfordern</h2>
                       <p className="text-white/80 mt-1">Wir melden uns zeitnah bei Ihnen</p>
                     </div>
