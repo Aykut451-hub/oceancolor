@@ -544,43 +544,6 @@ const RechnerNeu = () => {
     
     return { min, max };
   }, [formData, isAltbau, hasWaendeDecken, hasSpachteln, hasTapezieren, hasLackierung, hasSchimmel, hasVinylboden, hasEpoxid, hasStandardWandarbeiten]);
-    } else if (formData.wandflaeche) {
-      area = parseFloat(formData.wandflaeche);
-    }
-
-    // Add floor areas if applicable
-    if (formData.bodenFlaeche) area += parseFloat(formData.bodenFlaeche);
-    if (formData.epoxidFlaeche) area += parseFloat(formData.epoxidFlaeche);
-
-    if (area === 0) area = 50; // Default estimate
-
-    // Calculate base price from services
-    formData.leistungen.forEach(service => {
-      if (servicePrices[service]) {
-        baseMin += servicePrices[service].min;
-        baseMax += servicePrices[service].max;
-      }
-    });
-
-    let min = area * (baseMin / formData.leistungen.length);
-    let max = area * (baseMax / formData.leistungen.length);
-
-    // Altbau surcharge
-    if (isAltbau) {
-      min *= 1.2;
-      max *= 1.3;
-    }
-
-    // Additional options surcharge
-    const additionalCost = formData.zusatzoptionen.length * 150;
-    min += additionalCost;
-    max += additionalCost;
-
-    return {
-      min: Math.round(min / 50) * 50,
-      max: Math.round(max / 50) * 50
-    };
-  }, [formData, isAltbau]);
 
   // Update live price when form changes
   useEffect(() => {
