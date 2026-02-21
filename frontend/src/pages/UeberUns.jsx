@@ -54,39 +54,65 @@ const UeberUns = () => {
         </div>
       </section>
 
-      {/* Story Section */}
-      <section className="py-16">
+      {/* Story Section - Wer wir sind */}
+      <section className="py-16 lg:py-20">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          <div 
+            ref={storyRef}
+            className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-6xl mx-auto"
+          >
+            {/* Text Content - Left side on desktop, top on mobile */}
+            <div 
+              className={`
+                transition-all duration-700 ease-out
+                ${storyVisible 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-8'
+                }
+              `}
+            >
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8">
                 Wer wir sind
               </h2>
-              <div className="space-y-4 text-gray-600">
-                <p>
-                  Ocean Color ist Ihr Malermeisterbetrieb in Hamburg mit über 17 Jahren 
-                  Erfahrung in hochwertigen Maler- und Renovierungsarbeiten.
+              <div className="space-y-5 text-gray-600 text-left leading-relaxed">
+                <p className="text-base lg:text-lg">
+                  Ocean Color ist ein Malermeisterbetrieb aus Hamburg mit langjähriger Erfahrung 
+                  in der hochwertigen Renovierung von Wohn- und Gewerbeobjekten.
                 </p>
-                <p>
-                  Als Meisterbetrieb mit Sitz im Herzen Hamburgs stehen wir für saubere 
-                  Ausführung, strukturierte Abläufe und langlebige Ergebnisse.
+                <p className="text-base lg:text-lg">
+                  Unser Fokus liegt auf sauberer Ausführung, klaren Abläufen und einem Ergebnis, 
+                  das auch nach Jahren überzeugt.
                 </p>
-                <p>
-                  Wir begleiten Sie von der ersten Idee bis zur finalen Umsetzung – mit 
-                  persönlicher Beratung, modernen Materialien und handwerklicher Präzision.
+                <p className="text-base lg:text-lg">
+                  Von der ersten Planung bis zur fertigen Umsetzung begleiten wir unsere Kunden 
+                  persönlich und sorgen dafür, dass aus einer Idee ein stimmiges Raumkonzept wird.
                 </p>
-                <p className="font-semibold text-gray-800 italic">
-                  Unser Anspruch: Nicht nur streichen, sondern Räume sichtbar aufwerten.
+                <p className="text-base lg:text-lg font-medium text-gray-800">
+                  Unser Anspruch geht über das reine Streichen hinaus. Räume sollen an Wirkung 
+                  gewinnen und dauerhaft aufgewertet werden.
                 </p>
               </div>
             </div>
 
-            <div className="relative">
-              <img
-                src="https://images.unsplash.com/photo-1574359411659-15573a27fd0c"
-                alt="Ocean Color Team"
-                className="rounded-2xl shadow-2xl w-full h-[500px] object-cover"
-              />
+            {/* Image - Right side on desktop, bottom on mobile */}
+            <div 
+              className={`
+                order-last lg:order-none
+                transition-all duration-700 ease-out delay-200
+                ${storyVisible 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-8'
+                }
+              `}
+            >
+              <div className="relative">
+                <img
+                  src="https://customer-assets.emergentagent.com/job_be2880d1-e56b-4734-b160-1f2e43777142/artifacts/tu38e0rk_Wir.png"
+                  alt="Ocean Color Malermeister bei der Kundenberatung - Qualitätsprüfung einer hochwertigen Wandgestaltung"
+                  className="w-full h-auto rounded-xl shadow-lg object-contain"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         </div>
