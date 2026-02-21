@@ -391,6 +391,43 @@ const LeistungDetail = () => {
               </ScrollReveal>
             )}
 
+            {/* Before/After Slider Section */}
+            {leistung.beforeAfterSlider && (
+              <ScrollReveal className="mb-12">
+                <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-3xl p-6 md:p-10">
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+                    {leistung.beforeAfterSlider.title}
+                  </h2>
+                  
+                  <div className="max-w-2xl mx-auto">
+                    <BeforeAfterSlider
+                      beforeImage={leistung.beforeAfterSlider.beforeImage}
+                      afterImage={leistung.beforeAfterSlider.afterImage}
+                      beforeAlt={leistung.beforeAfterSlider.beforeAlt}
+                      afterAlt={leistung.beforeAfterSlider.afterAlt}
+                      beforeLabel="Vorher"
+                      afterLabel="Nachher"
+                    />
+                    
+                    {leistung.beforeAfterSlider.description && (
+                      <div className="mt-8 text-center">
+                        {leistung.beforeAfterSlider.description.split('\n\n').map((paragraph, idx) => (
+                          <p key={idx} className="text-gray-700 leading-relaxed mb-4 last:mb-0">
+                            {paragraph}
+                          </p>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* SEO GEO Text */}
+                  <p className="mt-6 text-center text-sm text-gray-500 italic">
+                    Ocean Color – Professionelle Schimmelsanierung in Hamburg und Umgebung
+                  </p>
+                </div>
+              </ScrollReveal>
+            )}
+
             <div className="grid md:grid-cols-2 gap-8">
               {/* Vorteile */}
               <Card className="border-2 border-gray-100">
