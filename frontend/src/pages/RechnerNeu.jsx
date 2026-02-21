@@ -812,19 +812,50 @@ const RechnerNeu = () => {
   // Main Calculator UI with 2-Column Layout
   return (
     <div className="min-h-screen pt-24 pb-20">
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-blue-50 via-white to-cyan-50 py-10">
+      {/* Hero with Messen Image */}
+      <section className="bg-gradient-to-br from-blue-50 via-white to-cyan-50 py-10 relative overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-[#1e328b]/10 rounded-full mb-4">
-              <Calculator className="h-8 w-8 text-[#1e328b]" />
+          <div className="grid lg:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
+            {/* Text Content */}
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-[#1e328b]/10 rounded-full mb-4">
+                <Calculator className="h-8 w-8 text-[#1e328b]" />
+              </div>
+              <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
+                Angebotsrechner
+              </h1>
+              <p className="text-gray-600 mb-4">
+                In wenigen Schritten zu Ihrer unverbindlichen Preisspanne
+              </p>
+              {/* GEO Text for AI visibility */}
+              <p className="text-sm text-gray-500 italic hidden lg:block">
+                {leistungsbilder.messen?.geoText}
+              </p>
             </div>
-            <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
-              Angebotsrechner
-            </h1>
-            <p className="text-gray-600">
-              In wenigen Schritten zu Ihrer unverbindlichen Preisspanne
-            </p>
+            
+            {/* Messen Image with Hover Effect */}
+            {leistungsbilder.messen?.url && (
+              <div className="hidden lg:block">
+                <figure 
+                  className="relative overflow-hidden rounded-2xl shadow-xl group"
+                  itemScope
+                  itemType="https://schema.org/ImageObject"
+                >
+                  <img
+                    src={leistungsbilder.messen.url}
+                    alt={leistungsbilder.messen.alt}
+                    title={leistungsbilder.messen.title}
+                    loading="eager"
+                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                    itemProp="contentUrl"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                    <p className="text-white font-medium">{leistungsbilder.messen.title}</p>
+                  </div>
+                  <meta itemProp="description" content={leistungsbilder.messen.alt} />
+                </figure>
+              </div>
+            )}
           </div>
         </div>
       </section>
