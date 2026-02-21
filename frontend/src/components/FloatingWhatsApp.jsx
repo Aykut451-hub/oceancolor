@@ -11,7 +11,7 @@ const FloatingContactBar = () => {
       {/* Telefon */}
       <a
         href="tel:+4915120050008"
-        className="bg-ocean-primary hover:bg-ocean-primary-dark text-white rounded-full p-3.5 shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300"
+        className="bg-[hsl(197,71%,32%)] hover:bg-[hsl(197,71%,25%)] text-white rounded-full p-3.5 shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300"
         aria-label="Anrufen"
         data-testid="floating-phone-button"
       >
