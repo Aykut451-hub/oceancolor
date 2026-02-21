@@ -36,6 +36,8 @@ const useScrollReveal = (threshold = 0.2) => {
 };
 
 const UeberUns = () => {
+  const [storyRef, storyVisible] = useScrollReveal(0.15);
+  
   return (
     <div className="min-h-screen pt-24 pb-20">
       {/* Hero */}
