@@ -71,75 +71,8 @@ const Referenzen = () => {
         </div>
       </section>
 
-      {/* Featured Projects */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <ScrollReveal>
-              <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  Ausgewählte Projekte
-                </h2>
-                <p className="text-gray-600 max-w-2xl mx-auto">
-                  Hier finden Sie eine Auswahl unserer größten und bedeutendsten Projekte.
-                </p>
-              </div>
-            </ScrollReveal>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {featuredReferences.slice(0, 4).map((reference, index) => (
-                <ScrollReveal key={reference.id} delay={index * 150}>
-                  <Card className="group overflow-hidden border-2 bg-white card-hover h-full">
-                    <div className="relative h-56 overflow-hidden">
-                      <img
-                        src={reference.image}
-                        alt={reference.company}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <Badge className="bg-white/95 text-[#1e328b] mb-2">
-                          {reference.category}
-                        </Badge>
-                        <h3 className="text-xl font-bold text-white">
-                          {reference.company}
-                        </h3>
-                      </div>
-                    </div>
-                    <CardContent className="p-6">
-                      <h4 className="font-semibold text-gray-900 mb-2">
-                        {reference.title}
-                      </h4>
-                      <p className="text-gray-600 text-sm mb-4">
-                        {reference.description}
-                      </p>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {reference.services.slice(0, 3).map((service, idx) => (
-                          <Badge key={idx} variant="outline" className="text-xs">
-                            {service}
-                          </Badge>
-                        ))}
-                        {reference.services.length > 3 && (
-                          <Badge variant="outline" className="text-xs">
-                            +{reference.services.length - 3} weitere
-                          </Badge>
-                        )}
-                      </div>
-                      <div className="flex items-center text-sm text-gray-500">
-                        <Clock className="h-4 w-4 mr-1" />
-                        {reference.duration}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </ScrollReveal>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* All References with Filter */}
-      <section className="py-16">
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <ScrollReveal>
