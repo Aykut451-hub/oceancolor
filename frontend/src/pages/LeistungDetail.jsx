@@ -526,6 +526,64 @@ const LeistungDetail = () => {
         </section>
       )}
 
+      {/* Rivedil Premium Sektion */}
+      {leistung.rivedilSection && (
+        <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                {/* Text Content - Links auf Desktop, oben auf Mobile */}
+                <div className="order-1">
+                  <div className="inline-block bg-ocean-blue/10 text-ocean-blue px-4 py-1.5 rounded-full text-sm font-medium mb-6">
+                    Premium Partner
+                  </div>
+                  <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8">
+                    {leistung.rivedilSection.title}
+                  </h2>
+                  <div className="space-y-4 text-gray-700 leading-relaxed">
+                    {leistung.rivedilSection.paragraphs.map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
+                  </div>
+                  <a 
+                    href={leistung.rivedilSection.buttonLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block mt-8"
+                  >
+                    <Button 
+                      size="lg"
+                      className="bg-ocean-blue hover:bg-ocean-blue-dark text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                    >
+                      {leistung.rivedilSection.buttonText}
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </a>
+                </div>
+
+                {/* Bild - Rechts auf Desktop, unten auf Mobile */}
+                <div className="order-2">
+                  <div className="relative group">
+                    <div className="absolute -inset-4 bg-gradient-to-r from-ocean-blue/20 to-cyan-500/20 rounded-2xl blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                    <img
+                      src="https://images.unsplash.com/photo-1730322046135-a754d71b7ec0?auto=format&fit=crop&w=800&q=80"
+                      alt="Dekorative Wandgestaltung mit Rivedil - Premium Oberflächendesign"
+                      className="relative w-full h-auto rounded-xl shadow-2xl object-cover aspect-[4/3]"
+                      loading="lazy"
+                    />
+                    <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-4 shadow-lg">
+                      <p className="text-sm text-gray-600 font-medium">
+                        Rivedil Oberflächensysteme – Made in Italy
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* CTA Section */}
       <section className="py-16 bg-ocean-blue-dark">
         <div className="container mx-auto px-4">
