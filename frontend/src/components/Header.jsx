@@ -59,7 +59,7 @@ const Header = () => {
               >
                 {link.name}
                 {location.pathname === link.path && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-ocean-blue rounded-full" />
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-ocean-primary rounded-full" />
                 )}
               </Link>
             ))}
@@ -69,13 +69,13 @@ const Header = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <a 
               href="tel:04018008888" 
-              className="flex items-center text-sm text-gray-600 hover:text-ocean-blue transition-colors"
+              className="flex items-center text-sm text-gray-600 hover:text-ocean-primary transition-colors"
             >
               <Phone className="h-4 w-4 mr-2" />
               <span className="text-xs">040 1800 8888</span>
             </a>
             <Link to="/kontakt">
-              <Button className="bg-ocean-blue hover:bg-ocean-blue-dark text-white">
+              <Button className="bg-ocean-primary hover:bg-ocean-primary-dark text-white">
                 Rückruf anfordern
               </Button>
             </Link>
@@ -84,7 +84,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-gray-700 hover:text-ocean-blue transition-colors"
+            className="lg:hidden p-2 text-gray-700 hover:text-ocean-primary transition-colors"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -101,8 +101,8 @@ const Header = () => {
                   onClick={() => setIsOpen(false)}
                   className={`block px-4 py-3 text-base font-medium rounded-lg transition-all duration-200 ${
                     location.pathname === link.path
-                      ? 'text-ocean-blue bg-ocean-blue/10 border-l-4 border-ocean-blue'
-                      : 'text-gray-700 hover:text-ocean-blue hover:bg-gray-50'
+                      ? 'text-ocean-primary bg-ocean-primary/10 border-l-4 border-ocean-primary'
+                      : 'text-gray-700 hover:text-ocean-primary hover:bg-gray-50'
                   }`}
                 >
                   {link.name}
@@ -112,13 +112,13 @@ const Header = () => {
             <div className="mt-6 pt-4 border-t space-y-3">
               <a 
                 href="tel:04018008888" 
-                className="flex items-center px-4 py-2 text-sm text-gray-600 hover:text-ocean-blue transition-colors"
+                className="flex items-center px-4 py-2 text-sm text-gray-600 hover:text-ocean-primary transition-colors"
               >
                 <Phone className="h-4 w-4 mr-2" />
                 040 1800 8888
               </a>
               <Link to="/kontakt" onClick={() => setIsOpen(false)} className="block px-4">
-                <Button className="w-full bg-ocean-blue hover:bg-ocean-blue-dark text-white">
+                <Button className="w-full bg-ocean-primary hover:bg-ocean-primary-dark text-white">
                   Rückruf anfordern
                 </Button>
               </Link>
