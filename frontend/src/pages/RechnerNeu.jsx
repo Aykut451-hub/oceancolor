@@ -1365,25 +1365,25 @@ const RechnerNeu = () => {
                               </h2>
                               <p className="text-gray-600">Wählen Sie die gewünschte Tapetenart</p>
                             </div>
-                            <div className="flex flex-wrap gap-3">
-                              <Chip
-                                selected={formData.tapetenArt === 'mustertapete'}
-                                onClick={() => setFormData(prev => ({ ...prev, tapetenArt: 'mustertapete' }))}
-                              >
-                                Mustertapete
-                              </Chip>
-                              <Chip
+                            <div className="space-y-3">
+                              <SelectionCard
                                 selected={formData.tapetenArt === 'raufaser'}
                                 onClick={() => setFormData(prev => ({ ...prev, tapetenArt: 'raufaser' }))}
-                              >
-                                Raufaser
-                              </Chip>
-                              <Chip
+                                title="Raufaser"
+                                subtitle="14 €/m² netto"
+                              />
+                              <SelectionCard
                                 selected={formData.tapetenArt === 'glattvlies'}
                                 onClick={() => setFormData(prev => ({ ...prev, tapetenArt: 'glattvlies' }))}
-                              >
-                                Glattvlies
-                              </Chip>
+                                title="Glattvlies"
+                                subtitle="18 €/m² netto"
+                              />
+                              <SelectionCard
+                                selected={formData.tapetenArt === 'mustertapete'}
+                                onClick={() => setFormData(prev => ({ ...prev, tapetenArt: 'mustertapete' }))}
+                                title="Mustertapete"
+                                subtitle="22 €/m² netto"
+                              />
                             </div>
                           </div>
                         )}
@@ -1393,49 +1393,44 @@ const RechnerNeu = () => {
                           <div className="space-y-4">
                             <div>
                               <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                                {hasTapezieren ? 'Welche Farbgebung für die Streicharbeiten?' : 'Welche Farbgebung wünschen Sie?'}
+                                {hasTapezieren ? 'Welche Farbgebung für die Wände?' : 'Welche Farbgebung wünschen Sie?'}
                               </h2>
                               <p className="text-gray-600">Wählen Sie Ihre bevorzugte Option</p>
                             </div>
-                            <div className="flex flex-wrap gap-3">
-                              <Chip
+                            <div className="space-y-3">
+                              <SelectionCard
                                 selected={formData.farbe === 'weiss'}
                                 onClick={() => setFormData(prev => ({ ...prev, farbe: 'weiss' }))}
-                              >
-                                Weiß
-                              </Chip>
-                              <Chip
-                                selected={formData.farbe === 'bunt'}
-                                onClick={() => setFormData(prev => ({ ...prev, farbe: 'bunt' }))}
-                              >
-                                Bunt / Farbig
-                              </Chip>
+                                title="Weiß"
+                                subtitle="8,10 €/m² netto"
+                              />
+                              <SelectionCard
+                                selected={formData.farbe === 'farbig'}
+                                onClick={() => setFormData(prev => ({ ...prev, farbe: 'farbig' }))}
+                                title="Farbig"
+                                subtitle="10,60 €/m² netto (+2,50 €)"
+                              />
+                              <SelectionCard
+                                selected={formData.farbe === 'premium'}
+                                onClick={() => setFormData(prev => ({ ...prev, farbe: 'premium' }))}
+                                title="Premium (abwaschbar)"
+                                subtitle="12,10 €/m² netto (+4 €)"
+                              />
                             </div>
                           </div>
                         )}
 
-                        {/* Bodenoptik */}
-                        {hasOnlyBodenarbeiten && (
+                        {/* Nur spezielle Leistungen - Skip Message */}
+                        {hasOnlySpecialLeistungen && (
                           <div className="space-y-4">
-                            <div>
-                              <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                                Welche Optik wünschen Sie?
+                            <div className="p-6 bg-green-50 border-2 border-green-300 rounded-xl text-center">
+                              <CheckCircle className="h-12 w-12 text-green-600 mx-auto mb-4" />
+                              <h2 className="text-xl font-bold text-gray-900 mb-2">
+                                Keine Farbauswahl erforderlich
                               </h2>
-                              <p className="text-gray-600">Wählen Sie Ihre bevorzugte Option</p>
-                            </div>
-                            <div className="flex flex-wrap gap-3">
-                              <Chip
-                                selected={formData.farbe === 'schlicht'}
-                                onClick={() => setFormData(prev => ({ ...prev, farbe: 'schlicht' }))}
-                              >
-                                Schlicht
-                              </Chip>
-                              <Chip
-                                selected={formData.farbe === 'farbig'}
-                                onClick={() => setFormData(prev => ({ ...prev, farbe: 'farbig' }))}
-                              >
-                                Farbig
-                              </Chip>
+                              <p className="text-gray-600">
+                                Für die gewählten Leistungen ist keine separate Farbauswahl nötig.
+                              </p>
                             </div>
                           </div>
                         )}
