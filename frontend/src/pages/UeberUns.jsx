@@ -107,7 +107,7 @@ const UeberUns = () => {
             >
               <div className="relative">
                 <img
-                  src="https://customer-assets.emergentagent.com/job_be2880d1-e56b-4734-b160-1f2e43777142/artifacts/tu38e0rk_Wir.png"
+                  src="https://customer-assets.emergentagent.com/job_be2880d1-e56b-4734-b160-1f2e43777142/artifacts/pnztz1sb_Wir.png"
                   alt="Ocean Color Malermeister bei der Kundenberatung - Qualitätsprüfung einer hochwertigen Wandgestaltung"
                   className="w-full h-auto rounded-xl shadow-lg object-contain"
                   loading="lazy"
