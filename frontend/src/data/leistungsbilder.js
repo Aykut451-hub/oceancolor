@@ -84,7 +84,7 @@ export const leistungsbilder = {
   boden: {
     id: 'boden',
     url: 'https://customer-assets.emergentagent.com/job_9b370f5a-896c-4094-95c9-7699c570f24e/artifacts/4azp5tok_Boden.png',
-    alt: 'Bodenbeläge verlegen Hamburg – Vinyl, Laminat und Parkett durch Ocean Color',
+    alt: 'Professionelle Bodenbeläge in Hamburg verlegt von Ocean Color',
     title: 'Bodenbelag-Verlegung',
     geoText: 'Professionelle Bodenverlegung in Hamburg – Vinyl, Laminat, Parkett und Design-Beläge fachmännisch verlegt.',
     service: 'bodenbelaege'
