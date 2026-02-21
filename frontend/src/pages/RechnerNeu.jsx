@@ -128,24 +128,36 @@ const SelectionCard = ({ selected, onClick, icon: Icon, title, subtitle, large =
   );
 };
 
-// Chip Component for options
+// Chip Component for options with click animation
 const Chip = ({ selected, onClick, children, icon: Icon }) => {
+  const [isClicked, setIsClicked] = React.useState(false);
+
+  const handleClick = (e) => {
+    setIsClicked(true);
+    onClick(e);
+    setTimeout(() => setIsClicked(false), 400);
+  };
+
   return (
     <button
       type="button"
-      onClick={onClick}
+      onClick={handleClick}
       className={`
-        relative px-4 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2
+        relative px-4 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 overflow-hidden
         ${selected 
           ? 'bg-[#1e328b] text-white shadow-md scale-105' 
-          : 'bg-white border-2 border-gray-200 text-gray-700 hover:border-[#1e328b]/40 hover:translate-y-[-2px]'
+          : 'bg-white border-2 border-gray-200 text-gray-700 hover:border-[#1e328b]/40 hover:translate-y-[-2px] hover:shadow-sm'
         }
+        ${isClicked ? 'scale-95' : ''}
       `}
-      style={selected ? { boxShadow: '0 4px 12px rgba(30, 50, 139, 0.3)' } : {}}
+      style={selected ? { 
+        boxShadow: '0 4px 12px rgba(30, 50, 139, 0.3)',
+        animation: 'selection-pulse 0.3s ease-out'
+      } : {}}
     >
-      {Icon && <Icon className={`h-4 w-4 ${selected ? 'text-white' : 'text-[#1e328b]'}`} />}
+      {Icon && <Icon className={`h-4 w-4 ${selected ? 'text-white' : 'text-[#1e328b]'} transition-colors duration-200`} />}
       {children}
-      {selected && <Check className="h-4 w-4 ml-1" />}
+      {selected && <Check className="h-4 w-4 ml-1 check-pop" />}
     </button>
   );
 };
