@@ -128,6 +128,7 @@ const leistungenData = {
     metaDescription: 'Professionelle Fassadensanierung in Hamburg. Außenanstriche, Fassadenrenovierung und Betonschutz vom Fachmann.',
     heroText: 'Langfristiger Schutz und moderne Optik für Ihre Fassade',
     description: 'Eine professionell ausgeführte Fassade schützt das Gebäude langfristig vor Witterungseinflüssen und trägt entscheidend zur Optik bei. Wir bieten umfassende Lösungen für Außenputz, Fassadenanstriche und individuelle Farbgestaltung.',
+    images: ['fassade'],
     benefits: [
       'Langfristiger Schutz vor Witterungseinflüssen',
       'Wertsteigerung der Immobilie',
