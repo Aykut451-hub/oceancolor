@@ -192,7 +192,7 @@ const leistungenData = {
     metaDescription: 'Professionelle Bodenverlegung in Hamburg. Laminat, Vinyl, PVC, Teppich und Bodenbeschichtungen vom Malermeister.',
     heroText: 'Perfekte Böden für Ihr Zuhause und Gewerbe',
     description: 'Ein Boden prägt maßgeblich die Wirkung eines Raumes. Material, Struktur und Oberfläche entscheiden über Atmosphäre, Funktionalität und Langlebigkeit. Wir beraten Sie umfassend bei der Auswahl des passenden Bodenbelags und bieten eine Vielzahl an Lösungen für private und gewerbliche Räume.',
-    images: ['boden', 'epoxi'],
+    images: ['boden'],
     benefits: [
       'Umfassende Beratung bei der Materialauswahl',
       'Fachgerechte Verlegung aller Bodenarten',
