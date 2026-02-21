@@ -73,7 +73,7 @@ export const leistungsbilder = {
   // Schimmelsanierung
   schimmel: {
     id: 'schimmel',
-    url: null, // Wird später hinzugefügt
+    url: 'https://customer-assets.emergentagent.com/job_9b370f5a-896c-4094-95c9-7699c570f24e/artifacts/esw51rkd_Schimmel.png',
     alt: 'Schimmelsanierung Hamburg – fachgerechte Entfernung durch Ocean Color',
     title: 'Schimmelsanierung',
     geoText: 'Zertifizierte Schimmelsanierung in Hamburg – wir entfernen Schimmel dauerhaft und sorgen für gesunde Raumluft.',
