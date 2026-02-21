@@ -346,6 +346,35 @@ const LeistungDetail = () => {
               {leistung.description}
             </p>
 
+            {/* Service Images with Hover Effects */}
+            {leistung.images && leistung.images.length > 0 && (
+              <ScrollReveal className="mb-12">
+                <div className="grid md:grid-cols-2 gap-6">
+                  {leistung.images.map((imageId) => {
+                    const image = leistungsbilder[imageId];
+                    if (!image?.url) return null;
+                    return (
+                      <ServiceImage
+                        key={imageId}
+                        src={image.url}
+                        alt={image.alt}
+                        title={image.title}
+                        geoText={image.geoText}
+                        aspectRatio="4/3"
+                        priority={true}
+                      />
+                    );
+                  })}
+                </div>
+                {/* GEO Text for AI visibility */}
+                {leistung.images[0] && leistungsbilder[leistung.images[0]]?.geoText && (
+                  <p className="mt-6 text-gray-600 text-sm italic border-l-4 border-[#1e328b] pl-4">
+                    {leistungsbilder[leistung.images[0]].geoText}
+                  </p>
+                )}
+              </ScrollReveal>
+            )}
+
             <div className="grid md:grid-cols-2 gap-8">
               {/* Vorteile */}
               <Card className="border-2 border-gray-100">
