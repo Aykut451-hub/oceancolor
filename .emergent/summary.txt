@@ -1,55 +1,51 @@
 <analysis>**original_problem_statement:**
-The user wants to build a modern website for their painting company, Ocean Color, based in Hamburg, Germany. The primary goals are to generate qualified leads through an interactive price calculator and to encourage users to request a callback rather than calling directly.
+The user wants to build a modern website for their painting company, Ocean Color, based in Hamburg, Germany. The primary goals are to generate qualified leads through an interactive price calculator and to showcase their services professionally.
 
 **PRODUCT REQUIREMENTS:**
 - **Website Pages:** Home, Services, Price Calculator, References, About Us, Contact, and Legal (Impressum, Datenschutz).
-- **Design:** A modern, high-quality, mobile-first design with a dark blue and white color scheme and a subtle accent color.
-- **Core Feature (Price Calculator):** A multi-step form where users input project details (e.g., property type, services needed, size, condition). The system calculates a price range and prompts the user to submit their contact information for a callback.
-- **Backend & Database:**
-    - Store all lead data from the calculator in a MongoDB database.
-    - Implement file uploads for users to attach photos to their requests.
-    - Send a structured email notification to the admin for each new lead.
-- **Admin Dashboard:** A password-protected area () for the company owner to:
-    - Log in securely.
-    - View, search, and filter all leads.
-    - See detailed information for each lead, including uploaded photos.
-    - Change the status of a lead.
-    - Manage the pricing rules used by the calculator.
-- **Email Integration:** Use IONOS SMTP servers to send real-time email notifications for new leads.
+- **Dynamic SEO Pages:** Numerous SEO-optimized landing pages for specific city districts (e.g., ).
+- **Service Detail Pages:** Each service has its own dedicated subpage.
+- **Design:** Modern, high-quality, mobile-first design with a dark blue and white color scheme. The core focus is on premium UI/UX with subtle animations and interactive elements.
+- **Core Feature (Price Calculator):** A multi-step, two-column interactive form with a live price summary to capture leads.
+- **Lead Management:** Store lead data in MongoDB and send email notifications.
+- **Admin Dashboard:** A password-protected area () to manage leads.
+- **Image Integration:** All services must be visually represented with SEO-optimized, lazy-loaded images featuring modern hover effects.
 
 **User's preferred language**: German. The next agent MUST respond in German.
 
 **what currently exists?**
-A full-stack application with a React frontend and FastAPI backend is in place. All core website pages (Home, Services, Price Calculator, References, About, Contact, Legal) are complete. The price calculator is highly functional, distinguishing between wall/ceiling work and floor work with specialized questions. The backend successfully saves leads to MongoDB, handles file uploads, calculates prices, and sends working email notifications via IONOS SMTP.
-
-The admin dashboard () is fully functional, including secure login, lead management (list, detail view, status updates, notes), and a page for managing pricing rules. The legal pages have been updated with real company data. A References page has been built and populated with 11 projects provided by the user. The site has also undergone SEO preparation and numerous UI/UX improvements based on user feedback. The most recent change was removing a fictitious testimonials section and replacing it with a placeholder structure for real Google Reviews.
+The project is a full-stack React/FastAPI application. In this session, the agent completed a major UI/UX overhaul, implementing scroll-reveal animations, button micro-interactions, and a completely redesigned two-column price calculator (). Following this, the agent integrated 12 user-provided service images across the website, creating a reusable component () with lazy loading, SEO alt-texts, and hover effects. Finally, a series of user-requested fixes were implemented, including adjusting the calculator's header image position, improving the homepage text, and correcting image placements on service pages. The application is stable and has been thoroughly tested.
 
 **Last working item**:
-- **Last item agent was working**: The agent removed the fictitious testimonials section from the homepage and created a new component () to display real Google Reviews. The structure for the new section is in place, but it is waiting for the user to provide the actual review content.
-- **Status**: IN PROGRESS
+- **Last item agent was working**: The user requested three final UI/UX enhancements to further polish the site's premium feel.
+- **Status**: NOT STARTED
 - **Agent Testing Done**: N
-- **Which testing method agent to use?**: screenshot tool. The agent should take a screenshot of the homepage to verify the new Google Reviews placeholder section is displayed correctly and the old testimonials are gone.
+- **Which testing method agent to use?**: frontend testing agent. The task involves sitewide UI changes. The agent should verify the new hover effects on service cards, the click animations in the calculator, and confirm that there are no performance regressions or visual glitches on desktop and mobile.
 - **User Testing Done**: N
 
 **All Pending/In progress Issue list**:
--   **Issue 1:** Integrate Real Google Reviews (P0)
+-   **Issue 1:** Implement Final UI Enhancements (P0)
 
 **Issues Detail:**
--   **Issue 1:** Integrate Real Google Reviews
-    -   **Attempted fixes:** The agent created a new component , updated  with a placeholder data structure, and replaced the old  section with the new one in .
-    -   **Next debug checklist:**
-        1.  Verify with a screenshot that the new placeholder section is appearing correctly on the homepage.
-        2.  Use  to request the actual Google review content from the user (e.g., average rating, number of reviews, and a few example review texts with names).
-        3.  Once the user provides the data, update  with the real reviews.
-        4.  Take a final screenshot to confirm the real reviews are displayed correctly.
-    -   **Why fix this issue and what will be achieved with the fix?**: To replace fictitious testimonials with authentic social proof, which increases trust and credibility, as explicitly requested by the user.
-    -   **Status**: IN PROGRESS
+-   **Issue 1:** Implement Final UI Enhancements
+    -   **Attempted fixes:** None. The agent has just received the user's approval to start.
+    -   **Next debug checklist**:
+        1.  **Modern Hover Effects:** Edit  and its component styles to add more advanced hover effects to the service cards (e.g., gradient borders, subtle 3D transforms, or overlay with text).
+        2.  **Calculator Click Animations:** Edit . On the selection cards (like Altbau or service types), add a visual confirmation animation on click, such as a pulse or ripple effect, to make the interaction more satisfying.
+        3.  **Mobile View Test:** After implementing the effects, use the screenshot tool to perform a comprehensive check on a mobile viewport. Ensure the animations are smooth, not jarring, and do not negatively impact usability on smaller screens.
+    -   **Why fix this issue and what will be achieved with the fix?**: To fulfill the user's request for a more high-quality and interactive feel, making the website more engaging and reinforcing the premium branding.
+    -   **Status**: NOT STARTED
     -   **Is recurring issue?**: N
-    -   **Should Test frontend/backend/both after fix?**: Frontend.
-    -   **Blocked on other issue**: Blocked on user providing the review content.
+    -   **Should Test frontend/backend/both after fix?**: Frontend
+    -   **Blocked on other issue**: None.
 
 **In progress Task List**:
--   None.
+-   **Task 1:** Final UI Enhancements (P0)
+    -   **Where to resume**: Begin by implementing the modern hover effects for the service cards on the  page as the first of the three requested enhancements.
+    -   **What will be achieved with this?**: A more polished, premium, and interactive user interface across the site.
+    -   **Status**: NOT STARTED
+    -   **Should Test frontend/backend/both after fix?**: Frontend
+    -   **Blocked on something**: None.
 
 **Upcoming and Future Tasks**
 - **Future Tasks:**
@@ -57,99 +53,100 @@ The admin dashboard () is fully functional, including secure login, lead managem
     - **Admin Interface for References (P2):** The Referenzen page is currently populated with hardcoded data in . A future enhancement would be to build an admin interface to allow the user to add, edit, and manage these reference projects dynamically.
 
 **Completed work in this session**
-- **Verified SMTP Email Sending:** Fixed SMTP authentication errors and confirmed that lead notification emails are being sent and received successfully.
-- **Fixed Backend  Bug:** Resolved a critical bug causing the admin panel to crash when viewing lead details due to an unserializable MongoDB .
-- **Built & Populated References Page:** Created a new, professionally designed References page and populated it with 11 real projects provided by the user.
-- **Updated Legal Pages:** Populated the  and  pages with the user's official company data.
-- **Production Preparation (SEO):** Implemented basic SEO by adding meta tags to  and creating , , and a custom  page.
-- **New Service & Advanced Calculator Logic:**
-    - Added Epoxidharzbodenbeschichtungen (Epoxy flooring) as a new service to the website and price calculator.
-    - Overhauled the calculator logic to differentiate between wall/ceiling work and floor work, presenting relevant questions and options for each.
-- **Multiple UI/UX & Content Updates:**
-    - Improved contrast and readability on CTA sections, navigation links, and the calculator's price display.
-    - Updated all customer-facing email addresses to .
-    - Changed the company experience text from 3+ Jahre to 17 Jahre.
-- **Replaced Fictitious Testimonials:** Removed the placeholder testimonials and prepared a new section for authentic Google Reviews.
+- **Major UI/UX & Price Calculator Overhaul:**
+  - Implemented sitewide scroll-reveal animations using a custom  hook.
+  - Redesigned the price calculator into , featuring a two-column layout, sticky live summary, interactive selection cards, a progress bar, and animated price updates.
+  - The overhaul was validated with the testing agent, achieving a 100% success rate.
+- **Service Image Integration:**
+  - Integrated 12 user-provided images for all services.
+  - Created a reusable  component with lazy loading, SEO-optimized  tags, GEO-targeted descriptions, and modern hover effects.
+  - Placed images on their respective service detail pages, the homepage hero, and the price calculator header.
+- **Bug Fixes and Refinements:**
+  - Fixed the price calculator's header image being obscured by the menu by adding top padding.
+  - Replaced the homepage's hero text with a more natural, user-provided version.
+  - Corrected image assignments: moved the Epoxi image to its dedicated page and restored the correct Boden image to the flooring page.
+  - Updated SEO alt-texts for the corrected images.
 
 **Earlier issues found/mentioned but not fixed**
--   None.
+- None.
 
 **Known issue recurrence from previous fork**
--   **Issue recurrence in previous fork**: SMTP Email Sending. The issue occurred due to a bad password in a previous session and recurred in this session due to an incorrect username and configuration loading order.
--   **Recurrence count**: 1
--   **Status**: RESOLVED
+- None observed in this session.
 
 **Code Architecture**
 
 
 **Key Technical Concepts**
--   **Frontend**: React, React Router, Tailwind CSS, Shadcn UI, Axios
--   **Backend**: FastAPI, Pydantic, Motor (async MongoDB driver)
--   **Database**: MongoDB
--   **Email**: Python's  for SMTP communication.
+- **Frontend**: React, React Router, Tailwind CSS, Shadcn UI, Axios.
+- **Backend**: FastAPI, Pydantic, Motor.
+- **Database**: MongoDB.
+- **Key Techniques**: Custom React Hooks (), complex component state management, dynamic component rendering,  for animations, lazy loading for images.
 
 **key DB schema**
--   **leads**:  (new optional fields for floor logic added).
--   **pricing_config**: A single document containing key-value pairs for all pricing variables.
+- No changes in this session.
 
 **changes in tech stack**
--   None.
+- None.
 
 **All files of reference**
--   : Location where the new  component was integrated.
--   : The new component for displaying reviews.
--   : Contains hardcoded data for services, references, and the new review placeholders.
--   : The new, completed References page.
--   : Significantly modified to handle the complex logic for wall vs. floor work.
--   : The backend pricing logic, updated to handle the new floor service and options.
--   : Pydantic models updated with new fields for the calculator's floor logic.
--   : Endpoints for the admin panel, where the  serialization bug was fixed.
+-   : The new, completely refactored price calculator.
+-   : Custom hook to apply scroll-reveal animations.
+-   : Central data structure mapping images to services.
+-   : Reusable component for displaying service images.
+-   : Modified to display images from the new data structure.
+-   : Modified to integrate scroll animations, new text, and service images.
+-   : Modified to display the Kunde image.
+-   : Updated to include keyframes and animation utilities for .
+-   : Added global styles for animations and effects.
 
 **Areas that need refactoring**:
--   None.
+-   The old  likely needs to be removed from the project and routing in  if  is its permanent replacement.
 
 **key api endpoints**
--   : Creates a new lead (updated to accept new floor-specific fields).
--   : Calculates price (updated with new logic for flooring).
--   : Retrieves a single lead (bug that caused crashes was fixed).
--   : Updates a lead (used for saving admin notes).
+-   No changes in this session.
 
 **Critical Info for New Agent**
--   Your immediate task is to handle the Google Reviews integration. First, confirm the new placeholder section is visible on the homepage. Then, ask the user for the real review content.
--   The user is highly engaged and provides clear instructions. Continue communicating in German.
--   The admin password was last set to .
--   The core features of the website are complete and tested. The main remaining work involves populating the site with user-provided content (reviews) and considering future enhancements like cloud storage or an admin panel for references.
+-   Your immediate task is to implement the three UI polish requests from the user: advanced hover effects, calculator click animations, and a final mobile check.
+-   **Language is German.** All user-facing communication must be in German.
+-   The user is highly focused on visual quality and interactivity. Pay close attention to the details of the requested animations and effects.
+-   The codebase has been significantly modernized. Build upon the new components and hooks like , , and .
 
 **documents and test reports created in this job**
--   
+-   /app/memory/PRD.md (updated)
+-   /app/test_reports/iteration_1.json
 
 **Last 10 User Messages and any pending HUMAN messages**
-1.  **User:** Remove fictitious reviews and prepare a section for real Google Reviews. *(Status: IN PROGRESS)*
-2.  **User:** Optimize the CTA section on the Referenzen page for better readability. *(Status: COMPLETED)*
-3.  **User:** Optimize the CTA section on the Leistungen page for better readability. *(Status: COMPLETED)*
-4.  **User:** Differentiate the price calculator logic for floor work vs. wall work. *(Status: COMPLETED)*
-5.  **User:** Add Epoxidharzbodenbeschichtungen (Epoxy flooring) as a new service. *(Status: COMPLETED)*
-6.  **User:** Change company experience from +3 Jahre to 17 Jahre. *(Status: COMPLETED)*
-7.  **User:** Optimize navigation bar spacing and hover effects. *(Status: COMPLETED)*
-8.  **User:** Replace all visible email addresses with . *(Status: COMPLETED)*
-9.  **User:** Improve readability of the calculated price in the price calculator. *(Status: COMPLETED)*
-10. **User:** Update the  page with real company data. *(Status: COMPLETED)*
+1.  **User:** Approved the plan to implement three new UI enhancements. *(Status: NOT STARTED)*
+2.  **User:** Requested fixes for the calculator image, homepage text, and incorrect image placements, and also asked for new UI enhancements. *(Status: COMPLETED)*
+3.  **User:** Uploaded the final two images (Boden, Schimmel). *(Status: COMPLETED)*
+4.  **User:** Uploaded two more images (Deko, Spachtel). *(Status: COMPLETED)*
+5.  **User:** Uploaded two more images (Epoxi, Streichen 2). *(Status: COMPLETED)*
+6.  **User:** Uploaded two more images (Fassade, Streichen). *(Status: COMPLETED)*
+7.  **User:** Uploaded two more images (Kunde, Trockenbau) and noted their large file size. *(Status: COMPLETED)*
+8.  **User:** Confirmed the agent should proceed with integrating the first two uploaded images (Messen, Vlies). *(Status: COMPLETED)*
+9.  **User:** Uploaded the first two images. *(Status: PENDING UPLOAD OF MORE IMAGES)*
+10. **User:** Provided a detailed prompt to integrate a list of new service images with specific SEO, GEO, and performance requirements. *(Status: IN PROGRESS, awaiting images)*
 
 **Project Health Check:**
--   **Broken**: None.
--   **Mocked**: The Google Reviews section on the homepage is using placeholder data until the user provides the real content.
+-   **Broken**: None
+-   **Mocked**: None
 
 **3rd Party Integrations**
--   **IONOS SMTP**: Used for sending lead notification emails. The integration is fully functional.
+-   **IONOS SMTP**: For sending lead notification emails.
+-   **Google Tag Manager**: GTM-ID  is integrated on all pages.
+-   **WhatsApp**:  links are used for direct messaging.
+-   **Instagram**: Link to the company's Instagram profile.
+-   **Google Reviews**: Link to the company's Google Maps review page.
 
 **Testing status**
--   Testing agent used after significant changes: NO
+-   Testing agent used after significant changes: YES (For the major UI/calculator overhaul).
 -   Troubleshoot agent used after agent stuck in loop: NO
 -   Test files created: None
 -   Known regressions: None
 
 **Credentials to test flow:**
--   **Admin Dashboard**: Access at . The password is .
+-   **Admin Dashboard**: 
+-   **Password**: 
 
 **What agent forgot to execute**
--   After creating the  component and adding it to the homepage, the agent did not perform a final verification (e.g., via screenshot) to confirm the new placeholder section was rendered correctly and had replaced the old testimonials section.</analysis>
+- The agent has not yet started the final user request to implement three UI enhancements (hover effects, click animations, mobile test). This is the immediate next step.</analysis>
