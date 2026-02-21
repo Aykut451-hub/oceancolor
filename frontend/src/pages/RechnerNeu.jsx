@@ -653,10 +653,16 @@ const RechnerNeu = () => {
           toast.error('Bitte geben Sie die betroffene Fläche ein');
           return false;
         }
-        // Lackierung benötigt Anzahl Türen
-        if (hasLackierung && !formData.anzahlTueren) {
-          toast.error('Bitte geben Sie die Anzahl der Türen ein');
-          return false;
+        // Lackierung benötigt Bauteil und Anzahl
+        if (hasLackierung) {
+          if (!formData.lackierBauteile) {
+            toast.error('Bitte wählen Sie ein Bauteil für die Lackierung');
+            return false;
+          }
+          if (!formData.anzahlLackierElemente) {
+            toast.error('Bitte geben Sie die Anzahl der Elemente ein');
+            return false;
+          }
         }
         return true;
       case 4:
