@@ -23,7 +23,7 @@ const Footer = () => {
               href="https://www.instagram.com/ocean_maler/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center text-sm hover:text-ocean-primary transition-colors"
+              className="inline-flex items-center text-sm hover:text-ocean-blue transition-colors"
             >
               <Instagram className="h-5 w-5 mr-2" />
               @ocean_maler
@@ -35,27 +35,27 @@ const Footer = () => {
             <h3 className="text-white font-semibold mb-4">Schnellzugriff</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-sm hover:text-ocean-primary transition-colors">
+                <Link to="/" className="text-sm hover:text-ocean-blue transition-colors">
                   Startseite
                 </Link>
               </li>
               <li>
-                <Link to="/leistungen" className="text-sm hover:text-ocean-primary transition-colors">
+                <Link to="/leistungen" className="text-sm hover:text-ocean-blue transition-colors">
                   Leistungen
                 </Link>
               </li>
               <li>
-                <Link to="/rechner" className="text-sm hover:text-ocean-primary transition-colors">
+                <Link to="/rechner" className="text-sm hover:text-ocean-blue transition-colors">
                   Angebotsrechner
                 </Link>
               </li>
               <li>
-                <Link to="/referenzen" className="text-sm hover:text-ocean-primary transition-colors">
+                <Link to="/referenzen" className="text-sm hover:text-ocean-blue transition-colors">
                   Referenzen
                 </Link>
               </li>
               <li>
-                <Link to="/ueber-uns" className="text-sm hover:text-ocean-primary transition-colors">
+                <Link to="/ueber-uns" className="text-sm hover:text-ocean-blue transition-colors">
                   Über uns
                 </Link>
               </li>
@@ -85,13 +85,13 @@ const Footer = () => {
               </li>
               <li className="flex items-center text-sm">
                 <Phone className="h-5 w-5 mr-2 flex-shrink-0" />
-                <a href="tel:04018008888" className="hover:text-ocean-primary transition-colors">
+                <a href="tel:04018008888" className="hover:text-ocean-blue transition-colors">
                   040 1800 8888
                 </a>
               </li>
               <li className="flex items-center text-sm">
                 <Mail className="h-5 w-5 mr-2 flex-shrink-0" />
-                <a href="mailto:info@ocean-maler.de" className="hover:text-ocean-primary transition-colors">
+                <a href="mailto:info@ocean-maler.de" className="hover:text-ocean-blue transition-colors">
                   info@ocean-maler.de
                 </a>
               </li>
@@ -108,10 +108,10 @@ const Footer = () => {
               © {new Date().getFullYear()} Ocean Color. Alle Rechte vorbehalten.
             </p>
             <div className="flex space-x-6">
-              <Link to="/impressum" className="text-sm text-gray-400 hover:text-ocean-primary transition-colors">
+              <Link to="/impressum" className="text-sm text-gray-400 hover:text-ocean-blue transition-colors">
                 Impressum
               </Link>
-              <Link to="/datenschutz" className="text-sm text-gray-400 hover:text-ocean-primary transition-colors">
+              <Link to="/datenschutz" className="text-sm text-gray-400 hover:text-ocean-blue transition-colors">
                 Datenschutz
               </Link>
             </div>
