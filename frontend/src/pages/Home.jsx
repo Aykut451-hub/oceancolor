@@ -88,24 +88,35 @@ const Home = () => {
               </div>
             </ScrollReveal>
 
-            {/* Hero Image - Using new Streichen image */}
+            {/* Hero Image - Using new Streichen image with optimized loading */}
             <ScrollReveal direction="right" delay={200}>
               <div className="relative">
                 <figure 
-                  className="relative rounded-2xl overflow-hidden shadow-2xl group"
+                  className="relative rounded-2xl overflow-hidden shadow-2xl group lqip-container"
                   itemScope
                   itemType="https://schema.org/ImageObject"
                 >
+                  {/* Shimmer placeholder */}
+                  <div className="absolute inset-0 img-placeholder" aria-hidden="true" />
+                  
                   <img
                     src={leistungsbilder.streichen?.url || "https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/ud2ks07n_IMG_4934.JPG"}
                     alt={leistungsbilder.streichen?.alt || "Ocean Color Malermeister bei der Arbeit"}
                     title={leistungsbilder.streichen?.title}
+                    width={800}
+                    height={500}
                     loading="eager"
-                    className="w-full h-[500px] object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    decoding="async"
+                    fetchpriority="high"
+                    className="w-full h-[500px] object-cover object-center transition-transform duration-500 group-hover:scale-105 img-fade-in"
                     itemProp="contentUrl"
+                    onLoad={(e) => e.target.classList.add('loaded')}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent"></div>
                   <meta itemProp="description" content={leistungsbilder.streichen?.alt} />
+                  <meta itemProp="width" content="800" />
+                  <meta itemProp="height" content="500" />
                 </figure>
                 
                 {/* Floating Card */}
