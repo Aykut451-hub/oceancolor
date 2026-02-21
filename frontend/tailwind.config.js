@@ -53,9 +53,10 @@ module.exports = {
                                 '4': 'hsl(var(--chart-4))',
                                 '5': 'hsl(var(--chart-5))'
                         },
-                        'ocean-primary': '#1e328b',
-                        'ocean-primary-light': '#2a45b0',
-                        'ocean-primary-dark': '#162567'
+                        'ocean-primary': '#E91E63',
+                        'ocean-primary-light': '#F06292',
+                        'ocean-primary-dark': '#C2185B',
+                        'ocean-accent': '#F8BBD0'
                 },
                 keyframes: {
                         'accordion-down': {
@@ -83,17 +84,17 @@ module.exports = {
                                 '100%': { opacity: '1', transform: 'scale(1)' }
                         },
                         'pulse-glow': {
-                                '0%, 100%': { boxShadow: '0 0 0 0 rgba(30, 50, 139, 0)' },
-                                '50%': { boxShadow: '0 0 20px 4px rgba(30, 50, 139, 0.3)' }
+                                '0%, 100%': { boxShadow: '0 0 0 0 rgba(233, 30, 99, 0)' },
+                                '50%': { boxShadow: '0 0 20px 4px rgba(233, 30, 99, 0.3)' }
                         },
                         'shine': {
                                 '0%': { left: '-100%' },
                                 '100%': { left: '200%' }
                         },
                         'count-up-glow': {
-                                '0%': { textShadow: '0 0 0 rgba(30, 50, 139, 0)' },
-                                '50%': { textShadow: '0 0 20px rgba(30, 50, 139, 0.6)' },
-                                '100%': { textShadow: '0 0 0 rgba(30, 50, 139, 0)' }
+                                '0%': { textShadow: '0 0 0 rgba(233, 30, 99, 0)' },
+                                '50%': { textShadow: '0 0 20px rgba(233, 30, 99, 0.6)' },
+                                '100%': { textShadow: '0 0 0 rgba(233, 30, 99, 0)' }
                         },
                         'ripple': {
                                 '0%': { transform: 'scale(0)', opacity: '0.5' },
