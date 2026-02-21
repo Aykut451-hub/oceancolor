@@ -83,6 +83,7 @@ const leistungenData = {
     metaDescription: 'Professionelle Spachtelarbeiten für glatte Wände in Hamburg. Perfekte Grundlage für Ihr Malerarbeiten.',
     heroText: 'Die perfekte Grundlage für makellose Wände',
     description: 'Eine glatte, ebene Oberfläche ist die Basis für ein perfektes Malergebnis. Mit unseren professionellen Spachtelarbeiten beseitigen wir Unebenheiten, Risse und Beschädigungen.',
+    images: ['spachtel'],
     benefits: [
       'Verschiedene Spachtelstufen (Q1-Q4)',
       'Beseitigung von Rissen und Löchern',
