@@ -1132,14 +1132,14 @@ const RechnerNeu = () => {
                           <SelectionCard
                             selected={formData.objektart === 'wohnung'}
                             onClick={() => setFormData(prev => ({ ...prev, objektart: 'wohnung' }))}
-                            icon={HomeIcon}
+                            icon={Building}
                             title="Wohnung"
                             large
                           />
                           <SelectionCard
                             selected={formData.objektart === 'haus'}
                             onClick={() => setFormData(prev => ({ ...prev, objektart: 'haus' }))}
-                            icon={Building}
+                            icon={HomeIcon}
                             title="Haus"
                             large
                           />
