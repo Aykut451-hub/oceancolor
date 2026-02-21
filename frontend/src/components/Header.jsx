@@ -51,8 +51,8 @@ const Header = () => {
                 to={link.path}
                 className={`relative px-4 py-2 text-sm font-medium transition-all duration-200 rounded-lg
                   ${location.pathname === link.path
-                    ? 'text-ocean-primary bg-ocean-primary/5'
-                    : 'text-gray-700 hover:text-ocean-primary hover:bg-gray-50'
+                    ? 'text-ocean-blue bg-ocean-blue/5'
+                    : 'text-gray-700 hover:text-ocean-blue hover:bg-gray-50'
                   }
                   ${index !== navLinks.length - 1 ? 'mr-1' : ''}
                 `}
