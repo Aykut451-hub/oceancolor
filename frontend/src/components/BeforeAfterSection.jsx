@@ -18,7 +18,7 @@ const beforeAfterProjects = [
 
 const BeforeAfterSection = () => {
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50" data-testid="before-after-section">
+    <section className="py-20 bg-gradient-to-br from-gray-50 to-pink-50/30" data-testid="before-after-section">
       <div className="container mx-auto px-4">
         <ScrollReveal>
           <div className="text-center mb-12">
