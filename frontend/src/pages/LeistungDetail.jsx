@@ -162,6 +162,7 @@ const leistungenData = {
     metaDescription: 'Kreative Wandgestaltung in Hamburg. Kalkspachtel, Wickeltechnik, Wandlasuren und mehr vom Profi.',
     heroText: 'Individuelle Akzente für Ihre Räume',
     description: 'Mit modernen Techniken lassen sich individuelle Akzente setzen – ob im Eingangsbereich, Kinderzimmer oder Wohnbereich. Wir bieten eine Vielzahl dekorativer Oberflächentechniken zur individuellen Raumgestaltung.',
+    images: ['deko'],
     benefits: [
       'Individuelle und einzigartige Gestaltung',
       'Hochwertige Systeme der Firma Revidil (Italien)',
