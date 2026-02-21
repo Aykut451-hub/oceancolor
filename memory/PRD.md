@@ -46,14 +46,35 @@ Modern website for painting company "Ocean Color" based in Hamburg, Germany. Pri
    - Real-time price calculation with count-up animation
    - Mobile responsive (2-col → 1-col)
 
-3. **Files Created/Modified**
-   - `/frontend/src/hooks/useScrollReveal.js` - Custom hooks for scroll reveal and animated counters
-   - `/frontend/src/pages/RechnerNeu.jsx` - Complete calculator redesign
-   - `/frontend/src/pages/Home.jsx` - Scroll-reveal and animated stats
-   - `/frontend/src/pages/Leistungen.jsx` - Scroll-reveal on cards
-   - `/frontend/src/pages/Referenzen.jsx` - Animated stats and card-hover
-   - `/frontend/src/index.css` - Premium animation classes
-   - `/frontend/tailwind.config.js` - New keyframes and animations
+### Leistungsbilder Integration (February 2025)
+**12 professional images integrated with full SEO & GEO optimization:**
+
+| Bild | Seite | Alt-Text (SEO) |
+|------|-------|----------------|
+| Streichen.png | Homepage Hero + Wände & Decken | Malerarbeiten in Hamburg – Ocean Color beim Streichen von Innenräumen |
+| Streichen 2.png | Wände & Decken | Wandanstrich Hamburg – präzise Streicharbeiten durch Ocean Color |
+| Vlies.png | Tapezierarbeiten | Tapezierarbeiten Hamburg – professionelles Tapezieren mit Vliestapete |
+| Trockenbau.png | Trockenbau | Trockenbauarbeiten Hamburg – professionelle Wandkonstruktion |
+| Spachtel.png | Spachtelarbeiten | Spachtelarbeiten Hamburg – glatte Oberflächen durch Ocean Color |
+| Fassade.png | Fassadensanierung | Fassadenarbeiten Hamburg – Außenanstrich und Fassadensanierung |
+| Deko.png | Dekorative Wandgestaltung | Dekorative Wandgestaltung Hamburg – kreative Designs |
+| Schimmel.png | Schimmelsanierung | Schimmelsanierung Hamburg – fachgerechte Entfernung |
+| Boden.png | Bodenbeläge | Bodenbeläge verlegen Hamburg – Vinyl, Laminat und Parkett |
+| Epoxi.png | Bodenbeläge | Epoxidharz Bodenbeschichtung Hamburg – robuste Industrieböden |
+| Messen.png | Angebotsrechner Hero | Malermeister bei der Beratung – präzise Aufmaß und Planung |
+| Kunde.png | Referenzen (Testimonials) | Zufriedener Kunde nach Malerarbeiten in Hamburg |
+
+**Implementation Features:**
+- Hover effects (zoom + title overlay)
+- Lazy loading for performance
+- Schema.org ImageObject markup
+- GEO-optimized descriptions for AI/GPT visibility
+- Responsive 2-column grid on service pages
+- Reusable ServiceImage components
+
+**Files Created:**
+- `/frontend/src/data/leistungsbilder.js` - Central image data with SEO alt-texts
+- `/frontend/src/components/ServiceImage.jsx` - Reusable image components
 
 ### Other Features
 - Floating contact bar (Phone, Instagram, WhatsApp)
@@ -71,7 +92,7 @@ Modern website for painting company "Ocean Color" based in Hamburg, Germany. Pri
 
 ## Testing Status
 - UI/UX Modernization: **100% PASS** (Testing Agent, December 2025)
-- All features tested: Calculator flow, animations, mobile responsiveness
+- Image Integration: **VERIFIED** via screenshots (February 2025)
 
 ## Brand Colors
 - Primary: #1e328b (ocean-primary)
