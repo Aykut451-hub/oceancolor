@@ -334,14 +334,18 @@ const RechnerNeu = () => {
     telefon: '',
     email: '',
     rueckrufZeit: '',
-    foto: null
+    foto: null,
+    // Lackierung spezifisch
+    lackierBauteile: '',
+    anzahlLackierElemente: ''
   });
 
   // Prüfen ob spezielle Leistungen ausgewählt sind (ohne Raumhöhe, Spachtel, Farbe)
-  const specialLeistungen = ['boden', 'epoxid', 'schimmel'];
-  const standardWandLeistungen = ['waende-decken', 'lackierung', 'tapezieren', 'spachteln'];
+  // LACKIERUNG ist jetzt auch eine spezielle Leistung!
+  const specialLeistungen = ['boden', 'epoxid', 'schimmel', 'lackierung'];
+  const standardWandLeistungen = ['waende-decken', 'tapezieren', 'spachteln'];
   
-  // Nur spezielle Leistungen (Vinyl, Epoxid, Schimmel) - keine Raumhöhe, Spachtel, Farbe
+  // Nur spezielle Leistungen - keine Raumhöhe, Spachtel, Farbe
   const hasOnlySpecialLeistungen = formData.leistungen.length > 0 && 
     formData.leistungen.every(l => specialLeistungen.includes(l));
   
@@ -351,20 +355,23 @@ const RechnerNeu = () => {
   const hasVinylboden = formData.leistungen.includes('boden');
   const hasEpoxid = formData.leistungen.includes('epoxid');
   const hasSchimmel = formData.leistungen.includes('schimmel');
+  const hasLackierung = formData.leistungen.includes('lackierung');
   
-  // Standard Wandarbeiten (brauchen Raumhöhe, Spachtel, Farbe)
+  // Standard Wandarbeiten (brauchen Raumhöhe, Spachtel, Farbe) - OHNE Lackierung!
   const hasStandardWandarbeiten = formData.leistungen.some(l => standardWandLeistungen.includes(l));
   const hasTapezieren = formData.leistungen.includes('tapezieren');
   const hasWaendeDecken = formData.leistungen.includes('waende-decken');
-  const hasLackierung = formData.leistungen.includes('lackierung');
   const hasSpachteln = formData.leistungen.includes('spachteln');
   
-  // Farb-Frage nur bei Wände & Decken (nicht bei Lackierung, da Türen)
+  // Farb-Frage nur bei Wände & Decken
   const needsColorQuestion = hasWaendeDecken;
   
-  // Raumhöhe und Spachtel nur bei Standard-Wandarbeiten
+  // Raumhöhe und Spachtel nur bei Standard-Wandarbeiten (NICHT bei Lackierung!)
   const needsRaumhoeheQuestion = hasStandardWandarbeiten;
   const needsSpachtelQuestion = hasStandardWandarbeiten;
+  
+  // Braucht Größen-Frage? (Nur wenn Standard-Wandarbeiten)
+  const needsGroessenFrage = hasStandardWandarbeiten;
   
   const isAltbau = formData.zustand === 'altbau';
 
@@ -372,12 +379,20 @@ const RechnerNeu = () => {
 
   const leistungenOptions = [
     { id: 'waende-decken', label: 'Wände & Decken streichen', icon: Paintbrush },
-    { id: 'lackierung', label: 'Lackierarbeiten (Türen/Zargen)', icon: Layers },
+    { id: 'lackierung', label: 'Lackierarbeiten', icon: Layers },
     { id: 'tapezieren', label: 'Tapezierarbeiten', icon: Grid3X3 },
     { id: 'spachteln', label: 'Spachtelarbeiten', icon: Layers },
     { id: 'boden', label: 'Vinylboden verlegen', icon: Grid3X3 },
     { id: 'schimmel', label: 'Schimmelsanierung', icon: AlertTriangle },
     { id: 'epoxid', label: 'Epoxidharzbodenbeschichtung', icon: Layers }
+  ];
+
+  // Lackier-Bauteile Optionen
+  const lackierBauteileOptionen = [
+    { id: 'tueren', label: 'Türen inkl. Zarge', price: 120 },
+    { id: 'heizkoerper', label: 'Heizkörper', price: 80 },
+    { id: 'fensterrahmen', label: 'Fensterrahmen', price: 60 },
+    { id: 'sonstiges', label: 'Sonstiges', price: 100 }
   ];
 
   // Zusatzoptionen für Wandarbeiten
