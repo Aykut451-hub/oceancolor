@@ -39,6 +39,7 @@ const leistungenData = {
     metaDescription: 'Professionelle Lackierung von Türen, Fenstern und Heizkörpern in Hamburg. Langlebiger Schutz und perfekte Oberflächen.',
     heroText: 'Fachgerechte Lackierung für langlebigen Schutz',
     description: 'Lackierarbeiten erfordern höchste Präzision und Fachkenntnis. Wir lackieren Türen, Fenster, Heizkörper und andere Oberflächen mit hochwertigen Lacken für ein perfektes und dauerhaftes Ergebnis.',
+    images: ['lackierung'],
     benefits: [
       'Verwendung hochwertiger Markenlacke',
       'Spritz- und Streichlackierung möglich',
