@@ -1306,7 +1306,7 @@ const RechnerNeu = () => {
                         )}
 
                         {/* Raumzustand */}
-                        {!hasOnlyBodenarbeiten && (
+                        {hasStandardWandarbeiten && (
                           <div className="space-y-4">
                             <div>
                               <h2 className="text-2xl font-bold text-gray-900 mb-2">
@@ -1318,14 +1318,14 @@ const RechnerNeu = () => {
                               <SelectionCard
                                 selected={formData.zustand === 'normal'}
                                 onClick={() => setFormData(prev => ({ ...prev, zustand: 'normal' }))}
-                                title="Normal"
+                                title="Normal / Neubau"
                                 subtitle="Guter Zustand, keine besonderen Vorarbeiten nötig"
                               />
                               <SelectionCard
                                 selected={formData.zustand === 'altbau'}
                                 onClick={() => setFormData(prev => ({ ...prev, zustand: 'altbau' }))}
                                 title="Altbau"
-                                subtitle="Höhere Decken, eventuell unebene Wände"
+                                subtitle="Höhere Decken, eventuell unebene Wände (+20% Aufschlag)"
                               />
                               <SelectionCard
                                 selected={formData.zustand === 'renovierung'}
@@ -1340,14 +1340,27 @@ const RechnerNeu = () => {
                               <div className="mt-4 p-4 bg-amber-50 border-2 border-amber-300 rounded-xl flex items-start gap-3">
                                 <AlertTriangle className="h-5 w-5 text-amber-600 mt-0.5" />
                                 <div>
-                                  <p className="font-semibold text-amber-800">Altbau-Modus aktiviert</p>
+                                  <p className="font-semibold text-amber-800">Altbau-Zuschlag: +20%</p>
                                   <p className="text-sm text-amber-700 mt-1">
                                     Bei Altbauten rechnen wir mit zusätzlichem Aufwand für Abkleben, 
-                                    Spachteln und eventuell Stuckarbeiten. Die Preisspanne wird entsprechend angepasst.
+                                    Spachteln und eventuell Stuckarbeiten.
                                   </p>
                                 </div>
                               </div>
                             )}
+                          </div>
+                        )}
+
+                        {/* Nur spezielle Leistungen - Hinweis */}
+                        {hasOnlySpecialLeistungen && (
+                          <div className="p-6 bg-green-50 border-2 border-green-300 rounded-xl text-center">
+                            <CheckCircle className="h-12 w-12 text-green-600 mx-auto mb-4" />
+                            <h2 className="text-xl font-bold text-gray-900 mb-2">
+                              Zustandsbewertung nicht erforderlich
+                            </h2>
+                            <p className="text-gray-600">
+                              Für die gewählten Leistungen (Vinyl, Epoxid, Schimmel) ist keine separate Zustandsbewertung nötig.
+                            </p>
                           </div>
                         )}
                       </div>
