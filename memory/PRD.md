@@ -76,6 +76,40 @@ Modern website for painting company "Ocean Color" based in Hamburg, Germany. Pri
 - `/frontend/src/data/leistungsbilder.js` - Central image data with SEO alt-texts
 - `/frontend/src/components/ServiceImage.jsx` - Reusable image components
 
+### UI Polish & Image Optimization (February 2025)
+**Premium UI effects and comprehensive image loading optimization:**
+
+1. **Enhanced Card Hover Effects** (Leistungen-Seite)
+   - 3D transforms with perspective (1000px)
+   - Animated gradient border (gradient-shift keyframe)
+   - Inner glow effect via ::after pseudo-element
+   - Icon rotation and scale on hover
+   - Title underline animation
+   - Mobile-optimized (simplified effects for performance)
+
+2. **Calculator Click Animations** (Preisrechner)
+   - Selection Pulse animation (0.4s ease-out bounce)
+   - Click Ripple effect (expanding circle)
+   - Checkmark Pop animation (scale + rotate)
+   - Chip buttons with press feedback
+
+3. **Image Loading Optimization**
+   - Shimmer placeholder (skeleton-shimmer keyframe)
+   - LQIP (Low Quality Image Placeholder) containers
+   - `width` and `height` attributes (prevents CLS)
+   - `fetchpriority="high"` for hero images
+   - `loading="lazy"` for below-fold images
+   - `decoding="async"` for all images
+   - Responsive `sizes` attribute
+   - Fade-in transition on load (img-fade-in class)
+
+**CSS Keyframes Added:**
+- `gradient-shift` - Animated border gradient
+- `selection-pulse` - Card bounce on select
+- `click-ripple` - Expanding circle on click
+- `check-pop` - Checkmark appearance animation
+- `skeleton-shimmer` - Loading placeholder
+
 ### Other Features
 - Floating contact bar (Phone, Instagram, WhatsApp)
 - IONOS SMTP email notifications
