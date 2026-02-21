@@ -405,7 +405,7 @@ const RechnerNeu = () => {
   const lackierBauteileOptionen = [
     { id: 'tueren', label: 'Türen inkl. Zarge', price: 120 },
     { id: 'heizkoerper', label: 'Heizkörper', price: 150 },
-    { id: 'fensterrahmen', label: 'Fensterrahmen', price: 15 },
+    { id: 'fensterrahmen', label: 'Fensterrahmen', price: 150 },
     { id: 'sonstiges', label: 'Sonstiges', price: null } // Auf Anfrage
   ];
 
@@ -530,7 +530,7 @@ const RechnerNeu = () => {
         switch (formData.lackierBauteile) {
           case 'tueren': einzelPreis = 120; break;
           case 'heizkoerper': einzelPreis = 150; break;
-          case 'fensterrahmen': einzelPreis = 15; break;
+          case 'fensterrahmen': einzelPreis = 150; break;
           case 'sonstiges': einzelPreis = 0; break; // "Auf Anfrage" - kein Preis
           default: einzelPreis = 120;
         }
