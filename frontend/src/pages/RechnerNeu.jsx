@@ -1118,7 +1118,7 @@ const RechnerNeu = () => {
                         {formData.leistungen.includes('boden') && (
                           <div className="mt-6 p-4 bg-amber-50 rounded-xl border-2 border-amber-300">
                             <Label htmlFor="bodenFlaeche" className="text-amber-800 font-semibold">
-                              Bodenfläche für Bodenbelag in m² *
+                              Bodenfläche für Vinylboden in m² * (25 €/m² netto inkl. Material)
                             </Label>
                             <Input
                               id="bodenFlaeche"
@@ -1137,7 +1137,7 @@ const RechnerNeu = () => {
                         {formData.leistungen.includes('epoxid') && (
                           <div className="mt-4 p-4 bg-[#1e328b]/5 rounded-xl border-2 border-[#1e328b]/30">
                             <Label htmlFor="epoxidFlaeche" className="text-[#1e328b] font-semibold">
-                              Bodenfläche für Epoxidbeschichtung in m² *
+                              Bodenfläche für Epoxidbeschichtung in m² * (150 €/m² netto)
                             </Label>
                             <Input
                               id="epoxidFlaeche"
@@ -1148,6 +1148,44 @@ const RechnerNeu = () => {
                               placeholder="z.B. 50"
                               className="mt-2 text-lg"
                               data-testid="input-epoxid-flaeche"
+                            />
+                          </div>
+                        )}
+
+                        {/* Schimmel-Flächen-Eingabe */}
+                        {formData.leistungen.includes('schimmel') && (
+                          <div className="mt-4 p-4 bg-red-50 rounded-xl border-2 border-red-300">
+                            <Label htmlFor="schimmelFlaeche" className="text-red-800 font-semibold">
+                              Betroffene Fläche in m² * (ab 150 € + 35 €/m² netto)
+                            </Label>
+                            <Input
+                              id="schimmelFlaeche"
+                              type="number"
+                              min="1"
+                              value={formData.schimmelFlaeche}
+                              onChange={(e) => setFormData(prev => ({ ...prev, schimmelFlaeche: e.target.value }))}
+                              placeholder="z.B. 5"
+                              className="mt-2 text-lg"
+                              data-testid="input-schimmel-flaeche"
+                            />
+                          </div>
+                        )}
+
+                        {/* Türen/Zargen-Eingabe */}
+                        {formData.leistungen.includes('lackierung') && (
+                          <div className="mt-4 p-4 bg-purple-50 rounded-xl border-2 border-purple-300">
+                            <Label htmlFor="anzahlTueren" className="text-purple-800 font-semibold">
+                              Anzahl Türen inkl. Zargen * (120 € netto pro Stück)
+                            </Label>
+                            <Input
+                              id="anzahlTueren"
+                              type="number"
+                              min="1"
+                              value={formData.anzahlTueren}
+                              onChange={(e) => setFormData(prev => ({ ...prev, anzahlTueren: e.target.value }))}
+                              placeholder="z.B. 5"
+                              className="mt-2 text-lg"
+                              data-testid="input-anzahl-tueren"
                             />
                           </div>
                         )}
