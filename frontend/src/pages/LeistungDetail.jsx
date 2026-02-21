@@ -226,6 +226,7 @@ const leistungenData = {
     metaDescription: 'Professionelle Schimmelsanierung in Hamburg. Fachgerechte Entfernung und dauerhafte Beseitigung von Schimmel.',
     heroText: 'Fachgerechte Schimmelbekämpfung für ein gesundes Raumklima',
     description: 'Schimmel stellt ein ernsthaftes Gesundheitsrisiko dar und sollte fachgerecht entfernt werden. Mögliche Folgen sind Atemwegsprobleme, Allergien und beeinträchtigte Raumluftqualität. Wir erkennen Ursachen frühzeitig und beseitigen Schimmel nachhaltig.',
+    images: ['schimmel'],
     benefits: [
       'Fachgerechte Ursachenanalyse',
       'Professionelle Schimmelentfernung nach Richtlinien',
