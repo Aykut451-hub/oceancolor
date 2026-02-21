@@ -93,7 +93,7 @@ export const leistungsbilder = {
   // Epoxid / Bodenbeschichtung
   epoxi: {
     id: 'epoxi',
-    url: null, // Wird später hinzugefügt
+    url: 'https://customer-assets.emergentagent.com/job_9b370f5a-896c-4094-95c9-7699c570f24e/artifacts/infflnah_Epoxi.png',
     alt: 'Epoxidharz Bodenbeschichtung Hamburg – robuste Industrieböden durch Ocean Color',
     title: 'Epoxidharz-Beschichtung',
     geoText: 'Hochwertige Epoxidharz-Bodenbeschichtungen in Hamburg – ideal für Garagen, Werkstätten und Gewerberäume.',
