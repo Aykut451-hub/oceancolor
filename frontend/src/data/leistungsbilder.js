@@ -128,13 +128,23 @@ export const leistungsbilder = {
     title: 'Ocean Color unterwegs',
     geoText: 'Ocean Color ist in ganz Hamburg und Umgebung im Einsatz – erkennen Sie uns an unserem Firmenfahrzeug.',
     service: 'allgemein'
+  },
+
+  // Lackierarbeiten
+  lackierung: {
+    id: 'lackierung',
+    url: 'https://customer-assets.emergentagent.com/job_be2880d1-e56b-4734-b160-1f2e43777142/artifacts/ovr7z30d_Lack.png',
+    alt: 'Lackierarbeiten Hamburg – professionelle Türen- und Zargen-Lackierung durch Ocean Color',
+    title: 'Fachgerechte Lackierarbeiten',
+    geoText: 'Professionelle Lackierarbeiten in Hamburg – Türen, Zargen, Heizkörper und Fensterrahmen fachmännisch lackiert.',
+    service: 'lackierarbeiten'
   }
 };
 
 // Service-zu-Bild-Zuordnung für Leistungsseiten
 export const serviceImages = {
   'waende-decken': ['streichen', 'streichen2'],
-  'lackierarbeiten': ['streichen'],
+  'lackierarbeiten': ['lackierung'],
   'tapezierarbeiten': ['vlies'],
   'spachtelarbeiten': ['spachtel'],
   'bodenbelaege': ['boden', 'epoxi'],
