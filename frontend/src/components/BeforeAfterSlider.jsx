@@ -346,7 +346,7 @@ const BeforeAfterSlider = ({
             height="24" 
             viewBox="0 0 24 24" 
             fill="none" 
-            className={`text-[#1e328b] transition-transform duration-300 ${isDragging ? 'scale-110' : ''}`}
+            className={`text-[#E91E63] transition-transform duration-300 ${isDragging ? 'scale-110' : ''}`}
           >
             <path 
               d="M8 6L4 12L8 18" 
@@ -416,7 +416,7 @@ const BeforeAfterSlider = ({
         className={`
           absolute top-4 right-4 z-10
           px-4 py-2 rounded-full
-          bg-[#1e328b]/95 backdrop-blur-md
+          bg-[#E91E63]/95 backdrop-blur-md
           text-white text-sm font-semibold
           transition-all duration-700
           ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}

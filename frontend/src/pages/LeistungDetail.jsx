@@ -375,7 +375,7 @@ const LeistungDetail = () => {
                 </div>
                 {/* GEO Text for AI visibility */}
                 {leistung.images[0] && leistungsbilder[leistung.images[0]]?.geoText && (
-                  <p className="mt-6 text-gray-600 text-sm italic border-l-4 border-[#1e328b] pl-4">
+                  <p className="mt-6 text-gray-600 text-sm italic border-l-4 border-[#E91E63] pl-4">
                     {leistungsbilder[leistung.images[0]].geoText}
                   </p>
                 )}

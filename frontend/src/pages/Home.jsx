@@ -31,7 +31,7 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-cyan-50 -z-10"></div>
-        <div className="absolute top-20 right-0 w-96 h-96 bg-[#1e328b]/5 rounded-full blur-3xl -z-10"></div>
+        <div className="absolute top-20 right-0 w-96 h-96 bg-[#E91E63]/5 rounded-full blur-3xl -z-10"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-400/5 rounded-full blur-3xl -z-10"></div>
         
         <div className="container mx-auto px-4">
@@ -39,13 +39,13 @@ const Home = () => {
             <ScrollReveal direction="left">
               <div className="space-y-8">
                 <div className="inline-block">
-                  <span className="bg-[#1e328b]/10 text-[#1e328b] px-4 py-2 rounded-full text-sm font-medium">
+                  <span className="bg-[#E91E63]/10 text-[#E91E63] px-4 py-2 rounded-full text-sm font-medium">
                     Ihr Malermeisterbetrieb in Hamburg
                   </span>
                 </div>
                 
                 <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                  Saubere Arbeit, <span className="text-[#1e328b]">die lange hält</span>
+                  Saubere Arbeit, <span className="text-[#E91E63]">die lange hält</span>
                 </h1>
                 
                 <p className="text-lg text-gray-600 leading-relaxed">
@@ -57,7 +57,7 @@ const Home = () => {
                   <Link to="/rechner">
                     <Button 
                       size="lg" 
-                      className="bg-[#1e328b] hover:bg-[#162567] text-white w-full sm:w-auto btn-shine btn-tap"
+                      className="bg-[#E91E63] hover:bg-[#162567] text-white w-full sm:w-auto btn-shine btn-tap"
                       data-testid="hero-calculator-btn"
                     >
                       Angebot in 2 Minuten
@@ -68,7 +68,7 @@ const Home = () => {
                     <Button 
                       size="lg" 
                       variant="outline" 
-                      className="border-[#1e328b] text-[#1e328b] hover:bg-[#1e328b]/5 w-full sm:w-auto btn-tap"
+                      className="border-[#E91E63] text-[#E91E63] hover:bg-[#E91E63]/5 w-full sm:w-auto btn-tap"
                     >
                       Rückruf anfordern
                     </Button>
@@ -171,16 +171,16 @@ const Home = () => {
                 <Link to={`/leistungen/${service.slug}`}>
                   <Card className="group h-full border-2 relative overflow-hidden card-hover cursor-pointer">
                     <CardContent className="p-6">
-                      <div className="bg-[#1e328b]/10 w-14 h-14 rounded-lg flex items-center justify-center mb-4 group-hover:bg-[#1e328b] group-hover:scale-110 transition-all duration-300">
-                        <div className="w-6 h-6 bg-[#1e328b] rounded group-hover:bg-white transition-colors duration-300"></div>
+                      <div className="bg-[#E91E63]/10 w-14 h-14 rounded-lg flex items-center justify-center mb-4 group-hover:bg-[#E91E63] group-hover:scale-110 transition-all duration-300">
+                        <div className="w-6 h-6 bg-[#E91E63] rounded group-hover:bg-white transition-colors duration-300"></div>
                       </div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-[#1e328b] transition-colors">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-[#E91E63] transition-colors">
                         {service.title}
                       </h3>
                       <p className="text-gray-600 mb-4">
                         {service.description}
                       </p>
-                      <span className="inline-flex items-center text-[#1e328b] font-medium text-sm group-hover:translate-x-2 transition-transform">
+                      <span className="inline-flex items-center text-[#E91E63] font-medium text-sm group-hover:translate-x-2 transition-transform">
                         Mehr erfahren
                         <ArrowRight className="ml-1 h-4 w-4" />
                       </span>
@@ -197,7 +197,7 @@ const Home = () => {
                 <Button 
                   variant="outline" 
                   size="lg" 
-                  className="border-[#1e328b] text-[#1e328b] hover:bg-[#1e328b]/5 btn-tap"
+                  className="border-[#E91E63] text-[#E91E63] hover:bg-[#E91E63]/5 btn-tap"
                 >
                   Alle Leistungen ansehen
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -236,7 +236,7 @@ const Home = () => {
                       key={index} 
                       className="flex items-start space-x-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100 card-hover"
                     >
-                      <div className="bg-[#1e328b] rounded-full p-2 flex-shrink-0 mt-1">
+                      <div className="bg-[#E91E63] rounded-full p-2 flex-shrink-0 mt-1">
                         <CheckCircle className="h-5 w-5 text-white" />
                       </div>
                       <div>
@@ -322,7 +322,7 @@ const Home = () => {
                       href="https://maps.app.goo.gl/tMLzNyo8MMk57YLk7" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="inline-flex items-center text-[#1e328b] hover:text-[#162567] font-medium transition-colors"
+                      className="inline-flex items-center text-[#E91E63] hover:text-[#162567] font-medium transition-colors"
                     >
                       Alle Bewertungen auf Google ansehen
                       <ExternalLink className="h-4 w-4 ml-2" />
@@ -379,11 +379,11 @@ const Home = () => {
                 <Link
                   key={s.slug}
                   to={`/maler-hamburg-${s.slug}`}
-                  className="group bg-white border-2 border-gray-100 hover:border-[#1e328b] rounded-xl px-4 py-3 text-center transition-all duration-200 hover:shadow-md hover:-translate-y-1"
+                  className="group bg-white border-2 border-gray-100 hover:border-[#E91E63] rounded-xl px-4 py-3 text-center transition-all duration-200 hover:shadow-md hover:-translate-y-1"
                   data-testid={`stadtteil-link-${s.slug}`}
                   style={{ transitionDelay: `${index * 20}ms` }}
                 >
-                  <span className="text-sm font-medium text-gray-700 group-hover:text-[#1e328b] transition-colors">
+                  <span className="text-sm font-medium text-gray-700 group-hover:text-[#E91E63] transition-colors">
                     {s.name}
                   </span>
                 </Link>
@@ -416,7 +416,7 @@ const Home = () => {
                   und Innenausbauarbeiten in der Metropolregion Hamburg.
                 </p>
                 <div className="pt-2">
-                  <Link to="/maler-hamburg" className="text-[#1e328b] hover:text-[#162567] font-medium transition-colors text-sm">
+                  <Link to="/maler-hamburg" className="text-[#E91E63] hover:text-[#162567] font-medium transition-colors text-sm">
                     Mehr zu unseren Einsatzgebieten
                   </Link>
                 </div>

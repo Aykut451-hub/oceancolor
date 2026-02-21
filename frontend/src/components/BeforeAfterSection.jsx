@@ -22,7 +22,7 @@ const BeforeAfterSection = () => {
       <div className="container mx-auto px-4">
         <ScrollReveal>
           <div className="text-center mb-12">
-            <span className="inline-block bg-[#1e328b]/10 text-[#1e328b] px-4 py-2 rounded-full text-sm font-medium mb-4">
+            <span className="inline-block bg-[#E91E63]/10 text-[#E91E63] px-4 py-2 rounded-full text-sm font-medium mb-4">
               Unsere Arbeit in Bildern
             </span>
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
@@ -80,7 +80,7 @@ const BeforeAfterSection = () => {
             </p>
             <a 
               href="/kontakt" 
-              className="inline-flex items-center px-6 py-3 bg-[#1e328b] hover:bg-[#162567] text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 btn-shine"
+              className="inline-flex items-center px-6 py-3 bg-[#E91E63] hover:bg-[#162567] text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 btn-shine"
               data-testid="before-after-cta"
             >
               Kostenloses Angebot anfordern
