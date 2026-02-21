@@ -15,8 +15,8 @@ const AnimatedStat = ({ end, suffix = '', label, icon: Icon }) => {
   
   return (
     <div ref={ref} className="text-center">
-      <div className="inline-flex items-center justify-center w-12 h-12 bg-[#E91E63]/10 rounded-full mb-3">
-        <Icon className="h-6 w-6 text-[#E91E63]" />
+      <div className="inline-flex items-center justify-center w-12 h-12 bg-[#1e328b]/10 rounded-full mb-3">
+        <Icon className="h-6 w-6 text-[#1e328b]" />
       </div>
       <p className={`text-3xl font-bold text-gray-900 transition-all duration-300 ${isRevealed ? 'scale-100' : 'scale-90 opacity-0'}`}>
         {count}{suffix}
@@ -44,7 +44,7 @@ const Referenzen = () => {
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <div className="max-w-3xl mx-auto text-center">
-              <Badge className="bg-[#E91E63]/10 text-[#E91E63] mb-4">
+              <Badge className="bg-[#1e328b]/10 text-[#1e328b] mb-4">
                 Unsere Arbeit
               </Badge>
               <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
@@ -98,7 +98,7 @@ const Referenzen = () => {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                       <div className="absolute bottom-4 left-4 right-4">
-                        <Badge className="bg-white/95 text-[#E91E63] mb-2">
+                        <Badge className="bg-white/95 text-[#1e328b] mb-2">
                           {reference.category}
                         </Badge>
                         <h3 className="text-xl font-bold text-white">
@@ -160,8 +160,8 @@ const Referenzen = () => {
                       size="sm"
                       onClick={() => setFilter(category)}
                       className={`btn-tap ${filter === category 
-                        ? "bg-[#E91E63] hover:bg-[#C2185B] text-white" 
-                        : "hover:border-[#E91E63] hover:text-[#E91E63]"
+                        ? "bg-[#1e328b] hover:bg-[#162567] text-white" 
+                        : "hover:border-[#1e328b] hover:text-[#1e328b]"
                       }`}
                     >
                       {category === 'alle' ? 'Alle Projekte' : category}
@@ -183,7 +183,7 @@ const Referenzen = () => {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute top-3 right-3">
-                        <Badge className="bg-white/95 backdrop-blur-sm text-[#E91E63] text-xs">
+                        <Badge className="bg-white/95 backdrop-blur-sm text-[#1e328b] text-xs">
                           {reference.category}
                         </Badge>
                       </div>
@@ -200,7 +200,7 @@ const Referenzen = () => {
                       <h3 className="font-semibold text-gray-900 mb-1 line-clamp-1">
                         {reference.company}
                       </h3>
-                      <p className="text-sm text-[#E91E63] font-medium mb-2">
+                      <p className="text-sm text-[#1e328b] font-medium mb-2">
                         {reference.title}
                       </p>
                       <p className="text-gray-600 text-sm mb-3 line-clamp-2">
@@ -279,7 +279,7 @@ const Referenzen = () => {
                 
                 {/* GEO Text for AI visibility */}
                 {leistungsbilder.kunde?.geoText && (
-                  <p className="text-sm text-gray-500 italic border-l-4 border-[#E91E63] pl-4 mt-6">
+                  <p className="text-sm text-gray-500 italic border-l-4 border-[#1e328b] pl-4 mt-6">
                     {leistungsbilder.kunde.geoText}
                   </p>
                 )}
@@ -291,7 +291,7 @@ const Referenzen = () => {
 
       {/* CTA Section */}
       <section className="py-16 bg-gray-900 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#E91E63]/20 to-cyan-600/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1e328b]/20 to-cyan-600/20" />
         <div className="container mx-auto px-4 relative z-10">
           <ScrollReveal>
             <div className="max-w-3xl mx-auto text-center">
@@ -306,7 +306,7 @@ const Referenzen = () => {
                 <Link to="/rechner">
                   <Button 
                     size="lg" 
-                    className="bg-[#E91E63] text-white hover:bg-[#C2185B] border-2 border-[#E91E63] hover:border-[#C2185B] font-semibold w-full sm:w-auto transition-all duration-200 shadow-lg hover:shadow-xl btn-shine btn-tap"
+                    className="bg-[#1e328b] text-white hover:bg-[#162567] border-2 border-[#1e328b] hover:border-[#162567] font-semibold w-full sm:w-auto transition-all duration-200 shadow-lg hover:shadow-xl btn-shine btn-tap"
                   >
                     Kostenlos kalkulieren
                     <ArrowRight className="ml-2 h-5 w-5" />

@@ -94,8 +94,8 @@ const SelectionCard = ({ selected, onClick, icon: Icon, title, subtitle, large =
         relative w-full text-left rounded-xl transition-all duration-300 click-ripple overflow-hidden
         ${large ? 'p-6' : 'p-4'}
         ${selected 
-          ? 'bg-[#E91E63] text-white border-2 border-[#E91E63] shadow-lg selection-pulse' 
-          : 'bg-white border-2 border-gray-200 hover:border-[#E91E63]/40 hover:bg-[#E91E63]/5 hover:shadow-md'
+          ? 'bg-[#1e328b] text-white border-2 border-[#1e328b] shadow-lg selection-pulse' 
+          : 'bg-white border-2 border-gray-200 hover:border-[#1e328b]/40 hover:bg-[#1e328b]/5 hover:shadow-md'
         }
         ${isClicked ? 'clicked' : ''}
       `}
@@ -106,9 +106,9 @@ const SelectionCard = ({ selected, onClick, icon: Icon, title, subtitle, large =
           <div className={`
             ${large ? 'w-16 h-16' : 'w-10 h-10'} 
             rounded-lg flex items-center justify-center transition-all duration-300
-            ${selected ? 'bg-white/20 scale-110' : 'bg-[#E91E63]/10'}
+            ${selected ? 'bg-white/20 scale-110' : 'bg-[#1e328b]/10'}
           `}>
-            <Icon className={`${large ? 'h-8 w-8' : 'h-5 w-5'} ${selected ? 'text-white' : 'text-[#E91E63]'} transition-colors duration-300`} />
+            <Icon className={`${large ? 'h-8 w-8' : 'h-5 w-5'} ${selected ? 'text-white' : 'text-[#1e328b]'} transition-colors duration-300`} />
           </div>
         )}
         <div className="flex-1">
@@ -120,7 +120,7 @@ const SelectionCard = ({ selected, onClick, icon: Icon, title, subtitle, large =
             ${large ? 'absolute top-3 right-3' : ''} 
             w-6 h-6 rounded-full bg-white flex items-center justify-center check-pop
           `}>
-            <Check className="h-4 w-4 text-[#E91E63]" />
+            <Check className="h-4 w-4 text-[#1e328b]" />
           </div>
         )}
       </div>
@@ -145,17 +145,17 @@ const Chip = ({ selected, onClick, children, icon: Icon }) => {
       className={`
         relative px-4 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 overflow-hidden
         ${selected 
-          ? 'bg-[#E91E63] text-white shadow-md scale-105' 
-          : 'bg-white border-2 border-gray-200 text-gray-700 hover:border-[#E91E63]/40 hover:translate-y-[-2px] hover:shadow-sm'
+          ? 'bg-[#1e328b] text-white shadow-md scale-105' 
+          : 'bg-white border-2 border-gray-200 text-gray-700 hover:border-[#1e328b]/40 hover:translate-y-[-2px] hover:shadow-sm'
         }
         ${isClicked ? 'scale-95' : ''}
       `}
       style={selected ? { 
-        boxShadow: '0 4px 12px rgba(233, 30, 99, 0.3)',
+        boxShadow: '0 4px 12px rgba(30, 50, 139, 0.3)',
         animation: 'selection-pulse 0.3s ease-out'
       } : {}}
     >
-      {Icon && <Icon className={`h-4 w-4 ${selected ? 'text-white' : 'text-[#E91E63]'} transition-colors duration-200`} />}
+      {Icon && <Icon className={`h-4 w-4 ${selected ? 'text-white' : 'text-[#1e328b]'} transition-colors duration-200`} />}
       {children}
       {selected && <Check className="h-4 w-4 ml-1 check-pop" />}
     </button>
@@ -172,14 +172,14 @@ const ProgressBar = ({ currentStep, totalSteps }) => {
         <span className="text-sm font-medium text-gray-700">
           Schritt {currentStep} von {totalSteps}
         </span>
-        <span className="text-sm font-semibold text-[#E91E63]">{Math.round(progress)}%</span>
+        <span className="text-sm font-semibold text-[#1e328b]">{Math.round(progress)}%</span>
       </div>
       <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
         <div 
           className="h-full rounded-full transition-all duration-500 ease-out"
           style={{ 
             width: `${progress}%`,
-            background: 'linear-gradient(90deg, #E91E63, #F06292)'
+            background: 'linear-gradient(90deg, #1e328b, #2a45b0)'
           }}
         />
       </div>
@@ -203,7 +203,7 @@ const LiveSummary = ({ formData, calculatedPrice, leistungenOptions, isAltbau })
   return (
     <div className="sticky-summary bg-white rounded-2xl border-2 border-gray-100 shadow-xl overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#E91E63] to-[#F06292] p-6 text-white">
+      <div className="bg-gradient-to-r from-[#1e328b] to-[#2a45b0] p-6 text-white">
         <h3 className="text-lg font-bold mb-1">Live-Zusammenfassung</h3>
         <p className="text-white/80 text-sm">Ihre aktuelle Auswahl</p>
       </div>
@@ -240,7 +240,7 @@ const LiveSummary = ({ formData, calculatedPrice, leistungenOptions, isAltbau })
             <span className="text-gray-600 text-sm block mb-2">Leistungen</span>
             <div className="flex flex-wrap gap-2">
               {selectedLeistungen.map(l => (
-                <span key={l.id} className="px-2 py-1 bg-[#E91E63]/10 text-[#E91E63] rounded text-xs font-medium">
+                <span key={l.id} className="px-2 py-1 bg-[#1e328b]/10 text-[#1e328b] rounded text-xs font-medium">
                   {l.label}
                 </span>
               ))}
@@ -688,7 +688,7 @@ const RechnerNeu = () => {
                 </div>
                 <Button
                   onClick={() => window.location.href = '/'}
-                  className="bg-[#E91E63] hover:bg-[#C2185B] text-white btn-shine btn-tap"
+                  className="bg-[#1e328b] hover:bg-[#162567] text-white btn-shine btn-tap"
                   data-testid="back-to-home-btn"
                 >
                   Zur Startseite
@@ -712,7 +712,7 @@ const RechnerNeu = () => {
                 {/* Form Column */}
                 <div className="lg:col-span-3">
                   <Card className="border-2 shadow-xl overflow-hidden">
-                    <div className="bg-gradient-to-r from-[#E91E63] to-[#F06292] p-6 text-white">
+                    <div className="bg-gradient-to-r from-[#1e328b] to-[#2a45b0] p-6 text-white">
                       <h2 className="text-2xl font-bold">Rückruf anfordern</h2>
                       <p className="text-white/80 mt-1">Wir melden uns zeitnah bei Ihnen</p>
                     </div>
@@ -781,7 +781,7 @@ const RechnerNeu = () => {
 
                         <div className="space-y-2">
                           <Label htmlFor="foto">Foto hochladen (optional)</Label>
-                          <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-[#E91E63] transition-colors">
+                          <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-[#1e328b] transition-colors">
                             <input
                               id="foto"
                               type="file"
@@ -814,7 +814,7 @@ const RechnerNeu = () => {
                           <Button
                             type="submit"
                             disabled={loading}
-                            className="flex-1 bg-[#E91E63] hover:bg-[#C2185B] text-white btn-shine btn-tap"
+                            className="flex-1 bg-[#1e328b] hover:bg-[#162567] text-white btn-shine btn-tap"
                             data-testid="btn-submit"
                           >
                             {loading ? 'Wird gesendet...' : 'Anfrage senden'}
@@ -852,8 +852,8 @@ const RechnerNeu = () => {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-6xl mx-auto">
             {/* Text Content */}
             <div className="text-center lg:text-left">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-[#E91E63]/10 rounded-full mb-4">
-                <Calculator className="h-8 w-8 text-[#E91E63]" />
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-[#1e328b]/10 rounded-full mb-4">
+                <Calculator className="h-8 w-8 text-[#1e328b]" />
               </div>
               <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
                 Angebotsrechner
@@ -1011,8 +1011,8 @@ const RechnerNeu = () => {
 
                         {/* Epoxid-Flächen-Eingabe */}
                         {formData.leistungen.includes('epoxid') && (
-                          <div className="mt-4 p-4 bg-[#E91E63]/5 rounded-xl border-2 border-[#E91E63]/30">
-                            <Label htmlFor="epoxidFlaeche" className="text-[#E91E63] font-semibold">
+                          <div className="mt-4 p-4 bg-[#1e328b]/5 rounded-xl border-2 border-[#1e328b]/30">
+                            <Label htmlFor="epoxidFlaeche" className="text-[#1e328b] font-semibold">
                               Bodenfläche für Epoxidbeschichtung in m² *
                             </Label>
                             <Input
@@ -1334,8 +1334,8 @@ const RechnerNeu = () => {
                               className={`
                                 flex items-center space-x-3 border-2 rounded-xl p-4 cursor-pointer transition-all
                                 ${formData.zusatzoptionen.includes(option.id)
-                                  ? 'border-[#E91E63] bg-[#E91E63]/5'
-                                  : 'border-gray-200 hover:border-[#E91E63]/40'
+                                  ? 'border-[#1e328b] bg-[#1e328b]/5'
+                                  : 'border-gray-200 hover:border-[#1e328b]/40'
                                 }
                               `}
                             >
@@ -1369,7 +1369,7 @@ const RechnerNeu = () => {
                       <Button
                         onClick={handleNext}
                         disabled={loading}
-                        className="flex-1 h-12 bg-[#E91E63] hover:bg-[#C2185B] text-white btn-shine btn-tap"
+                        className="flex-1 h-12 bg-[#1e328b] hover:bg-[#162567] text-white btn-shine btn-tap"
                         data-testid="btn-next"
                       >
                         {loading ? 'Berechne...' : currentStep === totalSteps ? 'Preis berechnen' : 'Weiter'}

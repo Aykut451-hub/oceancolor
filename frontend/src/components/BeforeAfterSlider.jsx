@@ -314,7 +314,7 @@ const BeforeAfterSlider = ({
               ? 'linear-gradient(180deg, rgba(255,255,255,0.9) 0%, #ffffff 50%, rgba(255,255,255,0.9) 100%)'
               : 'rgba(255,255,255,0.9)',
             boxShadow: isHovering || isDragging 
-              ? '0 0 20px rgba(233, 30, 99, 0.5), 0 0 40px rgba(233, 30, 99, 0.3)'
+              ? '0 0 20px rgba(30, 50, 139, 0.5), 0 0 40px rgba(30, 50, 139, 0.3)'
               : '0 0 15px rgba(0,0,0,0.3)'
           }} 
         />
@@ -334,10 +334,10 @@ const BeforeAfterSlider = ({
             width: isDragging ? '56px' : isHovering ? '52px' : '48px',
             height: isDragging ? '56px' : isHovering ? '52px' : '48px',
             boxShadow: isDragging 
-              ? '0 0 0 4px rgba(233, 30, 99, 0.3), 0 0 40px rgba(233, 30, 99, 0.6), 0 8px 32px rgba(0,0,0,0.3)'
+              ? '0 0 0 4px rgba(30, 50, 139, 0.3), 0 0 40px rgba(30, 50, 139, 0.6), 0 8px 32px rgba(0,0,0,0.3)'
               : isHovering
-                ? '0 0 0 3px rgba(233, 30, 99, 0.2), 0 0 30px rgba(233, 30, 99, 0.4), 0 6px 24px rgba(0,0,0,0.25)'
-                : '0 0 20px rgba(233, 30, 99, 0.2), 0 4px 16px rgba(0,0,0,0.2)'
+                ? '0 0 0 3px rgba(30, 50, 139, 0.2), 0 0 30px rgba(30, 50, 139, 0.4), 0 6px 24px rgba(0,0,0,0.25)'
+                : '0 0 20px rgba(30, 50, 139, 0.2), 0 4px 16px rgba(0,0,0,0.2)'
           }}
         >
           {/* Arrows with animation */}
@@ -346,7 +346,7 @@ const BeforeAfterSlider = ({
             height="24" 
             viewBox="0 0 24 24" 
             fill="none" 
-            className={`text-[#E91E63] transition-transform duration-300 ${isDragging ? 'scale-110' : ''}`}
+            className={`text-[#1e328b] transition-transform duration-300 ${isDragging ? 'scale-110' : ''}`}
           >
             <path 
               d="M8 6L4 12L8 18" 
@@ -377,7 +377,7 @@ const BeforeAfterSlider = ({
           style={{
             width: isDragging ? '80px' : '64px',
             height: isDragging ? '80px' : '64px',
-            background: 'radial-gradient(circle, rgba(233, 30, 99, 0.25) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(30, 50, 139, 0.25) 0%, transparent 70%)',
             opacity: isDragging ? 1 : isHovering ? 0.7 : 0
           }}
         />
@@ -387,7 +387,7 @@ const BeforeAfterSlider = ({
           <div 
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full pointer-events-none"
             style={{
-              border: '2px solid rgba(233, 30, 99, 0.3)',
+              border: '2px solid rgba(30, 50, 139, 0.3)',
               animation: 'pulse-ring 2s ease-out infinite'
             }}
           />
@@ -416,7 +416,7 @@ const BeforeAfterSlider = ({
         className={`
           absolute top-4 right-4 z-10
           px-4 py-2 rounded-full
-          bg-[#E91E63]/95 backdrop-blur-md
+          bg-[#1e328b]/95 backdrop-blur-md
           text-white text-sm font-semibold
           transition-all duration-700
           ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}
@@ -425,7 +425,7 @@ const BeforeAfterSlider = ({
           opacity: isLoaded ? afterLabelOpacity : 0,
           transform: isLoaded ? afterLabelTransform : 'translateY(-24px)',
           transitionDelay: '400ms',
-          boxShadow: '0 4px 15px rgba(233, 30, 99, 0.3)'
+          boxShadow: '0 4px 15px rgba(30, 50, 139, 0.3)'
         }}
       >
         {afterLabel}
