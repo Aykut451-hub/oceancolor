@@ -260,6 +260,7 @@ const leistungenData = {
     metaDescription: 'Professionelle Epoxidharzbeschichtungen in Hamburg. Fugenlose, strapazierfähige Böden für Gewerbe und Privat.',
     heroText: 'Fugenlose Böden für höchste Ansprüche',
     description: 'Epoxidharzböden sind extrem belastbar, pflegeleicht und optisch ansprechend. Ob Garagenboden, Werkstatt oder modernes Wohndesign – wir beschichten Ihre Böden professionell.',
+    images: ['epoxi'],
     benefits: [
       'Fugenlose, hygienische Oberfläche',
       'Extrem belastbar und langlebig',
