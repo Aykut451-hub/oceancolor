@@ -1,6 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-// SEO-optimierte Bild-Komponente mit Lazy Loading und Hover-Effekten
+// Standard-Dimensionen für verschiedene Bildtypen
+const IMAGE_DIMENSIONS = {
+  thumbnail: { width: 400, height: 300 },
+  card: { width: 600, height: 400 },
+  hero: { width: 1200, height: 800 },
+  full: { width: 1920, height: 1080 }
+};
+
+// SEO-optimierte Bild-Komponente mit Lazy Loading, Blur-Placeholder und Hover-Effekten
 export const ServiceImage = ({ 
   src, 
   alt, 
@@ -9,11 +17,14 @@ export const ServiceImage = ({
   className = '',
   aspectRatio = '16/9',
   showOverlay = true,
-  priority = false
+  priority = false,
+  size = 'card' // thumbnail, card, hero, full
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
   const imgRef = useRef(null);
+  
+  const dimensions = IMAGE_DIMENSIONS[size] || IMAGE_DIMENSIONS.card;
 
   // Lazy loading mit Intersection Observer
   useEffect(() => {
@@ -28,7 +39,7 @@ export const ServiceImage = ({
           }
         });
       },
-      { rootMargin: '100px' }
+      { rootMargin: '200px' } // Preload images 200px before they enter viewport
     );
 
     if (imgRef.current) {
@@ -41,31 +52,36 @@ export const ServiceImage = ({
   return (
     <figure 
       ref={imgRef}
-      className={`relative overflow-hidden rounded-xl group ${className}`}
+      className={`relative overflow-hidden rounded-xl group lqip-container ${className}`}
       style={{ aspectRatio }}
       itemScope
       itemType="https://schema.org/ImageObject"
     >
-      {/* Placeholder während des Ladens */}
-      {!isLoaded && (
-        <div className="absolute inset-0 bg-gray-200 animate-pulse" />
-      )}
+      {/* Shimmer Placeholder während des Ladens */}
+      <div 
+        className={`absolute inset-0 img-placeholder transition-opacity duration-300 ${isLoaded ? 'opacity-0' : 'opacity-100'}`}
+        aria-hidden="true"
+      />
       
-      {/* Bild mit Lazy Loading */}
+      {/* Bild mit optimiertem Loading */}
       {isInView && (
         <img
           src={src}
           alt={alt}
           title={title}
+          width={dimensions.width}
+          height={dimensions.height}
           loading={priority ? 'eager' : 'lazy'}
           decoding="async"
+          fetchpriority={priority ? 'high' : 'auto'}
           onLoad={() => setIsLoaded(true)}
           className={`
             w-full h-full object-cover transition-all duration-500
             group-hover:scale-110
-            ${isLoaded ? 'opacity-100' : 'opacity-0'}
+            img-fade-in ${isLoaded ? 'loaded' : ''}
           `}
           itemProp="contentUrl"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
       )}
       
@@ -78,7 +94,7 @@ export const ServiceImage = ({
           transition-opacity duration-300
           flex items-end p-4
         ">
-          <div className="text-white">
+          <div className="text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
             <h3 className="font-semibold text-lg" itemProp="name">{title}</h3>
             {geoText && (
               <p className="text-sm text-white/80 mt-1 line-clamp-2" itemProp="description">
@@ -91,6 +107,8 @@ export const ServiceImage = ({
       
       {/* Schema.org Metadaten */}
       <meta itemProp="description" content={alt} />
+      <meta itemProp="width" content={dimensions.width} />
+      <meta itemProp="height" content={dimensions.height} />
     </figure>
   );
 };
@@ -125,34 +143,49 @@ export const ServiceGallery = ({
           title={image.title}
           geoText={image.geoText}
           priority={index < 2}
+          size="card"
         />
       ))}
     </div>
   );
 };
 
-// Hero-Bild mit GEO-Text-Sektion
+// Hero-Bild mit GEO-Text-Sektion und optimiertem Loading
 export const ServiceHeroImage = ({
   image,
   children,
   height = 'h-[400px]',
   overlay = true
 }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  
   if (!image?.url) return null;
 
   return (
     <section 
-      className={`relative ${height} overflow-hidden`}
+      className={`relative ${height} overflow-hidden lqip-container`}
       itemScope
       itemType="https://schema.org/ImageObject"
     >
+      {/* Shimmer Placeholder */}
+      <div 
+        className={`absolute inset-0 img-placeholder transition-opacity duration-300 ${isLoaded ? 'opacity-0' : 'opacity-100'}`}
+        aria-hidden="true"
+      />
+      
       <img
         src={image.url}
         alt={image.alt}
         title={image.title}
+        width={1920}
+        height={800}
         loading="eager"
-        className="absolute inset-0 w-full h-full object-cover"
+        decoding="async"
+        fetchpriority="high"
+        onLoad={() => setIsLoaded(true)}
+        className={`absolute inset-0 w-full h-full object-cover img-fade-in ${isLoaded ? 'loaded' : ''}`}
         itemProp="contentUrl"
+        sizes="100vw"
       />
       
       {overlay && (
@@ -166,6 +199,8 @@ export const ServiceHeroImage = ({
       </div>
       
       <meta itemProp="description" content={image.alt} />
+      <meta itemProp="width" content="1920" />
+      <meta itemProp="height" content="800" />
     </section>
   );
 };
@@ -201,6 +236,7 @@ export const ServiceImageSlider = ({ images, autoPlay = true, interval = 5000 })
               geoText={image.geoText}
               aspectRatio="16/9"
               priority={index === 0}
+              size="hero"
             />
           </div>
         ))}
@@ -251,6 +287,7 @@ export const GeoImageSection = ({
               title={image.title}
               geoText={image.geoText}
               aspectRatio="4/3"
+              size="card"
             />
           </div>
           
