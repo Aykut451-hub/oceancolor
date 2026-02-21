@@ -168,7 +168,7 @@ const leistungenData = {
     images: ['deko'],
     benefits: [
       'Individuelle und einzigartige Gestaltung',
-      'Hochwertige Systeme der Firma Revidil (Italien)',
+      'Hochwertige Systeme der Firma Rivedil (Italien)',
       'Oberflächen mit Struktur, Tiefe und Charakter',
       'Persönliche Beratung und Mustervorlagen',
       'Langjährige Erfahrung in Kreativtechniken'
@@ -184,9 +184,21 @@ const leistungenData = {
     additionalSections: [
       {
         title: 'Schmuck- & Effekttechniken',
-        content: 'Durch Techniken wie Kalkspachtel, Wickeltechnik und Wandlasuren entstehen einzigartige Oberflächen mit Struktur, Tiefe und Charakter. Wir arbeiten mit den hochwertigen Systemen der italienischen Firma Revidil und bieten deren komplette Gestaltungstechniken an.'
+        content: 'Durch Techniken wie Kalkspachtel, Wickeltechnik und Wandlasuren entstehen einzigartige Oberflächen mit Struktur, Tiefe und Charakter. Wir arbeiten mit den hochwertigen Systemen der italienischen Firma Rivedil und bieten deren komplette Gestaltungstechniken an.'
       }
-    ]
+    ],
+    rivedilSection: {
+      title: 'Exklusive Wandgestaltung mit Rivedil',
+      paragraphs: [
+        'Für unsere dekorativen Wandgestaltungen arbeiten wir mit den hochwertigen Oberflächensystemen der italienischen Firma Rivedil.',
+        'Rivedil steht seit Jahrzehnten für innovative und stilvolle Wandtechniken und bietet eine Vielzahl an dekorativen Oberflächen – von mineralischen Strukturen bis hin zu modernen Beton-, Metall- oder Marmoreffekten.',
+        'Durch eine persönliche Schulung bei Rivedil setzen wir diese Techniken fachgerecht und individuell um.',
+        'Zur Beratung bringen wir Musterkoffer direkt zu Ihnen vor Ort mit, sodass Sie Farben, Strukturen und Effekte live erleben können.',
+        'Alternativ können Sie sich vorab im Online-Katalog inspirieren:'
+      ],
+      buttonText: 'Inspiration ansehen',
+      buttonLink: 'https://rivedil.com/de/'
+    }
   },
   'bodenbelaege': {
     title: 'Bodenbeläge',
