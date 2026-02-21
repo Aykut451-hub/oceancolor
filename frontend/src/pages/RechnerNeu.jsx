@@ -553,7 +553,7 @@ const RechnerNeu = () => {
     
     // 6. VINYLBODEN
     if (hasVinylboden && bodenFlaeche > 0) {
-      let vinylPreis = 25; // 25 €/m² inkl. Material
+      let vinylPreis = 25; // 25 €/m² exkl. Material
       
       // Zusatzoptionen für Boden
       if (formData.zusatzoptionen.includes('altbelag-entfernen')) {
