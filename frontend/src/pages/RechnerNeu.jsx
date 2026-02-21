@@ -332,49 +332,74 @@ const RechnerNeu = () => {
     foto: null
   });
 
-  // Prüfen ob nur Bodenarbeiten ausgewählt sind
+  // Prüfen ob spezielle Leistungen ausgewählt sind (ohne Raumhöhe, Spachtel, Farbe)
+  const specialLeistungen = ['boden', 'epoxid', 'schimmel'];
+  const standardWandLeistungen = ['waende-decken', 'lackierung', 'tapezieren', 'spachteln'];
+  
+  // Nur spezielle Leistungen (Vinyl, Epoxid, Schimmel) - keine Raumhöhe, Spachtel, Farbe
+  const hasOnlySpecialLeistungen = formData.leistungen.length > 0 && 
+    formData.leistungen.every(l => specialLeistungen.includes(l));
+  
+  // Bodenarbeiten
   const bodenLeistungen = ['boden', 'epoxid'];
-  const wandLeistungen = ['waende-decken', 'lackierung', 'tapezieren', 'spachteln', 'schimmel'];
-  
-  const hasOnlyBodenarbeiten = formData.leistungen.length > 0 && 
-    formData.leistungen.every(l => bodenLeistungen.includes(l));
-  
   const hasBodenarbeiten = formData.leistungen.some(l => bodenLeistungen.includes(l));
-  const hasWandarbeiten = formData.leistungen.some(l => wandLeistungen.includes(l));
+  const hasVinylboden = formData.leistungen.includes('boden');
+  const hasEpoxid = formData.leistungen.includes('epoxid');
+  const hasSchimmel = formData.leistungen.includes('schimmel');
+  
+  // Standard Wandarbeiten (brauchen Raumhöhe, Spachtel, Farbe)
+  const hasStandardWandarbeiten = formData.leistungen.some(l => standardWandLeistungen.includes(l));
   const hasTapezieren = formData.leistungen.includes('tapezieren');
-  const needsColorQuestion = formData.leistungen.some(l => ['waende-decken', 'lackierung'].includes(l));
+  const hasWaendeDecken = formData.leistungen.includes('waende-decken');
+  const hasLackierung = formData.leistungen.includes('lackierung');
+  const hasSpachteln = formData.leistungen.includes('spachteln');
+  
+  // Farb-Frage nur bei Wände & Decken (nicht bei Lackierung, da Türen)
+  const needsColorQuestion = hasWaendeDecken;
+  
+  // Raumhöhe und Spachtel nur bei Standard-Wandarbeiten
+  const needsRaumhoeheQuestion = hasStandardWandarbeiten;
+  const needsSpachtelQuestion = hasStandardWandarbeiten;
+  
   const isAltbau = formData.zustand === 'altbau';
 
   const totalSteps = 9;
 
   const leistungenOptions = [
     { id: 'waende-decken', label: 'Wände & Decken streichen', icon: Paintbrush },
-    { id: 'lackierung', label: 'Lackierarbeiten', icon: Layers },
+    { id: 'lackierung', label: 'Lackierarbeiten (Türen/Zargen)', icon: Layers },
     { id: 'tapezieren', label: 'Tapezierarbeiten', icon: Grid3X3 },
     { id: 'spachteln', label: 'Spachtelarbeiten', icon: Layers },
-    { id: 'boden', label: 'Bodenbeläge', icon: Grid3X3 },
+    { id: 'boden', label: 'Vinylboden verlegen', icon: Grid3X3 },
     { id: 'schimmel', label: 'Schimmelsanierung', icon: AlertTriangle },
     { id: 'epoxid', label: 'Epoxidharzbodenbeschichtung', icon: Layers }
   ];
 
+  // Zusatzoptionen für Wandarbeiten
   const zusatzoptionenWand = [
-    { id: 'abkleben', label: 'Abkleben / Schutz' },
-    { id: 'moebel', label: 'Möbel bewegen' },
-    { id: 'tueren', label: 'Türen / Heizkörper lackieren' }
+    { id: 'abkleben', label: 'Abkleben / Schutz', price: 120 },
+    { id: 'moebel', label: 'Möbel bewegen', price: 120 }
   ];
 
+  // Zusatzoptionen für Bodenarbeiten (Vinyl)
   const zusatzoptionenBoden = [
-    { id: 'altbelag-entfernen', label: 'Altbelag entfernen' },
-    { id: 'schleifen', label: 'Untergrund schleifen' },
-    { id: 'ausgleichen', label: 'Untergrund ausgleichen / nivellieren' },
-    { id: 'grundierung', label: 'Grundierung erforderlich' }
+    { id: 'altbelag-entfernen', label: 'Altbelag entfernen (+6 €/m²)', pricePerSqm: 6 },
+    { id: 'ausgleichen', label: 'Untergrund ausgleichen (+8 €/m²)', pricePerSqm: 8 }
   ];
 
-  const zusatzoptionenOptions = hasOnlyBodenarbeiten 
-    ? zusatzoptionenBoden 
-    : hasBodenarbeiten && hasWandarbeiten 
-      ? [...zusatzoptionenWand, ...zusatzoptionenBoden]
-      : zusatzoptionenWand;
+  // Dynamische Zusatzoptionen basierend auf Auswahl
+  const getZusatzoptionen = () => {
+    let options = [];
+    if (hasStandardWandarbeiten) {
+      options = [...options, ...zusatzoptionenWand];
+    }
+    if (hasVinylboden) {
+      options = [...options, ...zusatzoptionenBoden];
+    }
+    return options;
+  };
+  
+  const zusatzoptionenOptions = getZusatzoptionen();
 
   const aktuellerBodenOptionen = [
     { id: 'fliesen', label: 'Fliesen' },
@@ -386,28 +411,139 @@ const RechnerNeu = () => {
     { id: 'sonstiges', label: 'Sonstiges' }
   ];
 
-  // Live price calculation
+  // ============================================
+  // NEUE PREISLOGIK - ALLE PREISE NETTO
+  // ============================================
   const calculateLivePrice = useCallback(() => {
     if (formData.leistungen.length === 0) return null;
     
-    let baseMin = 0;
-    let baseMax = 0;
+    let totalPrice = 0;
     
-    // Base prices per service
-    const servicePrices = {
-      'waende-decken': { min: 15, max: 25 },
-      'lackierung': { min: 20, max: 35 },
-      'tapezieren': { min: 12, max: 22 },
-      'spachteln': { min: 15, max: 28 },
-      'boden': { min: 25, max: 45 },
-      'schimmel': { min: 35, max: 60 },
-      'epoxid': { min: 80, max: 150 }
-    };
-
-    // Calculate area
-    let area = 0;
+    // Fläche berechnen
+    let wandFlaeche = 0;
     if (formData.groesseOption === 'raeume' && formData.anzahlRaeume) {
-      area = parseInt(formData.anzahlRaeume) * 25; // ~25m² per room
+      wandFlaeche = parseInt(formData.anzahlRaeume) * 25; // ~25m² Wandfläche pro Raum
+    } else if (formData.wandflaeche) {
+      wandFlaeche = parseFloat(formData.wandflaeche);
+    }
+    
+    const bodenFlaeche = formData.bodenFlaeche ? parseFloat(formData.bodenFlaeche) : 0;
+    const epoxidFlaeche = formData.epoxidFlaeche ? parseFloat(formData.epoxidFlaeche) : 0;
+    const schimmelFlaeche = formData.schimmelFlaeche ? parseFloat(formData.schimmelFlaeche) : 0;
+    const anzahlTueren = formData.anzahlTueren ? parseInt(formData.anzahlTueren) : 0;
+    
+    // 1. WÄNDE & DECKEN STREICHEN
+    if (hasWaendeDecken && wandFlaeche > 0) {
+      // Basispreis Wände: 8,10 €/m²
+      let wandPreis = 8.10;
+      
+      // Farbzuschlag
+      if (formData.farbe === 'farbig') {
+        wandPreis += 2.50;
+      } else if (formData.farbe === 'premium') {
+        wandPreis += 4.00;
+      }
+      
+      // Decken: ca. 30% der Wandfläche als Deckenfläche (vereinfacht)
+      const deckenFlaeche = wandFlaeche * 0.3;
+      const deckenPreis = 8.50;
+      
+      totalPrice += (wandFlaeche * wandPreis) + (deckenFlaeche * deckenPreis);
+    }
+    
+    // 2. SPACHTELARBEITEN
+    if (hasSpachteln && wandFlaeche > 0) {
+      let spachtelPreis = 0;
+      switch (formData.spachtelstufe) {
+        case 'q2': spachtelPreis = 6; break;
+        case 'q3': spachtelPreis = 10; break;
+        case 'q4': spachtelPreis = 15; break;
+        default: spachtelPreis = 6; // Q2 als Standard
+      }
+      totalPrice += wandFlaeche * spachtelPreis;
+    } else if (hasStandardWandarbeiten && !hasSpachteln && formData.spachtelstufe) {
+      // Spachtel-Zuschlag auch wenn nur als Option gewählt
+      let spachtelPreis = 0;
+      switch (formData.spachtelstufe) {
+        case 'q2': spachtelPreis = 6; break;
+        case 'q3': spachtelPreis = 10; break;
+        case 'q4': spachtelPreis = 15; break;
+        default: spachtelPreis = 0;
+      }
+      if (spachtelPreis > 0 && wandFlaeche > 0) {
+        totalPrice += wandFlaeche * spachtelPreis;
+      }
+    }
+    
+    // 3. TAPEZIEREN
+    if (hasTapezieren && wandFlaeche > 0) {
+      let tapetenPreis = 14; // Raufaser Standard
+      switch (formData.tapetenArt) {
+        case 'raufaser': tapetenPreis = 14; break;
+        case 'glattvlies': tapetenPreis = 18; break;
+        case 'mustertapete': tapetenPreis = 22; break;
+        default: tapetenPreis = 14;
+      }
+      totalPrice += wandFlaeche * tapetenPreis;
+    }
+    
+    // 4. LACKIERARBEITEN (Türen inkl. Zarge)
+    if (hasLackierung && anzahlTueren > 0) {
+      totalPrice += anzahlTueren * 120; // 120 € pro Tür inkl. Zarge
+    }
+    
+    // 5. SCHIMMELSANIERUNG
+    if (hasSchimmel) {
+      const schimmelGrundpreis = 150; // Mindestpreis
+      const schimmelQmPreis = 35;
+      const flaeche = schimmelFlaeche > 0 ? schimmelFlaeche : (wandFlaeche > 0 ? wandFlaeche * 0.2 : 5);
+      totalPrice += schimmelGrundpreis + (flaeche * schimmelQmPreis);
+    }
+    
+    // 6. VINYLBODEN
+    if (hasVinylboden && bodenFlaeche > 0) {
+      let vinylPreis = 25; // 25 €/m² inkl. Material
+      
+      // Zusatzoptionen für Boden
+      if (formData.zusatzoptionen.includes('altbelag-entfernen')) {
+        vinylPreis += 6;
+      }
+      if (formData.zusatzoptionen.includes('ausgleichen')) {
+        vinylPreis += 8;
+      }
+      
+      totalPrice += bodenFlaeche * vinylPreis;
+    }
+    
+    // 7. EPOXIDHARZBESCHICHTUNG
+    if (hasEpoxid && epoxidFlaeche > 0) {
+      totalPrice += epoxidFlaeche * 150; // 150 €/m²
+    }
+    
+    // 8. ALTBAU-ZUSCHLAG (+20%)
+    if (isAltbau) {
+      totalPrice *= 1.20;
+    }
+    
+    // 9. ZUSATZOPTIONEN (Festpreise)
+    if (formData.zusatzoptionen.includes('abkleben')) {
+      totalPrice += 120;
+    }
+    if (formData.zusatzoptionen.includes('moebel')) {
+      totalPrice += 120;
+    }
+    
+    // Mindestpreis
+    if (totalPrice < 150) {
+      totalPrice = 150;
+    }
+    
+    // Preisspanne: -10% bis +15% für Min/Max
+    const min = Math.round((totalPrice * 0.90) / 10) * 10;
+    const max = Math.round((totalPrice * 1.15) / 10) * 10;
+    
+    return { min, max };
+  }, [formData, isAltbau, hasWaendeDecken, hasSpachteln, hasTapezieren, hasLackierung, hasSchimmel, hasVinylboden, hasEpoxid, hasStandardWandarbeiten]);
     } else if (formData.wandflaeche) {
       area = parseFloat(formData.wandflaeche);
     }
