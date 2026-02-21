@@ -811,11 +811,11 @@ const RechnerNeu = () => {
 
   // Main Calculator UI with 2-Column Layout
   return (
-    <div className="min-h-screen pt-24 pb-20">
-      {/* Hero with Messen Image */}
-      <section className="bg-gradient-to-br from-blue-50 via-white to-cyan-50 py-10 relative overflow-hidden">
+    <div className="min-h-screen pt-28 pb-20">
+      {/* Hero with Messen Image - Extra padding to avoid header overlap */}
+      <section className="bg-gradient-to-br from-blue-50 via-white to-cyan-50 py-12 lg:py-16">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-6xl mx-auto">
             {/* Text Content */}
             <div className="text-center lg:text-left">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-[#1e328b]/10 rounded-full mb-4">
@@ -833,7 +833,7 @@ const RechnerNeu = () => {
               </p>
             </div>
             
-            {/* Messen Image with Hover Effect */}
+            {/* Messen Image with Hover Effect - Positioned below header */}
             {leistungsbilder.messen?.url && (
               <div className="hidden lg:block">
                 <figure 
@@ -846,7 +846,7 @@ const RechnerNeu = () => {
                     alt={leistungsbilder.messen.alt}
                     title={leistungsbilder.messen.title}
                     loading="eager"
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-72 object-cover object-center transition-transform duration-500 group-hover:scale-105"
                     itemProp="contentUrl"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
