@@ -13,7 +13,7 @@ export const leistungsbilder = {
   },
   streichen2: {
     id: 'streichen2',
-    url: null, // Wird später hinzugefügt
+    url: 'https://customer-assets.emergentagent.com/job_9b370f5a-896c-4094-95c9-7699c570f24e/artifacts/lhe7m9oz_Streichen%202.png',
     alt: 'Wandanstrich Hamburg – präzise Streicharbeiten durch Ocean Color Malermeister',
     title: 'Präzise Streicharbeiten',
     geoText: 'Ocean Color steht für saubere und gleichmäßige Anstriche in Hamburger Wohnungen und Häusern.',
