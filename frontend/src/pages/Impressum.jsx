@@ -86,7 +86,7 @@ const Impressum = () => {
                     </a>
                   </p>
                   <p className="text-gray-700 mt-2">
-                    Unsere E-Mail-Adresse finden Sie oben im Impressum.
+                    Unsere E-Mail-Adresse lautet: info@ocean-maler.de
                   </p>
                 </div>
 
