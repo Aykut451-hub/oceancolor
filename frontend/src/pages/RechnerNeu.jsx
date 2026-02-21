@@ -377,8 +377,11 @@ const RechnerNeu = () => {
   const hasWaendeDecken = formData.leistungen.includes('waende-decken');
   const hasSpachteln = formData.leistungen.includes('spachteln');
   
-  // Farb-Frage nur bei Wände & Decken
-  const needsColorQuestion = hasWaendeDecken;
+  // Farb-Frage nur bei Wände & Decken oder Tapezieren (nicht bei NUR Spachteln)
+  const needsColorQuestion = hasWaendeDecken || hasTapezieren;
+  
+  // Nur Spachteln ohne Farb-Option
+  const hasOnlySpachteln = hasSpachteln && !hasWaendeDecken && !hasTapezieren && formData.leistungen.length === 1;
   
   // Raumhöhe und Spachtel nur bei Standard-Wandarbeiten (NICHT bei Lackierung!)
   const needsRaumhoeheQuestion = hasStandardWandarbeiten;
