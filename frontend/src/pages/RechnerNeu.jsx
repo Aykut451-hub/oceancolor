@@ -507,9 +507,21 @@ const RechnerNeu = () => {
       totalPrice += wandFlaeche * tapetenPreis;
     }
     
-    // 4. LACKIERARBEITEN (Türen inkl. Zarge)
-    if (hasLackierung && anzahlTueren > 0) {
-      totalPrice += anzahlTueren * 120; // 120 € pro Tür inkl. Zarge
+    // 4. LACKIERARBEITEN (eigenständige Leistung)
+    if (hasLackierung) {
+      const anzahl = formData.anzahlLackierElemente ? parseInt(formData.anzahlLackierElemente) : 0;
+      if (anzahl > 0) {
+        // Preis basierend auf Bauteil
+        let einzelPreis = 120; // Standard: Türen inkl. Zarge
+        switch (formData.lackierBauteile) {
+          case 'tueren': einzelPreis = 120; break;
+          case 'heizkoerper': einzelPreis = 80; break;
+          case 'fensterrahmen': einzelPreis = 60; break;
+          case 'sonstiges': einzelPreis = 100; break;
+          default: einzelPreis = 120;
+        }
+        totalPrice += anzahl * einzelPreis;
+      }
     }
     
     // 5. SCHIMMELSANIERUNG
