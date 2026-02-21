@@ -57,7 +57,7 @@ const Home = () => {
                   <Link to="/rechner">
                     <Button 
                       size="lg" 
-                      className="bg-[#E91E63] hover:bg-[#162567] text-white w-full sm:w-auto btn-shine btn-tap"
+                      className="bg-[#E91E63] hover:bg-[#C2185B] text-white w-full sm:w-auto btn-shine btn-tap"
                       data-testid="hero-calculator-btn"
                     >
                       Angebot in 2 Minuten
@@ -322,7 +322,7 @@ const Home = () => {
                       href="https://maps.app.goo.gl/tMLzNyo8MMk57YLk7" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="inline-flex items-center text-[#E91E63] hover:text-[#162567] font-medium transition-colors"
+                      className="inline-flex items-center text-[#E91E63] hover:text-[#C2185B] font-medium transition-colors"
                     >
                       Alle Bewertungen auf Google ansehen
                       <ExternalLink className="h-4 w-4 ml-2" />
@@ -416,7 +416,7 @@ const Home = () => {
                   und Innenausbauarbeiten in der Metropolregion Hamburg.
                 </p>
                 <div className="pt-2">
-                  <Link to="/maler-hamburg" className="text-[#E91E63] hover:text-[#162567] font-medium transition-colors text-sm">
+                  <Link to="/maler-hamburg" className="text-[#E91E63] hover:text-[#C2185B] font-medium transition-colors text-sm">
                     Mehr zu unseren Einsatzgebieten
                   </Link>
                 </div>
@@ -427,7 +427,7 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#162567] relative overflow-hidden">
+      <section className="py-20 bg-[#C2185B] relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900/20 to-transparent"></div>
         <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
@@ -462,7 +462,7 @@ const Home = () => {
                   <Button 
                     size="lg" 
                     className="bg-transparent text-white font-semibold px-8 py-6 text-lg
-                               hover:bg-white hover:text-[#162567]
+                               hover:bg-white hover:text-[#C2185B]
                                border-2 border-white
                                transition-all duration-300
                                w-full sm:w-auto btn-tap"

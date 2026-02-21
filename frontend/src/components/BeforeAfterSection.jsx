@@ -80,7 +80,7 @@ const BeforeAfterSection = () => {
             </p>
             <a 
               href="/kontakt" 
-              className="inline-flex items-center px-6 py-3 bg-[#E91E63] hover:bg-[#162567] text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 btn-shine"
+              className="inline-flex items-center px-6 py-3 bg-[#E91E63] hover:bg-[#C2185B] text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 btn-shine"
               data-testid="before-after-cta"
             >
               Kostenloses Angebot anfordern

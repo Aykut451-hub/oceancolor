@@ -160,7 +160,7 @@ const Leistungen = () => {
                   <Link to="/rechner">
                     <Button 
                       size="lg" 
-                      className="bg-[#E91E63] text-white hover:bg-[#162567] border-2 border-[#E91E63] hover:border-[#162567] font-semibold w-full sm:w-auto transition-all duration-200 shadow-lg hover:shadow-xl btn-shine btn-tap"
+                      className="bg-[#E91E63] text-white hover:bg-[#C2185B] border-2 border-[#E91E63] hover:border-[#C2185B] font-semibold w-full sm:w-auto transition-all duration-200 shadow-lg hover:shadow-xl btn-shine btn-tap"
                     >
                       Zum Angebotsrechner
                       <ArrowRight className="ml-2 h-5 w-5" />

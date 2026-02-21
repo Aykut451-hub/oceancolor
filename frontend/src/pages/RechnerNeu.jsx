@@ -688,7 +688,7 @@ const RechnerNeu = () => {
                 </div>
                 <Button
                   onClick={() => window.location.href = '/'}
-                  className="bg-[#E91E63] hover:bg-[#162567] text-white btn-shine btn-tap"
+                  className="bg-[#E91E63] hover:bg-[#C2185B] text-white btn-shine btn-tap"
                   data-testid="back-to-home-btn"
                 >
                   Zur Startseite
@@ -814,7 +814,7 @@ const RechnerNeu = () => {
                           <Button
                             type="submit"
                             disabled={loading}
-                            className="flex-1 bg-[#E91E63] hover:bg-[#162567] text-white btn-shine btn-tap"
+                            className="flex-1 bg-[#E91E63] hover:bg-[#C2185B] text-white btn-shine btn-tap"
                             data-testid="btn-submit"
                           >
                             {loading ? 'Wird gesendet...' : 'Anfrage senden'}
@@ -1369,7 +1369,7 @@ const RechnerNeu = () => {
                       <Button
                         onClick={handleNext}
                         disabled={loading}
-                        className="flex-1 h-12 bg-[#E91E63] hover:bg-[#162567] text-white btn-shine btn-tap"
+                        className="flex-1 h-12 bg-[#E91E63] hover:bg-[#C2185B] text-white btn-shine btn-tap"
                         data-testid="btn-next"
                       >
                         {loading ? 'Berechne...' : currentStep === totalSteps ? 'Preis berechnen' : 'Weiter'}
