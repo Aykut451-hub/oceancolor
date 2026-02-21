@@ -71,6 +71,10 @@ const Footer = () => {
               <li className="text-sm">Tapezierarbeiten</li>
               <li className="text-sm">Spachtelarbeiten</li>
               <li className="text-sm">Bodenbeläge</li>
+              <li className="text-sm">Epoxidharz</li>
+              <li className="text-sm">Trockenbau</li>
+              <li className="text-sm">Fassadensanierung</li>
+              <li className="text-sm">Dekorative Wandgestaltung</li>
               <li className="text-sm">Schimmelsanierung</li>
             </ul>
           </div>
