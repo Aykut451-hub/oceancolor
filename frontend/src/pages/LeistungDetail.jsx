@@ -6,6 +6,7 @@ import { ArrowRight, ArrowLeft, CheckCircle, Phone } from 'lucide-react';
 import { ServiceImage, GeoImageSection, ServiceGallery } from '../components/ServiceImage';
 import { leistungsbilder, getServiceBilder } from '../data/leistungsbilder';
 import { ScrollReveal } from '../hooks/useScrollReveal';
+import BeforeAfterSlider from '../components/BeforeAfterSlider';
 
 // Detaillierte Leistungsdaten
 const leistungenData = {
