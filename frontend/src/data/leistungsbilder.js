@@ -43,7 +43,7 @@ export const leistungsbilder = {
   // Spachtelarbeiten
   spachtel: {
     id: 'spachtel',
-    url: null, // Wird später hinzugefügt
+    url: 'https://customer-assets.emergentagent.com/job_9b370f5a-896c-4094-95c9-7699c570f24e/artifacts/pj1cygfl_Spachtel.png',
     alt: 'Spachtelarbeiten Hamburg – glatte Oberflächen durch Ocean Color Malermeister',
     title: 'Professionelle Spachtelarbeiten',
     geoText: 'Perfekte Wandoberflächen durch fachgerechte Spachtelarbeiten in Hamburg – von Q2 bis Q4 Qualität.',
