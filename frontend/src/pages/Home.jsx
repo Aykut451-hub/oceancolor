@@ -7,6 +7,8 @@ import { services, googleReviews } from '../data/mock';
 import { stadtteile } from '../data/stadtteile';
 import { WHATSAPP_URL } from '../components/FloatingWhatsApp';
 import { ScrollReveal, useAnimatedCounter } from '../hooks/useScrollReveal';
+import { leistungsbilder } from '../data/leistungsbilder';
+import { ServiceImage } from '../components/ServiceImage';
 
 // Animated Counter Component
 const AnimatedStat = ({ end, suffix = '', label }) => {
