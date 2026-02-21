@@ -1200,22 +1200,59 @@ const RechnerNeu = () => {
                           </div>
                         )}
 
-                        {/* Türen/Zargen-Eingabe */}
+                        {/* Türen/Zargen-Eingabe - Erweitert mit Bauteil-Auswahl */}
                         {formData.leistungen.includes('lackierung') && (
-                          <div className="mt-4 p-4 bg-purple-50 rounded-xl border-2 border-purple-300">
-                            <Label htmlFor="anzahlTueren" className="text-purple-800 font-semibold">
-                              Anzahl Türen inkl. Zargen * (120 € netto pro Stück)
-                            </Label>
-                            <Input
-                              id="anzahlTueren"
-                              type="number"
-                              min="1"
-                              value={formData.anzahlTueren}
-                              onChange={(e) => setFormData(prev => ({ ...prev, anzahlTueren: e.target.value }))}
-                              placeholder="z.B. 5"
-                              className="mt-2 text-lg"
-                              data-testid="input-anzahl-tueren"
-                            />
+                          <div className="mt-4 p-4 bg-purple-50 rounded-xl border-2 border-purple-300 space-y-4">
+                            <div>
+                              <Label className="text-purple-800 font-semibold">
+                                Welche Bauteile sollen lackiert werden? *
+                              </Label>
+                              <div className="grid grid-cols-2 gap-3 mt-3">
+                                {lackierBauteileOptionen.map((option) => (
+                                  <button
+                                    key={option.id}
+                                    type="button"
+                                    onClick={() => setFormData(prev => ({ ...prev, lackierBauteile: option.id }))}
+                                    className={`
+                                      p-3 rounded-lg text-left transition-all duration-200 border-2
+                                      ${formData.lackierBauteile === option.id
+                                        ? 'bg-purple-600 text-white border-purple-600 shadow-md'
+                                        : 'bg-white border-gray-200 hover:border-purple-400 hover:bg-purple-50'
+                                      }
+                                    `}
+                                    data-testid={`lackier-option-${option.id}`}
+                                  >
+                                    <span className="font-medium block">{option.label}</span>
+                                    <span className={`text-sm ${formData.lackierBauteile === option.id ? 'text-purple-200' : 'text-gray-500'}`}>
+                                      {option.price ? `${option.price} € netto` : 'Auf Anfrage'}
+                                    </span>
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                            
+                            {formData.lackierBauteile && (
+                              <div>
+                                <Label htmlFor="anzahlLackierElemente" className="text-purple-800 font-semibold">
+                                  Wie viele Elemente? *
+                                </Label>
+                                <Input
+                                  id="anzahlLackierElemente"
+                                  type="number"
+                                  min="1"
+                                  value={formData.anzahlLackierElemente}
+                                  onChange={(e) => setFormData(prev => ({ ...prev, anzahlLackierElemente: e.target.value }))}
+                                  placeholder="z.B. 5"
+                                  className="mt-2 text-lg"
+                                  data-testid="input-anzahl-lackier-elemente"
+                                />
+                                {formData.lackierBauteile === 'sonstiges' && (
+                                  <p className="mt-2 text-sm text-purple-700 italic">
+                                    Preis auf Anfrage – wir kontaktieren Sie für ein individuelles Angebot.
+                                  </p>
+                                )}
+                              </div>
+                            )}
                           </div>
                         )}
                       </div>
