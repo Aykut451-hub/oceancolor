@@ -148,10 +148,8 @@ Modern website for painting company "Ocean Color" based in Hamburg, Germany. Pri
 - Image Integration: **VERIFIED** via screenshots (February 2025)
 - UI Polish & Optimization: **100% PASS** (Testing Agent iteration_2, February 2025)
 - Before/After Slider: **VERIFIED** via screenshots (February 2025)
-- Rosa Color Scheme: **VERIFIED** via screenshots (February 2025)
 
 ## Brand Colors
-- Primary: #E91E63 (modern rosa)
-- Primary Light: #F06292
-- Primary Dark: #C2185B (hover)
-- Accent/Soft: #F8BBD0
+- Primary: #1e328b (ocean-primary)
+- Primary Light: #2a45b0
+- Primary Dark: #162567
