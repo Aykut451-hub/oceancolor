@@ -23,7 +23,7 @@ export const leistungsbilder = {
   // Trockenbau
   trockenbau: {
     id: 'trockenbau',
-    url: null, // Wird später hinzugefügt
+    url: 'https://customer-assets.emergentagent.com/job_9b370f5a-896c-4094-95c9-7699c570f24e/artifacts/cettwsip_Trockenbau.png',
     alt: 'Trockenbauarbeiten Hamburg – professionelle Wandkonstruktion durch Ocean Color',
     title: 'Trockenbau & Wandkonstruktion',
     geoText: 'Unsere Arbeiten im Bereich Trockenbau in Hamburg zeigen präzise Wand- und Deckensysteme für Alt- und Neubauten.',
