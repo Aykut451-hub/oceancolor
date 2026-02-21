@@ -225,41 +225,65 @@ const Referenzen = () => {
         </div>
       </section>
 
-      {/* Testimonials Preview */}
+      {/* Testimonials Preview with Kunde Image */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <ScrollReveal>
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
                 Das sagen unsere Kunden
               </h2>
             </ScrollReveal>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                {
-                  name: "Helmut K.",
-                  text: "Professionell und effizient! Das Problem mit Schimmel wurde schnell und gründlich behoben."
-                },
-                {
-                  name: "Tanja S.",
-                  text: "Ich bin absolut begeistert von der Arbeit! Die Wandgestaltung hat unserem Raum eine ganz neue Dimension verliehen."
-                }
-              ].map((testimonial, index) => (
-                <ScrollReveal key={index} delay={index * 150}>
-                  <Card className="border-2 bg-white card-hover h-full">
-                    <CardContent className="p-6">
-                      <div className="flex mb-3">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="h-4 w-4 text-amber-400 fill-current" />
-                        ))}
-                      </div>
-                      <p className="text-gray-700 mb-4 italic">"{testimonial.text}"</p>
-                      <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                    </CardContent>
-                  </Card>
+            <div className="grid lg:grid-cols-5 gap-8 items-center">
+              {/* Kunde Image with Hover Effect */}
+              {leistungsbilder.kunde?.url && (
+                <ScrollReveal className="lg:col-span-2">
+                  <ServiceImage
+                    src={leistungsbilder.kunde.url}
+                    alt={leistungsbilder.kunde.alt}
+                    title={leistungsbilder.kunde.title}
+                    geoText={leistungsbilder.kunde.geoText}
+                    aspectRatio="4/5"
+                    priority={false}
+                  />
                 </ScrollReveal>
-              ))}
+              )}
+              
+              {/* Testimonials */}
+              <div className={`${leistungsbilder.kunde?.url ? 'lg:col-span-3' : ''} space-y-6`}>
+                {[
+                  {
+                    name: "Helmut K.",
+                    text: "Professionell und effizient! Das Problem mit Schimmel wurde schnell und gründlich behoben."
+                  },
+                  {
+                    name: "Tanja S.",
+                    text: "Ich bin absolut begeistert von der Arbeit! Die Wandgestaltung hat unserem Raum eine ganz neue Dimension verliehen."
+                  }
+                ].map((testimonial, index) => (
+                  <ScrollReveal key={index} delay={index * 150}>
+                    <Card className="border-2 bg-white card-hover">
+                      <CardContent className="p-6">
+                        <div className="flex mb-3">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="h-4 w-4 text-amber-400 fill-current" />
+                          ))}
+                        </div>
+                        <p className="text-gray-700 mb-4 italic">"{testimonial.text}"</p>
+                        <p className="font-semibold text-gray-900">{testimonial.name}</p>
+                      </CardContent>
+                    </Card>
+                  </ScrollReveal>
+                ))}
+                
+                {/* GEO Text for AI visibility */}
+                {leistungsbilder.kunde?.geoText && (
+                  <p className="text-sm text-gray-500 italic border-l-4 border-[#1e328b] pl-4 mt-6">
+                    {leistungsbilder.kunde.geoText}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         </div>
