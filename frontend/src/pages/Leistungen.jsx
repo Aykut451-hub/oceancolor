@@ -48,22 +48,37 @@ const Leistungen = () => {
               return (
                 <ScrollReveal key={service.id} delay={index * 100}>
                   <Link to={`/leistungen/${service.slug}`}>
-                    <Card className="group h-full border-2 relative overflow-hidden card-hover cursor-pointer">
-                      <CardContent className="p-8">
-                        <div className="bg-[#1e328b]/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#1e328b] group-hover:scale-110 transition-all duration-300">
+                    <Card className="group h-full border-2 relative overflow-hidden card-hover cursor-pointer bg-white">
+                      <CardContent className="p-8 relative z-10">
+                        {/* Animated Icon Container */}
+                        <div className="bg-[#1e328b]/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6 
+                                        group-hover:bg-[#1e328b] group-hover:scale-110 group-hover:rotate-3
+                                        transition-all duration-400 ease-out
+                                        group-hover:shadow-lg group-hover:shadow-[#1e328b]/30">
                           <Icon className="h-8 w-8 text-[#1e328b] group-hover:text-white transition-colors duration-300" />
                         </div>
-                        <h3 className="text-2xl font-semibold text-gray-900 mb-4 group-hover:text-[#1e328b] transition-colors">
+                        
+                        {/* Title with underline animation */}
+                        <h3 className="text-2xl font-semibold text-gray-900 mb-4 group-hover:text-[#1e328b] transition-colors relative inline-block">
                           {service.title}
+                          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#1e328b] group-hover:w-full transition-all duration-300"></span>
                         </h3>
+                        
                         <p className="text-gray-600 leading-relaxed mb-4">
                           {service.description}
                         </p>
-                        <span className="inline-flex items-center text-[#1e328b] font-medium group-hover:translate-x-2 transition-transform">
+                        
+                        {/* Animated Arrow */}
+                        <span className="inline-flex items-center text-[#1e328b] font-medium 
+                                        group-hover:translate-x-3 transition-transform duration-300">
                           Mehr erfahren
-                          <ArrowRight className="ml-2 h-4 w-4" />
+                          <ArrowRight className="ml-2 h-4 w-4 group-hover:animate-pulse" />
                         </span>
                       </CardContent>
+                      
+                      {/* Subtle gradient overlay on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#1e328b]/0 via-transparent to-[#1e328b]/5 
+                                      opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                     </Card>
                   </Link>
                 </ScrollReveal>
