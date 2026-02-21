@@ -33,7 +33,7 @@ export const leistungsbilder = {
   // Dekorative Wandgestaltung
   deko: {
     id: 'deko',
-    url: null, // Wird später hinzugefügt
+    url: 'https://customer-assets.emergentagent.com/job_9b370f5a-896c-4094-95c9-7699c570f24e/artifacts/onbcl2le_Deko.png',
     alt: 'Dekorative Wandgestaltung Hamburg – kreative Designs von Ocean Color',
     title: 'Kreative Wandgestaltung',
     geoText: 'Individuelle Wandgestaltung in Hamburg – von Wischtechniken bis zu modernen Akzentwänden für Ihr Zuhause.',
