@@ -609,16 +609,30 @@ const RechnerNeu = () => {
           toast.error('Bitte wählen Sie mindestens eine Leistung');
           return false;
         }
-        if (formData.leistungen.includes('epoxid') && !formData.epoxidFlaeche) {
+        // Epoxid benötigt Fläche
+        if (hasEpoxid && !formData.epoxidFlaeche) {
           toast.error('Bitte geben Sie die Bodenfläche für die Epoxidbeschichtung ein');
           return false;
         }
-        if (formData.leistungen.includes('boden') && !formData.bodenFlaeche) {
+        // Vinyl/Boden benötigt Fläche
+        if (hasVinylboden && !formData.bodenFlaeche) {
           toast.error('Bitte geben Sie die Bodenfläche ein');
+          return false;
+        }
+        // Schimmel benötigt Fläche
+        if (hasSchimmel && !formData.schimmelFlaeche) {
+          toast.error('Bitte geben Sie die betroffene Fläche ein');
+          return false;
+        }
+        // Lackierung benötigt Anzahl Türen
+        if (hasLackierung && !formData.anzahlTueren) {
+          toast.error('Bitte geben Sie die Anzahl der Türen ein');
           return false;
         }
         return true;
       case 4:
+        // Nur bei Standard-Wandarbeiten nötig
+        if (!hasStandardWandarbeiten) return true;
         if (formData.groesseOption === 'raeume' && !formData.anzahlRaeume) {
           toast.error('Bitte geben Sie die Anzahl der Räume ein');
           return false;
@@ -629,23 +643,26 @@ const RechnerNeu = () => {
         }
         return true;
       case 5:
-        if (hasOnlyBodenarbeiten) return true;
+        // Raumhöhe nur bei Standard-Wandarbeiten
+        if (!needsRaumhoeheQuestion) return true;
         if (!formData.raumhoehe) {
           toast.error('Bitte wählen Sie die Raumhöhe');
           return false;
         }
         return true;
       case 6:
-        if (hasBodenarbeiten && !formData.aktuellerBoden) {
+        // Zustand nur bei Wandarbeiten
+        if (hasBodenarbeiten && !hasStandardWandarbeiten && !formData.aktuellerBoden) {
           toast.error('Bitte wählen Sie den aktuellen Bodenbelag');
           return false;
         }
-        if (!hasOnlyBodenarbeiten && !formData.zustand) {
+        if (hasStandardWandarbeiten && !formData.zustand) {
           toast.error('Bitte wählen Sie den Zustand');
           return false;
         }
         return true;
       case 7:
+        // Tapete oder Farbe
         if (hasTapezieren && !formData.tapetenArt) {
           toast.error('Bitte wählen Sie eine Tapetenart');
           return false;
@@ -654,10 +671,23 @@ const RechnerNeu = () => {
           toast.error('Bitte wählen Sie eine Farboption');
           return false;
         }
-        if (hasOnlyBodenarbeiten && !formData.farbe) {
-          toast.error('Bitte wählen Sie eine Option');
+        // Bei nur Spezial-Leistungen keine Farbe nötig
+        if (hasOnlySpecialLeistungen) return true;
+        return true;
+      case 8:
+        // Spachtel nur bei Standard-Wandarbeiten
+        if (!needsSpachtelQuestion) return true;
+        if (!formData.spachtelstufe) {
+          toast.error('Bitte wählen Sie eine Spachtelstufe');
           return false;
         }
+        return true;
+      case 9:
+        return true;
+      default:
+        return true;
+    }
+  };
         return true;
       case 8:
         if (hasOnlyBodenarbeiten) return true;
