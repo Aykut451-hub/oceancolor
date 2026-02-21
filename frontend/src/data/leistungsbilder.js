@@ -53,7 +53,7 @@ export const leistungsbilder = {
   // Fassadenarbeiten
   fassade: {
     id: 'fassade',
-    url: null, // Wird später hinzugefügt
+    url: 'https://customer-assets.emergentagent.com/job_9b370f5a-896c-4094-95c9-7699c570f24e/artifacts/8i1ldyjt_Fassade.png',
     alt: 'Fassadenarbeiten Hamburg – Außenanstrich und Fassadensanierung durch Ocean Color',
     title: 'Fassadenanstrich & Sanierung',
     geoText: 'Professionelle Fassadenarbeiten in Hamburg und Umgebung – Schutz und optische Aufwertung Ihrer Immobilie.',
