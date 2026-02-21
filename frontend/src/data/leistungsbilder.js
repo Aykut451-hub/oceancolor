@@ -113,7 +113,7 @@ export const leistungsbilder = {
   // Referenzen / Vertrauen
   kunde: {
     id: 'kunde',
-    url: null, // Wird später hinzugefügt
+    url: 'https://customer-assets.emergentagent.com/job_9b370f5a-896c-4094-95c9-7699c570f24e/artifacts/tcth9eop_Kunde.png',
     alt: 'Zufriedener Kunde nach Malerarbeiten in Hamburg – Ocean Color Kundenzufriedenheit',
     title: 'Zufriedene Kunden',
     geoText: 'Über 200 zufriedene Kunden in Hamburg vertrauen Ocean Color – überzeugen Sie sich von unserer Qualität.',
