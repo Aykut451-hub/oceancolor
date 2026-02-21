@@ -105,6 +105,7 @@ const leistungenData = {
     metaDescription: 'Professioneller Trockenbau in Hamburg. Raumteilung, abgehängte Decken und Schallschutz vom Fachmann.',
     heroText: 'Flexible Raumgestaltung mit Trockenbau',
     description: 'Trockenbau bietet vielfältige Möglichkeiten zur Raumgestaltung. Von Trennwänden über abgehängte Decken bis hin zu Schallschutzlösungen – wir setzen Ihre Ideen professionell um.',
+    images: ['trockenbau'],
     benefits: [
       'Schnelle und saubere Umsetzung',
       'Flexible Raumaufteilung',
