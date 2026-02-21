@@ -9,6 +9,7 @@ import { WHATSAPP_URL } from '../components/FloatingWhatsApp';
 import { ScrollReveal, useAnimatedCounter } from '../hooks/useScrollReveal';
 import { leistungsbilder } from '../data/leistungsbilder';
 import { ServiceImage } from '../components/ServiceImage';
+import BeforeAfterSection from '../components/BeforeAfterSection';
 
 // Animated Counter Component
 const AnimatedStat = ({ end, suffix = '', label }) => {
