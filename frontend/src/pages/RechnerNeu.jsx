@@ -1182,7 +1182,7 @@ const RechnerNeu = () => {
                         {formData.leistungen.includes('boden') && (
                           <div className="mt-6 p-4 bg-amber-50 rounded-xl border-2 border-amber-300">
                             <Label htmlFor="bodenFlaeche" className="text-amber-800 font-semibold">
-                              Bodenfläche für Vinylboden in m² * (25 €/m² netto inkl. Material)
+                              Bodenfläche für Vinylboden in m² * (25 €/m² netto exkl. Material)
                             </Label>
                             <Input
                               id="bodenFlaeche"
