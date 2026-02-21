@@ -1548,6 +1548,21 @@ const RechnerNeu = () => {
                             </div>
                           </div>
                         )}
+
+                        {/* Nur Spachtelarbeiten - Skip Message */}
+                        {hasOnlySpachteln && (
+                          <div className="space-y-4">
+                            <div className="p-6 bg-blue-50 border-2 border-blue-300 rounded-xl text-center">
+                              <CheckCircle className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+                              <h2 className="text-xl font-bold text-gray-900 mb-2">
+                                Keine Farbauswahl erforderlich
+                              </h2>
+                              <p className="text-gray-600">
+                                Bei reinen Spachtelarbeiten ist keine Farbauswahl nötig. Die Oberfläche wird für nachfolgende Arbeiten vorbereitet.
+                              </p>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     )}
 
