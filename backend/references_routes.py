@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, UploadFile, File, Form, Depends
+from fastapi import APIRouter, HTTPException, UploadFile, File, Form, Depends, Header
 from pydantic import BaseModel, Field
 from typing import List, Optional
 from datetime import datetime, timezone
@@ -60,7 +60,7 @@ class ReferenceResponse(ReferenceBase):
     updated_at: str
 
 # Helper: Verify admin token
-async def verify_admin_token(authorization: str = None):
+async def verify_admin_token(authorization: Optional[str] = Header(None)):
     if not authorization:
         raise HTTPException(status_code=401, detail="Nicht autorisiert")
     
