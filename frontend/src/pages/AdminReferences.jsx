@@ -355,17 +355,25 @@ const ReferenceForm = ({ reference, onSave, onCancel, isNew }) => {
 
 // Reference Card Component
 const ReferenceCard = ({ reference, onEdit, onToggleActive, onToggleFeatured, onDelete }) => {
+  // Use WebP with fallback
+  const imageWebp = reference.image_webp;
+  const imageFallback = reference.image_fallback || reference.image;
+  
   return (
     <Card className={`overflow-hidden ${!reference.active ? 'opacity-60' : ''}`}>
       <div className="flex">
-        {/* Image */}
+        {/* Image with WebP support */}
         <div className="w-32 h-32 flex-shrink-0 bg-gray-100">
-          {reference.image ? (
-            <img 
-              src={reference.image} 
-              alt={reference.company}
-              className="w-full h-full object-cover"
-            />
+          {(imageWebp || imageFallback) ? (
+            <picture>
+              {imageWebp && <source srcSet={imageWebp} type="image/webp" />}
+              <img 
+                src={imageFallback} 
+                alt={reference.company}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </picture>
           ) : (
             <div className="w-full h-full flex items-center justify-center">
               <Building2 className="h-8 w-8 text-gray-400" />
