@@ -204,125 +204,27 @@ export const googleReviews = {
   reviews: [
     {
       id: 1,
-      author: "Osman Ciftci",
-      text: "Ich kann den Betrieb wirklich weiterempfehlen. Die Arbeit war zuverlässig und preislich absolut fair.",
-      rating: 5,
-      date: "Vor kurzem"
-    },
-    {
-      id: 2,
-      author: "Wartan Achakian",
-      text: "Die Arbeit wurde sehr sauber und zuverlässig ausgeführt. Ich kann diese Firma definitiv weiterempfehlen!",
-      rating: 5,
-      date: "Vor kurzem"
-    },
-    {
-      id: 3,
-      author: "Nilüfer Dalga",
-      text: "Wir sind absolut begeistert und sehr zufrieden von der Arbeit der Firma Ocean Color. Von der ersten Beratung bis zur Fertigstellung verlief alles absolut professionell.",
-      rating: 5,
-      date: "Vor kurzem"
-    },
-    {
-      id: 4,
-      author: "Ismail Barkin",
-      text: "Besonders beeindruckt hat uns die Sorgfalt bei den Vorarbeiten sowie das saubere Hinterlassen der Baustelle. Das Ergebnis kann sich wirklich sehen lassen – die Wände sind perfekt gestrichen und die Farbauswahl wurde hervorragend umgesetzt.",
-      rating: 5,
-      date: "Vor kurzem"
-    },
-    {
-      id: 5,
-      author: "Nuri Numan",
-      text: "Sehr saubere und zuverlässige Arbeit. Alles wurde pünktlich und professionell erledigt. Ich bin sehr zufrieden und kann den Service nur weiterempfehlen.",
-      rating: 5,
-      date: "Vor kurzem"
-    },
-    {
-      id: 6,
-      author: "Ufuk Sasak",
-      text: "Wir haben Ocean Color für Malerarbeiten in unserem Büro beauftragt. Es wurde alles frisch gestrichen und zusätzlich eine neue Wand mit Tür eingebaut. Hervorragende Arbeit!",
-      rating: 5,
-      date: "Vor kurzem"
-    },
-    {
-      id: 7,
-      author: "M Mik",
-      text: "Wunderbare Arbeit, alles prima und zu maximaler Zufriedenheit fertig gestellt! Nur zu empfehlen!",
-      rating: 5,
-      date: "Vor kurzem"
-    },
-    {
-      id: 8,
-      author: "D B",
-      text: "Ich war mit dem Ocean Color Team sehr zufrieden. Die Arbeit war sauber und professionell ausgeführt.",
-      rating: 5,
-      date: "Vor kurzem"
-    },
-    {
-      id: 9,
-      author: "Ümit Sasak",
-      text: "Spitzenmann am Werk hier, verlässlich und kostengünstig. Habe schon öfter das Vergnügen gehabt.",
-      rating: 5,
-      date: "Vor 3 Tagen"
-    },
-    {
-      id: 10,
-      author: "El Vitaner",
-      text: "Sehr sehr zuverlässig, hat alles genau so gemacht wie ich es mir vorgestellt hatte. 5 Sterne!",
-      rating: 5,
-      date: "Vor kurzem"
-    },
-    {
-      id: 11,
-      author: "Behlül Meydan",
-      text: "Top Jungs, immer zuverlässig.",
-      rating: 5,
-      date: "Vor kurzem"
-    },
-    {
-      id: 12,
-      author: "Niklas Jagdhuber",
-      text: "Sehr gute Jungs mit Ehrgeiz und Willen dabei. Klare Empfehlung!",
-      rating: 5,
-      date: "Vor kurzem"
-    },
-    {
-      id: 13,
-      author: "Tobias Kannen",
-      text: "Ocean Color hat sehr gute Arbeit geleistet. Der Kontakt war super unkompliziert.",
-      rating: 5,
-      date: "Vor 5 Monaten"
-    },
-    {
-      id: 14,
-      author: "K. Achmatowo",
-      text: "Ich möchte meine vollste Zufriedenheit mit dem Malermeister Deniz zum Ausdruck bringen. Die Arbeit war von höchster Qualität und Professionalität. Meine Vorstellungen wurden perfekt umgesetzt.",
-      rating: 5,
-      date: "Vor einem Jahr"
-    },
-    {
-      id: 15,
       author: "Chris",
       text: "Sehr freundlicher Kontakt und das seriöse Auftreten des Geschäftsführers hat sich in der geleisteten Arbeit zu 100% widergespiegelt. Der Außenanstrich meines Hauses ist Top-Qualität! Klare Empfehlung!",
       rating: 5,
       date: "Vor einem Jahr"
     },
     {
-      id: 16,
+      id: 2,
       author: "Susmit J. Banerjee",
       text: "Den Malermeister kenne ich persönlich und weiß, dass er seine Aufträge sachkundig, präzise und zuverlässig umsetzt.",
       rating: 5,
       date: "Vor einem Jahr"
     },
     {
-      id: 17,
+      id: 3,
       author: "Ferhat Yeltan",
       text: "Sehr guter Maler – unsere Wohnung sieht jetzt top aus. Ich bin positiv überrascht.",
       rating: 5,
       date: "Vor einem Jahr"
     },
     {
-      id: 18,
+      id: 4,
       author: "Pit Vogelhubert",
       text: "Sehr sorgfältige Arbeit, schnell und sauber ausgeführt. Ich bin begeistert.",
       rating: 5,
