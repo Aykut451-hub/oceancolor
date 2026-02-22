@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
@@ -17,8 +17,10 @@ import {
   Filter
 } from 'lucide-react';
 import { ScrollReveal, useAnimatedCounter } from '../hooks/useScrollReveal';
-import { references } from '../data/mock';
+import { references as mockReferences } from '../data/mock';
 import { WHATSAPP_URL } from '../components/FloatingWhatsApp';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 // Animated Stat Component
 const AnimatedStat = ({ end, suffix = '', label, icon: Icon }) => {
