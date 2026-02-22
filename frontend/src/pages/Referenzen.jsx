@@ -13,14 +13,11 @@ import {
   Clock, 
   Phone,
   MessageCircle,
-  ArrowLeftRight,
-  Filter,
-  X,
-  ChevronLeft,
-  ChevronRight
+  CheckCircle2,
+  Filter
 } from 'lucide-react';
 import { ScrollReveal, useAnimatedCounter } from '../hooks/useScrollReveal';
-import { projekte, projektKategorien } from '../data/projekte';
+import { references } from '../data/mock';
 import { WHATSAPP_URL } from '../components/FloatingWhatsApp';
 
 // Animated Stat Component
@@ -40,199 +37,79 @@ const AnimatedStat = ({ end, suffix = '', label, icon: Icon }) => {
   );
 };
 
-// Vorher/Nachher Toggle Component
-const BeforeAfterToggle = ({ images, altTexts }) => {
-  const [showAfter, setShowAfter] = useState(true);
-  
+// Referenz Card Component
+const ReferenzCard = ({ referenz }) => {
   return (
-    <div className="relative">
-      {/* Image Container */}
-      <div className="relative h-64 md:h-72 overflow-hidden rounded-t-xl">
+    <Card className="group overflow-hidden border hover:border-[#1e328b]/30 transition-all duration-300 h-full flex flex-col hover:shadow-lg">
+      {/* Bild */}
+      <div className="relative h-48 md:h-56 overflow-hidden">
         <img
-          src={showAfter ? images.after : images.before}
-          alt={showAfter ? altTexts.after : altTexts.before}
-          className="w-full h-full object-cover transition-opacity duration-300"
+          src={referenz.image}
+          alt={`${referenz.title} - ${referenz.company}`}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
         />
-        
-        {/* Badge */}
-        <div className="absolute top-3 left-3">
-          <Badge className={`${showAfter ? 'bg-green-600' : 'bg-orange-500'} text-white text-xs font-medium`}>
-            {showAfter ? 'Nachher' : 'Vorher'}
+        {/* Kategorie Badge */}
+        <div className="absolute top-3 right-3">
+          <Badge className="bg-white/95 backdrop-blur-sm text-[#1e328b] text-xs font-medium">
+            {referenz.category}
           </Badge>
         </div>
-      </div>
-      
-      {/* Toggle Button */}
-      <button
-        onClick={() => setShowAfter(!showAfter)}
-        className="absolute bottom-3 right-3 flex items-center gap-2 px-3 py-1.5 bg-white/95 backdrop-blur-sm rounded-full shadow-lg text-sm font-medium text-gray-700 hover:bg-white transition-colors"
-        data-testid="before-after-toggle"
-      >
-        <ArrowLeftRight className="h-4 w-4" />
-        {showAfter ? 'Vorher zeigen' : 'Nachher zeigen'}
-      </button>
-    </div>
-  );
-};
-
-// Vorher/Nachher Side by Side Component (für Desktop)
-const BeforeAfterSideBySide = ({ images, altTexts }) => {
-  return (
-    <div className="grid grid-cols-2 gap-1 rounded-t-xl overflow-hidden">
-      {/* Vorher */}
-      <div className="relative h-48 md:h-56">
-        <img
-          src={images.before}
-          alt={altTexts.before}
-          className="w-full h-full object-cover"
-          loading="lazy"
-        />
-        <div className="absolute top-2 left-2">
-          <Badge className="bg-orange-500 text-white text-xs">Vorher</Badge>
-        </div>
-      </div>
-      
-      {/* Nachher */}
-      <div className="relative h-48 md:h-56">
-        <img
-          src={images.after}
-          alt={altTexts.after}
-          className="w-full h-full object-cover"
-          loading="lazy"
-        />
-        <div className="absolute top-2 left-2">
-          <Badge className="bg-green-600 text-white text-xs">Nachher</Badge>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// Lightbox Component
-const Lightbox = ({ isOpen, onClose, images, altTexts, title }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const imageArray = [
-    { src: images.before, alt: altTexts.before, label: 'Vorher' },
-    { src: images.after, alt: altTexts.after, label: 'Nachher' }
-  ];
-  
-  if (!isOpen) return null;
-  
-  return (
-    <div 
-      className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
-      onClick={onClose}
-    >
-      <button 
-        className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
-        onClick={onClose}
-      >
-        <X className="h-8 w-8" />
-      </button>
-      
-      <div className="relative max-w-4xl w-full" onClick={e => e.stopPropagation()}>
-        {/* Title */}
-        <p className="text-white text-center mb-4 font-medium">{title}</p>
-        
-        {/* Image */}
-        <div className="relative">
-          <img
-            src={imageArray[currentIndex].src}
-            alt={imageArray[currentIndex].alt}
-            className="w-full h-auto max-h-[70vh] object-contain rounded-lg"
-          />
-          
-          {/* Label */}
-          <Badge className={`absolute top-4 left-4 ${currentIndex === 0 ? 'bg-orange-500' : 'bg-green-600'} text-white`}>
-            {imageArray[currentIndex].label}
-          </Badge>
-        </div>
-        
-        {/* Navigation */}
-        <div className="flex justify-center gap-4 mt-4">
-          <button
-            onClick={() => setCurrentIndex(0)}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-              currentIndex === 0 
-                ? 'bg-orange-500 text-white' 
-                : 'bg-white/20 text-white hover:bg-white/30'
-            }`}
-          >
-            <ChevronLeft className="h-4 w-4 inline mr-1" />
-            Vorher
-          </button>
-          <button
-            onClick={() => setCurrentIndex(1)}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-              currentIndex === 1 
-                ? 'bg-green-600 text-white' 
-                : 'bg-white/20 text-white hover:bg-white/30'
-            }`}
-          >
-            Nachher
-            <ChevronRight className="h-4 w-4 inline ml-1" />
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// Projekt Card Component
-const ProjektCard = ({ projekt, onOpenLightbox }) => {
-  return (
-    <Card className="group overflow-hidden border hover:border-[#1e328b]/30 transition-colors h-full flex flex-col">
-      {/* Desktop: Side by Side | Mobile: Toggle */}
-      <div className="hidden md:block">
-        <BeforeAfterSideBySide images={projekt.images} altTexts={projekt.altTexts} />
-      </div>
-      <div className="md:hidden">
-        <BeforeAfterToggle images={projekt.images} altTexts={projekt.altTexts} />
+        {/* Featured Badge */}
+        {referenz.featured && (
+          <div className="absolute top-3 left-3">
+            <Badge className="bg-amber-500 text-white text-xs">
+              <Star className="h-3 w-3 mr-1" />
+              Top-Projekt
+            </Badge>
+          </div>
+        )}
       </div>
       
       <CardContent className="p-5 flex-1 flex flex-col">
-        {/* Location */}
-        <div className="flex items-center text-sm text-gray-500 mb-2">
-          <MapPin className="h-4 w-4 mr-1 text-[#1e328b]" />
-          {projekt.location}
-        </div>
-        
-        {/* Title */}
-        <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-[#1e328b] transition-colors">
-          {projekt.title}
+        {/* Firma */}
+        <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-[#1e328b] transition-colors line-clamp-1">
+          {referenz.company}
         </h3>
         
-        {/* Description */}
-        <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-1">
-          {projekt.description}
+        {/* Titel */}
+        <p className="text-sm text-[#1e328b] font-medium mb-2">
+          {referenz.title}
         </p>
         
-        {/* Service Tags */}
+        {/* Beschreibung */}
+        <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-1">
+          {referenz.description}
+        </p>
+        
+        {/* Leistungs-Tags */}
         <div className="flex flex-wrap gap-1.5 mb-4">
-          {projekt.services.map((service, idx) => (
+          {referenz.services.slice(0, 3).map((service, idx) => (
             <Badge 
               key={idx} 
               variant="secondary" 
-              className="bg-[#1e328b]/10 text-[#1e328b] text-xs hover:bg-[#1e328b]/20"
+              className="bg-[#1e328b]/10 text-[#1e328b] text-xs"
             >
               {service}
             </Badge>
           ))}
+          {referenz.services.length > 3 && (
+            <Badge variant="secondary" className="bg-gray-100 text-gray-600 text-xs">
+              +{referenz.services.length - 3}
+            </Badge>
+          )}
         </div>
         
         {/* Footer */}
         <div className="flex items-center justify-between text-xs text-gray-500 pt-3 border-t">
           <span className="flex items-center">
             <Clock className="h-3.5 w-3.5 mr-1" />
-            {projekt.duration}
+            {referenz.duration}
           </span>
-          <button
-            onClick={() => onOpenLightbox(projekt)}
-            className="text-[#1e328b] hover:text-[#162567] font-medium transition-colors"
-          >
-            Bilder vergrößern
-          </button>
+          <span className="flex items-center text-green-600">
+            <CheckCircle2 className="h-3.5 w-3.5 mr-1" />
+            Abgeschlossen
+          </span>
         </div>
       </CardContent>
     </Card>
@@ -241,13 +118,15 @@ const ProjektCard = ({ projekt, onOpenLightbox }) => {
 
 const Referenzen = () => {
   const [filter, setFilter] = useState('alle');
-  const [lightboxData, setLightboxData] = useState(null);
   
-  const filteredProjekte = filter === 'alle' 
-    ? projekte 
-    : projekte.filter(p => p.category === filter);
+  // Kategorien aus den Referenzen extrahieren
+  const categories = ['alle', ...new Set(references.map(r => r.category))];
   
-  const featuredProjekte = projekte.filter(p => p.featured);
+  const filteredReferences = filter === 'alle' 
+    ? references 
+    : references.filter(r => r.category === filter);
+  
+  const featuredReferences = references.filter(r => r.featured);
 
   return (
     <div className="min-h-screen pt-24 pb-20">
@@ -263,8 +142,8 @@ const Referenzen = () => {
                 Referenzen & Projekte
               </h1>
               <p className="text-lg text-gray-600">
-                Echte Projekte aus Hamburg – von der Wohnungsrenovierung bis zur Fassadensanierung. 
-                Überzeugen Sie sich selbst von unserer Arbeit.
+                Von Gewerbeobjekten bis hin zu sozialen Einrichtungen – wir realisieren Projekte 
+                jeder Größe mit höchster Qualität und Zuverlässigkeit.
               </p>
             </div>
           </ScrollReveal>
@@ -292,18 +171,15 @@ const Referenzen = () => {
                 Ausgewählte Projekte
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
-                Vorher/Nachher-Vergleiche unserer aktuellen Arbeiten in Hamburg und Umgebung.
+                Einblicke in unsere aktuellen Arbeiten in Hamburg und Umgebung.
               </p>
             </div>
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {featuredProjekte.map((projekt, index) => (
-              <ScrollReveal key={projekt.id} delay={index * 100}>
-                <ProjektCard 
-                  projekt={projekt} 
-                  onOpenLightbox={(p) => setLightboxData(p)}
-                />
+            {featuredReferences.map((referenz, index) => (
+              <ScrollReveal key={referenz.id} delay={index * 100}>
+                <ReferenzCard referenz={referenz} />
               </ScrollReveal>
             ))}
           </div>
@@ -317,28 +193,28 @@ const Referenzen = () => {
             <ScrollReveal>
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  Alle Projekte
+                  Alle Referenzen
                 </h2>
                 <p className="text-gray-600 mb-8">
-                  Filtern Sie nach Kategorie, um passende Referenzen zu finden.
+                  Filtern Sie nach Kategorie, um passende Projekte zu finden.
                 </p>
                 
                 {/* Filter Buttons */}
                 <div className="flex flex-wrap justify-center gap-2 mb-8">
                   <Filter className="h-5 w-5 text-gray-400 mr-2 self-center hidden sm:block" />
-                  {projektKategorien.map((category) => (
+                  {categories.map((category) => (
                     <Button
-                      key={category.id}
-                      variant={filter === category.id ? "default" : "outline"}
+                      key={category}
+                      variant={filter === category ? "default" : "outline"}
                       size="sm"
-                      onClick={() => setFilter(category.id)}
-                      data-testid={`filter-${category.id}`}
-                      className={`${filter === category.id 
+                      onClick={() => setFilter(category)}
+                      data-testid={`filter-${category}`}
+                      className={`${filter === category 
                         ? "bg-[#1e328b] hover:bg-[#162567] text-white" 
                         : "hover:border-[#1e328b] hover:text-[#1e328b]"
                       }`}
                     >
-                      {category.label}
+                      {category === 'alle' ? 'Alle Projekte' : category}
                     </Button>
                   ))}
                 </div>
@@ -347,32 +223,19 @@ const Referenzen = () => {
 
             {/* Projects Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProjekte.map((projekt, index) => (
-                <ScrollReveal key={projekt.id} delay={index * 75}>
-                  <ProjektCard 
-                    projekt={projekt} 
-                    onOpenLightbox={(p) => setLightboxData(p)}
-                  />
+              {filteredReferences.map((referenz, index) => (
+                <ScrollReveal key={referenz.id} delay={index * 75}>
+                  <ReferenzCard referenz={referenz} />
                 </ScrollReveal>
               ))}
             </div>
 
-            {filteredProjekte.length === 0 && (
+            {filteredReferences.length === 0 && (
               <div className="text-center py-12 text-gray-500">
                 Keine Projekte in dieser Kategorie gefunden.
               </div>
             )}
           </div>
-        </div>
-      </section>
-
-      {/* Privacy Notice */}
-      <section className="py-6 bg-gray-100">
-        <div className="container mx-auto px-4">
-          <p className="text-center text-sm text-gray-500 max-w-2xl mx-auto">
-            <span className="font-medium">Datenschutz-Hinweis:</span> Aus Datenschutzgründen zeigen wir keine 
-            vollständigen Adressdaten, Hausnummern oder persönlichen Informationen unserer Kunden.
-          </p>
         </div>
       </section>
 
@@ -383,11 +246,11 @@ const Referenzen = () => {
           <ScrollReveal>
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-                Ähnliches Projekt geplant?
+                Ihr Projekt könnte hier stehen
               </h2>
               <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-                Ob Wohnungsrenovierung, Fassadenanstrich oder Balkonsanierung – 
-                wir beraten Sie gerne und erstellen Ihnen ein unverbindliches Angebot.
+                Lassen Sie uns gemeinsam Ihr nächstes Projekt realisieren. 
+                Fordern Sie jetzt ein unverbindliches Angebot an.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -429,17 +292,6 @@ const Referenzen = () => {
           </ScrollReveal>
         </div>
       </section>
-
-      {/* Lightbox */}
-      {lightboxData && (
-        <Lightbox
-          isOpen={!!lightboxData}
-          onClose={() => setLightboxData(null)}
-          images={lightboxData.images}
-          altTexts={lightboxData.altTexts}
-          title={lightboxData.title}
-        />
-      )}
     </div>
   );
 };
