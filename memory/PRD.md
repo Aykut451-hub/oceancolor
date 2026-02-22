@@ -53,6 +53,15 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
 - Dezenter "Bewertung abgeben" Link im Footer
 - Mobile-optimiertes Design ohne Pop-up oder Overlay
 
+### ✅ Kundenstimmen Sektion auf Homepage (22.02.2026)
+- Sektion "Das sagen unsere Kunden" unterhalb der Leistungsübersicht
+- Subtext: "Echte Bewertungen von Kunden aus Hamburg und Umgebung."
+- 4 ausgewählte Google-Bewertungen mit Sternebewertung, Kundenname (Initial-Avatar) und Kurztext
+- Google-Rating-Badge: 5,0 Sterne (23 Bewertungen)
+- CTA: "Alle Bewertungen ansehen" (blau) + "Jetzt selbst bewerten" (dezent)
+- Modernes, dezentes Design ohne Slider-Autoplay
+- Mobile-optimiert
+
 ### ✅ Frühere Session-Implementierungen
 - Preisrechner-Logik für "Lackierarbeiten" korrigiert
 - "Über uns" und "Impressum" Seiten überarbeitet
