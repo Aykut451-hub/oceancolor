@@ -243,7 +243,8 @@ const BeforeAfterSlider = ({
         <img
           src={afterImage}
           alt={afterAlt}
-          className={`w-full h-full object-cover transition-all duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`w-full h-full transition-all duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          style={{ objectFit, objectPosition: 'center' }}
           onLoad={() => setAfterLoaded(true)}
           draggable="false"
         />
