@@ -13,6 +13,7 @@ from datetime import datetime, timezone
 
 # Import leads routes
 from leads_routes import router as leads_router
+from references_routes import router as references_router
 
 
 ROOT_DIR = Path(__file__).parent
