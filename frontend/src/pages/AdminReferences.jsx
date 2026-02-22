@@ -70,7 +70,9 @@ const ReferenceForm = ({ reference, onSave, onCancel, isNew }) => {
     duration: reference?.duration || '',
     featured: reference?.featured || false,
     active: reference?.active !== false,
-    image: reference?.image || ''
+    image: reference?.image || '',
+    image_webp: reference?.image_webp || '',
+    image_fallback: reference?.image_fallback || ''
   });
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
