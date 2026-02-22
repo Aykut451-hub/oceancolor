@@ -551,6 +551,74 @@ const Kontakt = () => {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            {/* Header */}
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-ocean-blue/10 rounded-full mb-4">
+                <HelpCircle className="h-6 w-6 text-ocean-blue" />
+              </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-3">
+                Häufig gestellte Fragen
+              </h2>
+              <p className="text-gray-600">
+                Antworten auf die wichtigsten Fragen zu unserem Malerbetrieb in Hamburg.
+              </p>
+            </div>
+
+            {/* Accordion FAQ */}
+            <Accordion type="single" collapsible className="space-y-3">
+              {faqData.map((faq) => (
+                <AccordionItem 
+                  key={faq.id} 
+                  value={faq.id}
+                  className="bg-gray-50 rounded-xl border border-gray-200 px-6 data-[state=open]:bg-ocean-blue/5 data-[state=open]:border-ocean-blue/30 transition-colors"
+                >
+                  <AccordionTrigger 
+                    className="text-left font-semibold text-gray-900 hover:no-underline py-5 [&[data-state=open]]:text-ocean-blue"
+                    data-testid={`faq-trigger-${faq.id}`}
+                  >
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-600 leading-relaxed pb-5">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+
+            {/* CTA unter FAQ */}
+            <div className="text-center mt-10 pt-8 border-t border-gray-200">
+              <p className="text-gray-600 mb-4">
+                Noch Fragen? Wir helfen Ihnen gerne weiter.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a
+                  href="tel:04018008888"
+                  className="inline-flex items-center px-5 py-2.5 bg-ocean-blue hover:bg-ocean-blue-dark text-white font-medium rounded-lg transition-colors"
+                  data-testid="faq-call-btn"
+                >
+                  <Phone className="h-4 w-4 mr-2" />
+                  040 1800 8888
+                </a>
+                <a
+                  href="https://wa.me/4915906850859"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-5 py-2.5 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-colors"
+                  data-testid="faq-whatsapp-btn"
+                >
+                  <MessageCircle className="h-4 w-4 mr-2" />
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
