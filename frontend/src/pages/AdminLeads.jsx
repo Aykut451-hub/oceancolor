@@ -13,7 +13,8 @@ import {
   Eye,
   Calendar,
   TrendingUp,
-  DollarSign
+  DollarSign,
+  Building2
 } from 'lucide-react';
 import { toast } from 'sonner';
 import {
