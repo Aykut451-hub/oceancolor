@@ -144,9 +144,8 @@ async def update_reference(
     return updated
 
 @router.delete("/{reference_id}")
-async def delete_reference(reference_id: str, authorization: str = None):
+async def delete_reference(reference_id: str, _: bool = Depends(verify_admin_token)):
     """Delete reference (admin only)"""
-    await verify_admin_token(authorization)
     
     existing = await db.references.find_one({"id": reference_id})
     if not existing:
