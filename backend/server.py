@@ -74,6 +74,7 @@ async def get_status_checks():
 # Include routers in the main app
 app.include_router(api_router)
 app.include_router(leads_router)
+app.include_router(references_router)
 
 # Mount uploads directory for static file serving
 UPLOAD_DIR = Path("/app/backend/uploads")
