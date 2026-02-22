@@ -101,17 +101,25 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
 - Sichere Logging (anonymisierte IPs, keine Passwörter)
 - Backend Service: `/app/backend/auth_service.py`
 
-### ✅ Lokaler Media Storage für Referenzen (22.02.2026)
+### ✅ Lokaler Media Storage mit WebP-Optimierung (22.02.2026)
 - Neuer lokaler Media-Ordner: `/media/references/`
+- **WebP standardmäßig aktiviert** - generiert beide Formate automatisch
 - Automatische Bildkomprimierung (JPEG 85%, WebP 80%)
 - Automatisches Resizing auf max. 1600x1200 px
-- Optionale WebP-Konvertierung für bessere Performance
+- **~70% kleinere Dateien** durch WebP-Konvertierung
 - Saubere, SEO-freundliche Dateinamen
 - Upload-Validierung: Max 10MB, JPG/PNG/WebP/GIF
-- Löschen von Bildern über Admin-API
+- Löschen löscht beide Versionen (WebP + Fallback)
 - Media-Statistiken Endpoint
 - Backend: `/app/backend/media_service.py`
 - Statische Dateien über `/media/` URL-Pfad erreichbar
+
+### ✅ Frontend mit `<picture>` Element für WebP (22.02.2026)
+- Referenzen-Seite nutzt `<picture>` Element mit WebP + Fallback
+- Admin-Interface speichert `image`, `image_webp`, `image_fallback`
+- Lazy Loading (`loading="lazy"`) und async decoding (`decoding="async"`)
+- Alt-Texte beibehalten für SEO und Barrierefreiheit
+- Verbesserte Core Web Vitals durch kleinere Bildgrößen
 
 ### ✅ Frühere Session-Implementierungen
 - Preisrechner-Logik für "Lackierarbeiten" korrigiert
