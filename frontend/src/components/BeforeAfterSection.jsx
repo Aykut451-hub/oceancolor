@@ -25,7 +25,8 @@ const beforeAfterProjects = [
     beforeAlt: 'Altes Badezimmer vor der Sanierung in Hamburg',
     afterAlt: 'Modernes Badezimmer nach der Sanierung durch Ocean Color',
     category: 'Badsanierung',
-    link: '/badsanierung'
+    link: '/badsanierung',
+    objectFit: 'contain' // Weniger Zoom für bessere Gesamtansicht
   },
   {
     id: 3,
