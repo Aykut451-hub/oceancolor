@@ -20,7 +20,7 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
 ## Kernfunktionen
 1. **Preisrechner:** Multi-Step-Formular mit Live-Preisberechnung
 2. **Lead Management:** MongoDB Speicherung + E-Mail-Benachrichtigung
-3. **Admin Dashboard:** Passwortgeschützter Bereich (/admin, Passwort: ocean2024)
+3. **Admin Dashboard:** Passwortgeschützter Bereich (/admin)
 4. **SEO-Seiten:** Dynamische Landingpages für Stadtteile
 
 ## Seiten
@@ -123,4 +123,4 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
 
 ## Admin-Zugang
 - URL: `/admin/login`
-- Passwort: `ocean2024`
+- Credentials: Über ENV-Variable `ADMIN_PASSWORD` konfiguriert (nicht im Code)
