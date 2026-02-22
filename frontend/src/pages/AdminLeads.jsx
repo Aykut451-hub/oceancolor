@@ -14,7 +14,9 @@ import {
   Calendar,
   TrendingUp,
   DollarSign,
-  Building2
+  Building2,
+  MapPin,
+  AlertTriangle
 } from 'lucide-react';
 import { toast } from 'sonner';
 import {
