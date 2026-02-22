@@ -243,9 +243,8 @@ async def get_categories():
 
 # Initialize with default data from mock if collection is empty
 @router.post("/init")
-async def initialize_references(authorization: str = None):
+async def initialize_references(_: bool = Depends(verify_admin_token)):
     """Initialize references from mock data (admin only, one-time use)"""
-    await verify_admin_token(authorization)
     
     count = await db.references.count_documents({})
     if count > 0:
