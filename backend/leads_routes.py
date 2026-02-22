@@ -55,7 +55,6 @@ async def save_uploaded_files(files: List[UploadFile]) -> List[str]:
         if file.filename:
             # Generiere einzigartigen Dateinamen
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            file_extension = Path(file.filename).suffix
             safe_filename = f"{timestamp}_{file.filename}"
             
             file_path = UPLOAD_DIR / safe_filename
