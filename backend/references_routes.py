@@ -161,9 +161,8 @@ async def delete_reference(reference_id: str, _: bool = Depends(verify_admin_tok
     return {"success": True, "message": "Referenz gelöscht"}
 
 @router.post("/{reference_id}/toggle-active")
-async def toggle_active(reference_id: str, authorization: str = None):
+async def toggle_active(reference_id: str, _: bool = Depends(verify_admin_token)):
     """Toggle reference active status (admin only)"""
-    await verify_admin_token(authorization)
     
     existing = await db.references.find_one({"id": reference_id})
     if not existing:
