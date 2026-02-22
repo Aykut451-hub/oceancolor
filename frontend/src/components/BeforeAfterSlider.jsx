@@ -238,6 +238,12 @@ const BeforeAfterSlider = ({
         <div className="absolute inset-0 img-placeholder z-10" />
       )}
 
+      {/* Background for contain mode */}
+      <div 
+        className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200"
+        style={{ display: objectFit === 'contain' ? 'block' : 'none' }}
+      />
+
       {/* After Image (Background - Full) with shine effect */}
       <div className="absolute inset-0">
         <img
