@@ -186,6 +186,7 @@ const BeforeAfterSection = () => {
                 afterAlt={currentProject.afterAlt}
                 beforeLabel="Vorher"
                 afterLabel="Nachher"
+                objectFit={currentProject.objectFit || 'cover'}
                 className="max-w-2xl mx-auto"
               />
 
