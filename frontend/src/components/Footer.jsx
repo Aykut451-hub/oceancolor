@@ -233,7 +233,19 @@ const Footer = () => {
             <p className="text-sm text-gray-400">
               © {new Date().getFullYear()} Ocean Color. Alle Rechte vorbehalten.
             </p>
-            <div className="flex space-x-6">
+            <div className="flex items-center space-x-6">
+              <a 
+                href="https://search.google.com/local/writereview?placeid=ChIJgwoYpaqFsUcRPabmfur9qc4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-gray-400 hover:text-yellow-400 transition-colors flex items-center gap-1"
+                data-testid="footer-review-link"
+              >
+                <svg viewBox="0 0 24 24" className="h-4 w-4">
+                  <path fill="currentColor" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+                Bewertung abgeben
+              </a>
               <Link to="/impressum" className="text-sm text-gray-400 hover:text-ocean-blue transition-colors">
                 Impressum
               </Link>
