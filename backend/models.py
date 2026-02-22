@@ -76,6 +76,10 @@ class Lead(BaseModel):
     # Files
     foto_urls: List[str] = []
     
+    # Distance data (from calculator)
+    distanceFromHamburg: Optional[int] = None
+    isOutsideServiceArea: Optional[bool] = None
+    
     # Admin notes
     admin_notizen: str = ""
     
