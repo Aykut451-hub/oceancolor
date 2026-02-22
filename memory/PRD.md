@@ -212,6 +212,14 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
 - CTA: "Jetzt Badsanierung anfragen" → Preisrechner
 - Mobile-optimiert, keine Autoplay-Animation
 
+### ✅ Badsanierung in Leistungen-Übersicht (22.02.2026)
+- Neue Leistungskachel "Badsanierung" hinzugefügt
+- Position: Nach "Dekorative Wandgestaltung"
+- Verlinkt direkt auf `/badsanierung` (nicht auf Standard-Leistungsseite)
+- GEO-SEO Sektion am Ende der Leistungen-Seite:
+  - 10 Hamburger Stadtteile als Tags
+  - Interner SEO-Link "Badsanierung in Hamburg"
+
 ---
 
 ## Dateien-Referenz
