@@ -13,7 +13,9 @@ import {
   Calendar,
   Image as ImageIcon,
   Save,
-  ExternalLink
+  ExternalLink,
+  AlertTriangle,
+  CheckCircle
 } from 'lucide-react';
 import { toast } from 'sonner';
 import {
