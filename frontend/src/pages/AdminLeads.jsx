@@ -33,11 +33,13 @@ const AdminLeads = () => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
+  const [distanceFilter, setDistanceFilter] = useState('all');
   const [stats, setStats] = useState(null);
   const navigate = useNavigate();
 
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
   const token = localStorage.getItem('adminToken');
+  const MAX_SERVICE_DISTANCE = 200;
 
   useEffect(() => {
     fetchLeads();
@@ -46,7 +48,7 @@ const AdminLeads = () => {
 
   useEffect(() => {
     filterLeads();
-  }, [leads, searchTerm, statusFilter]);
+  }, [leads, searchTerm, statusFilter, distanceFilter]);
 
   const fetchLeads = async () => {
     try {
