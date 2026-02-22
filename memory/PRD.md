@@ -70,6 +70,18 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
 - CTA-Buttons: Telefon + WhatsApp
 - Mobile-optimiert, keine Autoplay-Animationen
 
+### ✅ Referenzen-Seite mit Vorher/Nachher-Vergleichen (22.02.2026)
+- 8 Projekte mit echten Vorher/Nachher-Bildern
+- Desktop: Bilder nebeneinander | Mobile: Toggle-Button zum Umschalten
+- Standort-Tags pro Projekt (Hamburg-Altona, -Eimsbüttel, -Ottensen, -Bahrenfeld, -St. Pauli, -Blankenese, -Wandsbek, -Mitte)
+- Leistungs-Tags: Malerarbeiten, Fassadensanierung, Balkonsanierung, Trockenbau, Schimmelsanierung etc.
+- Filter nach Kategorie: Wohnungsrenovierung, Fassade, Balkon, Gewerbe, Schimmelsanierung
+- Lightbox zum Vergrößern der Bilder (ohne externe Tracker)
+- SEO-optimierte Alt-Texte mit Hamburg-Bezug
+- Datenschutz-Hinweis am Ende
+- CTA-Block: "Ähnliches Projekt geplant?" mit Telefon, WhatsApp, Angebotsrechner
+- Neue Daten in `/app/frontend/src/data/projekte.js`
+
 ### ✅ Frühere Session-Implementierungen
 - Preisrechner-Logik für "Lackierarbeiten" korrigiert
 - "Über uns" und "Impressum" Seiten überarbeitet
