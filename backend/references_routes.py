@@ -177,9 +177,8 @@ async def toggle_active(reference_id: str, _: bool = Depends(verify_admin_token)
     return {"success": True, "active": new_status}
 
 @router.post("/{reference_id}/toggle-featured")
-async def toggle_featured(reference_id: str, authorization: str = None):
+async def toggle_featured(reference_id: str, _: bool = Depends(verify_admin_token)):
     """Toggle reference featured status (admin only)"""
-    await verify_admin_token(authorization)
     
     existing = await db.references.find_one({"id": reference_id})
     if not existing:
