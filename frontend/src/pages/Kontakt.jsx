@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { Textarea } from '../components/ui/textarea';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
 import { submitCallbackRequest, submitContactForm } from '../data/mock';
 import { toast } from 'sonner';
 import { WHATSAPP_URL } from '../components/FloatingWhatsApp';
@@ -25,6 +25,33 @@ const Kontakt = () => {
 
   const [loadingCallback, setLoadingCallback] = useState(false);
   const [loadingContact, setLoadingContact] = useState(false);
+  
+  // Lazy load map
+  const [mapLoaded, setMapLoaded] = useState(false);
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setMapLoaded(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (mapRef.current) {
+      observer.observe(mapRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const serviceAreas = [
+    'Hamburg Altona', 'Eimsbüttel', 'Ottensen', 'St. Pauli', 
+    'Bahrenfeld', 'Blankenese', 'Hamburg-Mitte', 'Wandsbek'
+  ];
 
   const handleCallbackSubmit = async (e) => {
     e.preventDefault();
