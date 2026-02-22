@@ -145,6 +145,58 @@ const Leistungen = () => {
         </div>
       </section>
 
+      {/* GEO SEO Section */}
+      <section className="py-16 bg-gradient-to-br from-[#003056] to-[#004a7c]">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            {/* Header */}
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <MapPin className="w-6 h-6 text-white/80" />
+              <span className="text-white/80 font-medium">Lokaler Fachbetrieb</span>
+            </div>
+            <ScrollReveal>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
+                Unsere Leistungen in Hamburg und Umgebung
+              </h2>
+            </ScrollReveal>
+
+            {/* Text */}
+            <p className="text-lg text-white/90 mb-4 max-w-2xl mx-auto">
+              Ocean Color bietet professionelle Renovierungs- und Sanierungsleistungen in ganz Hamburg an.
+            </p>
+            <p className="text-white/80 mb-8 max-w-2xl mx-auto">
+              Unsere Arbeiten realisieren wir unter anderem in:
+            </p>
+
+            {/* Stadtteile */}
+            <div className="flex flex-wrap justify-center gap-2 mb-10">
+              {[
+                'Hamburg Altona', 'Hamburg Eimsbüttel', 'Hamburg Ottensen', 
+                'Hamburg St. Pauli', 'Hamburg Bahrenfeld', 'Hamburg Blankenese',
+                'Hamburg Hafencity', 'Hamburg Winterhude', 'Hamburg Wandsbek', 
+                'Hamburg Harburg'
+              ].map((stadtteil, index) => (
+                <span 
+                  key={index}
+                  className="bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm border border-white/20"
+                >
+                  {stadtteil}
+                </span>
+              ))}
+            </div>
+
+            {/* SEO Text */}
+            <p className="text-white/80 mb-8 max-w-2xl mx-auto">
+              Ob Malerarbeiten, Sanierungen oder{' '}
+              <Link to="/badsanierung" className="text-white underline hover:text-cyan-300 transition-colors">
+                Badsanierung in Hamburg
+              </Link>{' '}
+              – wir stehen für saubere Umsetzung, hochwertige Materialien und zuverlässige Ergebnisse.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
