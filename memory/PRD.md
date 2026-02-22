@@ -35,7 +35,7 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
 ### ✅ Preisrechner Refactoring (22.02.2026) - P1 ABGESCHLOSSEN
 - **RechnerNeu.jsx** von ~1500 Zeilen auf ~400 Zeilen reduziert
 - Modulare Step-Komponenten in `/app/frontend/src/components/rechner/`:
-  - `StepPLZ.jsx` - PLZ-Eingabe mit Validierung
+  - `StepPLZ.jsx` - PLZ-Eingabe mit Validierung + **Entfernungsprüfung**
   - `StepObjektart.jsx` - Objektart-Auswahl
   - `StepLeistungen.jsx` - Leistungsauswahl mit Inline-Inputs
   - `StepFlaechen.jsx` - Raumanzahl/Wandfläche
@@ -50,12 +50,23 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
   - `computeEstimate(state)` → {min, max, breakdown}
   - Alle Preiskonstanten zentralisiert
   - PLZ-Validierung (`isValidPLZ`)
+- **Geo Service** in `/app/frontend/src/lib/geoService.js`:
+  - PLZ → Koordinaten via OpenStreetMap Nominatim API
+  - Haversine-Formel für Distanzberechnung
+  - `checkDistanceFromHamburg(plz)` → {distance, isOutsideServiceArea}
 - **PLZ-Validierung UX-Fix:**
   - Nur 5 Ziffern erlaubt (Regex `^\d{5}$`)
   - "Weiter" Button disabled bei ungültiger PLZ
   - Fehlermeldung: "Bitte eine gültige 5-stellige PLZ eingeben."
   - Hinweis: "Wir sind in Hamburg & Umgebung tätig."
   - Grünes Häkchen bei gültiger PLZ
+- **Entfernungsprüfung (22.02.2026):**
+  - Automatische Distanzberechnung zu Hamburg (Referenz: 20095)
+  - Hamburg-Bereich (20xxx-22xxx): Soforterkennung ohne API
+  - Andere PLZ: API-basierte Entfernungsberechnung
+  - ≤200 km: Grünes Häkchen mit Distanzanzeige
+  - >200 km: Gelber Warnhinweis ("außerhalb des regulären Einsatzgebietes")
+  - Button bleibt aktiv - nur Info, keine Blockierung
 - **Testfälle** in `/app/frontend/src/lib/pricingEngine.test.js`:
   - 10+ Testfälle für Preislogik
   - PLZ-Validierung Tests
