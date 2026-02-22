@@ -103,7 +103,7 @@ async def create_lead(
                     if len(parts) == 2:
                         preis_min = float(parts[0].strip())
                         preis_max = float(parts[1].strip())
-                except:
+                except (ValueError, KeyError):
                     pass
             
             # Save uploaded foto
