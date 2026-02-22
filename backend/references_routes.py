@@ -265,17 +265,6 @@ async def upload_image(
         raise HTTPException(status_code=400, detail=str(e))
 
 
-@router.delete("/image")
-async def delete_image(
-    url: str = Query(..., description="URL of image to delete"),
-    _: bool = Depends(verify_admin_token)
-):
-    """Delete a reference image by URL"""
-    if media_service.delete_reference_image(url):
-        return {"success": True, "message": "Bild gelöscht"}
-    raise HTTPException(status_code=404, detail="Bild nicht gefunden")
-
-
 # Initialize with default data from mock if collection is empty
 @router.post("/init")
 async def initialize_references(_: bool = Depends(verify_admin_token)):
