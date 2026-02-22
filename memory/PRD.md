@@ -93,6 +93,26 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
 - Frontend: `/app/frontend/src/pages/AdminReferences.jsx`
 - Datenstruktur mit optionalen Feldern für Vorher/Nachher-Bilder (before_image, after_image)
 
+### ✅ Admin-Sicherheit gehärtet (22.02.2026)
+- Passwort aus Code entfernt, in `ADMIN_PASSWORD` ENV-Variable verschoben
+- JWT-Secret als `JWT_SECRET` ENV-Variable
+- Rate-Limiting: 5 Versuche pro 15 Minuten pro IP
+- IP-basiertes Lockout nach zu vielen Fehlversuchen
+- Sichere Logging (anonymisierte IPs, keine Passwörter)
+- Backend Service: `/app/backend/auth_service.py`
+
+### ✅ Lokaler Media Storage für Referenzen (22.02.2026)
+- Neuer lokaler Media-Ordner: `/media/references/`
+- Automatische Bildkomprimierung (JPEG 85%, WebP 80%)
+- Automatisches Resizing auf max. 1600x1200 px
+- Optionale WebP-Konvertierung für bessere Performance
+- Saubere, SEO-freundliche Dateinamen
+- Upload-Validierung: Max 10MB, JPG/PNG/WebP/GIF
+- Löschen von Bildern über Admin-API
+- Media-Statistiken Endpoint
+- Backend: `/app/backend/media_service.py`
+- Statische Dateien über `/media/` URL-Pfad erreichbar
+
 ### ✅ Frühere Session-Implementierungen
 - Preisrechner-Logik für "Lackierarbeiten" korrigiert
 - "Über uns" und "Impressum" Seiten überarbeitet
