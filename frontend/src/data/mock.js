@@ -51,6 +51,14 @@ export const services = [
     icon: "Palette"
   },
   {
+    id: 11,
+    title: "Badsanierung",
+    slug: "badsanierung",
+    description: "Komplette Badmodernisierung vom Rückbau bis zur hochwertigen Neugestaltung – funktional, modern und aus einer Hand.",
+    icon: "Droplets",
+    customLink: "/badsanierung"
+  },
+  {
     id: 8,
     title: "Bodenbeläge",
     slug: "bodenbelaege",
