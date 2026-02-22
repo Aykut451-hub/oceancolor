@@ -139,7 +139,18 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
 - `/app/frontend/src/components/Footer.jsx` - Footer mit Location Map
 - `/app/frontend/src/pages/Kontakt.jsx` - Kontaktseite mit Location Map
 - `/app/frontend/src/pages/RechnerNeu.jsx` - Preisrechner
+- `/app/frontend/src/pages/AdminReferences.jsx` - Admin Referenzen-Verwaltung
 - `/app/frontend/src/data/leistungen.js` - Leistungsdaten
+- `/app/backend/media_service.py` - Bild-Upload und Verarbeitung
+- `/app/backend/references_routes.py` - Referenzen API
+- `/app/backend/auth_service.py` - Authentifizierung mit Rate-Limiting
+
+## Media Storage
+- **Pfad:** `/app/backend/media/references/`
+- **URL:** `{BACKEND_URL}/media/references/{filename}`
+- **Formate:** JPG, PNG, WebP, GIF
+- **Max Upload:** 10MB
+- **Max Dimensionen:** 1600x1200 px (automatisch skaliert)
 
 ## Admin-Zugang
 - URL: `/admin/login`
