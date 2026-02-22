@@ -110,6 +110,19 @@ const AdminLeads = () => {
       filtered = filtered.filter(lead => lead.status === statusFilter);
     }
 
+    // Distance filter
+    if (distanceFilter !== 'all') {
+      filtered = filtered.filter(lead => {
+        const distance = lead.distanceFromHamburg;
+        if (distanceFilter === 'within') {
+          return !distance || distance <= MAX_SERVICE_DISTANCE;
+        } else if (distanceFilter === 'outside') {
+          return distance && distance > MAX_SERVICE_DISTANCE;
+        }
+        return true;
+      });
+    }
+
     setFilteredLeads(filtered);
   };
 
