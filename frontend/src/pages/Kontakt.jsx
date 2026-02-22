@@ -346,6 +346,117 @@ const Kontakt = () => {
           </div>
         </div>
       </section>
+
+      {/* Location Section - SEO optimized */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">
+              Unser Standort in Hamburg
+            </h2>
+            <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+              Ocean Color Malermeisterbetrieb – Ihr zuverlässiger Partner für hochwertige 
+              Malerarbeiten in Hamburg und Umgebung.
+            </p>
+
+            <div className="grid lg:grid-cols-2 gap-8 items-start">
+              {/* Left: Location Info */}
+              <div className="bg-gray-50 rounded-xl p-6">
+                {/* Address */}
+                <address className="not-italic mb-6">
+                  <h3 className="font-semibold text-gray-900 text-lg mb-3">Ocean Color GmbH</h3>
+                  <div className="flex items-start space-x-3 text-gray-600">
+                    <MapPin className="h-5 w-5 text-ocean-blue flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p>Schützenstraße 106</p>
+                      <p>22761 Hamburg</p>
+                    </div>
+                  </div>
+                </address>
+
+                {/* Contact Details */}
+                <div className="space-y-3 mb-6">
+                  <a href="tel:04018008888" className="flex items-center space-x-3 text-gray-600 hover:text-ocean-blue transition-colors">
+                    <Phone className="h-5 w-5 text-ocean-blue" />
+                    <span>040 1800 8888</span>
+                  </a>
+                  <a href="mailto:info@ocean-maler.de" className="flex items-center space-x-3 text-gray-600 hover:text-ocean-blue transition-colors">
+                    <Mail className="h-5 w-5 text-ocean-blue" />
+                    <span>info@ocean-maler.de</span>
+                  </a>
+                </div>
+
+                {/* Service Areas */}
+                <div className="mb-6">
+                  <p className="text-sm font-medium text-gray-700 mb-2">Unser Einsatzgebiet:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {serviceAreas.map((area, index) => (
+                      <span 
+                        key={index}
+                        className="text-xs bg-ocean-blue/10 text-ocean-blue px-2 py-1 rounded"
+                      >
+                        {area}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-wrap gap-3">
+                  <a 
+                    href="https://wa.me/4915906850859"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-testid="location-whatsapp-btn"
+                    className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors"
+                  >
+                    <MessageCircle className="h-4 w-4 mr-2" />
+                    WhatsApp
+                  </a>
+                  <a 
+                    href="tel:04018008888"
+                    data-testid="location-call-btn"
+                    className="inline-flex items-center px-4 py-2 bg-ocean-blue hover:bg-ocean-blue-dark text-white text-sm font-medium rounded-lg transition-colors"
+                  >
+                    <Phone className="h-4 w-4 mr-2" />
+                    Jetzt anrufen
+                  </a>
+                </div>
+              </div>
+
+              {/* Right: Map */}
+              <div ref={mapRef} className="relative">
+                <div className="rounded-xl overflow-hidden shadow-lg bg-gray-100">
+                  {mapLoaded ? (
+                    <iframe
+                      src="https://www.google.com/maps?q=Schützenstraße+106,+22761+Hamburg&output=embed"
+                      width="100%"
+                      height="320"
+                      style={{ border: 0 }}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      allowFullScreen
+                      title="Ocean Color Standort in Hamburg"
+                      className="w-full"
+                      data-testid="location-map-iframe"
+                    />
+                  ) : (
+                    <div className="w-full h-80 bg-gray-100 flex items-center justify-center">
+                      <div className="text-center text-gray-500">
+                        <MapPin className="h-8 w-8 mx-auto mb-2 animate-pulse" />
+                        <p className="text-sm">Karte wird geladen...</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <p className="text-xs text-gray-500 mt-2 text-center">
+                  Maler Hamburg | Malerbetrieb Altona | Renovierung Hamburg
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
