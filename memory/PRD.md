@@ -182,6 +182,29 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
 
 ---
 
+## Verifizierte Features (Stand: 22.02.2026)
+
+### ✅ Media-Storage mit WebP-Optimierung - VERIFIZIERT
+- Bild-Upload erstellt automatisch WebP + Fallback (JPG/PNG)
+- Test-Bilder in `/app/backend/media/references/`: beide Formate vorhanden
+- Öffentliche Referenzen-Seite nutzt `<picture>` Element (12x verifiziert)
+- WebP ~70% kleiner als Original
+
+### ✅ Preisrechner PLZ-Validierung & Distanz - VERIFIZIERT
+- 5-stellige PLZ-Validierung funktioniert (nicht-numerische Zeichen gefiltert)
+- **PLZ 22761 (Hamburg):** "PLZ erkannt – Hamburg & Umgebung" ✓
+- **PLZ 28195 (Bremen ~95km):** "PLZ erkannt – ca. 95 km von Hamburg" ✓
+- **PLZ 80331 (München ~612km):** Gelbe Warnung "außerhalb unseres regulären Einsatzgebietes" ✓
+- "Weiter" Button korrekt deaktiviert bei ungültiger PLZ
+
+### ✅ Admin-Lead Dashboard mit Entfernung - VERIFIZIERT
+- "ENTFERNUNG" Spalte zeigt Distanz in km
+- Warnsymbol bei >200km Entfernung
+- Filter-Dropdown: "Alle", "≤200km", ">200km" funktioniert
+- Test-Lead aus München zeigt 612 km mit Warnung
+
+---
+
 ## Dateien-Referenz
 - `/app/frontend/public/index.html` - Schema.org JSON-LD
 - `/app/frontend/src/components/Footer.jsx` - Footer mit Location Map
