@@ -237,15 +237,51 @@ class MediaService:
         return result
     
     def delete_reference_image(self, url: str) -> bool:
-        """Delete a reference image by its URL"""
+        """
+        Delete a reference image by its URL.
+        Also deletes associated WebP/fallback version if exists.
+        """
         if not url or not url.startswith('/media/references/'):
             return False
         
         filename = url.split('/')[-1]
         filepath = self.references_dir / filename
+        deleted = False
         
+        # Delete the specified file
         if filepath.exists():
             try:
+                filepath.unlink()
+                logger.info(f"Image deleted: {filename}")
+                deleted = True
+            except Exception as e:
+                logger.error(f"Failed to delete {filename}: {e}")
+        
+        # Also try to delete associated format
+        base_name = filename.rsplit('.', 1)[0] if '.' in filename else filename
+        ext = filename.rsplit('.', 1)[1] if '.' in filename else ''
+        
+        # If deleted WebP, try to delete original
+        if ext == 'webp':
+            for fallback_ext in ['jpg', 'jpeg', 'png']:
+                fallback_path = self.references_dir / f"{base_name}.{fallback_ext}"
+                if fallback_path.exists():
+                    try:
+                        fallback_path.unlink()
+                        logger.info(f"Fallback deleted: {base_name}.{fallback_ext}")
+                    except Exception as e:
+                        logger.warning(f"Failed to delete fallback: {e}")
+        # If deleted original, try to delete WebP
+        else:
+            webp_path = self.references_dir / f"{base_name}.webp"
+            if webp_path.exists():
+                try:
+                    webp_path.unlink()
+                    logger.info(f"WebP deleted: {base_name}.webp")
+                except Exception as e:
+                    logger.warning(f"Failed to delete WebP: {e}")
+        
+        return deleted
                 filepath.unlink()
                 logger.info(f"Image deleted: {filename}")
                 return True
