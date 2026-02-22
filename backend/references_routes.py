@@ -7,6 +7,7 @@ import os
 import uuid
 import shutil
 from pathlib import Path
+from auth_service import auth_service
 
 # MongoDB connection
 mongo_url = os.environ.get('MONGO_URL')
@@ -59,16 +60,15 @@ class ReferenceResponse(ReferenceBase):
     created_at: str
     updated_at: str
 
-# Helper: Verify admin token
+# Helper: Verify admin token using AuthService
 async def verify_admin_token(authorization: Optional[str] = Header(None)):
     if not authorization:
         raise HTTPException(status_code=401, detail="Nicht autorisiert")
     
     token = authorization.replace("Bearer ", "") if authorization.startswith("Bearer ") else authorization
     
-    # Check token in database
-    token_doc = await db.admin_tokens.find_one({"token": token})
-    if not token_doc:
+    # Use auth_service to verify token
+    if not auth_service.verify_token(token):
         raise HTTPException(status_code=401, detail="Ungültiger Token")
     
     return True
