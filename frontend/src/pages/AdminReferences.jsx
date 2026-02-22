@@ -93,10 +93,17 @@ const ReferenceForm = ({ reference, onSave, onCancel, isNew }) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
+    // Validate file size (max 10MB)
+    if (file.size > 10 * 1024 * 1024) {
+      toast.error('Datei zu groß (max. 10MB)');
+      return;
+    }
+
     setUploading(true);
     const formDataUpload = new FormData();
     formDataUpload.append('file', file);
     formDataUpload.append('authorization', localStorage.getItem('adminToken') || '');
+    formDataUpload.append('convert_to_webp', 'false'); // Can be made configurable
 
     try {
       const response = await fetch(`${BACKEND_URL}/api/references/upload-image`, {
@@ -106,10 +113,15 @@ const ReferenceForm = ({ reference, onSave, onCancel, isNew }) => {
 
       if (response.ok) {
         const data = await response.json();
-        handleChange('image', `${BACKEND_URL}${data.url}`);
-        toast.success('Bild hochgeladen');
+        // Build full URL from relative path
+        const imageUrl = data.url.startsWith('/') 
+          ? `${BACKEND_URL}${data.url}` 
+          : data.url;
+        handleChange('image', imageUrl);
+        toast.success(`Bild hochgeladen (${data.format?.toUpperCase()}, ${Math.round(data.size / 1024)}KB)`);
       } else {
-        toast.error('Fehler beim Hochladen');
+        const error = await response.json();
+        toast.error(error.detail || 'Fehler beim Hochladen');
       }
     } catch (error) {
       toast.error('Upload fehlgeschlagen');
