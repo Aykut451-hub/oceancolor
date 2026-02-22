@@ -217,6 +217,7 @@ class TestPriceCalculation:
         response = requests.post(
             f"{BASE_URL}/api/calculate-price",
             json={
+                "plz": "22761",
                 "objektart": "wohnung",
                 "leistungen": ["waende-decken"],
                 "groesse_typ": "raeume",
