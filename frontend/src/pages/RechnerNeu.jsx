@@ -252,7 +252,10 @@ const RechnerNeu = () => {
         email: formData.email,
         rueckrufZeit: formData.rueckrufZeit,
         geschaetzterPreis: estimate ? `${estimate.min}€ - ${estimate.max}€` : 'Auf Anfrage',
-        quelle: 'Angebotsrechner'
+        quelle: 'Angebotsrechner',
+        // Distance data
+        distanceFromHamburg: formData.distanceFromHamburg || null,
+        isOutsideServiceArea: formData.isOutsideServiceArea || false
       };
 
       submitData.append('data', JSON.stringify(leadData));
