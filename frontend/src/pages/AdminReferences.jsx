@@ -193,6 +193,9 @@ const ReferenceForm = ({ reference, onSave, onCancel, isNew }) => {
                 <><Upload className="h-4 w-4 mr-2" /> Bild hochladen</>
               )}
             </Button>
+            <p className="text-xs text-gray-500 mb-1">
+              JPG, PNG, WebP • Max. 10MB • Automatisch komprimiert (max. 1600px)
+            </p>
             <p className="text-xs text-gray-500">
               Oder Bild-URL einfügen:
             </p>
