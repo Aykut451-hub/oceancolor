@@ -79,6 +79,19 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
 - CTA-Block: "Ihr Projekt könnte hier stehen" mit Telefon, WhatsApp, Angebotsrechner
 - Datenstruktur vorbereitet für spätere Vorher/Nachher-Erweiterung (optional)
 - Keine Platzhalter-Bilder, nur echte Projektfotos
+- Lädt Daten aus MongoDB (mit Fallback auf mock.js)
+
+### ✅ Admin-Interface für Referenzen (22.02.2026)
+- Neuer Admin-Bereich unter `/admin/references`
+- CRUD-Funktionen: Erstellen, Bearbeiten, Löschen von Referenzen
+- Bild-Upload oder URL-Eingabe für Projektbilder
+- Toggle für Aktiv/Inaktiv-Status (öffentliche Sichtbarkeit)
+- Toggle für Featured/Top-Projekt Status
+- Kategorien: Gewerbe, Wohnung, Immobilienverwaltung, Soziale Einrichtung, Hotellerie, Balkon, Fassade, Logistik
+- Leistungs-Tags auswählbar
+- Backend: `/app/backend/references_routes.py`
+- Frontend: `/app/frontend/src/pages/AdminReferences.jsx`
+- Datenstruktur mit optionalen Feldern für Vorher/Nachher-Bilder (before_image, after_image)
 
 ### ✅ Frühere Session-Implementierungen
 - Preisrechner-Logik für "Lackierarbeiten" korrigiert
