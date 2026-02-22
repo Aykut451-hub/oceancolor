@@ -12,6 +12,7 @@ import Leistungen from "@/pages/Leistungen";
 import LeistungDetail from "@/pages/LeistungDetail";
 import KleinauftragService from "@/pages/KleinauftragService";
 import RechnerNeu from "@/pages/RechnerNeu";
+import RechnerRefactored from "@/pages/RechnerRefactored";
 import Referenzen from "@/pages/Referenzen";
 import UeberUns from "@/pages/UeberUns";
 import Kontakt from "@/pages/Kontakt";
