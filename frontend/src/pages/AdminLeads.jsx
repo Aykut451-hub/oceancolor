@@ -189,6 +189,24 @@ const AdminLeads = () => {
     return `${min.toLocaleString('de-DE')} € - ${max.toLocaleString('de-DE')} €`;
   };
 
+  // Format distance display
+  const formatDistance = (distance, isOutsideServiceArea) => {
+    if (!distance && distance !== 0) {
+      return <span className="text-gray-400">–</span>;
+    }
+    
+    if (isOutsideServiceArea || distance > MAX_SERVICE_DISTANCE) {
+      return (
+        <span className="text-amber-600 font-medium flex items-center gap-1">
+          <AlertTriangle className="h-4 w-4" />
+          {distance} km
+        </span>
+      );
+    }
+    
+    return <span className="text-green-600">{distance} km</span>;
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
