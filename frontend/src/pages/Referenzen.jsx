@@ -41,16 +41,30 @@ const AnimatedStat = ({ end, suffix = '', label, icon: Icon }) => {
 
 // Referenz Card Component
 const ReferenzCard = ({ referenz }) => {
+  // Determine image sources for <picture> element
+  const imageWebp = referenz.image_webp;
+  const imageFallback = referenz.image_fallback || referenz.image;
+  const altText = `${referenz.title} - ${referenz.company}`;
+  
   return (
     <Card className="group overflow-hidden border hover:border-[#1e328b]/30 transition-all duration-300 h-full flex flex-col hover:shadow-lg">
-      {/* Bild */}
+      {/* Bild mit WebP + Fallback */}
       <div className="relative h-48 md:h-56 overflow-hidden">
-        <img
-          src={referenz.image}
-          alt={`${referenz.title} - ${referenz.company}`}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          loading="lazy"
-        />
+        <picture>
+          {imageWebp && (
+            <source 
+              srcSet={imageWebp} 
+              type="image/webp" 
+            />
+          )}
+          <img
+            src={imageFallback}
+            alt={altText}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
         {/* Kategorie Badge */}
         <div className="absolute top-3 right-3">
           <Badge className="bg-white/95 backdrop-blur-sm text-[#1e328b] text-xs font-medium">
