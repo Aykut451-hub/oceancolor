@@ -146,6 +146,11 @@ function App() {
               <AdminPricing />
             </ProtectedRoute>
           } />
+          <Route path="/admin/references" element={
+            <ProtectedRoute>
+              <AdminReferences />
+            </ProtectedRoute>
+          } />
 
           {/* 404 Catch-all Route */}
           <Route path="*" element={
