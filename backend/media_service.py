@@ -142,51 +142,99 @@ class MediaService:
         file_data: bytes,
         original_filename: str,
         content_type: str,
-        convert_to_webp: bool = False
+        generate_webp: bool = True
     ) -> dict:
         """
-        Upload and process a reference image
-        Returns: {'url': str, 'filename': str, 'size': int, 'format': str}
+        Upload and process a reference image.
+        Always saves optimized original format.
+        Optionally generates WebP version for modern browsers.
+        
+        Returns: {
+            'url': str (primary - WebP if available),
+            'url_webp': str | None,
+            'url_fallback': str (original format),
+            'filename': str,
+            'size': int,
+            'format': str
+        }
         """
         # Validate content type
         if content_type not in self.ALLOWED_MIME_TYPES:
             raise ValueError(f"Ungültiger Dateityp: {content_type}")
         
-        # Process image (resize, compress, optionally convert)
-        processed_data, output_format, extension = self._process_image(
+        # Generate clean base filename
+        base_name = self._sanitize_filename(original_filename)
+        
+        # Ensure unique base name
+        counter = 1
+        test_path = self.references_dir / f"{base_name}.webp"
+        while test_path.exists():
+            base_name_new = f"{base_name}-{counter}"
+            test_path = self.references_dir / f"{base_name_new}.webp"
+            counter += 1
+        if counter > 1:
+            base_name = f"{base_name}-{counter-1}"
+        
+        result = {
+            'url': None,
+            'url_webp': None,
+            'url_fallback': None,
+            'filename': base_name,
+            'size': 0,
+            'format': None,
+            'width': 0,
+            'height': 0
+        }
+        
+        # 1. Process and save original format (optimized)
+        original_data, original_format, original_ext = self._process_image(
             file_data, 
             content_type, 
-            convert_to_webp
+            convert_to_webp=False
         )
         
-        # Generate clean filename
-        base_name = self._sanitize_filename(original_filename)
-        filename = f"{base_name}.{extension}"
+        original_filename = f"{base_name}.{original_ext}"
+        original_filepath = self.references_dir / original_filename
         
-        # Save file
-        filepath = self.references_dir / filename
+        with open(original_filepath, 'wb') as f:
+            f.write(original_data)
         
-        # Handle collision (unlikely but possible)
-        counter = 1
-        while filepath.exists():
-            filename = f"{base_name}-{counter}.{extension}"
-            filepath = self.references_dir / filename
-            counter += 1
+        result['url_fallback'] = f"/media/references/{original_filename}"
+        result['format'] = original_format.lower()
+        result['size'] = len(original_data)
         
-        # Write file
-        with open(filepath, 'wb') as f:
-            f.write(processed_data)
+        # Get dimensions
+        img = Image.open(BytesIO(original_data))
+        result['width'] = img.size[0]
+        result['height'] = img.size[1]
         
-        logger.info(f"Image saved: {filename} ({len(processed_data)} bytes, {output_format})")
+        logger.info(f"Original saved: {original_filename} ({len(original_data)} bytes)")
         
-        return {
-            'url': f"/media/references/{filename}",
-            'filename': filename,
-            'size': len(processed_data),
-            'format': output_format.lower(),
-            'width': Image.open(BytesIO(processed_data)).size[0],
-            'height': Image.open(BytesIO(processed_data)).size[1]
-        }
+        # 2. Generate WebP version (if not already WebP)
+        if generate_webp and original_format.upper() != 'WEBP':
+            try:
+                webp_data, _, _ = self._process_image(
+                    file_data,
+                    content_type,
+                    convert_to_webp=True
+                )
+                
+                webp_filename = f"{base_name}.webp"
+                webp_filepath = self.references_dir / webp_filename
+                
+                with open(webp_filepath, 'wb') as f:
+                    f.write(webp_data)
+                
+                result['url_webp'] = f"/media/references/{webp_filename}"
+                logger.info(f"WebP saved: {webp_filename} ({len(webp_data)} bytes, {round((1 - len(webp_data)/len(original_data))*100)}% smaller)")
+                
+            except Exception as e:
+                logger.warning(f"WebP generation failed, using original only: {e}")
+        
+        # Set primary URL (prefer WebP)
+        result['url'] = result['url_webp'] if result['url_webp'] else result['url_fallback']
+        
+        return result
     
     def delete_reference_image(self, url: str) -> bool:
         """Delete a reference image by its URL"""
