@@ -44,6 +44,15 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
 - Mobile-responsive Design
 - CTA-Buttons (WhatsApp, Telefon)
 
+### ✅ Google Bewertungs-Funktion (22.02.2026)
+- Dezente Bewertungs-Sektion auf Kontakt-Seite unterhalb der Standort-Karte
+- 5 goldene Sterne als visuelle Dekoration
+- Überschrift: "Zufriedene Kunden? Bewerten Sie uns auf Google"
+- CTA-Button mit Google-Logo verlinkt zu: `https://search.google.com/local/writereview?placeid=ChIJgwoYpaqFsUcRPabmfur9qc4`
+- Statistik: "23 Bewertungen · 5,0 Sterne"
+- Dezenter "Bewertung abgeben" Link im Footer
+- Mobile-optimiertes Design ohne Pop-up oder Overlay
+
 ### ✅ Frühere Session-Implementierungen
 - Preisrechner-Logik für "Lackierarbeiten" korrigiert
 - "Über uns" und "Impressum" Seiten überarbeitet
