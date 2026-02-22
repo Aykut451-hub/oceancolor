@@ -165,17 +165,38 @@ async def create_lead(
 # ============= ADMIN ENDPOINTS =============
 
 @router.post("/admin/login", response_model=AdminLoginResponse)
-async def admin_login(request: AdminLoginRequest):
-    """Admin Login"""
-    if not auth_service.verify_password(request.password):
-        raise HTTPException(status_code=401, detail="Invalid password")
+async def admin_login(request: AdminLoginRequest, req: Request):
+    """
+    Admin Login with rate limiting and security logging.
+    - Rate limited: 5 attempts per 15 minutes per IP
+    - Logs login attempts (IP anonymized, no passwords)
+    """
+    # Get client IP
+    client_ip = req.client.host if req.client else "unknown"
+    forwarded_for = req.headers.get("X-Forwarded-For")
+    if forwarded_for:
+        client_ip = forwarded_for.split(",")[0].strip()
     
+    # Verify password with rate limiting
+    success, error_msg, attempts_remaining = auth_service.verify_password(
+        request.password, 
+        ip=client_ip
+    )
+    
+    if not success:
+        raise HTTPException(
+            status_code=401, 
+            detail=error_msg or "Login fehlgeschlagen",
+            headers={"X-Attempts-Remaining": str(attempts_remaining)}
+        )
+    
+    # Generate token on success
     token = auth_service.generate_token()
     
     return AdminLoginResponse(
         success=True,
         token=token,
-        message="Login successful"
+        message="Login erfolgreich"
     )
 
 
