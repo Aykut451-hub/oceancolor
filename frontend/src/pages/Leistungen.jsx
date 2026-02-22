@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent } from '../components/ui/card';
-import { PaintBucket, Brush, Wallpaper, Wrench, Layers, Shield, Droplets, ArrowRight, Square, Building, Palette } from 'lucide-react';
+import { PaintBucket, Brush, Wallpaper, Wrench, Layers, Shield, Droplets, ArrowRight, Square, Building, Palette, MapPin } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router-dom';
 import { services } from '../data/mock';
