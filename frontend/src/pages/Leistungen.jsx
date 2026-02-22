@@ -45,9 +45,11 @@ const Leistungen = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {services.map((service, index) => {
               const Icon = iconMap[service.icon] || PaintBucket;
+              // Verwende customLink falls vorhanden, sonst standard Leistungs-URL
+              const serviceLink = service.customLink || `/leistungen/${service.slug}`;
               return (
                 <ScrollReveal key={service.id} delay={index * 100}>
-                  <Link to={`/leistungen/${service.slug}`}>
+                  <Link to={serviceLink}>
                     <Card className="group h-full border-2 relative overflow-hidden card-hover cursor-pointer bg-white">
                       <CardContent className="p-8 relative z-10">
                         {/* Animated Icon Container */}
