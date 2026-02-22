@@ -26,6 +26,7 @@ import AdminReferences from "@/pages/AdminReferences";
 import MalerStadtteil from "@/pages/MalerStadtteil";
 import StadtteilRouter from "@/pages/StadtteilRouter";
 import MalerHamburg from "@/pages/MalerHamburg";
+import Badsanierung from "@/pages/Badsanierung";
 
 function App() {
   return (
