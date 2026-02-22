@@ -22,6 +22,7 @@ import AdminLogin from "@/pages/AdminLogin";
 import AdminLeads from "@/pages/AdminLeads";
 import AdminLeadDetail from "@/pages/AdminLeadDetail";
 import AdminPricing from "@/pages/AdminPricing";
+import AdminReferences from "@/pages/AdminReferences";
 import MalerStadtteil from "@/pages/MalerStadtteil";
 import StadtteilRouter from "@/pages/StadtteilRouter";
 import MalerHamburg from "@/pages/MalerHamburg";
