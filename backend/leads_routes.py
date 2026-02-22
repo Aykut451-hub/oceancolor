@@ -75,84 +75,149 @@ async def save_uploaded_files(files: List[UploadFile]) -> List[str]:
 
 @router.post("/leads", response_model=LeadResponse)
 async def create_lead(
-    calculator_data: str = Form(...),
-    contact_data: str = Form(...),
-    price_data: str = Form(...),
+    data: Optional[str] = Form(None),
+    calculator_data: Optional[str] = Form(None),
+    contact_data: Optional[str] = Form(None),
+    price_data: Optional[str] = Form(None),
+    foto: Optional[UploadFile] = File(None),
     files: Optional[List[UploadFile]] = File(None)
 ):
     """
     Erstellt einen neuen Calculator-Lead
     
-    Accepts multipart/form-data with:
-    - calculator_data: JSON string
-    - contact_data: JSON string
-    - price_data: JSON string
-    - files: Optional list of image files (max 5)
+    Supports two formats:
+    1. Simple format: data (JSON string with all fields)
+    2. Structured format: calculator_data, contact_data, price_data (separate JSON strings)
     """
     try:
-        # Parse JSON data
-        calc_data = json.loads(calculator_data)
-        cont_data = json.loads(contact_data)
-        price_data_obj = json.loads(price_data)
+        # Handle simple format (from refactored calculator)
+        if data:
+            lead_data = json.loads(data)
+            
+            # Extract price from geschaetzterPreis string if present
+            preis_min = 0
+            preis_max = 0
+            if 'geschaetzterPreis' in lead_data and '€' in lead_data['geschaetzterPreis']:
+                try:
+                    price_str = lead_data['geschaetzterPreis']
+                    parts = price_str.replace('€', '').replace('.', '').split('-')
+                    if len(parts) == 2:
+                        preis_min = float(parts[0].strip())
+                        preis_max = float(parts[1].strip())
+                except:
+                    pass
+            
+            # Save uploaded foto
+            foto_urls = []
+            if foto and foto.filename:
+                foto_urls = await save_uploaded_files([foto])
+            
+            lead_id = f"LEAD-{datetime.now().strftime('%Y%m%d%H%M%S')}"
+            
+            lead = Lead(
+                id=lead_id,
+                plz=lead_data.get('plz', ''),
+                objektart=lead_data.get('objektart', 'wohnung'),
+                leistungen=lead_data.get('leistungen', []),
+                groesse_typ=lead_data.get('groesseOption', 'raeume'),
+                anzahl_raeume=int(lead_data.get('anzahlRaeume') or 0) if lead_data.get('anzahlRaeume') else None,
+                wandflaeche_qm=float(lead_data.get('wandflaeche') or 0) if lead_data.get('wandflaeche') else None,
+                raumhoehe='normal',
+                zustand=lead_data.get('zustand', 'normal'),
+                farbe=lead_data.get('farbe', 'weiss'),
+                spachtelstufe=lead_data.get('spachtelstufe', 'keine'),
+                zusatzoptionen=lead_data.get('zusatzoptionen', []),
+                name=lead_data.get('name', ''),
+                telefon=lead_data.get('telefon', ''),
+                email=lead_data.get('email', ''),
+                rueckruf_zeit=lead_data.get('rueckrufZeit', ''),
+                bemerkung=lead_data.get('bemerkung', ''),
+                preis_min=preis_min,
+                preis_max=preis_max,
+                foto_urls=foto_urls,
+                distanceFromHamburg=lead_data.get('distanceFromHamburg'),
+                isOutsideServiceArea=lead_data.get('isOutsideServiceArea', False)
+            )
+            
+            # Save to database
+            from server import db
+            leads_collection = get_leads_collection(db)
+            await leads_collection.insert_one(lead.dict())
+            
+            # Send email notification
+            try:
+                email_service.send_lead_notification(lead.dict())
+            except Exception as e:
+                logger.error(f"Failed to send email notification: {e}")
+            
+            logger.info(f"Lead created (simple format): {lead_id}")
+            
+            return LeadResponse(
+                success=True,
+                lead_id=lead_id,
+                message="Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen."
+            )
         
-        # Validate file count
-        if files and len(files) > 5:
-            raise HTTPException(status_code=400, detail="Maximum 5 files allowed")
+        # Handle structured format (original)
+        if calculator_data and contact_data and price_data:
+            calc_data = json.loads(calculator_data)
+            cont_data = json.loads(contact_data)
+            price_data_obj = json.loads(price_data)
+            
+            # Validate file count
+            if files and len(files) > 5:
+                raise HTTPException(status_code=400, detail="Maximum 5 files allowed")
+            
+            # Save uploaded files
+            foto_urls = []
+            if files:
+                foto_urls = await save_uploaded_files(files)
+            
+            lead_id = f"LEAD-{datetime.now().strftime('%Y%m%d%H%M%S')}"
+            
+            lead = Lead(
+                id=lead_id,
+                plz=calc_data['plz'],
+                objektart=calc_data['objektart'],
+                leistungen=calc_data['leistungen'],
+                groesse_typ=calc_data['groesseOption'],
+                anzahl_raeume=calc_data.get('anzahlRaeume'),
+                wandflaeche_qm=calc_data.get('wandflaeche'),
+                raumhoehe=calc_data.get('raumhoehe', 'normal'),
+                zustand=calc_data['zustand'],
+                farbe=calc_data['farbe'],
+                spachtelstufe=calc_data['spachtelstufe'],
+                zusatzoptionen=calc_data.get('zusatzoptionen', []),
+                name=cont_data['name'],
+                telefon=cont_data['telefon'],
+                email=cont_data['email'],
+                rueckruf_zeit=cont_data.get('rueckrufZeit', ''),
+                bemerkung=cont_data.get('bemerkung', ''),
+                preis_min=price_data_obj['min'],
+                preis_max=price_data_obj['max'],
+                foto_urls=foto_urls,
+                distanceFromHamburg=calc_data.get('distanceFromHamburg'),
+                isOutsideServiceArea=calc_data.get('isOutsideServiceArea', False)
+            )
+            
+            from server import db
+            leads_collection = get_leads_collection(db)
+            await leads_collection.insert_one(lead.dict())
+            
+            try:
+                email_service.send_lead_notification(lead.dict())
+            except Exception as e:
+                logger.error(f"Failed to send email notification: {e}")
+            
+            logger.info(f"Lead created (structured format): {lead_id}")
+            
+            return LeadResponse(
+                success=True,
+                lead_id=lead_id,
+                message="Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen."
+            )
         
-        # Save uploaded files
-        foto_urls = []
-        if files:
-            foto_urls = await save_uploaded_files(files)
-        
-        # Create Lead object
-        lead_id = f"LEAD-{datetime.now().strftime('%Y%m%d%H%M%S')}"
-        
-        lead = Lead(
-            id=lead_id,
-            # Calculator data
-            plz=calc_data['plz'],
-            objektart=calc_data['objektart'],
-            leistungen=calc_data['leistungen'],
-            groesse_typ=calc_data['groesseOption'],
-            anzahl_raeume=calc_data.get('anzahlRaeume'),
-            wandflaeche_qm=calc_data.get('wandflaeche'),
-            raumhoehe=calc_data['raumhoehe'],
-            zustand=calc_data['zustand'],
-            farbe=calc_data['farbe'],
-            spachtelstufe=calc_data['spachtelstufe'],
-            zusatzoptionen=calc_data.get('zusatzoptionen', []),
-            # Contact data
-            name=cont_data['name'],
-            telefon=cont_data['telefon'],
-            email=cont_data['email'],
-            rueckruf_zeit=cont_data.get('rueckrufZeit', ''),
-            bemerkung=cont_data.get('bemerkung', ''),
-            # Price data
-            preis_min=price_data_obj['min'],
-            preis_max=price_data_obj['max'],
-            # Files
-            foto_urls=foto_urls
-        )
-        
-        # Save to database
-        from server import db
-        leads_collection = get_leads_collection(db)
-        await leads_collection.insert_one(lead.dict())
-        
-        # Send email notification
-        try:
-            email_service.send_lead_notification(lead.dict())
-        except Exception as e:
-            logger.error(f"Failed to send email notification: {e}")
-            # Continue anyway - lead is saved
-        
-        logger.info(f"Lead created: {lead_id}")
-        
-        return LeadResponse(
-            success=True,
-            lead_id=lead_id,
-            message="Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen."
-        )
+        raise HTTPException(status_code=400, detail="Invalid request format")
         
     except json.JSONDecodeError as e:
         logger.error(f"Invalid JSON data: {e}")
