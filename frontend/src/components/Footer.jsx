@@ -1,10 +1,71 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Instagram } from 'lucide-react';
+import { Phone, Mail, MapPin, Instagram, MessageCircle } from 'lucide-react';
 
 const Footer = () => {
+  const [mapLoaded, setMapLoaded] = useState(false);
+  const mapRef = useRef(null);
+
+  // Lazy load map when visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setMapLoaded(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (mapRef.current) {
+      observer.observe(mapRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const serviceAreas = [
+    'Hamburg Altona', 'Eimsbüttel', 'Ottensen', 'St. Pauli', 'HafenCity',
+    'Bahrenfeld', 'Blankenese', 'Wandsbek', 'Hamburg Mitte'
+  ];
+
   return (
     <footer className="bg-gray-900 text-gray-300">
+      {/* Schema.org LocalBusiness structured data */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": "Ocean Color Malermeisterbetrieb",
+          "image": "https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/5mxy73rt_Ocean_Color_Logo_m.Wischer.png",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Schützenstraße 106",
+            "addressLocality": "Hamburg",
+            "postalCode": "22761",
+            "addressCountry": "DE"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "53.5589",
+            "longitude": "9.9268"
+          },
+          "telephone": "+4940 1800 8888",
+          "email": "info@ocean-maler.de",
+          "url": "https://www.oceancolor.de",
+          "priceRange": "€€",
+          "openingHours": "Mo-Fr 08:00-18:00",
+          "areaServed": {
+            "@type": "City",
+            "name": "Hamburg"
+          },
+          "sameAs": [
+            "https://www.instagram.com/ocean_maler/"
+          ]
+        })
+      }} />
+
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -100,6 +161,101 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Location Section - SEO optimized */}
+      <div className="border-t border-gray-800">
+        <div className="container mx-auto px-4 py-10">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-8 items-start">
+              {/* Left: Location Info */}
+              <div>
+                <h3 className="text-white text-xl font-semibold mb-4">
+                  Unser Standort in Hamburg
+                </h3>
+                
+                {/* Address */}
+                <address className="not-italic text-gray-300 text-sm mb-4">
+                  <strong className="text-white">Ocean Color GmbH</strong><br />
+                  Schützenstraße 106<br />
+                  22761 Hamburg
+                </address>
+
+                {/* SEO Text */}
+                <p className="text-sm text-gray-400 mb-4 leading-relaxed">
+                  Ocean Color Malermeisterbetrieb ist Ihr zuverlässiger Partner für hochwertige 
+                  Malerarbeiten, Renovierungen und Fassadengestaltung in Hamburg und Umgebung. 
+                  Von unserem Standort in Hamburg Altona betreuen wir private, gewerbliche und 
+                  institutionelle Kunden im gesamten Stadtgebiet.
+                </p>
+
+                {/* Service Areas */}
+                <div className="mb-6">
+                  <p className="text-sm text-gray-400 mb-2">Unser Einsatzgebiet:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {serviceAreas.map((area, index) => (
+                      <span 
+                        key={index}
+                        className="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded"
+                      >
+                        {area}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-wrap gap-3">
+                  <a 
+                    href="https://wa.me/4915906850859"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors"
+                  >
+                    <MessageCircle className="h-4 w-4 mr-2" />
+                    WhatsApp
+                  </a>
+                  <a 
+                    href="tel:04018008888"
+                    className="inline-flex items-center px-4 py-2 bg-ocean-blue hover:bg-ocean-blue-dark text-white text-sm font-medium rounded-lg transition-colors"
+                  >
+                    <Phone className="h-4 w-4 mr-2" />
+                    Jetzt anrufen
+                  </a>
+                </div>
+              </div>
+
+              {/* Right: Map */}
+              <div ref={mapRef} className="relative">
+                <div className="rounded-xl overflow-hidden shadow-lg bg-gray-800">
+                  {mapLoaded ? (
+                    <iframe
+                      src="https://www.google.com/maps?q=Schützenstraße+106,+22761+Hamburg&output=embed"
+                      width="100%"
+                      height="240"
+                      style={{ border: 0 }}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      allowFullScreen
+                      title="Ocean Color Standort in Hamburg"
+                      className="w-full"
+                    />
+                  ) : (
+                    <div className="w-full h-60 bg-gray-800 flex items-center justify-center">
+                      <div className="text-center text-gray-500">
+                        <MapPin className="h-8 w-8 mx-auto mb-2 animate-pulse" />
+                        <p className="text-sm">Karte wird geladen...</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <p className="text-xs text-gray-500 mt-2 text-center">
+                  Maler Hamburg | Malerbetrieb Altona | Renovierung Hamburg
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
