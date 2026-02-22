@@ -124,10 +124,9 @@ async def create_reference(
 async def update_reference(
     reference_id: str,
     reference: ReferenceUpdate,
-    authorization: str = None
+    _: bool = Depends(verify_admin_token)
 ):
     """Update reference (admin only)"""
-    await verify_admin_token(authorization)
     
     existing = await db.references.find_one({"id": reference_id})
     if not existing:
