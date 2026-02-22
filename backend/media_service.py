@@ -41,10 +41,7 @@ class MediaService:
     
     def _sanitize_filename(self, filename: str) -> str:
         """Create a clean, SEO-friendly filename"""
-        # Extract extension
-        ext = filename.rsplit('.', 1)[-1].lower() if '.' in filename else 'jpg'
-        
-        # Clean the base name
+        # Clean the base name (extension handled separately)
         base = filename.rsplit('.', 1)[0] if '.' in filename else filename
         base = base.lower()
         base = re.sub(r'[^a-z0-9\-_]', '-', base)  # Replace non-alphanumeric
