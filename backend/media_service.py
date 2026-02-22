@@ -282,14 +282,6 @@ class MediaService:
                     logger.warning(f"Failed to delete WebP: {e}")
         
         return deleted
-                filepath.unlink()
-                logger.info(f"Image deleted: {filename}")
-                return True
-            except Exception as e:
-                logger.error(f"Failed to delete {filename}: {e}")
-                return False
-        
-        return False
     
     def get_media_stats(self) -> dict:
         """Get statistics about stored media"""
