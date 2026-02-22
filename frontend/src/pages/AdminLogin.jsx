@@ -3,18 +3,21 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
-import { Lock } from 'lucide-react';
+import { Lock, AlertTriangle } from 'lucide-react';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 
 const AdminLogin = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [attemptsRemaining, setAttemptsRemaining] = useState(null);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError('');
 
     try {
       const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -26,6 +29,12 @@ const AdminLogin = () => {
         body: JSON.stringify({ password })
       });
 
+      // Get attempts remaining from header
+      const remaining = response.headers.get('X-Attempts-Remaining');
+      if (remaining !== null) {
+        setAttemptsRemaining(parseInt(remaining, 10));
+      }
+
       const data = await response.json();
 
       if (response.ok && data.success) {
@@ -34,11 +43,15 @@ const AdminLogin = () => {
         toast.success('Login erfolgreich');
         navigate('/admin/leads');
       } else {
-        toast.error('Ungültiges Passwort');
+        // Show specific error from backend (includes rate limiting messages)
+        const errorMessage = data.detail || 'Login fehlgeschlagen';
+        setError(errorMessage);
+        toast.error(errorMessage);
       }
     } catch (error) {
       console.error('Login error:', error);
-      toast.error('Login fehlgeschlagen');
+      setError('Verbindungsfehler. Bitte versuchen Sie es erneut.');
+      toast.error('Verbindungsfehler');
     } finally {
       setLoading(false);
     }
@@ -57,6 +70,13 @@ const AdminLogin = () => {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">
+            {error && (
+              <div className="bg-red-50 border border-red-200 rounded-lg p-3 flex items-start gap-2">
+                <AlertTriangle className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" />
+                <p className="text-sm text-red-700">{error}</p>
+              </div>
+            )}
+            
             <div className="space-y-2">
               <Label htmlFor="password">Passwort</Label>
               <Input
@@ -66,8 +86,10 @@ const AdminLogin = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Admin-Passwort eingeben"
                 required
+                autoComplete="current-password"
               />
             </div>
+            
             <Button
               type="submit"
               className="w-full bg-ocean-blue hover:bg-ocean-blue-dark text-white"
@@ -75,6 +97,10 @@ const AdminLogin = () => {
             >
               {loading ? 'Wird eingeloggt...' : 'Einloggen'}
             </Button>
+            
+            <p className="text-xs text-center text-gray-500">
+              Zugang nur für autorisierte Benutzer.
+            </p>
           </form>
         </CardContent>
       </Card>
