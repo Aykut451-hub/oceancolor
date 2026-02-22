@@ -4,10 +4,55 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { Textarea } from '../components/ui/textarea';
-import { Phone, Mail, MapPin, Clock, MessageCircle, Star } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
+import { Phone, Mail, MapPin, Clock, MessageCircle, Star, HelpCircle } from 'lucide-react';
 import { submitCallbackRequest, submitContactForm } from '../data/mock';
 import { toast } from 'sonner';
 import { WHATSAPP_URL } from '../components/FloatingWhatsApp';
+
+// FAQ-Daten für Kontaktseite
+const faqData = [
+  {
+    id: "faq-1",
+    question: "Wie schnell erhalte ich ein Angebot?",
+    answer: "In der Regel innerhalb von 24–48 Stunden nach Besichtigung bzw. nach Erhalt aller Informationen und Fotos. Bei Kleinaufträgen oft schneller."
+  },
+  {
+    id: "faq-2",
+    question: "In welchen Gebieten sind Sie tätig?",
+    answer: "Wir sind in Hamburg und Umgebung tätig, besonders in Altona, Ottensen, St. Pauli, Eimsbüttel, Bahrenfeld, Blankenese und Hamburg-Mitte."
+  },
+  {
+    id: "faq-3",
+    question: "Machen Sie auch Kleinaufträge?",
+    answer: "Ja, selbstverständlich. Kleine Reparaturen, einzelne Räume, Ausbesserungen oder kurzfristige Arbeiten sind möglich – je nach aktueller Auslastung."
+  },
+  {
+    id: "faq-4",
+    question: "Übernehmen Sie auch Balkonsanierungen und Fassadenarbeiten?",
+    answer: "Ja. Balkonbeschichtungen, Abdichtungen, Untergrundvorbereitung, Korrosionsschutz sowie Fassadenanstriche gehören zu unseren Leistungen."
+  },
+  {
+    id: "faq-5",
+    question: "Arbeiten Sie mit Hausverwaltungen und Gewerbekunden?",
+    answer: "Ja. Wir betreuen private Kunden, Hausverwaltungen und gewerbliche Objekte – inklusive professioneller Termin- und Ablaufkoordination."
+  },
+  {
+    id: "faq-6",
+    question: "Was benötigen Sie für ein Angebot?",
+    answer: "Ideal sind Fotos oder Videos, Maße in Quadratmetern, gewünschte Ausführung und Farbton, Adresse mit Etage sowie der gewünschte Zeitraum. Optional bieten wir auch eine Besichtigung vor Ort an."
+  },
+  {
+    id: "faq-7",
+    question: "Wie läuft die Beauftragung ab?",
+    answer: "Anfrage → Klärung der Details (ggf. Besichtigung) → Angebot → Terminplanung → Ausführung → Abnahme und Rechnung."
+  },
+  {
+    id: "faq-8",
+    question: "Bieten Sie Termine am Wochenende an?",
+    answer: "In Ausnahmefällen ist das möglich. Unser Standard ist Montag bis Freitag; Wochenendtermine können nach Absprache vereinbart werden."
+  }
+];
 
 const Kontakt = () => {
   const [callbackForm, setCallbackForm] = useState({
