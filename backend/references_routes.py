@@ -214,8 +214,7 @@ async def upload_image(
         raise HTTPException(status_code=401, detail="Nicht autorisiert")
     
     token = authorization.replace("Bearer ", "") if authorization.startswith("Bearer ") else authorization
-    token_doc = await db.admin_tokens.find_one({"token": token})
-    if not token_doc:
+    if not auth_service.verify_token(token):
         raise HTTPException(status_code=401, detail="Ungültiger Token")
     
     # Validate file type
