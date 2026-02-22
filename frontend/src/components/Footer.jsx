@@ -32,41 +32,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-900 text-gray-300">
-      {/* Schema.org LocalBusiness structured data */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          "name": "Ocean Color Malermeisterbetrieb",
-          "image": "https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/5mxy73rt_Ocean_Color_Logo_m.Wischer.png",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Schützenstraße 106",
-            "addressLocality": "Hamburg",
-            "postalCode": "22761",
-            "addressCountry": "DE"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "53.5589",
-            "longitude": "9.9268"
-          },
-          "telephone": "+4940 1800 8888",
-          "email": "info@ocean-maler.de",
-          "url": "https://www.oceancolor.de",
-          "priceRange": "€€",
-          "openingHours": "Mo-Fr 08:00-18:00",
-          "areaServed": {
-            "@type": "City",
-            "name": "Hamburg"
-          },
-          "sameAs": [
-            "https://www.instagram.com/ocean_maler/"
-          ]
-        })
-      }} />
-
-      {/* Main Footer */}
+      {/* Main Footer - Schema.org structured data is in index.html to avoid duplicates */}
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}

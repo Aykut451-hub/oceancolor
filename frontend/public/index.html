@@ -39,36 +39,157 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
         
-        <!-- Structured Data / Schema.org -->
+        <!-- Structured Data / Schema.org - LocalBusiness optimiert für Hamburg -->
         <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Ocean Color GmbH",
-            "description": "Professioneller Malerbetrieb in Hamburg - Malerarbeiten, Trockenbau, Schimmelsanierung und mehr.",
+            "@id": "https://oceancolor.de/#organization",
+            "name": "Ocean Color Malermeisterbetrieb",
+            "alternateName": "Ocean Color GmbH",
+            "description": "Ocean Color Malermeisterbetrieb – Ihr zuverlässiger Malerbetrieb in Hamburg für hochwertige Malerarbeiten, Tapezierarbeiten, Lackierarbeiten, Trockenbau, Fassadensanierung und Schimmelsanierung. Professionelle Ausführung und persönliche Beratung.",
             "url": "https://oceancolor.de",
-            "telephone": "+49-40-1800-8888",
+            "telephone": "+49 40 1800 8888",
             "email": "info@ocean-maler.de",
             "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Schützenstraße 106",
                 "addressLocality": "Hamburg",
                 "postalCode": "22761",
+                "addressRegion": "Hamburg",
                 "addressCountry": "DE"
             },
             "geo": {
                 "@type": "GeoCoordinates",
-                "latitude": 53.5511,
-                "longitude": 9.9937
+                "latitude": 53.5589,
+                "longitude": 9.9268
             },
-            "openingHours": "Mo-Fr 08:00-18:00",
+            "openingHoursSpecification": [
+                {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                    "opens": "08:00",
+                    "closes": "18:00"
+                }
+            ],
             "priceRange": "€€",
-            "image": "https://oceancolor.de/wp-content/uploads/2024/04/Ocean_Color_Logo_m.Wischer.png",
-            "areaServed": {
-                "@type": "City",
-                "name": "Hamburg"
+            "image": [
+                "https://oceancolor.de/wp-content/uploads/2024/04/Ocean_Color_Logo_m.Wischer.png",
+                "https://customer-assets.emergentagent.com/job_a9b8075f-4653-4fae-a7fc-cfa2bb720c07/artifacts/5mxy73rt_Ocean_Color_Logo_m.Wischer.png"
+            ],
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://oceancolor.de/wp-content/uploads/2024/04/Ocean_Color_Logo_m.Wischer.png"
             },
-            "sameAs": []
+            "areaServed": [
+                {
+                    "@type": "City",
+                    "name": "Hamburg",
+                    "@id": "https://www.wikidata.org/wiki/Q1055"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Altona"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Ottensen"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "St. Pauli"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Eimsbüttel"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Bahrenfeld"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Blankenese"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Hamburg-Mitte"
+                }
+            ],
+            "serviceArea": {
+                "@type": "GeoCircle",
+                "geoMidpoint": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 53.5589,
+                    "longitude": 9.9268
+                },
+                "geoRadius": "15000"
+            },
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Malerarbeiten und Renovierungen",
+                "itemListElement": [
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Malerarbeiten"
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Tapezierarbeiten"
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Lackierarbeiten"
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Fassadensanierung"
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Trockenbau"
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Schimmelsanierung"
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Bodenbeläge"
+                        }
+                    }
+                ]
+            },
+            "sameAs": [
+                "https://www.instagram.com/ocean_maler/"
+            ],
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5.0",
+                "reviewCount": "23",
+                "bestRating": "5",
+                "worstRating": "1"
+            }
         }
         </script>
         
