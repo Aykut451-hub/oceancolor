@@ -1,13 +1,13 @@
-from fastapi import APIRouter, HTTPException, UploadFile, File, Form, Depends, Header
+from fastapi import APIRouter, HTTPException, UploadFile, File, Form, Depends, Header, Query
 from pydantic import BaseModel, Field
 from typing import List, Optional
 from datetime import datetime, timezone
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import uuid
-import shutil
 from pathlib import Path
 from auth_service import auth_service
+from media_service import media_service
 
 # MongoDB connection
 mongo_url = os.environ.get('MONGO_URL')
@@ -15,10 +15,6 @@ client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ.get('DB_NAME', 'ocean_color')]
 
 router = APIRouter(prefix="/api/references", tags=["references"])
-
-# Upload directory
-UPLOAD_DIR = Path("/app/backend/uploads/references")
-UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
 # Models
 class ReferenceBase(BaseModel):
