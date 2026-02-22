@@ -163,7 +163,7 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
 ## Backlog
 
 ### P1 - Hoch
-- **Refactoring Preisrechner:** `RechnerNeu.jsx` (>1000 Zeilen) in kleinere Komponenten aufteilen
+- ~~**Refactoring Preisrechner:** `RechnerNeu.jsx` (>1000 Zeilen) in kleinere Komponenten aufteilen~~ ✅ ERLEDIGT
 
 ### P2 - Mittel
 - **Cloud Storage Migration (optional):** Bei Bedarf Migration auf S3/R2 für Produktionsumgebung
