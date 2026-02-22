@@ -121,37 +121,44 @@ const BeforeAfterSection = () => {
 
         {/* Project Gallery */}
         <div className="max-w-4xl mx-auto">
-          <div 
-            ref={sliderRef}
-            className="relative"
-            onTouchStart={onTouchStart}
-            onTouchMove={onTouchMove}
-            onTouchEnd={onTouchEnd}
-          >
-            {/* Navigation Arrows */}
-            <button
-              onClick={goToPrevious}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-16 z-20 
-                         w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center
-                         hover:bg-gray-50 hover:shadow-xl transition-all duration-200
-                         border border-gray-200 hover:border-[#1e328b]"
-              aria-label="Vorheriges Projekt"
-              data-testid="prev-project-btn"
-            >
-              <ChevronLeft className="w-6 h-6 text-gray-700" />
-            </button>
+          {/* Fixed Navigation Container - Arrows outside the card */}
+          <div className="relative">
+            {/* Fixed Navigation Arrows - absolut positioniert außerhalb der Karte */}
+            <div className="absolute inset-y-0 -left-4 md:-left-16 flex items-center z-30">
+              <button
+                onClick={goToPrevious}
+                className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center
+                           border border-gray-200 
+                           hover:bg-gray-50 hover:border-[#1e328b] hover:shadow-xl
+                           transition-colors duration-200"
+                aria-label="Vorheriges Projekt"
+                data-testid="prev-project-btn"
+              >
+                <ChevronLeft className="w-6 h-6 text-gray-700" />
+              </button>
+            </div>
 
-            <button
-              onClick={goToNext}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-16 z-20 
-                         w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center
-                         hover:bg-gray-50 hover:shadow-xl transition-all duration-200
-                         border border-gray-200 hover:border-[#1e328b]"
-              aria-label="Nächstes Projekt"
-              data-testid="next-project-btn"
+            <div className="absolute inset-y-0 -right-4 md:-right-16 flex items-center z-30">
+              <button
+                onClick={goToNext}
+                className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center
+                           border border-gray-200 
+                           hover:bg-gray-50 hover:border-[#1e328b] hover:shadow-xl
+                           transition-colors duration-200"
+                aria-label="Nächstes Projekt"
+                data-testid="next-project-btn"
+              >
+                <ChevronRight className="w-6 h-6 text-gray-700" />
+              </button>
+            </div>
+
+            {/* Project Slider Container */}
+            <div 
+              ref={sliderRef}
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
             >
-              <ChevronRight className="w-6 h-6 text-gray-700" />
-            </button>
 
             {/* Project Card */}
             <div 
