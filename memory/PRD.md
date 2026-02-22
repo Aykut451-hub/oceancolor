@@ -1,73 +1,77 @@
-# Ocean Color GmbH - Malermeister Hamburg Website
+# Ocean Color - Product Requirements Document
 
-## Original Problem Statement
-Build a modern website for "Ocean Color" painting company in Hamburg, Germany. Primary goals:
-- Generate qualified leads through an interactive price calculator
-- Showcase services professionally with premium UI/UX
+## Projektübersicht
+Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hauptziel ist die Generierung qualifizierter Leads durch einen interaktiven Preisrechner und professionelle Präsentation der Dienstleistungen.
 
-## User Personas
-- **Homeowners** in Hamburg looking for painting/renovation services
-- **Property managers** needing commercial painting work
-- **Real estate agents** requiring quick renovation quotes
-
-## Core Requirements
-- **Pages:** Home, Services, Price Calculator, References, About Us, Contact, Legal
-- **SEO Pages:** City district landing pages (e.g., /maler-hamburg-altona)
-- **Design:** Modern, mobile-first, dark blue/white color scheme
-- **Core Feature:** Multi-step price calculator with live price summary
-- **Lead Management:** MongoDB storage + email notifications
-- **Admin Dashboard:** Password-protected lead management (/admin)
+## Unternehmensdaten
+- **Name:** Ocean Color Malermeisterbetrieb
+- **Firma:** Ocean Color GmbH
+- **Adresse:** Schützenstraße 106, 22761 Hamburg
+- **Telefon:** 040 1800 8888
+- **E-Mail:** info@ocean-maler.de
+- **Website:** https://oceancolor.de
 
 ## Tech Stack
-- **Frontend:** React, Tailwind CSS, Shadcn UI
-- **Backend:** FastAPI, Pydantic, Motor
-- **Database:** MongoDB
-- **Integrations:** IONOS SMTP, Google Tag Manager, WhatsApp, Instagram
+- **Frontend:** React, React Router, Tailwind CSS, Shadcn UI
+- **Backend:** FastAPI
+- **Datenbank:** MongoDB
+- **E-Mail:** IONOS SMTP
+
+## Kernfunktionen
+1. **Preisrechner:** Multi-Step-Formular mit Live-Preisberechnung
+2. **Lead Management:** MongoDB Speicherung + E-Mail-Benachrichtigung
+3. **Admin Dashboard:** Passwortgeschützter Bereich (/admin, Passwort: ocean2024)
+4. **SEO-Seiten:** Dynamische Landingpages für Stadtteile
+
+## Seiten
+- Home, Leistungen, Preisrechner, Referenzen, Über uns, Kontakt
+- Rechtliches (Impressum, Datenschutz)
+- SEO-Landingpages pro Stadtteil
 
 ---
 
-## What's Been Implemented
+## Implementierte Features (Stand: 22.02.2026)
 
-### Session: February 21, 2026
-- [x] **Lackierarbeiten Logic Fix (P0):** Complete rewrite of varnishing work in price calculator
-  - 4 element type options: Türen (120€), Heizkörper (150€), Fensterrahmen (150€), Sonstiges (Auf Anfrage)
-  - Proper step skipping when only Lackierarbeiten selected
-  - Updated validation and price calculation
-- [x] **Icon Swap:** Exchanged Wohnung (Building) and Haus (Home) icons
-- [x] **Testing:** All scenarios passed (100% pass rate)
+### ✅ Schema.org LocalBusiness Structured Data
+- Vollständiges JSON-LD Schema in `/app/frontend/public/index.html`
+- Alle Einzugsgebiete: Hamburg, Altona, Ottensen, St. Pauli, Eimsbüttel, Bahrenfeld, Blankenese, Hamburg-Mitte
+- Enthält: Öffnungszeiten, Service-Katalog, AggregateRating, Geo-Koordinaten
 
-### Previous Sessions
-- [x] Price Calculator Overhaul with net-price structure
-- [x] "Before/After" Slider on Schimmelsanierung page
-- [x] Premium animations for slider component
-- [x] UI/UX optimizations (hover effects, click animations)
-- [x] Image optimization (lazy loading, shimmer placeholders)
-- [x] Color theme management (blue scheme)
+### ✅ SEO-optimierte Location Map
+- Implementiert im Footer (`/app/frontend/src/components/Footer.jsx`)
+- Implementiert auf der Kontakt-Seite (`/app/frontend/src/pages/Kontakt.jsx`)
+- Lazy-Loading mit Intersection Observer
+- Mobile-responsive Design
+- CTA-Buttons (WhatsApp, Telefon)
 
----
-
-## Prioritized Backlog
-
-### P0 (Critical) - COMPLETED
-- ~~Fix Lackierarbeiten logic in price calculator~~
-
-### P1 (High Priority)
-- None currently
-
-### P2 (Medium Priority)
-- Cloud Storage for Uploads: Migrate from /app/uploads to S3-compatible storage
-- Admin Interface for References: Dynamic management of Referenzen page
-
-### P3 (Low Priority)
-- Refactoring of RechnerNeu.jsx (>1000 lines, should be split into sub-components)
+### ✅ Frühere Session-Implementierungen
+- Preisrechner-Logik für "Lackierarbeiten" korrigiert
+- "Über uns" und "Impressum" Seiten überarbeitet
+- Rivedil Partner-Sektion auf Wandgestaltung-Seite
+- Google Reviews auf Homepage aktualisiert (23 Bewertungen, 5/5 Sterne)
+- Navigation zentriert
+- Icons im Preisrechner getauscht
 
 ---
 
-## Key Files
-- `frontend/src/pages/RechnerNeu.jsx` - Price calculator (main component)
-- `frontend/src/components/ui/BeforeAfterSlider.jsx` - Image comparison slider
-- `frontend/src/data/leistungen.js` - Service data
-- `frontend/tailwind.config.js` - Theme configuration
+## Backlog
 
-## Credentials
-- **Admin Dashboard:** /admin/login, Password: ocean2024
+### P1 - Hoch
+- **Refactoring Preisrechner:** `RechnerNeu.jsx` (>1000 Zeilen) in kleinere Komponenten aufteilen
+
+### P2 - Mittel
+- **Cloud Storage:** Datei-Uploads von `/app/uploads` auf Cloud-Speicher migrieren
+- **Admin für Referenzen:** Dynamische Verwaltung der Referenzen-Projekte
+
+---
+
+## Dateien-Referenz
+- `/app/frontend/public/index.html` - Schema.org JSON-LD
+- `/app/frontend/src/components/Footer.jsx` - Footer mit Location Map
+- `/app/frontend/src/pages/Kontakt.jsx` - Kontaktseite mit Location Map
+- `/app/frontend/src/pages/RechnerNeu.jsx` - Preisrechner
+- `/app/frontend/src/data/leistungen.js` - Leistungsdaten
+
+## Admin-Zugang
+- URL: `/admin/login`
+- Passwort: `ocean2024`
