@@ -147,11 +147,16 @@ async def delete_reference(reference_id: str, _: bool = Depends(verify_admin_tok
     if not existing:
         raise HTTPException(status_code=404, detail="Referenz nicht gefunden")
     
-    # Delete associated image if exists
-    if existing.get("image") and existing["image"].startswith("/uploads/"):
-        image_path = Path("/app/backend") / existing["image"].lstrip("/")
-        if image_path.exists():
-            image_path.unlink()
+    # Delete associated image if exists (supports both old /uploads/ and new /media/ paths)
+    image_url = existing.get("image", "")
+    if image_url:
+        if image_url.startswith("/media/references/"):
+            media_service.delete_reference_image(image_url)
+        elif image_url.startswith("/uploads/"):
+            # Legacy cleanup
+            image_path = Path("/app/backend") / image_url.lstrip("/")
+            if image_path.exists():
+                image_path.unlink()
     
     await db.references.delete_one({"id": reference_id})
     return {"success": True, "message": "Referenz gelöscht"}
