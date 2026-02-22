@@ -193,9 +193,8 @@ async def toggle_featured(reference_id: str, _: bool = Depends(verify_admin_toke
     return {"success": True, "featured": new_status}
 
 @router.post("/reorder")
-async def reorder_references(order: List[str], authorization: str = None):
+async def reorder_references(order: List[str], _: bool = Depends(verify_admin_token)):
     """Reorder references (admin only)"""
-    await verify_admin_token(authorization)
     
     for index, ref_id in enumerate(order):
         await db.references.update_one(
