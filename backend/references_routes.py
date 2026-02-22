@@ -266,17 +266,6 @@ async def delete_image(
     raise HTTPException(status_code=404, detail="Bild nicht gefunden")
 
 
-@router.get("/media-stats")
-async def get_media_stats(_: bool = Depends(verify_admin_token)):
-    """Get media storage statistics (admin only)"""
-    return media_service.get_media_stats()
-
-@router.get("/categories/list")
-async def get_categories():
-    """Get all unique categories"""
-    categories = await db.references.distinct("category")
-    return {"categories": categories}
-
 # Initialize with default data from mock if collection is empty
 @router.post("/init")
 async def initialize_references(_: bool = Depends(verify_admin_token)):
