@@ -126,6 +126,16 @@ function App() {
             </>
           } />
 
+          {/* Badsanierung Referenz-Seite */}
+          <Route path="/badsanierung" element={
+            <>
+              <Header />
+              <main><Badsanierung /></main>
+              <Footer />
+              <CookieConsent />
+            </>
+          } />
+
           {/* SEO Stadtteil-Landingpages /maler-hamburg-[stadtteil] */}
           <Route path="/:page" element={<StadtteilRouter />} />
 
