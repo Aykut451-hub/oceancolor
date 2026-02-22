@@ -231,13 +231,16 @@ async def reorder_references(order: List[str], _: bool = Depends(verify_admin_to
 async def upload_image(
     file: UploadFile = File(...),
     authorization: str = Form(None),
-    convert_to_webp: bool = Form(False)
+    generate_webp: bool = Form(True)
 ):
     """
-    Upload reference image with automatic optimization
+    Upload reference image with automatic optimization.
     - Resizes to max 1600px width
-    - Compresses for web
-    - Optional WebP conversion
+    - Compresses for web (JPEG 85%, WebP 80%)
+    - Generates WebP version by default for modern browsers
+    - Keeps original format as fallback
+    
+    Returns both URLs for <picture> element usage.
     """
     if not authorization:
         raise HTTPException(status_code=401, detail="Nicht autorisiert")
@@ -258,7 +261,7 @@ async def upload_image(
             file_data=file_data,
             original_filename=file.filename or "image.jpg",
             content_type=file.content_type or "image/jpeg",
-            convert_to_webp=convert_to_webp
+            generate_webp=generate_webp
         )
         return result
     except ValueError as e:
