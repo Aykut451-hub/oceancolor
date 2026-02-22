@@ -294,6 +294,29 @@ const AdminLeadDetail = () => {
                   </div>
                 </div>
 
+                {/* Distance from Hamburg */}
+                {(lead.distanceFromHamburg !== undefined && lead.distanceFromHamburg !== null) && (
+                  <div className={`rounded-lg p-4 ${lead.isOutsideServiceArea ? 'bg-amber-50 border border-amber-200' : 'bg-green-50 border border-green-200'}`}>
+                    <div className="flex items-start gap-3">
+                      {lead.isOutsideServiceArea ? (
+                        <AlertTriangle className="h-5 w-5 text-amber-600 flex-shrink-0" />
+                      ) : (
+                        <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
+                      )}
+                      <div>
+                        <p className={`font-medium ${lead.isOutsideServiceArea ? 'text-amber-800' : 'text-green-800'}`}>
+                          Entfernung zu Hamburg: {lead.distanceFromHamburg} km
+                        </p>
+                        {lead.isOutsideServiceArea && (
+                          <p className="text-sm text-amber-700 mt-1">
+                            Außerhalb reguläres Einsatzgebiet – individuelle Absprache nötig
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 <div>
                   <label className="text-sm font-medium text-gray-700 block mb-2">Gewünschte Leistungen</label>
                   <div className="flex flex-wrap gap-2">
