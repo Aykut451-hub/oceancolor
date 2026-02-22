@@ -129,8 +129,8 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
 - **Refactoring Preisrechner:** `RechnerNeu.jsx` (>1000 Zeilen) in kleinere Komponenten aufteilen
 
 ### P2 - Mittel
-- **Cloud Storage:** Datei-Uploads von `/app/uploads` auf Cloud-Speicher migrieren
-- **Admin für Referenzen:** Dynamische Verwaltung der Referenzen-Projekte
+- **Cloud Storage Migration (optional):** Bei Bedarf Migration auf S3/R2 für Produktionsumgebung
+- **Admin Referenzen Erweiterungen:** Drag-and-Drop Sortierung, Before/After Bilder aktivieren
 
 ---
 
