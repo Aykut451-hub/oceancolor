@@ -69,18 +69,30 @@ async def verify_admin_token(authorization: Optional[str] = Header(None)):
     
     return True
 
-# Routes
-@router.get("", response_model=List[ReferenceResponse])
-async def get_references(active_only: bool = False):
-    """Get all references (public endpoint)"""
-    query = {"active": True} if active_only else {}
-    references = await db.references.find(query, {"_id": 0}).sort("order", 1).to_list(100)
-    return references
+# Routes - Static paths MUST come BEFORE dynamic /{reference_id} paths
 
 @router.get("/admin", response_model=List[ReferenceResponse])
 async def get_references_admin(_: bool = Depends(verify_admin_token)):
     """Get all references including inactive (admin only)"""
     references = await db.references.find({}, {"_id": 0}).sort("order", 1).to_list(100)
+    return references
+
+@router.get("/media-stats")
+async def get_media_stats(_: bool = Depends(verify_admin_token)):
+    """Get media storage statistics (admin only)"""
+    return media_service.get_media_stats()
+
+@router.get("/categories/list")
+async def get_categories():
+    """Get all unique categories"""
+    categories = await db.references.distinct("category")
+    return {"categories": categories}
+
+@router.get("", response_model=List[ReferenceResponse])
+async def get_references(active_only: bool = False):
+    """Get all references (public endpoint)"""
+    query = {"active": True} if active_only else {}
+    references = await db.references.find(query, {"_id": 0}).sort("order", 1).to_list(100)
     return references
 
 @router.get("/{reference_id}", response_model=ReferenceResponse)
