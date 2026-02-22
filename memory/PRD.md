@@ -62,6 +62,14 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
 - Modernes, dezentes Design ohne Slider-Autoplay
 - Mobile-optimiert
 
+### ✅ FAQ-Sektion auf Kontakt-Seite (22.02.2026)
+- 8 häufig gestellte Fragen mit Accordion-Design (aufklappbar)
+- Fragen zu: Angebotsdauer, Einsatzgebiete, Kleinaufträge, Balkonsanierung, Gewerbekunden, Angebotsanforderungen, Ablauf, Wochenendtermine
+- FAQPage JSON-LD Schema in `index.html` für SEO
+- Local-SEO Keywords: Hamburg, Malerbetrieb, Balkonsanierung, Fassadenarbeiten etc.
+- CTA-Buttons: Telefon + WhatsApp
+- Mobile-optimiert, keine Autoplay-Animationen
+
 ### ✅ Frühere Session-Implementierungen
 - Preisrechner-Logik für "Lackierarbeiten" korrigiert
 - "Über uns" und "Impressum" Seiten überarbeitet
