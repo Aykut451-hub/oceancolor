@@ -98,10 +98,9 @@ async def get_reference(reference_id: str):
 @router.post("", response_model=ReferenceResponse)
 async def create_reference(
     reference: ReferenceCreate,
-    authorization: str = None
+    _: bool = Depends(verify_admin_token)
 ):
     """Create new reference (admin only)"""
-    await verify_admin_token(authorization)
     
     # Get max order
     max_order_ref = await db.references.find_one(sort=[("order", -1)])
