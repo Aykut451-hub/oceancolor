@@ -120,6 +120,35 @@ const ReferenzCard = ({ referenz }) => {
 
 const Referenzen = () => {
   const [filter, setFilter] = useState('alle');
+  const [references, setReferences] = useState([]);
+  const [loading, setLoading] = useState(true);
+  
+  // Fetch references from database or fallback to mock
+  useEffect(() => {
+    const fetchReferences = async () => {
+      try {
+        const response = await fetch(`${BACKEND_URL}/api/references?active_only=true`);
+        if (response.ok) {
+          const data = await response.json();
+          if (data.length > 0) {
+            setReferences(data);
+          } else {
+            // Fallback to mock data if no DB entries
+            setReferences(mockReferences);
+          }
+        } else {
+          setReferences(mockReferences);
+        }
+      } catch (error) {
+        // Fallback to mock data on error
+        setReferences(mockReferences);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchReferences();
+  }, []);
   
   // Kategorien aus den Referenzen extrahieren
   const categories = ['alle', ...new Set(references.map(r => r.category))];
