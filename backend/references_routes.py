@@ -34,6 +34,8 @@ class ReferenceBase(BaseModel):
 
 class ReferenceCreate(ReferenceBase):
     image: Optional[str] = None
+    image_webp: Optional[str] = None
+    image_fallback: Optional[str] = None
 
 class ReferenceUpdate(BaseModel):
     company: Optional[str] = None
@@ -47,12 +49,16 @@ class ReferenceUpdate(BaseModel):
     active: Optional[bool] = None
     order: Optional[int] = None
     image: Optional[str] = None
+    image_webp: Optional[str] = None
+    image_fallback: Optional[str] = None
     before_image: Optional[str] = None
     after_image: Optional[str] = None
 
 class ReferenceResponse(ReferenceBase):
     id: str
     image: Optional[str] = None
+    image_webp: Optional[str] = None
+    image_fallback: Optional[str] = None
     created_at: str
     updated_at: str
 
