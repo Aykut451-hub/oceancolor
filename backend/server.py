@@ -76,10 +76,15 @@ app.include_router(api_router)
 app.include_router(leads_router)
 app.include_router(references_router)
 
-# Mount uploads directory for static file serving
+# Mount uploads directory for static file serving (legacy)
 UPLOAD_DIR = Path("/app/backend/uploads")
 UPLOAD_DIR.mkdir(exist_ok=True)
 app.mount("/uploads", StaticFiles(directory=str(UPLOAD_DIR)), name="uploads")
+
+# Mount media directory for new image storage
+MEDIA_DIR = Path("/app/backend/media")
+MEDIA_DIR.mkdir(exist_ok=True)
+app.mount("/media", StaticFiles(directory=str(MEDIA_DIR)), name="media")
 
 app.add_middleware(
     CORSMiddleware,
