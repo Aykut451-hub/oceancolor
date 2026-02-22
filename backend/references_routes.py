@@ -82,9 +82,8 @@ async def get_references(active_only: bool = False):
     return references
 
 @router.get("/admin", response_model=List[ReferenceResponse])
-async def get_references_admin(authorization: str = None):
+async def get_references_admin(_: bool = Depends(verify_admin_token)):
     """Get all references including inactive (admin only)"""
-    await verify_admin_token(authorization)
     references = await db.references.find({}, {"_id": 0}).sort("order", 1).to_list(100)
     return references
 
