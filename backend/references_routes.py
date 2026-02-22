@@ -88,6 +88,16 @@ async def get_categories():
     categories = await db.references.distinct("category")
     return {"categories": categories}
 
+@router.delete("/image")
+async def delete_image(
+    url: str = Query(..., description="URL of image to delete"),
+    _: bool = Depends(verify_admin_token)
+):
+    """Delete a reference image by URL"""
+    if media_service.delete_reference_image(url):
+        return {"success": True, "message": "Bild gelöscht"}
+    raise HTTPException(status_code=404, detail="Bild nicht gefunden")
+
 @router.get("", response_model=List[ReferenceResponse])
 async def get_references(active_only: bool = False):
     """Get all references (public endpoint)"""
