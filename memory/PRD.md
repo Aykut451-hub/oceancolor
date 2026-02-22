@@ -203,6 +203,15 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
 - Filter-Dropdown: "Alle", "≤200km", ">200km" funktioniert
 - Test-Lead aus München zeigt 612 km mit Warnung
 
+### ✅ Badsanierung Vorher/Nachher Seite (22.02.2026)
+- Neue Referenz-Seite unter `/badsanierung`
+- Interaktiver Vorher/Nachher-Slider (Touch & Maus-Drag)
+- Labels "Vorher" und "Nachher" auf den Bildern
+- SEO-optimierter Content für "Badsanierung Hamburg"
+- Lokaler SEO-Bereich mit Hamburger Stadtteilen
+- CTA: "Jetzt Badsanierung anfragen" → Preisrechner
+- Mobile-optimiert, keine Autoplay-Animation
+
 ---
 
 ## Dateien-Referenz
