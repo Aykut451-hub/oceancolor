@@ -194,6 +194,15 @@ const AdminLeads = () => {
               <p className="text-sm text-gray-600">Ocean Color Admin Dashboard</p>
             </div>
             <div className="flex items-center space-x-3">
+              <Link to="/admin/references">
+                <Button
+                  variant="outline"
+                  size="sm"
+                >
+                  <Building2 className="h-4 w-4 mr-2" />
+                  Referenzen
+                </Button>
+              </Link>
               <Link to="/admin/pricing">
                 <Button
                   variant="outline"
