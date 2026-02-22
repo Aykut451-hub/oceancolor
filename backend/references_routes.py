@@ -118,7 +118,7 @@ async def create_reference(
     await db.references.insert_one(reference_dict)
     
     # Remove MongoDB _id before returning
-    del reference_dict["_id"] if "_id" in reference_dict else None
+    reference_dict.pop("_id", None)
     
     return reference_dict
 
