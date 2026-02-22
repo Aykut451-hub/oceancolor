@@ -103,7 +103,7 @@ const ReferenceForm = ({ reference, onSave, onCancel, isNew }) => {
     const formDataUpload = new FormData();
     formDataUpload.append('file', file);
     formDataUpload.append('authorization', localStorage.getItem('adminToken') || '');
-    formDataUpload.append('convert_to_webp', 'false'); // Can be made configurable
+    formDataUpload.append('generate_webp', 'true'); // Generate WebP by default
 
     try {
       const response = await fetch(`${BACKEND_URL}/api/references/upload-image`, {
@@ -113,12 +113,16 @@ const ReferenceForm = ({ reference, onSave, onCancel, isNew }) => {
 
       if (response.ok) {
         const data = await response.json();
-        // Build full URL from relative path
-        const imageUrl = data.url.startsWith('/') 
-          ? `${BACKEND_URL}${data.url}` 
-          : data.url;
-        handleChange('image', imageUrl);
-        toast.success(`Bild hochgeladen (${data.format?.toUpperCase()}, ${Math.round(data.size / 1024)}KB)`);
+        // Build full URLs from relative paths
+        const buildUrl = (path) => path?.startsWith('/') ? `${BACKEND_URL}${path}` : path;
+        
+        // Store all image URLs
+        handleChange('image', buildUrl(data.url));
+        handleChange('image_webp', buildUrl(data.url_webp));
+        handleChange('image_fallback', buildUrl(data.url_fallback));
+        
+        const savings = data.url_webp ? ' + WebP' : '';
+        toast.success(`Bild hochgeladen (${data.format?.toUpperCase()}${savings}, ${Math.round(data.size / 1024)}KB)`);
       } else {
         const error = await response.json();
         toast.error(error.detail || 'Fehler beim Hochladen');
