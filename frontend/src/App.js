@@ -74,14 +74,6 @@ function App() {
               <CookieConsent />
             </>
           } />
-          <Route path="/rechner-neu" element={
-            <>
-              <Header />
-              <main><RechnerRefactored /></main>
-              <Footer />
-              <CookieConsent />
-            </>
-          } />
           <Route path="/referenzen" element={
             <>
               <Header />
