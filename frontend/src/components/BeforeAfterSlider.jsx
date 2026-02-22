@@ -269,8 +269,10 @@ const BeforeAfterSlider = ({
         <img
           src={beforeImage}
           alt={beforeAlt}
-          className={`w-full h-full object-cover transition-all duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`w-full h-full transition-all duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           style={{ 
+            objectFit,
+            objectPosition: 'center',
             filter: 'brightness(0.88) saturate(0.95)',
           }}
           onLoad={() => setBeforeLoaded(true)}
