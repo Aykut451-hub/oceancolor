@@ -210,7 +210,13 @@ async def upload_image(
     authorization: str = Form(None)
 ):
     """Upload reference image (admin only)"""
-    await verify_admin_token(authorization)
+    if not authorization:
+        raise HTTPException(status_code=401, detail="Nicht autorisiert")
+    
+    token = authorization.replace("Bearer ", "") if authorization.startswith("Bearer ") else authorization
+    token_doc = await db.admin_tokens.find_one({"token": token})
+    if not token_doc:
+        raise HTTPException(status_code=401, detail="Ungültiger Token")
     
     # Validate file type
     allowed_types = ["image/jpeg", "image/png", "image/webp", "image/gif"]
