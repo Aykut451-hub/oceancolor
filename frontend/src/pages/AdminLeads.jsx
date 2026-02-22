@@ -420,6 +420,9 @@ const AdminLeads = () => {
                           <div className="font-medium text-gray-900">{lead.plz}</div>
                           <div className="text-gray-500 text-xs capitalize">{lead.objektart}</div>
                         </td>
+                        <td className="px-4 py-4 text-sm whitespace-nowrap">
+                          {formatDistance(lead.distanceFromHamburg, lead.isOutsideServiceArea)}
+                        </td>
                         <td className="px-4 py-4 text-sm text-gray-500">
                           <div className="max-w-xs truncate">
                             {lead.leistungen?.slice(0, 2).join(', ')}
@@ -428,12 +431,6 @@ const AdminLeads = () => {
                         </td>
                         <td className="px-4 py-4 whitespace-nowrap text-sm font-medium text-ocean-blue">
                           {formatPrice(lead.preis_min, lead.preis_max)}
-                        </td>
-                        <td className="px-4 py-4 text-sm text-gray-500">
-                          <div className="flex items-center">
-                            <Calendar className="h-4 w-4 mr-1" />
-                            {lead.rueckruf_zeit || 'Nicht angegeben'}
-                          </div>
                         </td>
                         <td className="px-4 py-4 whitespace-nowrap">
                           {getStatusBadge(lead.status)}
