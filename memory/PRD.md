@@ -220,6 +220,17 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
   - 10 Hamburger Stadtteile als Tags
   - Interner SEO-Link "Badsanierung in Hamburg"
 
+### ✅ Vorher/Nachher Projekt-Galerie auf Startseite (22.02.2026)
+- Erweitert von 1 auf 3 Projekte:
+  1. Schimmelsanierung in Hamburg
+  2. Badsanierung in Hamburg
+  3. Wandrenovierung nach Graffiti in Hamburg (mit Brillux Aqualoma Beschreibung)
+- Horizontale Navigation mit Pfeilen
+- Touch/Swipe-Support für Mobile
+- Projekt-Indikatoren (Dots)
+- Vorher/Nachher-Drag bleibt innerhalb jedes Projekts
+- Keine Autoplay-Animation
+
 ---
 
 ## Dateien-Referenz
