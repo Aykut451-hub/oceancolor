@@ -208,9 +208,15 @@ async def reorder_references(order: List[str], _: bool = Depends(verify_admin_to
 @router.post("/upload-image")
 async def upload_image(
     file: UploadFile = File(...),
-    authorization: str = Form(None)
+    authorization: str = Form(None),
+    convert_to_webp: bool = Form(False)
 ):
-    """Upload reference image (admin only)"""
+    """
+    Upload reference image with automatic optimization
+    - Resizes to max 1600px width
+    - Compresses for web
+    - Optional WebP conversion
+    """
     if not authorization:
         raise HTTPException(status_code=401, detail="Nicht autorisiert")
     
@@ -218,22 +224,40 @@ async def upload_image(
     if not auth_service.verify_token(token):
         raise HTTPException(status_code=401, detail="Ungültiger Token")
     
-    # Validate file type
-    allowed_types = ["image/jpeg", "image/png", "image/webp", "image/gif"]
-    if file.content_type not in allowed_types:
-        raise HTTPException(status_code=400, detail="Ungültiger Dateityp")
+    # Read file data
+    file_data = await file.read()
     
-    # Generate unique filename
-    ext = file.filename.split(".")[-1] if "." in file.filename else "jpg"
-    filename = f"{uuid.uuid4()}.{ext}"
-    filepath = UPLOAD_DIR / filename
+    # Validate file size (max 10MB)
+    if len(file_data) > 10 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="Datei zu groß (max. 10MB)")
     
-    # Save file
-    with open(filepath, "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
-    
-    # Return the URL path
-    return {"url": f"/uploads/references/{filename}"}
+    try:
+        result = await media_service.upload_reference_image(
+            file_data=file_data,
+            original_filename=file.filename or "image.jpg",
+            content_type=file.content_type or "image/jpeg",
+            convert_to_webp=convert_to_webp
+        )
+        return result
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.delete("/image")
+async def delete_image(
+    url: str = Query(..., description="URL of image to delete"),
+    _: bool = Depends(verify_admin_token)
+):
+    """Delete a reference image by URL"""
+    if media_service.delete_reference_image(url):
+        return {"success": True, "message": "Bild gelöscht"}
+    raise HTTPException(status_code=404, detail="Bild nicht gefunden")
+
+
+@router.get("/media-stats")
+async def get_media_stats(_: bool = Depends(verify_admin_token)):
+    """Get media storage statistics (admin only)"""
+    return media_service.get_media_stats()
 
 @router.get("/categories/list")
 async def get_categories():
