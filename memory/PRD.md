@@ -32,6 +32,35 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
 
 ## Implementierte Features (Stand: 22.02.2026)
 
+### ✅ Preisrechner Refactoring (22.02.2026) - P1 ABGESCHLOSSEN
+- **RechnerNeu.jsx** von ~1500 Zeilen auf ~400 Zeilen reduziert
+- Modulare Step-Komponenten in `/app/frontend/src/components/rechner/`:
+  - `StepPLZ.jsx` - PLZ-Eingabe mit Validierung
+  - `StepObjektart.jsx` - Objektart-Auswahl
+  - `StepLeistungen.jsx` - Leistungsauswahl mit Inline-Inputs
+  - `StepFlaechen.jsx` - Raumanzahl/Wandfläche
+  - `StepDetails.jsx` - Farbe, Tapete, Spachtel, Zustand
+  - `StepZusatzoptionen.jsx` - Optionale Extras
+  - `StepSummary.jsx` - Zusammenfassung vor Absenden
+  - `StepKontakt.jsx` - Kontaktformular
+  - `LiveSummaryPanel.jsx` - Live-Kalkulation rechts
+  - `SharedComponents.jsx` - AnimatedPrice, SelectionCard, Chip, ProgressBar
+- **Pricing Engine** in `/app/frontend/src/lib/pricingEngine.js`:
+  - Pure Functions für Preisberechnung
+  - `computeEstimate(state)` → {min, max, breakdown}
+  - Alle Preiskonstanten zentralisiert
+  - PLZ-Validierung (`isValidPLZ`)
+- **PLZ-Validierung UX-Fix:**
+  - Nur 5 Ziffern erlaubt (Regex `^\d{5}$`)
+  - "Weiter" Button disabled bei ungültiger PLZ
+  - Fehlermeldung: "Bitte eine gültige 5-stellige PLZ eingeben."
+  - Hinweis: "Wir sind in Hamburg & Umgebung tätig."
+  - Grünes Häkchen bei gültiger PLZ
+- **Testfälle** in `/app/frontend/src/lib/pricingEngine.test.js`:
+  - 10+ Testfälle für Preislogik
+  - PLZ-Validierung Tests
+  - Kombinationsberechnungen
+
 ### ✅ Schema.org LocalBusiness Structured Data
 - Vollständiges JSON-LD Schema in `/app/frontend/public/index.html`
 - Alle Einzugsgebiete: Hamburg, Altona, Ottensen, St. Pauli, Eimsbüttel, Bahrenfeld, Blankenese, Hamburg-Mitte
