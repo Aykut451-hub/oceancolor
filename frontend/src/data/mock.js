@@ -73,6 +73,14 @@ export const services = [
     icon: "Shield"
   },
   {
+    id: 12,
+    title: "Wasserschaden Sanierung",
+    slug: "wasserschaden-sanierung",
+    description: "Fachgerechte Wiederherstellung nach Wasserschäden – von der Trocknungsvorbereitung bis zur Oberflächeninstandsetzung.",
+    icon: "Droplets",
+    customLink: "/wasserschaden-sanierung"
+  },
+  {
     id: 10,
     title: "Epoxidharzbodenbeschichtungen",
     slug: "epoxidharzboden",
