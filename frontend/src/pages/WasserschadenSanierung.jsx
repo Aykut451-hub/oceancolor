@@ -91,6 +91,66 @@ const WasserschadenSanierung = () => {
         </div>
       </section>
 
+      {/* Vorher/Nachher Referenz Section */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            {/* Projekt Titel */}
+            <ScrollReveal>
+              <div className="text-center mb-8">
+                <span className="inline-block bg-blue-100 text-blue-800 px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+                  Referenzprojekt
+                </span>
+                <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
+                  Wasserschaden Sanierung in Hamburg
+                </h2>
+              </div>
+            </ScrollReveal>
+
+            {/* Premium Vorher/Nachher Slider */}
+            <ScrollReveal delay={100}>
+              <div className="bg-white rounded-3xl shadow-xl overflow-hidden p-4 sm:p-6 lg:p-8 card-hover">
+                <BeforeAfterSlider 
+                  beforeImage={IMAGES.before}
+                  afterImage={IMAGES.after}
+                  beforeAlt="Badezimmer vor der Wasserschaden-Sanierung mit Feuchtigkeitsspuren"
+                  afterAlt="Badezimmer nach der professionellen Wiederherstellung"
+                  beforeLabel="Vorher"
+                  afterLabel="Nachher"
+                  className="max-w-2xl mx-auto"
+                />
+              </div>
+            </ScrollReveal>
+
+            {/* Beschreibungstext */}
+            <ScrollReveal delay={200}>
+              <div className="mt-8 text-center">
+                <p className="text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                  Diese Flächen wurden nach einem Wasserschaden fachgerecht wiederhergestellt. 
+                  Durch geeignete Vorbereitung und isolierende Beschichtung konnten Feuchtigkeitsspuren 
+                  dauerhaft überarbeitet und die Oberflächen optisch sowie technisch saniert werden.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            {/* Bonus: Verwaltungen */}
+            <ScrollReveal delay={300}>
+              <div className="mt-8 bg-gradient-to-br from-[#003056]/5 to-[#003056]/10 rounded-2xl p-6 border border-[#003056]/10">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 bg-[#003056] rounded-full flex items-center justify-center">
+                    <Building className="w-5 h-5 text-white" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-slate-900">Für Eigentümer & Hausverwaltungen</h3>
+                </div>
+                <p className="text-slate-600 pl-13">
+                  Wir unterstützen Eigentümer, Vermieter und Hausverwaltungen bei der Wiederherstellung nach Wasserschäden.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
       {/* Schadensarten Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
