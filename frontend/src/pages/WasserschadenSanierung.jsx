@@ -67,10 +67,10 @@ const WasserschadenSanierung = () => {
                 <Droplets className="w-8 h-8 text-blue-600" />
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
-                Wasserschaden Sanierung <span className="text-[#003056]">in Hamburg</span>
+                Hilfe bei Wasserschaden <span className="text-[#003056]">in Hamburg</span>
               </h1>
               <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">
-                Nach einem Wasserschaden ist schnelles und fachgerechtes Handeln entscheidend.
+                Schnelle Hilfe bei Feuchtigkeitsschäden, Rohrbruch oder Leckagen.
               </p>
             </div>
           </ScrollReveal>
