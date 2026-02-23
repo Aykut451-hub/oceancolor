@@ -163,22 +163,26 @@ const Badsanierung = () => {
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center">
-              So verwandeln wir Ihr Badezimmer
-            </h2>
+            <ScrollReveal>
+              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center">
+                So verwandeln wir Ihr Badezimmer
+              </h2>
+            </ScrollReveal>
             
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
-              <div className="grid md:grid-cols-2 gap-4">
-                {LEISTUNGEN.map((leistung, index) => (
-                  <div key={index} className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 transition-colors">
-                    <div className="flex-shrink-0 w-6 h-6 bg-emerald-100 rounded-full flex items-center justify-center">
-                      <Check className="w-4 h-4 text-emerald-600" />
+            <ScrollReveal delay={100}>
+              <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 card-hover">
+                <div className="grid md:grid-cols-2 gap-4">
+                  {LEISTUNGEN.map((leistung, index) => (
+                    <div key={index} className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 transition-colors">
+                      <div className="flex-shrink-0 w-6 h-6 bg-emerald-100 rounded-full flex items-center justify-center">
+                        <Check className="w-4 h-4 text-emerald-600" />
+                      </div>
+                      <span className="text-slate-700">{leistung}</span>
                     </div>
-                    <span className="text-slate-700">{leistung}</span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
