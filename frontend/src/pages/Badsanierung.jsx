@@ -301,32 +301,34 @@ const Badsanierung = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
-              Planen Sie eine Badmodernisierung?
-            </h2>
-            <p className="text-lg text-slate-600 mb-8">
-              Wir unterstützen Sie von der Idee bis zur Umsetzung.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                to="/rechner"
-                className="inline-flex items-center justify-center gap-2 bg-[#003056] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#004a7c] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
-                data-testid="cta-badsanierung-anfragen"
-              >
-                Jetzt unverbindlich anfragen
-                <ChevronRight className="w-5 h-5" />
-              </Link>
-              <a 
-                href="https://wa.me/4915128808304?text=Hallo,%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Badsanierung."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#20bd5a] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
-              >
-                <MessageCircle className="w-5 h-5" />
-                Per WhatsApp anfragen
-              </a>
-            </div>
+            <ScrollReveal>
+              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+                Planen Sie eine Badmodernisierung?
+              </h2>
+              <p className="text-lg text-slate-600 mb-8">
+                Wir unterstützen Sie von der Idee bis zur Umsetzung.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link 
+                  to="/rechner"
+                  className="inline-flex items-center justify-center gap-2 bg-[#003056] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#004a7c] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 btn-shine"
+                  data-testid="cta-badsanierung-anfragen"
+                >
+                  Jetzt unverbindlich anfragen
+                  <ChevronRight className="w-5 h-5" />
+                </Link>
+                <a 
+                  href="https://wa.me/4915128808304?text=Hallo,%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Badsanierung."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#20bd5a] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 btn-shine"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Per WhatsApp anfragen
+                </a>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
