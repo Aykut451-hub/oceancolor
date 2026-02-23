@@ -231,6 +231,18 @@ Eine moderne Website für Ocean Color, einen Malermeisterbetrieb in Hamburg. Hau
 - Vorher/Nachher-Drag bleibt innerhalb jedes Projekts
 - Keine Autoplay-Animation
 
+### ✅ Wasserschaden Sanierung (23.02.2026)
+- Neue Leistung in Leistungs-Übersicht (Position: nach Schimmelsanierung)
+- Neue Landingpage `/wasserschaden-sanierung` mit:
+  - Schadensarten: Rohrbruch, Undichtigkeiten, Leckagen, Feuchtigkeitsschäden
+  - Leistungen: Schadensbewertung, Trocknung, Spachtel/Maler
+  - GEO SEO Block mit Hamburger Stadtteilen
+  - CTA: "Wasserschaden beheben lassen"
+- Startseite: Neuer "Spezialleistungen" Teaser-Bereich mit:
+  - Wasserschaden Sanierung
+  - Schimmelsanierung
+  - Badsanierung
+
 ---
 
 ## Dateien-Referenz
