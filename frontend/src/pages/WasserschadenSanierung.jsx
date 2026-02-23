@@ -126,9 +126,7 @@ const WasserschadenSanierung = () => {
             <ScrollReveal delay={200}>
               <div className="mt-8 text-center">
                 <p className="text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                  Diese Flächen wurden nach einem Wasserschaden fachgerecht wiederhergestellt. 
-                  Durch geeignete Vorbereitung und isolierende Beschichtung konnten Feuchtigkeitsspuren 
-                  dauerhaft überarbeitet und die Oberflächen optisch sowie technisch saniert werden.
+                  Die betroffenen Flächen wurden fachgerecht vorbereitet und dauerhaft wiederhergestellt.
                 </p>
               </div>
             </ScrollReveal>
