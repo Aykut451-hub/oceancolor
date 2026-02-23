@@ -191,30 +191,32 @@ const Badsanierung = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-8 md:p-10 border border-amber-100">
-              <p className="text-lg text-slate-700 mb-6">
-                Eine professionelle Badsanierung sorgt nicht nur für ein besseres Wohngefühl.
-              </p>
-              <h3 className="text-xl font-bold text-slate-900 mb-6">Sie steigert auch:</h3>
-              
-              <div className="space-y-4 mb-8">
-                {MEHRWERT_PUNKTE.map((punkt, index) => {
-                  const Icon = punkt.icon;
-                  return (
-                    <div key={index} className="flex items-center gap-4">
-                      <div className="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-5 h-5 text-white" />
+            <ScrollReveal>
+              <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-8 md:p-10 border border-amber-100 card-hover">
+                <p className="text-lg text-slate-700 mb-6">
+                  Eine professionelle Badsanierung sorgt nicht nur für ein besseres Wohngefühl.
+                </p>
+                <h3 className="text-xl font-bold text-slate-900 mb-6">Sie steigert auch:</h3>
+                
+                <div className="space-y-4 mb-8">
+                  {MEHRWERT_PUNKTE.map((punkt, index) => {
+                    const Icon = punkt.icon;
+                    return (
+                      <div key={index} className="flex items-center gap-4">
+                        <div className="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center flex-shrink-0">
+                          <Icon className="w-5 h-5 text-white" />
+                        </div>
+                        <span className="text-slate-800 font-medium text-lg">{punkt.text}</span>
                       </div>
-                      <span className="text-slate-800 font-medium text-lg">{punkt.text}</span>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
+                
+                <p className="text-slate-700 font-medium text-lg border-t border-amber-200 pt-6">
+                  Gerade in Hamburg kann ein modernes Bad entscheidend sein.
+                </p>
               </div>
-              
-              <p className="text-slate-700 font-medium text-lg border-t border-amber-200 pt-6">
-                Gerade in Hamburg kann ein modernes Bad entscheidend sein.
-              </p>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
