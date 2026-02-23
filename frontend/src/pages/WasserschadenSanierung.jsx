@@ -323,7 +323,7 @@ const WasserschadenSanierung = () => {
           <div className="max-w-2xl mx-auto text-center">
             <ScrollReveal>
               <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
-                Wasserschaden? Wir helfen schnell!
+                Schnelle Hilfe bei Wasserschaden
               </h2>
               <p className="text-lg text-slate-600 mb-8">
                 Kontaktieren Sie uns für eine schnelle Schadensbewertung.
