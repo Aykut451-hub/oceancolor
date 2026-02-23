@@ -115,42 +115,46 @@ const Badsanierung = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="prose prose-lg prose-slate max-w-none">
-              <p className="text-slate-700 leading-relaxed text-lg">
-                <strong>Viele Badezimmer in Hamburg entsprechen nicht mehr den heutigen Wohnstandards.</strong>
-              </p>
-              <p className="text-slate-600 leading-relaxed">
-                Enge Grundrisse, veraltete Fliesen und unpraktische Raumaufteilungen wirken sich nicht nur auf den Komfort, sondern auch auf den <strong>Wert der Immobilie</strong> aus.
-              </p>
-              <p className="text-slate-600 leading-relaxed">
-                Durch eine durchdachte Badsanierung lässt sich selbst auf begrenztem Raum eine moderne und stilvolle Lösung schaffen.
-              </p>
-            </div>
+            <ScrollReveal>
+              <div className="prose prose-lg prose-slate max-w-none">
+                <p className="text-slate-700 leading-relaxed text-lg">
+                  <strong>Viele Badezimmer in Hamburg entsprechen nicht mehr den heutigen Wohnstandards.</strong>
+                </p>
+                <p className="text-slate-600 leading-relaxed">
+                  Enge Grundrisse, veraltete Fliesen und unpraktische Raumaufteilungen wirken sich nicht nur auf den Komfort, sondern auch auf den <strong>Wert der Immobilie</strong> aus.
+                </p>
+                <p className="text-slate-600 leading-relaxed">
+                  Durch eine durchdachte Badsanierung lässt sich selbst auf begrenztem Raum eine moderne und stilvolle Lösung schaffen.
+                </p>
+              </div>
+            </ScrollReveal>
 
             {/* Ergebnis Box */}
-            <div className="mt-10 bg-gradient-to-br from-[#003056]/5 to-[#003056]/10 rounded-2xl p-8 border border-[#003056]/10">
-              <h3 className="text-xl font-bold text-slate-900 mb-6">Das Ergebnis:</h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-[#003056] rounded-full flex items-center justify-center flex-shrink-0">
-                    <Check className="w-5 h-5 text-white" />
+            <ScrollReveal delay={150}>
+              <div className="mt-10 bg-gradient-to-br from-[#003056]/5 to-[#003056]/10 rounded-2xl p-8 border border-[#003056]/10 card-hover">
+                <h3 className="text-xl font-bold text-slate-900 mb-6">Das Ergebnis:</h3>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-[#003056] rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="text-slate-800 font-medium">Mehr Komfort im Alltag</span>
                   </div>
-                  <span className="text-slate-800 font-medium">Mehr Komfort im Alltag</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-[#003056] rounded-full flex items-center justify-center flex-shrink-0">
-                    <Check className="w-5 h-5 text-white" />
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-[#003056] rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="text-slate-800 font-medium">Zeitgemäße Optik</span>
                   </div>
-                  <span className="text-slate-800 font-medium">Zeitgemäße Optik</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-[#003056] rounded-full flex items-center justify-center flex-shrink-0">
-                    <Check className="w-5 h-5 text-white" />
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-[#003056] rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="text-slate-800 font-medium">Nachhaltige Wertsteigerung</span>
                   </div>
-                  <span className="text-slate-800 font-medium">Nachhaltige Wertsteigerung</span>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
