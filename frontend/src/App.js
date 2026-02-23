@@ -137,6 +137,16 @@ function App() {
             </>
           } />
 
+          {/* Wasserschaden Sanierung Seite */}
+          <Route path="/wasserschaden-sanierung" element={
+            <>
+              <Header />
+              <main><WasserschadenSanierung /></main>
+              <Footer />
+              <CookieConsent />
+            </>
+          } />
+
           {/* SEO Stadtteil-Landingpages /maler-hamburg-[stadtteil] */}
           <Route path="/:page" element={<StadtteilRouter />} />
 
