@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
-import { ArrowRight, CheckCircle, Star, ExternalLink } from 'lucide-react';
+import { ArrowRight, CheckCircle, Star, ExternalLink, ChevronRight } from 'lucide-react';
 import { services, googleReviews } from '../data/mock';
 import { stadtteile } from '../data/stadtteile';
 import { WHATSAPP_URL } from '../components/FloatingWhatsApp';
