@@ -3,9 +3,11 @@
  * Ocean Color GmbH - Premium Sanierungsfirma Hamburg
  */
 
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Check, MapPin, Phone, MessageCircle, TrendingUp, Home, Award } from 'lucide-react';
+import BeforeAfterSlider from '../components/BeforeAfterSlider';
+import { ScrollReveal } from '../hooks/useScrollReveal';
 
 // Bilder - Originale Dateinamen beibehalten
 const IMAGES = {
