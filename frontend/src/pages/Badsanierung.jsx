@@ -48,8 +48,8 @@ const MEHRWERT_PUNKTE = [
 const Badsanierung = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white" data-testid="badsanierung-page">
-      {/* Hero Section */}
-      <section className="pt-8 pb-12 md:pt-12 md:pb-16">
+      {/* Hero Section - mit korrektem Offset für Fixed Header */}
+      <section className="pt-32 pb-12 md:pt-36 md:pb-16 lg:pt-40">
         <div className="container mx-auto px-4">
           {/* Breadcrumb */}
           <nav className="mb-8 text-sm text-slate-500">
@@ -60,40 +60,54 @@ const Badsanierung = () => {
             <span className="text-slate-800">Badsanierung</span>
           </nav>
 
-          {/* Haupt-Titel - NEU */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
-              Aus alt wird modern – <span className="text-[#003056]">Ihre Badsanierung in Hamburg</span>
-            </h1>
-            <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">
-              Verwandeln Sie ein veraltetes Badezimmer in eine moderne Wohlfühlumgebung – funktional, stilvoll und wertsteigernd.
-            </p>
-          </div>
+          {/* Haupt-Titel - NEU mit Animation */}
+          <ScrollReveal>
+            <div className="text-center mb-8">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+                Aus alt wird modern – <span className="text-[#003056]">Ihre Badsanierung in Hamburg</span>
+              </h1>
+              <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">
+                Verwandeln Sie ein veraltetes Badezimmer in eine moderne Wohlfühlumgebung – funktional, stilvoll und wertsteigernd.
+              </p>
+            </div>
+          </ScrollReveal>
 
-          {/* Trust Block - NEU */}
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-12">
-            {TRUST_POINTS.map((point, index) => (
-              <div key={index} className="flex items-center gap-2">
-                <div className="w-5 h-5 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Check className="w-3 h-3 text-emerald-600" />
+          {/* Trust Block - NEU mit Animation */}
+          <ScrollReveal delay={100}>
+            <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-12">
+              {TRUST_POINTS.map((point, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <div className="w-5 h-5 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Check className="w-3 h-3 text-emerald-600" />
+                  </div>
+                  <span className="text-slate-700 font-medium">{point}</span>
                 </div>
-                <span className="text-slate-700 font-medium">{point}</span>
+              ))}
+            </div>
+          </ScrollReveal>
+
+          {/* Premium Vorher/Nachher Slider - gleich wie Startseite */}
+          <ScrollReveal delay={200}>
+            <div className="max-w-4xl mx-auto mb-8">
+              <div className="bg-white rounded-3xl shadow-xl overflow-hidden p-4 sm:p-6 lg:p-8 card-hover">
+                <BeforeAfterSlider 
+                  beforeImage={IMAGES.before}
+                  afterImage={IMAGES.after}
+                  beforeAlt="Altes Badezimmer vor der Sanierung in Hamburg"
+                  afterAlt="Modernes Badezimmer nach der Sanierung durch Ocean Color"
+                  objectFit="contain"
+                  className="max-w-2xl mx-auto"
+                />
               </div>
-            ))}
-          </div>
+            </div>
+          </ScrollReveal>
 
-          {/* Vorher/Nachher Slider */}
-          <div className="max-w-5xl mx-auto mb-8">
-            <BeforeAfterSlider 
-              beforeImage={IMAGES.before}
-              afterImage={IMAGES.after}
-            />
-          </div>
-
-          {/* Übergangstext unter Slider - NEU */}
-          <p className="text-center text-slate-600 max-w-2xl mx-auto text-lg">
-            Sehen Sie selbst, wie aus einem schmalen, in die Jahre gekommenen Badezimmer eine moderne und hochwertige Lösung entstehen kann.
-          </p>
+          {/* Übergangstext unter Slider - NEU mit Animation */}
+          <ScrollReveal delay={300}>
+            <p className="text-center text-slate-600 max-w-2xl mx-auto text-lg">
+              Sehen Sie selbst, wie aus einem schmalen, in die Jahre gekommenen Badezimmer eine moderne und hochwertige Lösung entstehen kann.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
