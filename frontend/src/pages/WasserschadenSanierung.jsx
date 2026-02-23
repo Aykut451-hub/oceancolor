@@ -5,8 +5,15 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, Check, MapPin, Phone, MessageCircle, Droplets, AlertTriangle, Shield } from 'lucide-react';
+import { ChevronRight, Check, MapPin, Phone, MessageCircle, Droplets, AlertTriangle, Shield, Building } from 'lucide-react';
 import { ScrollReveal } from '../hooks/useScrollReveal';
+import BeforeAfterSlider from '../components/BeforeAfterSlider';
+
+// Bilder für Vorher/Nachher Slider
+const IMAGES = {
+  before: 'https://customer-assets.emergentagent.com/job_c75bc87b-67d3-488f-a48f-6666b0075614/artifacts/mkiehrmc_WC_before.JPG',
+  after: 'https://customer-assets.emergentagent.com/job_c75bc87b-67d3-488f-a48f-6666b0075614/artifacts/eom7knn2_WC_after.JPG'
+};
 
 // Hamburger Stadtteile
 const STADTTEILE = [
