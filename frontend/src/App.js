@@ -27,6 +27,7 @@ import MalerStadtteil from "@/pages/MalerStadtteil";
 import StadtteilRouter from "@/pages/StadtteilRouter";
 import MalerHamburg from "@/pages/MalerHamburg";
 import Badsanierung from "@/pages/Badsanierung";
+import WasserschadenSanierung from "@/pages/WasserschadenSanierung";
 
 function App() {
   return (
