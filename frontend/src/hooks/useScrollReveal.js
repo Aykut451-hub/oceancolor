@@ -1,39 +1,24 @@
 import { useEffect, useRef, useState } from 'react';
 
+/**
+ * useScrollReveal Hook
+ * Now returns isRevealed: true immediately for SEO/crawlers
+ * Content is visible in initial render
+ */
 export const useScrollReveal = (options = {}) => {
   const ref = useRef(null);
-  const [isRevealed, setIsRevealed] = useState(false);
-
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsRevealed(true);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: options.threshold || 0.1,
-        rootMargin: options.rootMargin || '0px 0px -50px 0px',
-      }
-    );
-
-    observer.observe(element);
-
-    return () => {
-      if (element) observer.unobserve(element);
-    };
-  }, [options.threshold, options.rootMargin]);
+  // Always revealed immediately - content visible on load
+  const [isRevealed, setIsRevealed] = useState(true);
 
   return { ref, isRevealed };
 };
 
-// Component wrapper for scroll reveal
+/**
+ * ScrollReveal Component
+ * All content is now visible immediately on page load
+ * Animations run on mount (load-based), not on scroll
+ * This ensures full page capture tools and search engines can see all content
+ */
 export const ScrollReveal = ({ 
   children, 
   className = '', 
@@ -41,14 +26,24 @@ export const ScrollReveal = ({
   direction = 'up',
   ...props 
 }) => {
-  const { ref, isRevealed } = useScrollReveal();
+  const ref = useRef(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  // Trigger animation on mount (load-based)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHasAnimated(true);
+    }, 50); // Small delay to allow initial render
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   const getTransform = () => {
     switch (direction) {
-      case 'left': return 'translateX(-30px)';
-      case 'right': return 'translateX(30px)';
+      case 'left': return 'translateX(-20px)';
+      case 'right': return 'translateX(20px)';
       case 'up': 
-      default: return 'translateY(30px)';
+      default: return 'translateY(20px)';
     }
   };
 
@@ -57,9 +52,13 @@ export const ScrollReveal = ({
       ref={ref}
       className={className}
       style={{
-        opacity: isRevealed ? 1 : 0,
-        transform: isRevealed ? 'translate(0)' : getTransform(),
-        transition: `opacity 0.5s ease-out ${delay}ms, transform 0.5s ease-out ${delay}ms`,
+        // Content is ALWAYS visible (opacity: 1 minimum for SEO)
+        opacity: hasAnimated ? 1 : 1,
+        // Transform animation still runs but content is visible
+        transform: hasAnimated ? 'translate(0)' : getTransform(),
+        transition: `transform 0.5s ease-out ${delay}ms`,
+        // Ensure visibility for crawlers
+        visibility: 'visible',
       }}
       {...props}
     >
@@ -68,38 +67,46 @@ export const ScrollReveal = ({
   );
 };
 
-// Hook for animated counter
+/**
+ * Hook for animated counter
+ * Now triggers on mount instead of scroll
+ */
 export const useAnimatedCounter = (end, duration = 1000, start = 0) => {
   const [count, setCount] = useState(start);
   const [isAnimating, setIsAnimating] = useState(false);
-  const { ref, isRevealed } = useScrollReveal();
+  const ref = useRef(null);
 
   useEffect(() => {
-    if (!isRevealed || isAnimating) return;
+    if (isAnimating) return;
     
-    setIsAnimating(true);
-    const startTime = Date.now();
-    const startValue = start;
+    // Start animation immediately on mount
+    const timer = setTimeout(() => {
+      setIsAnimating(true);
+      const startTime = Date.now();
+      const startValue = start;
+      
+      const animate = () => {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function (ease-out)
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const currentValue = Math.round(startValue + (end - startValue) * easeOut);
+        
+        setCount(currentValue);
+        
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        }
+      };
+      
+      requestAnimationFrame(animate);
+    }, 100);
     
-    const animate = () => {
-      const elapsed = Date.now() - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      
-      // Easing function (ease-out)
-      const easeOut = 1 - Math.pow(1 - progress, 3);
-      const currentValue = Math.round(startValue + (end - startValue) * easeOut);
-      
-      setCount(currentValue);
-      
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-    
-    requestAnimationFrame(animate);
-  }, [isRevealed, end, duration, start, isAnimating]);
+    return () => clearTimeout(timer);
+  }, [end, duration, start, isAnimating]);
 
-  return { ref, count, isRevealed };
+  return { ref, count, isRevealed: true };
 };
 
 export default useScrollReveal;
